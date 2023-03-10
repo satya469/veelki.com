@@ -1,0 +1,63 @@
+<app-header [pageMenu]="sidebarList" (pageChange)="appSidebar.updateSportTournamentsList($event)"></app-header>
+<div class="app-body p-rltv">
+    <app-sidebar class="sidebar" [pageMenu]="sidebarList" #appSidebar></app-sidebar>
+    <div class="main">
+        <div class="container">
+            <router-outlet></router-outlet>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="inner-footer">
+                        <div class="support-wrap">
+                            <dl class="support-mail">
+                                <a class="rules-btn-home">Privacy Policy</a>
+                                <a class="rules-btn-home arrow">KYC</a>
+                                <a class="rules-btn-home arrow">Terms and Conditions</a>
+                                <a class="rules-btn-home arrow">Rules and Regulations</a>
+                                <a class="rules-btn-home arrow">Responsible Gambling</a>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-footer">
+                    <div class="support-wrap">
+                        <dl class="support-mail">
+                            <a class="rules-btn-home">Privacy Policy</a>
+                            <a class="rules-btn-home arrow">Rules and Regulations</a>
+                            <a class="rules-btn-home arrow">KYC</a>
+                            <a class="rules-btn-home arrow">Terms and Conditions</a>
+                            <a class="rules-btn-home arrow">Responsible Gambling</a>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-aside class="aside-menu"></app-aside>
+</div>
+<app-confirm-box></app-confirm-box>
+<ngx-spinner>
+    <div class="black-overlay ng-star-inserted" style="background-color: rgba(51, 51, 51, 0.8);">
+        <div class="la-ball-scale-multiple " style="color: rgb(255, 255, 255);">
+            <div class="ng-star-inserted"></div>
+            <div class="ng-star-inserted"></div>
+            <div class="ng-star-inserted"></div>
+        </div>
+    </div>
+    <div class="loading-text ng-star-inserted">
+        <div class="loading-wrap" id="loading">
+            <ul class="loading">
+                <li>
+                    <div class="loadingio-spinner-dual-ball-srpf31lqtit">
+                        <div class="ldio-dayih5pen3j">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </li>
+                <li>Loading...</li>
+            </ul>
+        </div>
+    </div>
+</ngx-spinner>
+<app-footer></app-footer>

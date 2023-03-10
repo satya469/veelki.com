@@ -1,0 +1,57 @@
+<ul class="tab-menu d-none d-lg-block">
+    <li class="ver-menu settingstack"><a href="javascript:;" class="active" (click)="collapse.toggle();"
+            [attr.aria-expanded]="!isCollapsed">Setting <i class="fa fa-cog"></i></a>
+    </li>
+</ul>
+<div class="bet-setting ml-2 mr-2 d-block d-lg-none">
+    <a class="a-setting" href="javascript:;" href="javascript:;" (click)="collapse.toggle();"
+        [attr.aria-expanded]="!isCollapsed"><img src="../../../assets/img/transparent.gif"></a>
+</div>
+<div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="slip_set-pop">
+    <div class="overlay right-side">
+        <div class="side-wrap setting-wrap">
+            <div class="side-content">
+                <form [formGroup]="stackForm" (ngSubmit)="stackSubmit()">
+                    <h3>Stake</h3>
+                    <dl class="setting-block stake-setting" formArrayName="stackList">
+                        <dd class="ng-star-inserted" *ngFor="let stackGroup of stackList.controls; let i = index">
+                            <div [formGroupName]="i">
+                                <input formControlName="id" type="hidden">
+                                <input formControlName="stakeLimitPrice" type="number" min="1">
+                            </div>
+                        </dd>
+                        <dd class="col-stake_edit"><input type="submit" class="btn-send ui-link" value="Save"></dd>
+                    </dl>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #stackModal let-modal>
+    <div class="overlay right-side">
+        <div class="side-wrap setting-wrap" id="settingSlide">
+            <div class="side-head">
+                <h3 class="a-setting mb-0"><i class="fa fa-cog fa-lg mr-2"></i>
+                    Setting</h3><a class="close ui-link" href="javascript:;" id="settingClose"
+                    (click)="modal.dismiss()"><i aria-hidden="true" class="fa fa-times "></i></a>
+            </div>
+            <div class="side-content" id="coinList">
+                <form [formGroup]="stackForm" (ngSubmit)="stackSubmit()">
+                    <h3>Stake</h3>
+                    <div id="google_translate_element"></div>
+                    <dl class="setting-block stake-setting" formArrayName="stackList">
+                        <dt>Quick Stakes</dt>
+                        <dd *ngFor="let stackGroup of stackList.controls; let i = index">
+                            <div [formGroupName]="i">
+                                <input formControlName="id" type="hidden">
+                                <input formControlName="stakeLimitPrice" type="number" min="1">
+                            </div>
+                        </dd>
+                        <dd class="col-stake_edit"><button type="submit" class="btn-send ui-link">Save</button></dd>
+                    </dl>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-template>

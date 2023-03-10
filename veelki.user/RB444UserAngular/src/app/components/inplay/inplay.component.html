@@ -1,0 +1,95 @@
+<div class="animated fadeIn hideevent-search">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <div class="row tabmenu">
+                <ul ngbNav #nav="ngbNav" class="tab inplayTab col3">
+                    <li ngbNavItem>
+                        <a ngbNavLink>In-Play</a>
+                        <ng-template ngbNavContent>
+                            <ng-container *ngIf="inplayData">
+                                <div *ngFor="let inplayList of inplayData">
+                                    <div class="inplay-sportwise" *ngIf="inplayList.oddsData.length > 0">
+                                        <div class="sporthead sporthead0">
+                                            <h3>{{inplayList.sportName}}</h3>
+                                        </div>
+                                        <table class="table table-hover">
+                                            <app-table-row [tableRowList]="inplayList.oddsData" [multiMarketPin]="false"
+                                                class="d-table w-100"></app-table-row>
+                                        </table>
+                                    </div>
+                                </div>
+                                <table *ngIf="inplayData.length === 0" class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center" colspan="5">There are no events to be displayed.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </ng-container>
+                        </ng-template>
+                    </li>
+                    <li ngbNavItem>
+                        <a ngbNavLink>Today</a>
+                        <ng-template ngbNavContent>
+                            <ng-container *ngIf="todayData">
+                                <div *ngFor="let todayList of todayData">
+                                    <div class="inplay-sportwise" *ngIf="todayList.oddsData.length > 0">
+                                        <div class="sporthead sporthead0">
+                                            <h3>{{todayList.sportName}}</h3>
+                                        </div>
+                                        <table class="table table-hover">
+                                            <app-table-row [tableRowList]="todayList.oddsData" [multiMarketPin]="false"
+                                                class="d-table w-100"></app-table-row>
+                                        </table>
+                                    </div>
+                                </div>
+                                <table *ngIf="todayData.length === 0" class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center" colspan="5">There are no events to be displayed.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </ng-container>
+                        </ng-template>
+                    </li>
+                    <li ngbNavItem>
+                        <a ngbNavLink>Tomorrow</a>
+                        <ng-template ngbNavContent>
+                            <ng-container *ngIf="tomorrowData">
+                                <div *ngFor="let tomorrowList of tomorrowData">
+                                    <div class="inplay-sportwise" *ngIf="tomorrowList.oddsData.length > 0">
+                                        <div class="sporthead sporthead0">
+                                            <h3>{{tomorrowList.sportName}}</h3>
+                                        </div>
+                                        <table class="table table-hover">
+                                            <app-table-row [tableRowList]="tomorrowList.oddsData"
+                                                [multiMarketPin]="false" class="d-table w-100"></app-table-row>
+                                        </table>
+                                    </div>
+                                </div>
+                                <table *ngIf="tomorrowData.length === 0" class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center" colspan="5">There are no events to be displayed.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </ng-container>
+                        </ng-template>
+                    </li>
+                </ul>
+            </div>
+            <div class="game-menu-tab inplay-match">
+                <div class="row">
+                    <div class="col-md-12 mobile-width">
+                        <div [ngbNavOutlet]="nav"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

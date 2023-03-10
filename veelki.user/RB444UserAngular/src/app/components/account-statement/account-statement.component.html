@@ -1,0 +1,44 @@
+<div class="animated fadeIn divider-top">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 p-mobile-0">
+            <div class="card card-accent-primary">
+                <div class="card-header account-detail-head"> Account Statement </div>
+                <div class="card-body account-stat-body">
+                    <div class="row">
+                        <div class="col-md-12 p-mobile-0">
+                            <div class="table-responsive">
+                                <table class="table table-bordered dataTable no-footer">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Date/Time</th>
+                                            <th scope="col">Deposit</th>
+                                            <th scope="col">Withdraw</th>
+                                            <th scope="col">Balance</th>
+                                            <th scope="col">Remark</th>
+                                            <th scope="col">From/To</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngIf="accountStatementList">
+                                            <tr *ngFor="let accountStatement of accountStatementList">
+                                                <td>{{accountStatement.createdDate | date:'medium'}}</td>
+                                                <td>{{accountStatement.deposit}}</td>
+                                                <td>{{accountStatement.withdraw}}</td>
+                                                <td>{{accountStatement.balance}}</td>
+                                                <td>{{accountStatement.remark}}</td>
+                                                <td>{{accountStatement.fromUser}} to {{accountStatement.toUser}}</td>
+                                            </tr>
+                                            <tr *ngIf="accountStatementList.length === 0">
+                                                <td colspan="6" class="text-center">No record found.</td>
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

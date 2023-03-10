@@ -1,0 +1,89 @@
+<div class="animated fadeIn divider-top">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 p-mobile-0">
+            <div class="card card-accent-primary card-report">
+                <form [formGroup]="rollingForm">
+                    <div class="card-body row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="mydp" style="width: 100%;">
+                                    <div class="selectiongroup">
+                                        <input class="selection" placeholder="dd-mm-yyyy" formControlName="start_date"
+                                            ngbDatepicker #dateTime1="ngbDatepicker" style="height: 34px;"
+                                            [maxDate]="maxDate">
+                                        <div class="selbtngroup" style="height: 34px;">
+                                            <button class="btnpicker btnpickerenabled" (click)="dateTime1.toggle()"
+                                                type="button"><span class="mydpicon icon-mydpcalendar"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="mydp" style="width: 100%;">
+                                    <div class="selectiongroup">
+                                        <input class="selection" placeholder="dd-mm-yyyy" formControlName="end_date"
+                                            ngbDatepicker #dateTime2="ngbDatepicker" style="height: 34px;"
+                                            [maxDate]="maxDate">
+                                        <div class="selbtngroup" style="height: 34px;">
+                                            <button class="btnpicker btnpickerenabled" (click)="dateTime2.toggle()"
+                                                type="button"><span class="mydpicon icon-mydpcalendar"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group"><select class="form-control" formControlName="flag">
+                                    <option value="">Select Type</option>
+                                    <option value="fancy">Fancy</option>
+                                    <option value="matka">Matka</option>
+                                    <option value="casino">Casino</option>
+                                    <option value="binary">Binary</option>
+                                    <option value="sportbook">Sportbook</option>
+                                    <option value="bookmaker">Bookmaker</option>
+                                </select></div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group"><button class="btn btn-primary" type="submit"><i
+                                        class="fa fa-search"></i>
+                                    Get Commission</button></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 p-mobile-0">
+            <div class="card card-accent-primary">
+                <div class="card-header account-detail-head">Rolling Commission </div>
+                <div class="card-body account-stat-body">
+                    <div class="row">
+                        <div class="col-md-12 p-mobile-0">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th>Type</th>
+                                            <th>Total Stack</th>
+                                            <th>Total Commission</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr class="text-center">
+                                            <td style="text-transform: capitalize;">fancy</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

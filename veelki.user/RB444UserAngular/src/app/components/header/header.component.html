@@ -1,0 +1,117 @@
+<ng-template #loginModal let-modal>
+    <div class="login-page-new" style="min-height: 600px;">
+        <header class="login-head"><a class="ui-link"></a>
+            <h1 style="background: url(./assets/img/mainlogo.png);">Exchange</h1>
+            <a class="ui-link" aria-label="Close" (click)="modal.dismiss()"></a>
+        </header>
+        <dl class="form-login px-3">
+            <form [formGroup]="loginForm" method="post" role="form" (ngSubmit)="loginFormSubmit()">
+                <dd>
+                    <input class="form-control uname" formControlName="email" placeholder="Username" type="text" />
+                    <div class="form-control-feedback" *ngIf="isSubmitted">
+                        <span class="error-message" *ngIf="loginForm.controls.email.errors?.['required']">Please enter a username.</span>
+                    </div>
+                </dd>
+                <dd>
+                    <input class="form-control pass" formControlName="password" placeholder="Password" type="password" />
+                    <div class="form-control-feedback" *ngIf="isSubmitted">
+                        <span class="error-message" *ngIf="loginForm.controls.password.errors?.['required']">Please enter a password.</span>
+                    </div>
+                </dd>
+                <dd>
+                    <button class="btn-send ui-link" type="submit"> Login <i
+                            class="fa fa-sign-in"></i></button>
+                </dd>
+                <dd>
+                <span class="err-invalid-modal error-message" *ngIf="isSubmitted && formSubmitError != null">
+                    <span>{{formSubmitError}}</span></span>
+                </dd>
+            </form>
+        </dl>
+    </div>
+</ng-template>
+
+<div class="app-header navbar">
+    <button appsidebartoggler="" class="navbar-toggler d-lg-none" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button><a class="navbar-brand" [routerLink]="['/home']">
+        <div class="navbar-brand-full">🅲 CoreUI</div>
+        <div class="navbar-brand-minimized">🅲</div>
+    </a>
+    <button class="navbar-toggler d-md-down-none" type="button"><span class="navbar-toggler-icon"></span></button>
+    <div class="welcome-text d-block">
+        <a class="logo-home" [routerLink]="['/home']">
+            <img class="logo-main" id="logoMain" src="./assets/img/64rb444.png">
+        </a>
+    </div>
+    <div class="welcome-text mobile-after-login ">
+        <a class="logo-home" [routerLink]="['/home']">
+            <img class="logo-main" id="logoMain" src="./assets/img/64rb444.png">
+        </a>
+    </div>
+    <div class="search-top">
+        <div class="input-group">
+        </div>
+    </div>
+    <div class="nav navbar-nav ml-auto p-rltv" *ngIf="!isLoginUser">
+        <form [formGroup]="loginForm" class="top-form d-none d-lg-flex headerfrm" method="post" role="form"
+            (ngSubmit)="loginFormSubmit()">
+            <div class="form-group mb-0 ">
+                <input class="form-control uname" formControlName="email" placeholder="Username" type="text" />
+            </div>
+            <div class="form-group mb-0 hidden-xs">
+                <input class="form-control pass" formControlName="password" placeholder="Password" type="password" />
+            </div>
+            <button class="btn btn-orange pull-right mr-2" style="height: 30px;" type="submit"> Login <i
+                    class="fa fa-sign-in"></i></button>
+            <span class="err-invalid" *ngIf="isSubmitted && formSubmitError != null">
+                <span>{{formSubmitError}}</span></span>
+        </form>
+        <div class="d-block d-lg-none">
+            <button class="btn btn-orange pull-right mr-2" style="height: 30px;" type="button"
+                (click)="openLoginModal(loginModal)"> Login <i class="fa fa-sign-in"></i></button>
+        </div>
+    </div>
+    <div class="nav navbar-nav ml-auto p-rltv" *ngIf="isLoginUser">
+        <app-balance></app-balance>      
+        <app-stack-settings class="d-block d-lg-none"></app-stack-settings>
+        <div class="account-wrap-new mr-2 d-none d-lg-block" style="z-index: 9999;" placement="bottom right">
+            <div ngbDropdown class="d-inline-block align-middle" style=" top:2px;">
+                <a class="nav-link myaccnt" id="myAccountDropdown" style="cursor: pointer" ngbDropdownToggle>My
+                    Account</a>
+                <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="myAccountDropdown">
+                    <div class="dropdown-header text-left"><strong>{{loginUserName}}</strong></div>
+                    <a ngbDropdownItem [routerLink]="['/myprofile']">My Profile</a>
+                    <a ngbDropdownItem [routerLink]="['/rolling-commission']">Rolling Commission</a>
+                    <a ngbDropdownItem [routerLink]="['/account-statement']">Account Statement</a>
+                    <a ngbDropdownItem [routerLink]="['/bet-history']">Bets History</a>
+                    <a ngbDropdownItem [routerLink]="['/profit-loss']">Profit &amp; Loss</a>
+                    <a ngbDropdownItem [routerLink]="['/activity-log']">Activity Log</a>
+                    <a ngbDropdownItem class="drp-logout"><button type="button" class="btn btn-primary logout-btn"
+                            (click)="userLogout()">LOGOUT <i aria-hidden="true"
+                                class="fa fa-sign-out ml-2"></i></button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-wrap">
+        <div class="full-wrap">
+            <ul class="tab-menu pull-left">
+                <li class="ver-menu"><a [routerLink]="['/home']" routerLinkActive="active">Home</a></li>
+                <li class="ver-menu"><a [routerLink]="['/inplay']" routerLinkActive="active">In-Play</a></li>
+                <li class="ver-menu"><a [routerLink]="['/multimarket']" routerLinkActive="active">Multi Markets</a></li>
+                <!-- <li class="ver-menu"><a href="/user/MultiMarkets">Multi Markets</a></li> -->
+                <ng-container *ngIf="pageMenu">
+                    <li class="ver-menu" *ngFor="let menu of pageMenu">
+                        <a [routerLink]="['/allsport-highlight', menu.id]" routerLinkActive="active"
+                            (click)="changeSidebarList(menu.id);">{{menu.sportName}} </a>
+                    </li>
+                </ng-container>
+            </ul>
+            <div class="pull-right position-relative" *ngIf="isLoginUser">
+                <app-stack-settings></app-stack-settings>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<owl-carousel-o [options]="HomeSliderOptions">
+    <ng-template *ngFor="let slider of sliderList" carouselSlide>
+        <img [src]='"http://admin.rb444.in/SliderImages/"+slider.fileName' *ngIf="slider.status == true" style="max-height: 192px; object-fit: cover; object-position: top;" class="img-responsive" />
+    </ng-template>
+</owl-carousel-o>
+<div class="promo-banner-loading" [ngClass]="{'d-none':sliderList.length > 0}"></div>

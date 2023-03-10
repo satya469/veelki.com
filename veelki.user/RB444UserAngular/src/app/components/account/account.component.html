@@ -1,0 +1,32 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12 all-sports">
+            <h3 class="quickHeader text-left pl-2" style="display: block;"><i class="fa fa-user-circle-o"></i>
+                &nbsp;{{userData?.fullName}}</h3>
+            <nav class="all-sports-list">
+                <ul class="sport-nav">
+                    <div>
+                        <li class="nav-item nav-dropdown"><a class="nav-link nav-dropdown-toggle"
+                                [routerLink]="['/myprofile']"> My Profile </a></li>
+                        <li class="nav-item nav-dropdown"><a class="nav-link nav-dropdown-toggle"
+                                [routerLink]="['/rolling-commission']"> Rolling Commission </a></li>
+                        <li class="nav-item nav-dropdown"><a class="nav-link nav-dropdown-toggle"
+                                [routerLink]="['/account-statement']"> Account Statement </a></li>
+                        <li class="nav-item nav-dropdown"><a class="nav-link nav-dropdown-toggle"
+                                [routerLink]="['/bet-history']">
+                                Bets History </a></li>
+                        <li class="nav-item nav-dropdown"><a class="nav-link nav-dropdown-toggle"
+                                [routerLink]="['/profit-loss']">
+                                Profit &amp; Loss </a></li>
+                        <!-- <li class="nav-item nav-dropdown"><a class="nav-link nav-dropdown-toggle"
+                                href="#/password-history"> Password History </a></li> -->
+                        <li class="nav-item nav-dropdown"><a class="nav-link nav-dropdown-toggle"
+                                [routerLink]="['/activity-log']">
+                                Activity Log </a></li>
+                    </div>
+                </ul>
+            </nav><a class="mbl-logout-btn" id="logout" (click)="userLogout()">LOGOUT <i
+                    class="fa fa-sign-out ml-2"></i></a>
+        </div>
+    </div>
+</div>

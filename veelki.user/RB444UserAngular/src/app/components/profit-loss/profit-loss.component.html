@@ -1,0 +1,113 @@
+<div class="animated fadeIn divider-top">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="card card-report card-accent-primary">
+                <div class="card-body row p-0">
+                    <div class="col-md-6 row">
+                        <div class="col-md-8 col-8">
+                            <div class="form-group">
+                                <div class="mydp" style="width: 100%;">
+                                    <div class="selectiongroup">
+                                        <input class="selection" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
+                                            #dateTime="ngbDatepicker" style="height: 34px;" [maxDate]="maxDate">
+                                        <div class="selbtngroup" style="height: 34px;">
+                                            <button class="btnpicker btnpickerenabled" (click)="dateTime.toggle()"
+                                                type="button"><span class="mydpicon icon-mydpcalendar"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-4">
+                            <div class="form-group"><input class="form-control ng-untouched ng-pristine" disabled=""
+                                    maxlength="5" name="starttime" type="text"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 row">
+                        <div class="col-md-1 p-0">
+                            <div class="form-group text-center"><span class="lbl-to"> TO</span></div>
+                        </div>
+                        <div class="col-md-7 col-8">
+                            <div class="form-group">
+                                <div class="mydp" style="width: 100%;">
+                                    <div class="selectiongroup">
+                                        <input class="selection" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
+                                            #dateTime2="ngbDatepicker" style="height: 34px;" [maxDate]="maxDate">
+                                        <div class="selbtngroup" style="height: 34px;">
+                                            <button class="btnpicker btnpickerenabled" (click)="dateTime2.toggle()"
+                                                type="button"><span class="mydpicon icon-mydpcalendar"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-4">
+                            <div class="form-group"><input class="form-control ng-untouched ng-pristine" disabled=""
+                                    maxlength="5" name="endtime" type="text"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 betHistory">
+                        <div class="row">
+                            <div class="col-md-12 row">
+                                <div class="col-md-3 col-6"><button class="btn btn-primary" type="button"><strong>Just
+                                            For
+                                            Today</strong></button></div>
+                                <div class="col-md-3 col-6"><button class="btn btn-primary" type="button"><strong>Get P
+                                            &amp;
+                                            L</strong></button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 p-mobile-0">
+            <div class="card card-accent-primary">
+                <div class="card-header account-detail-head"> Profit/Loss <h6 class="pull-right total-pl">Total P/L : IR
+                        <span class="minus-pl">0</span>
+                    </h6>
+                </div>
+                <div class="card-body account-stat-body">
+                    <div class="row">
+                        <div class="col-md-12 p-mobile-0">
+                            <div class="table-responsive">
+                                <table class="table table-bordered dataTable no-footer">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Sport Name</th>
+                                            <th scope="col">Event Name</th>
+                                            <th scope="col">Market Name</th>
+                                            <th scope="col">Result</th>
+                                            <th scope="col">Profit/Loss</th>
+                                            <th scope="col">Commission</th>
+                                            <th scope="col">Settle Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngIf="profitLossData">
+                                            <tr *ngFor="let profitLoss of profitLossData">
+                                                <td>{{profitLoss.sportName}}</td>
+                                                <td>{{profitLoss.event}}</td>
+                                                <td>{{profitLoss.market}}</td>
+                                                <td>{{profitLoss.resultType}}</td>
+                                                <td
+                                                    [ngClass]="{'plus-pl' : profitLoss.resultAmount > 0, 'minus-pl' : profitLoss.resultAmount < 0 }">
+                                                    {{profitLoss.resultAmount}}</td>
+                                                <td>--</td>
+                                                <td>--</td>
+                                            </tr>
+                                            <tr *ngIf="profitLossData.length===0">
+                                                <td colspan="7" class="text-center">No Record Found.</td>
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
