@@ -1,0 +1,564 @@
+<app-sidebar></app-sidebar>
+<div id="centerColumn" class="col-center">
+
+    <!-- Message -->
+
+
+    <!-- Loading Wrap -->
+    <div id="loading" class="loading-wrap" style="display:none">
+        <ul class="loading">
+            <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+            <li>Loading...
+            </li>
+            <br>
+            <li><span id="progress"></span></li>
+        </ul>
+    </div>
+
+    <!-- Message -->
+    <div id="message" class="message-wrap success">
+        <a class="btn-close">Close</a>
+        <p></p>
+    </div>
+
+    <script language="JavaScript" type="text/javascript">
+        (function () {
+            $j('.btn-close').click(function () {
+                $j('#message').hide();
+            });
+        })();
+    </script>
+
+    <div id="oneClickLoading" class="loading-wrap" style="display:none">
+        <ul class="loading">
+            <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+            <li id="oneClickTime">Place Bets
+            </li>
+        </ul>
+    </div>
+    <div class="marquee-box" style="display: flex">
+        <h4>News</h4>
+        <div class="marquee">
+            <div style="width: 100000px; transform: translateX(735px); animation: 73.9701s linear 0s infinite normal none running marqueeAnimation-8820987;"
+                class="js-marquee-wrapper">
+                <div class="js-marquee" style="margin-right: 0px; float: left;"><a><span>13 Mar 2023</span>Event : New
+                        Zealand v Sri Lanka... Market : Bookmaker :- New Zealand '1-4' (IST 11:13:25 Around) Bets Voided
+                        Because Wrong Odds Offered By Mistake.... Sorry for the Inconvenience&nbsp;Caused</a><a><span>13
+                            Mar 2023</span>Event :- India v Australia .. Market :- 50 Over AUS (2) '124.80.120' (IST
+                        13:00:17 - 13:00:37) Bets Voided Because 48.6th Ball (No Ball Shown Late In TV) .. Sorry for the
+                        Inconvenience&nbsp;Caused</a></div>
+            </div>
+        </div>
+    </div>
+    <div id="overWrap" class="over-wrap" style="height: calc(100% - 26px)">
+        <div class="kv-wrap">
+            <a>
+                <img src="https://statics3.skyexch.bike/images/kv/KV05.jpg" alt="">
+            </a>
+        </div>
+        <!-- Horse Coming Up Start -->
+        <div class="upcome-wrap" id="upcomingHorseRace" style="">
+            <dl class="upcome-head" id="next">
+                <dt id="nextHeader">Next Horse Race
+                </dt>
+                <dd>
+                    <a href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177312&amp;marketId=1.211210401"
+                        id="upcoming_1.211210401">13:20 Redcliffe(AUS)</a>
+                    <span>R2 1780m Pace M</span>
+                </dd>
+            </dl>
+
+            <dl class="upcome" id="upcoming">
+                <dt id="upcomeHeader">Coming Up
+                </dt>
+                <dd>
+                    <a href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177016&amp;marketId=1.211206603"
+                        id="upcoming_1.211206603">13:39 Pinjarra(AUS)</a>
+                    <span></span>
+                </dd>
+                <dd>
+                    <a href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177312&amp;marketId=1.211210403"
+                        id="upcoming_1.211210403">13:52 Redcliffe(AUS)</a>
+                    <span></span>
+                </dd>
+                <dd>
+                    <a href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177016&amp;marketId=1.211206605"
+                        id="upcoming_1.211206605">14:14 Pinjarra(AUS)</a>
+                    <span></span>
+                </dd>
+                <dd>
+                    <a href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177312&amp;marketId=1.211210405"
+                        id="upcoming_1.211210405">14:27 Redcliffe(AUS)</a>
+                    <span></span>
+                </dd>
+                <dd>
+                    <a href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177016&amp;marketId=1.211206607"
+                        id="upcoming_1.211206607">14:49 Pinjarra(AUS)</a>
+                    <span></span>
+                </dd>
+            </dl>
+        </div>
+        <dl id="upcomingRaceTempLate" style="display:none;">
+            <dd>
+                <a href="#"></a>
+                <span></span>
+            </dd>
+        </dl>
+        <!-- Horse Coming Up End -->
+        <ul id="daySelectTab" class="tab col3">
+            <li><a id="today" href="#Today" class="select">Today
+                </a></li>
+            <li><a id="tomorrow" href="#Tomorrow">Tomorrow
+                </a></li>
+            <li><a id="afttomorrow" href="#AftTomorrow">Day After
+                </a></li>
+        </ul>
+
+        <div id="noDataDiv" class="game-wrap-horse" style="display:none;">
+            <div class="no-data">
+                <p>No races available yet.
+                </p>
+            </div>
+        </div>
+
+        <div id="contentBox">
+            <div id="countryGroup_AU" class="game-wrap-horse" firstmarkettime="2023-03-13 13:07">
+                <h3>
+                    <a class="to-expand">
+                        <span id="heading">AU</span>
+                        <span id="closeInfo" class="close-info" style="display:none;">Races 10 (Next in 8 mins)</span>
+                    </a>
+                </h3>
+                <div id="gameList" class="game-list"></div>
+                <dl id="racingBox_32177016" class="game-list-col" firstmarkettime="2023-03-13 13:07"
+                    style="display: block;">
+                    <dt>
+                        <a id="eventName" style="cursor: default">Pinjarra (AUS) 13th Mar</a>
+                        <span id="placeInfo" class="game-list-place" style="display: none;">--</span>
+
+                    </dt>
+                    <dd>
+                        <ul id="timeRacing" class="hs-time">
+
+                            <li><a id="market_1_211206601" title="R6 2116m Pace S"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177016&amp;marketId=1.211206601"
+                                    marketdatetime="1678693020000" class="in-play">13:07</a></li>
+                            <li><a id="market_1_211206603" title="R7 2185m Pace M"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177016&amp;marketId=1.211206603"
+                                    marketdatetime="1678694940000">13:39</a></li>
+                            <li><a id="market_1_211206605" title="R8 2692m Pace M"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177016&amp;marketId=1.211206605"
+                                    marketdatetime="1678697040000">14:14</a></li>
+                            <li><a id="market_1_211206607" title="R9 2185m Trot S"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177016&amp;marketId=1.211206607"
+                                    marketdatetime="1678699140000">14:49</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl id="racingBox_32177312" class="game-list-col" firstmarkettime="2023-03-13 13:20"
+                    style="display: block;">
+                    <dt>
+                        <a id="eventName" style="cursor: default">Redcliffe (AUS) 13th Mar</a>
+                        <span id="placeInfo" class="game-list-place" style="display: none;">--</span>
+
+                    </dt>
+                    <dd>
+                        <ul id="timeRacing" class="hs-time">
+
+                            <li><a id="market_1_211210401" title="R2 1780m Pace M"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177312&amp;marketId=1.211210401"
+                                    marketdatetime="1678693800000">13:20</a></li>
+                            <li><a id="market_1_211210403" title="R3 1780m Pace M"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177312&amp;marketId=1.211210403"
+                                    marketdatetime="1678695720000">13:52</a></li>
+                            <li><a id="market_1_211210405" title="R4 1780m Pace M"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177312&amp;marketId=1.211210405"
+                                    marketdatetime="1678697820000">14:27</a></li>
+                            <li><a id="market_1_211210407" title="R5 1780m Pace M"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177312&amp;marketId=1.211210407"
+                                    marketdatetime="1678699920000">15:02</a></li>
+                            <li><a id="market_1_211210409" title="R6 1780m Pace M"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177312&amp;marketId=1.211210409"
+                                    marketdatetime="1678701600000">15:30</a></li>
+                            <li><a id="market_1_211210411" title="R7 1780m Pace M"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177312&amp;marketId=1.211210411"
+                                    marketdatetime="1678703280000">15:58</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <div id="countryGroup_ZA" class="game-wrap-horse" firstmarkettime="2023-03-13 15:35">
+                <h3>
+                    <a class="to-expand">
+                        <span id="heading">ZA</span>
+                        <span id="closeInfo" class="close-info" style="display:none;">Races 8 (Next in 2 hrs 23
+                            mins)</span>
+                    </a>
+                </h3>
+                <div id="gameList" class="game-list"></div>
+                <dl id="racingBox_32177660" class="game-list-col" firstmarkettime="2023-03-13 15:35"
+                    style="display: block;">
+                    <dt>
+                        <a id="eventName" style="cursor: default">Greyville (RSA) 13th Mar</a>
+                        <span id="placeInfo" class="game-list-place" style="display: none;">--</span>
+
+                    </dt>
+                    <dd>
+                        <ul id="timeRacing" class="hs-time">
+
+                            <li><a id="market_1_211215298" title="R1 1200m Mdn"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177660&amp;marketId=1.211215298"
+                                    marketdatetime="1678701900000">15:35</a></li>
+                            <li><a id="market_1_211215300" title="R2 1200m Hcap"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177660&amp;marketId=1.211215300"
+                                    marketdatetime="1678703700000">16:05</a></li>
+                            <li><a id="market_1_211215302" title="R3 1200m Hcap"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177660&amp;marketId=1.211215302"
+                                    marketdatetime="1678705500000">16:35</a></li>
+                            <li><a id="market_1_211215304" title="R4 1800m Hcap"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177660&amp;marketId=1.211215304"
+                                    marketdatetime="1678707300000">17:05</a></li>
+                            <li><a id="market_1_211215306" title="R5 1800m Hcap"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177660&amp;marketId=1.211215306"
+                                    marketdatetime="1678709100000">17:35</a></li>
+                            <li><a id="market_1_211215308" title="R6 1600m Hcap"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177660&amp;marketId=1.211215308"
+                                    marketdatetime="1678711200000">18:10</a></li>
+                            <li><a id="market_1_211215310" title="R7 1600m Hcap"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177660&amp;marketId=1.211215310"
+                                    marketdatetime="1678713600000">18:50</a></li>
+                            <li><a id="market_1_211215312" title="R8 1400m Hcap"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177660&amp;marketId=1.211215312"
+                                    marketdatetime="1678715700000">19:25</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <div id="countryGroup_FR" class="game-wrap-horse" firstmarkettime="2023-03-13 18:20">
+                <h3>
+                    <a class="to-expand">
+                        <span id="heading">FR</span>
+                        <span id="closeInfo" class="close-info" style="display:none;">Races 8 (Next in 5 hrs 8
+                            mins)</span>
+                    </a>
+                </h3>
+                <div id="gameList" class="game-list"></div>
+                <dl id="racingBox_32180559" class="game-list-col" firstmarkettime="2023-03-13 18:20"
+                    style="display: block;">
+                    <dt>
+                        <a id="eventName" style="cursor: default">Chantilly (FRA) 13th Mar</a>
+                        <span id="placeInfo" class="game-list-place" style="display: none;">--</span>
+
+                    </dt>
+                    <dd>
+                        <ul id="timeRacing" class="hs-time">
+
+                            <li><a id="market_1_211275507" title="1m5f Hcap"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32180559&amp;marketId=1.211275507"
+                                    marketdatetime="1678711800000">18:20</a></li>
+                            <li><a id="market_1_211275509" title="1m Stks"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32180559&amp;marketId=1.211275509"
+                                    marketdatetime="1678713900000">18:55</a></li>
+                            <li><a id="market_1_211275511" title="1m Stks"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32180559&amp;marketId=1.211275511"
+                                    marketdatetime="1678716000000">19:30</a></li>
+                            <li><a id="market_1_211275513" title="1m2f Stks"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32180559&amp;marketId=1.211275513"
+                                    marketdatetime="1678718100000">20:05</a></li>
+                            <li><a id="market_1_211275515" title="1m Claim"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32180559&amp;marketId=1.211275515"
+                                    marketdatetime="1678720200000">20:40</a></li>
+                            <li><a id="market_1_211275517" title="1m Hcap"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32180559&amp;marketId=1.211275517"
+                                    marketdatetime="1678722300000">21:15</a></li>
+                            <li><a id="market_1_211275519" title="1m Hcap"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32180559&amp;marketId=1.211275519"
+                                    marketdatetime="1678724400000">21:50</a></li>
+                            <li><a id="market_1_211275521" title="1m6f Hcap"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32180559&amp;marketId=1.211275521"
+                                    marketdatetime="1678726500000">22:25</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <div id="countryGroup_IE" class="game-wrap-horse" firstmarkettime="2023-03-13 18:50">
+                <h3>
+                    <a class="to-expand">
+                        <span id="heading">IE</span>
+                        <span id="closeInfo" class="close-info" style="display:none;">Races 7 (Next in 5 hrs 38
+                            mins)</span>
+                    </a>
+                </h3>
+                <div id="gameList" class="game-list"></div>
+                <dl id="racingBox_32178540" class="game-list-col" firstmarkettime="2023-03-13 18:50"
+                    style="display: block;">
+                    <dt>
+                        <a id="eventName" style="cursor: default">Thurles 13th Mar</a>
+                        <span id="placeInfo" class="game-list-place" style="display: none;">--</span>
+
+                    </dt>
+                    <dd>
+                        <ul id="timeRacing" class="hs-time">
+
+                            <li><a id="market_1_211235909" title="2m5f Beg Chs"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32178540&amp;marketId=1.211235909"
+                                    marketdatetime="1678713600000">18:50</a></li>
+                            <li><a id="market_1_211235914" title="3m1f Mdn Hunt Chs"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32178540&amp;marketId=1.211235914"
+                                    marketdatetime="1678715700000">19:25</a></li>
+                            <li><a id="market_1_211235919" title="2m Mdn Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32178540&amp;marketId=1.211235919"
+                                    marketdatetime="1678717800000">20:00</a></li>
+                            <li><a id="market_1_211235924" title="2m Hcap Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32178540&amp;marketId=1.211235924"
+                                    marketdatetime="1678719900000">20:35</a></li>
+                            <li><a id="market_1_211235929" title="2m5f Mdn Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32178540&amp;marketId=1.211235929"
+                                    marketdatetime="1678722000000">21:10</a></li>
+                            <li><a id="market_1_211235934" title="3m Hcap Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32178540&amp;marketId=1.211235934"
+                                    marketdatetime="1678724100000">21:45</a></li>
+                            <li><a id="market_1_211235939" title="2m INHF"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32178540&amp;marketId=1.211235939"
+                                    marketdatetime="1678726200000">22:20</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <div id="countryGroup_GB" class="game-wrap-horse" firstmarkettime="2023-03-13 19:00">
+                <h3>
+                    <a class="to-expand">
+                        <span id="heading">GB</span>
+                        <span id="closeInfo" class="close-info" style="display:none;">Races 21 (Next in 5 hrs 48
+                            mins)</span>
+                    </a>
+                </h3>
+                <div id="gameList" class="game-list"></div>
+                <dl id="racingBox_32177870" class="game-list-col" firstmarkettime="2023-03-13 19:00"
+                    style="display: block;">
+                    <dt>
+                        <a id="eventName" style="cursor: default">Stratford 13th Mar</a>
+                        <span id="placeInfo" class="game-list-place" style="display: none;">--</span>
+
+                    </dt>
+                    <dd>
+                        <ul id="timeRacing" class="hs-time">
+
+                            <li><a id="market_1_211216812" title="2m1f Hcap Chs"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177870&amp;marketId=1.211216812"
+                                    marketdatetime="1678714200000">19:00</a></li>
+                            <li><a id="market_1_211216817" title="2m2f Juv Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177870&amp;marketId=1.211216817"
+                                    marketdatetime="1678716300000">19:35</a></li>
+                            <li><a id="market_1_211216823" title="2m6f Hcap Chs"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177870&amp;marketId=1.211216823"
+                                    marketdatetime="1678718400000">20:10</a></li>
+                            <li><a id="market_1_211216831" title="2m Hcap Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177870&amp;marketId=1.211216831"
+                                    marketdatetime="1678720500000">20:45</a></li>
+                            <li><a id="market_1_211216837" title="2m5f Nov Chs"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177870&amp;marketId=1.211216837"
+                                    marketdatetime="1678722600000">21:20</a></li>
+                            <li><a id="market_1_211216844" title="2m NHF"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177870&amp;marketId=1.211216844"
+                                    marketdatetime="1678724700000">21:55</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl id="racingBox_32177872" class="game-list-col" firstmarkettime="2023-03-13 19:10"
+                    style="display: block;">
+                    <dt>
+                        <a id="eventName" style="cursor: default">Taunton 13th Mar</a>
+                        <span id="placeInfo" class="game-list-place" style="display: none;">--</span>
+
+                    </dt>
+                    <dd>
+                        <ul id="timeRacing" class="hs-time">
+
+                            <li><a id="market_1_211216896" title="2m Nov Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177872&amp;marketId=1.211216896"
+                                    marketdatetime="1678714800000">19:10</a></li>
+                            <li><a id="market_1_211216902" title="3m Hcap Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177872&amp;marketId=1.211216902"
+                                    marketdatetime="1678716900000">19:45</a></li>
+                            <li><a id="market_1_211216911" title="2m Mdn Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177872&amp;marketId=1.211216911"
+                                    marketdatetime="1678719000000">20:20</a></li>
+                            <li><a id="market_1_211216924" title="3m4f Hcap Chs Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177872&amp;marketId=1.211216924"
+                                    marketdatetime="1678721100000">20:55</a></li>
+                            <li><a id="market_1_211216918" title="2m Hcap Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177872&amp;marketId=1.211216918"
+                                    marketdatetime="1678723200000">21:30</a></li>
+                            <li><a id="market_1_211216930" title="2m Hcap Chs"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177872&amp;marketId=1.211216930"
+                                    marketdatetime="1678725300000">22:05</a></li>
+                            <li><a id="market_1_211216937" title="2m3f Hcap Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177872&amp;marketId=1.211216937"
+                                    marketdatetime="1678727100000">22:35</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl id="racingBox_32177868" class="game-list-col" firstmarkettime="2023-03-13 19:20"
+                    style="display: block;">
+                    <dt>
+                        <a id="eventName" style="cursor: default">Plumpton 13th Mar</a>
+                        <span id="placeInfo" class="game-list-place" style="display: none;">--</span>
+
+                    </dt>
+                    <dd>
+                        <ul id="timeRacing" class="hs-time">
+
+                            <li><a id="market_1_211216776" title="2m4f Nov Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177868&amp;marketId=1.211216776"
+                                    marketdatetime="1678715400000">19:20</a></li>
+                            <li><a id="market_1_211216782" title="2m4f Nov Hcap Chs"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177868&amp;marketId=1.211216782"
+                                    marketdatetime="1678717500000">19:55</a></li>
+                            <li><a id="market_1_211216786" title="2m4f Hcap Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177868&amp;marketId=1.211216786"
+                                    marketdatetime="1678719600000">20:30</a></li>
+                            <li><a id="market_1_211216792" title="3m1f Hcap Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177868&amp;marketId=1.211216792"
+                                    marketdatetime="1678721700000">21:05</a></li>
+                            <li><a id="market_1_211216799" title="3m1f Hcap Chs"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177868&amp;marketId=1.211216799"
+                                    marketdatetime="1678723800000">21:40</a></li>
+                            <li><a id="market_1_211216806" title="2m Hcap Hrd"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177868&amp;marketId=1.211216806"
+                                    marketdatetime="1678725900000">22:15</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl id="racingBox_32177871" class="game-list-col" firstmarkettime="2023-03-13 23:00"
+                    style="display: block;">
+                    <dt>
+                        <a id="eventName" style="cursor: default">Wolverhampton 13th Mar</a>
+                        <span id="placeInfo" class="game-list-place" style="display: none;">--</span>
+
+                    </dt>
+                    <dd>
+                        <ul id="timeRacing" class="hs-time">
+
+                            <li><a id="market_1_211216850" title="1m1f Hcap"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177871&amp;marketId=1.211216850"
+                                    marketdatetime="1678728600000">23:00</a></li>
+                            <li><a id="market_1_211216855" title="1m4f Hcap"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32177871&amp;marketId=1.211216855"
+                                    marketdatetime="1678730400000">23:30</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <div id="countryGroup_US" class="game-wrap-horse" firstmarkettime="2023-03-13 22:10">
+                <h3>
+                    <a class="to-expand">
+                        <span id="heading">US</span>
+                        <span id="closeInfo" class="close-info" style="display:none;">Races 6 (Next in 8 hrs 58
+                            mins)</span>
+                    </a>
+                </h3>
+                <div id="gameList" class="game-list"></div>
+                <dl id="racingBox_32181659" class="game-list-col" firstmarkettime="2023-03-13 22:10"
+                    style="display: block;">
+                    <dt>
+                        <a id="eventName" style="cursor: default">Philadelphia (US) 13th Mar</a>
+                        <span id="placeInfo" class="game-list-place" style="display: none;">--</span>
+
+                    </dt>
+                    <dd>
+                        <ul id="timeRacing" class="hs-time">
+
+                            <li><a id="market_1_211298779" title="R1 1m Claim"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32181659&amp;marketId=1.211298779"
+                                    marketdatetime="1678725600000">22:10</a></li>
+                            <li><a id="market_1_211298782" title="R2 1m Claim"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32181659&amp;marketId=1.211298782"
+                                    marketdatetime="1678727220000">22:37</a></li>
+                            <li><a id="market_1_211298785" title="R3 7f Claim"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32181659&amp;marketId=1.211298785"
+                                    marketdatetime="1678728840000">23:04</a></li>
+                            <li><a id="market_1_211298788" title="R4 1m Allw Claim"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32181659&amp;marketId=1.211298788"
+                                    marketdatetime="1678730460000">23:31</a></li>
+                            <li><a id="market_1_211298791" title="R5 7f Claim"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32181659&amp;marketId=1.211298791"
+                                    marketdatetime="1678732080000">23:58</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl id="racingBox_32181683" class="game-list-col" firstmarkettime="2023-03-13 23:30"
+                    style="display: block;">
+                    <dt>
+                        <a id="eventName" style="cursor: default">Will Rogers Downs (US) 13th Mar</a>
+                        <span id="placeInfo" class="game-list-place" style="display: none;">--</span>
+
+                    </dt>
+                    <dd>
+                        <ul id="timeRacing" class="hs-time">
+
+                            <li><a id="market_1_211300291" title="R1 6f Claim"
+                                    href="/exchange/member/fullMarket?eventType=7&amp;eventId=32181683&amp;marketId=1.211300291"
+                                    marketdatetime="1678730400000">23:30</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="one_click-wrap">
+
+        <div class="overlay" name="oneClickBetDialog" style="display:none;"></div>
+
+
+        <div id="oneClickBetDialog" class="dialog-wrap" name="oneClickBetDialog" style="display:none;">
+            <h4>One Click Bet ON
+            </h4>
+            <div class="dialog-content">
+                <p>Stake selected will be placed immediately once you click on the market odds.
+                    <br><span class="attention">
+                        Attention: Back/Lay at your own risk</span>
+                </p>
+            </div>
+            <ul class="btn-wrap break">
+
+                <li><a id="ok" class="btn-send" style="cursor:pointer;">OK</a></li>
+            </ul>
+            <img class="arrow-dialog" src="https://statics3.skyexch.bike/images/transparent.gif">
+        </div>
+
+
+        <div id="oneClickBetStakeBox" class="one_click-setting" name="oneClickBetStakeBox" style="display:none;">
+            <h4>One Click Bet Stake
+            </h4>
+            <ul class="one_click-stake">
+                <li><a class="btn select" name="betStake" index="0" style="cursor:pointer;">10</a></li>
+                <li><a class="btn" name="betStake" index="1" style="cursor:pointer;">30</a></li>
+                <li><a class="btn" name="betStake" index="2" style="cursor:pointer;">50</a></li>
+                <li><a class="btn" name="betStake" index="3" style="cursor:pointer;">100</a></li>
+            </ul>
+            <a id="edit" class="a-edit" style="cursor:pointer;">Edit<img
+                    src="https://statics3.skyexch.bike/images/transparent.gif"></a>
+        </div>
+
+
+        <div id="editOneClickBetStakeBox" class="one_click-setting" name="oneClickBetStakeBox" style="display:none;">
+            <h4>Edit One Click Bet Stake
+            </h4>
+            <ul class="one_click-stake">
+                <li><input type="text" name="editBetStake" index="0" value=""></li>
+                <li><input type="text" name="editBetStake" index="1" value=""></li>
+                <li><input type="text" name="editBetStake" index="2" value=""></li>
+                <li><input type="text" name="editBetStake" index="3" value=""></li>
+            </ul>
+            <a id="save" class="btn-send" style="cursor:pointer;">Save
+            </a>
+        </div>
+    </div>
+
+
+</div>
+<app-aside></app-aside>

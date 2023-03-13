@@ -1,0 +1,114 @@
+<div class="top">
+    <div class="header full-wrap">
+        <h1><a href="/">SKYEXCHANGE </a></h1>
+        <div id="searchWrap" class="search-wrap" style="">
+            <div> <input id="searchInput" class="search-input" type="text" placeholder="Search Events"
+                    fdprocessedid="lh2j8"> <button id="searchClear" class="search-clear"
+                    style="display: none;"></button> </div>
+            <div id="searchResult" class="suggestion-wrap" style="display: none;">
+                <ul id="searchList">
+                    <li id="noMatching" style="display: none;">
+                        <p class="no-matching">No events found matching ...</p>
+                    </li>
+                    <li id="resultTemplate" style="display: none;"><a></a></li>
+                </ul>
+            </div>
+        </div>
+        <ul class="login-wrap">
+            <li class="user error"><input id="loginName" type="text" placeholder="Username" fdprocessedid="s6cch9"></li>
+            <li><input id="password" type="password" placeholder="Password" fdprocessedid="42p01"></li>
+            <li class="valid-code" style="display: block"> <input id="validCode" type="text" placeholder="Validation"
+                    maxlength="4" fdprocessedid="nk3uz"> <img id="authenticateImage"
+                    src="https://bxawscf.skyexch.bike/verifycode.gr?v=1678553277974"> </li>
+            <li><input id="valid" name="valid" type="hidden" value="4934786d-0ae4-4860-9843-d6fdca23b082"></li>
+            <li> <a id="loginBtn" class="btn-login" onclick="javascript: return LoginHandler.check(event);">Login <img
+                        class="icon-login" src="assets/images/transparent.gif?v=1678553205059">
+                </a> </li>
+            <li><a class="btn-signup"
+                    onclick="window.open('https://wa.link/skyexch', '_blank', config='height=850,width=1200,location=no');">Sign
+                    up</a></li>
+            <li id="errorMsg" class="error" style="display:none"></li>
+        </ul>
+    </div> <!-- Menu Wrap -->
+    <div class="menu-wrap">
+        <div class="full-wrap">
+            <ul id="tabMenu" class="menu">
+                <li><a routerLink="/home" neua="Home">Home</a></li>
+                <li><a routerLink="/inplay">In-Play</a></li>
+                <li><a routerLink="/multimarket">Multi Markets</a></li>
+                <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>3</span> Cricket </a></li>
+                <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>77</span> Soccer </a> </li>
+                <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>9</span> Tennis </a> </li>
+                <li ui-use="sportradar_virtual_sports"> <a class=""
+                        href="javascript:CommonTransferWalletHandler.openDepositPage('1', 'BetRadar', 'SPORTRADAR', '', 'SPORTRADAR_VIRTUAL_001', '', true)"
+                        neua="Virtual Cricket"> Virtual Cricket </a> </li>
+                <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>9</span> E-Soccer </a> </li>
+                <li><a routerLink="/allsport-highlight">Binary</a></li>
+                <li ui-use="mt5"><a class=""
+                        href="javascript:CommonTransferWalletHandler.openDepositPage('4', 'Sky Trader', '', '', '', '', false)"
+                        neua="MT5"> Sky Trader </a> </li>
+                <li><a routerLink="/horse-racing">Horse Racing</a></li>
+            </ul>
+            <ul class="setting-wrap">
+                <li class="time_zone"><span>Time Zone :</span> GMT+5:30 </li>
+                <li>&nbsp;&nbsp;&nbsp;</li>
+                <li><a id="oneClickSetting" class="one_click" style="cursor: pointer;"><img
+                            src="assets/images/transparent.gif">One Click Bet </a></li>
+                <li><a id="slipSet" class="setting" style="cursor: pointer">Setting <img
+                            src="assets/images/transparent.gif"></a></li>
+            </ul>
+            <div id="set_pop" class="slip_set-pop" style="display: none;">
+                <div id="coinList" class="set-content">
+                    <dl class="odds-set">
+                        <dd class="col-defult"> <label for="defult_stake"><strong>Default stake </strong></label> <input
+                                id="userCoin" class="stake-input" type="text" maxlength="7" value=""> </dd>
+                    </dl>
+                    <dl id="stakeSet" class="stake-set">
+                        <dt>Stake </dt>
+                        <dd><a id="coin_1" style="cursor:pointer;" class="btn select">4</a></dd>
+                        <dd><a id="coin_2" style="cursor:pointer;" class="btn select">30</a></dd>
+                        <dd><a id="coin_3" style="cursor:pointer;" class="btn select">50</a></dd>
+                        <dd><a id="coin_4" style="cursor:pointer;" class="btn">100</a></dd>
+                        <dd><a id="coin_5" style="cursor:pointer;" class="btn select">200</a></dd>
+                        <dd><a id="coin_6" style="cursor:pointer;" class="btn">300</a></dd>
+                        <dd><a id="coin_7" style="cursor:pointer;" class="btn select">500</a></dd>
+                        <dd><a id="coin_8" style="cursor:pointer;" class="btn select">1000</a></dd>
+                        <dd class="col-edit"><a id="edit" class="btn-edit">Edit <img
+                                    src="assets/images/transparent.gif"></a></dd>
+                    </dl>
+                    <dl id="editCustomizeStakeList" class="stake-set" style="display: none;">
+                        <dt>Stake </dt>
+                        <dd><input id="stakeEdit_1" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
+                        <dd><input id="stakeEdit_2" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
+                        <dd><input id="stakeEdit_3" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
+                        <dd><input id="stakeEdit_4" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
+                        <dd><input id="stakeEdit_5" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
+                        <dd><input id="stakeEdit_6" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
+                        <dd><input id="stakeEdit_7" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
+                        <dd><input id="stakeEdit_8" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
+                        <dd class="col-edit"><a id="ok" class="btn-send">OK</a></dd>
+                    </dl>
+                    <dl class="odds-set">
+                        <dt>Odds </dt>
+                        <dd> <input id="enableSparkCheck" type="checkbox"><label for="enableSparkCheck">Highlight when
+                                odds change </label> </dd>
+                    </dl>
+                    <dl class="odds-set">
+                        <dt>FancyBet </dt>
+                        <dd> <input id="fancyBetAcceptAnyOddsCheckBox" type="checkbox"><label for="fancy_odd">Accept Any
+                                Odds </label> </dd>
+                    </dl>
+                    <dl class="odds-set">
+                        <dt>Binary </dt>
+                        <dd> <input id="financialAcceptAnyOddsCheckBox" type="checkbox"><label>Accept Any Price </label>
+                        </dd>
+                    </dl>
+                    <ul class="btn-wrap">
+                        <li><a id="closeSet" class="btn" style="cursor:pointer;">Cancel </a></li>
+                        <li class="col-send"><a id="coinSave" class="btn-send" style="cursor:pointer;">Save </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

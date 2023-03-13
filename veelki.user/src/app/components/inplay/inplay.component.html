@@ -1,0 +1,802 @@
+<div id="centerColumn" class="col-center inplay"> <!-- Message -->
+    <!-- Loading Wrap -->
+    <div id="loading" class="loading-wrap" style="top: 100px; display: none;">
+        <ul class="loading">
+            <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+            <li>Loading...
+            </li>
+            <br>
+            <li><span id="progress"></span></li>
+        </ul>
+    </div> <!-- Message -->
+    <div id="message" class="message-wrap success">
+        <a class="btn-close">Close</a>
+        <p></p>
+    </div>
+    <script language="JavaScript" type="text/javascript">
+        (function () {
+            $j('.btn-close').click(function () {
+                $j('#message').hide();
+            });
+        })();
+    </script>
+    <div id="oneClickLoading" class="loading-wrap" style="display:none">
+        <ul class="loading">
+            <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+            <li id="oneClickTime">Place Bets
+            </li>
+        </ul>
+    </div>
+    <div class="marquee-box" style="display: flex">
+        <h4>News</h4>
+        <div class="marquee">
+            <div style="width: 100000px; transform: translateX(1019px); animation: 194.858s linear 0s infinite normal none running marqueeAnimation-8275133;"
+                class="js-marquee-wrapper">
+                <div class="js-marquee" style="margin-right: 0px; float: left;"><a><span>12 Mar 2023</span>Event : New
+                        Zealand v Sri Lanka.... Market : 80 Over SL (2) '192-193' (IST 06:58:54 - 06:59:05) Bets Voided
+                        Because of Wrong Commentary.... Sorry for the Inconvenience&nbsp;Caused</a><a><span>12 Mar
+                            2023</span>Event : New Zealand v Sri Lanka.... Market : 15 Over NZ (2) 24-25 (IST 10:49:50 -
+                        10:51:31) Bets Voided Because 14.2nd Ball (No Ball Shown Late In TV)... Sorry for the
+                        Inconvenience&nbsp;Caused</a><a><span>12 Mar 2023</span>Event : India v Australia .... Market :
+                        130 Over IND '357-358' (IST 11:18:07 - 11:18:12) Bets Voided Because of Wrong Rate Offered By
+                        Mistake .... Sorry for the Inconvenience&nbsp;Caused</a><a><span>12 Mar 2023</span>Event : India
+                        v Australia .... Market : 135 Over IND '385.85.115' (IST 12:22:26 - 12:22:56) &amp; '386.85.115'
+                        (IST 12:23:18 - 12:23:32) Bets Voided Because 133.5th Ball (No Ball Shown Late In TV)... Sorry
+                        for the Inconvenience&nbsp;Caused</a><a><span>12 Mar 2023</span>Event :- Nepal v UAE .. Market
+                        :- Bookmaker .. Selection :- Nepal ' 5-9 ' ( IST 12:57:57 Around ) .. Bets Voided Because Wong
+                        Odds Offered By Mistake .. Sorry for the Inconvenience Caused</a><a><span>12 Mar
+                            2023</span>Event :- Bangladesh v England ... Market :- J Buttler Runs , J Buttler Run Bhav ,
+                        J Buttler Boundaries &amp; H.M.B Face By J Buttler ... Whole Market Voided Because he didn't
+                        came for Opening, So we have created a new Market by adding (N) after the Market Name ... Sorry
+                        for the Inconvenience Caused</a><a><span>12 Mar 2023</span>Event : India v Australia .... Market
+                        : 171st Over Runs Only IND '2-3' (IST 15:35:59 - 15:37:07) Bets Voided Because of Wrong Rate
+                        Offered By Mistake .... Sorry for the Inconvenience&nbsp;Caused</a><a><span>12 Mar
+                            2023</span>Event :- Bangladesh v England ... Market :- 19.6 Ball Run ENG ' 119 - 120 ' ( IST
+                        16:07:21 - 16:07:40 ) ... Bets Voided Because Wrong Rate Offered Bymistake ... Sorry for the
+                        Inconvenience&nbsp;Caused</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- Center Column -->
+    <ul id="inPlayTab" class="tab col3">
+        <li><a id="inPlay" href="#InPlay" class="select">In-Play
+            </a></li>
+        <li><a id="today" href="#Today">Today
+            </a></li>
+        <li><a id="tomorrow" href="#Tomorrow">Tomorrow
+            </a></li>
+    </ul> <!-- Function Wrap -->
+    <div id="sportFilter" class="function-wrap" style="display: none;">
+        <ul class="filter-list">
+            <li class="filter-head">Sport Filters:</li>
+            <li class="filter-content"> <span id="sport_4" style="" class="filter-first">Cricket</span><span
+                    id="sport_137" style="">E-Soccer
+                </span><span id="sport_1" style="">Soccer</span><span id="sport_2" style="">Tennis</span>
+            </li>
+            <li class="filter-btn"><a id="sportFilterPopup" class="btn">Filter</a></li>
+        </ul>
+        <div id="sportFilterContainer" class="filter-pop" style="display: none;">
+            <ul>
+                <li><input name="sportsFilter" value="-1" id="filter-all" type="checkbox"
+                        onclick="SportFilterHandler.checkAll();"><label for="filter-all">All</label></li>
+                <li><input name="sportsFilter" value="1" id="filter-1" type="checkbox"><label for="filter-1">Soccer
+                    </label></li>
+                <li><input name="sportsFilter" value="2" id="filter-2" type="checkbox"><label for="filter-2">Tennis
+                    </label></li>
+                <li><input name="sportsFilter" value="4" id="filter-4" type="checkbox"><label for="filter-4">Cricket
+                    </label></li>
+                <li><input name="sportsFilter" value="137" id="filter-137" type="checkbox"><label
+                        for="filter-137">E-Soccer
+                    </label></li>
+            </ul>
+            <div class="btn-wrap">
+                <a id="sportFilterSave" class="btn-send">Save</a>
+                <a id="sportFilterCancel" class="btn">Cancel</a>
+            </div>
+        </div>
+    </div>
+    <div id="overWrap" class="over-wrap" style="height: calc(100% - 74px)">
+        <!-- Sports List Wrap -->
+        <div id="sportListWrap" class="sport_list-wrap">
+            <div id="noDataDiv" class="no-data" style="display:none;">
+                <p>There are no events to be displayed.
+                </p>
+            </div>
+        </div>
+        <div class="game-wrap col3" id="inPlayEventType_4" style="">
+            <h3>
+                <a id="eventType" class="to-expand">Cricket</a>
+            </h3>
+            <ul class="slip-head">
+                <li class="col-game"></li>
+                <li class="col-matched">Matched</li>
+                <li class="col-visit">1</li>
+                <li class="col-draw" style="">x</li>
+                <li class="col-home">2</li>
+                <li class="col-info"></li>
+            </ul>
+            <div id="inplayGameList" class="game-list">
+                <dl id="event_-10407391" class="game-list-col" style="display: flex;" eventtype="4" competitionid="-1"
+                    eventid="-10407391" marketid="-10407429" opendate="2023-03-13 10:30" opendatetime="1678683600000"
+                    elapsedtime="0" inplay="1" firstteam="Adelaide Strikers SRL T20"
+                    secondteam="Melbourne Stars SRL T20"
+                    eventname="Adelaide Strikers SRL T20 v Melbourne Stars SRL T20">
+                    <dt id="eventInfo" style="cursor: pointer">
+                        <img id="playIcon" class="icon-in_play"
+                            src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+                        <a id="vsName" vsinfo=""
+                            href="/exchange/member/fullMarket?eventType=4&amp;eventId=-10407391&amp;marketId=-10407429">Adelaide
+                            Strikers SRL T20<span>v</span>Melbourne Stars SRL T20</a>
+                        <span id="dateTimeInfo" class="game-list-time"><span class="in_play">In-Play</span></span>
+                        <span class="game-live" id="streamingIcon" style="display: none;">Live</span>
+                        <span class="game-E" id="sportsBookEIcon_1" style="display: none;"><i></i>Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_137" style="display: none;"><i></i>e-Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_4" style="display: inline-flex;"><i></i>Cricket</span>
+                        <span class="game-E" id="sportsBookEIcon_2" style="display: none;"><i></i>Tennis</span>
+                        <span class="game-fancy" id="fancyBetIcon"
+                            style="cursor: pointer; display: none;">Fancy</span><!-- icon for fancy bet -->
+                        <span class="game-bookmaker" id="bookMakerIcon"
+                            style="cursor: pointer; display: none;">BookMaker</span><!-- icon for fancy bet -->
+                        <span class="game-sportsbook" id="feedingSiteIcon" style="display: none;">Sportsbook</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_1" style="display: none;">Premium Tennis</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_2" style="display: inline-flex;">Premium
+                            Cricket</span>
+                    </dt>
+                    <dd id="matched" class="col-matched">PTH0</dd>
+                    <dd id="selectTemp" class="col-visit">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-draw" style="">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">--</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">--</a>
+                    </dd>
+                    <dd class="col-home">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-info">
+                        <a id="multiMarketPin" class="add-pin" style="cursor: pointer"
+                            title="Add to Multi Markets">Pin</a>
+                    </dd>
+                </dl>
+                <dl id="event_32154558" class="game-list-col" style="display: flex;" eventtype="4"
+                    competitionid="11365612" eventid="32154558" marketid="1.210798031" opendate="2023-03-13 09:30"
+                    opendatetime="1678680020000" elapsedtime="0" inplay="1" firstteam="India" secondteam="Australia"
+                    eventname="India v Australia">
+                    <dt id="eventInfo" style="cursor: pointer">
+                        <img id="playIcon" class="icon-in_play"
+                            src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+                        <a id="vsName" vsinfo=""
+                            href="/exchange/member/fullMarket?eventType=4&amp;eventId=32154558&amp;marketId=1.210798031">India<span>v</span>Australia</a>
+                        <span id="dateTimeInfo" class="game-list-time"><span class="in_play">In-Play</span></span>
+                        <span class="game-live" id="streamingIcon" style="display: inline-flex;">Live</span>
+                        <span class="game-E" id="sportsBookEIcon_1" style="display: none;"><i></i>Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_137" style="display: none;"><i></i>e-Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_4" style="display: none;"><i></i>Cricket</span>
+                        <span class="game-E" id="sportsBookEIcon_2" style="display: none;"><i></i>Tennis</span>
+                        <span class="game-fancy in-play" id="fancyBetIcon"
+                            style="cursor: pointer; display: inline-flex;">Fancy</span><!-- icon for fancy bet -->
+                        <span class="game-bookmaker in-play" id="bookMakerIcon"
+                            style="cursor: pointer; display: inline-flex;">BookMaker</span><!-- icon for fancy bet -->
+                        <span class="game-sportsbook" id="feedingSiteIcon" style="display: none;">Sportsbook</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_1" style="display: none;">Premium Tennis</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_2" style="display: inline-flex;">Premium
+                            Cricket</span>
+                    </dt>
+                    <dd id="matched" class="col-matched">PTH338,892K</dd>
+                    <dd id="selectTemp" class="col-visit disabled">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back" selectionid="414464" selectionkey="414464_0_00"
+                            runner="India" marketname="Match Odds" inplay="1" handicap="0">21</a> <a id="btnLay"
+                            class="btn-lay" side="Lay" selectionid="414464" selectionkey="414464_0_00" runner="India"
+                            marketname="Match Odds" inplay="1" handicap="0">27</a>
+                    </dd>
+                    <dd class="col-draw" style="">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back" selectionid="60443" selectionkey="60443_0_00"
+                            runner="The Draw" marketname="Match Odds" inplay="1" handicap="0">1.04</a> <a id="btnLay"
+                            class="btn-lay" side="Lay" selectionid="60443" selectionkey="60443_0_00" runner="The Draw"
+                            marketname="Match Odds" inplay="1" handicap="0">1.05</a>
+                    </dd>
+                    <dd class="col-home disabled">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back" selectionid="16606" selectionkey="16606_0_00"
+                            runner="Australia" marketname="Match Odds" inplay="1" handicap="0">550</a> <a id="btnLay"
+                            class="btn-lay" side="Lay" selectionid="16606" selectionkey="16606_0_00" runner="Australia"
+                            marketname="Match Odds" inplay="1" handicap="0">1000</a>
+                    </dd>
+                    <dd class="col-info">
+                        <a id="multiMarketPin" class="add-pin" style="cursor: pointer"
+                            title="Add to Multi Markets">Pin</a>
+                    </dd>
+                </dl>
+                <dl id="event_32181489" class="game-list-col" style="display: flex;" eventtype="4"
+                    competitionid="10910464" eventid="32181489" marketid="1.211296967" opendate="2023-03-13 08:45"
+                    opendatetime="1678677300000" elapsedtime="0" inplay="1" firstteam="Nepal"
+                    secondteam="Papua New Guinea" eventname="Nepal v Papua New Guinea">
+                    <dt id="eventInfo" style="cursor: pointer">
+                        <img id="playIcon" class="icon-in_play"
+                            src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+                        <a id="vsName" vsinfo=""
+                            href="/exchange/member/fullMarket?eventType=4&amp;eventId=32181489&amp;marketId=1.211296967">Nepal<span>v</span>Papua
+                            New Guinea</a>
+                        <span id="dateTimeInfo" class="game-list-time"><span class="in_play">In-Play</span></span>
+                        <span class="game-live" id="streamingIcon" style="display: inline-flex;">Live</span>
+                        <span class="game-E" id="sportsBookEIcon_1" style="display: none;"><i></i>Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_137" style="display: none;"><i></i>e-Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_4" style="display: none;"><i></i>Cricket</span>
+                        <span class="game-E" id="sportsBookEIcon_2" style="display: none;"><i></i>Tennis</span>
+                        <span class="game-fancy in-play" id="fancyBetIcon"
+                            style="cursor: pointer; display: inline-flex;">Fancy</span><!-- icon for fancy bet -->
+                        <span class="game-bookmaker in-play" id="bookMakerIcon"
+                            style="cursor: pointer; display: inline-flex;">BookMaker</span><!-- icon for fancy bet -->
+                        <span class="game-sportsbook" id="feedingSiteIcon" style="display: none;">Sportsbook</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_1" style="display: none;">Premium Tennis</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_2" style="display: inline-flex;">Premium
+                            Cricket</span>
+                    </dt>
+                    <dd id="matched" class="col-matched">PTH1,847,533</dd>
+                    <dd id="selectTemp" class="col-visit">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back spark" side="Back" selectionid="2857971"
+                            selectionkey="2857971_0_00" runner="Nepal" marketname="Match Odds" inplay="1"
+                            handicap="0">1.04</a> <a id="btnLay" class="btn-lay" side="Lay" selectionid="2857971"
+                            selectionkey="2857971_0_00" runner="Nepal" marketname="Match Odds" inplay="1"
+                            handicap="0">1.05</a>
+                    </dd>
+                    <dd class="col-draw" style="">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">--</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">--</a>
+                    </dd>
+                    <dd class="col-home disabled">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back" selectionid="2857977" selectionkey="2857977_0_00"
+                            runner="Papua New Guinea" marketname="Match Odds" inplay="1" handicap="0">21</a> <a
+                            id="btnLay" class="btn-lay spark" side="Lay" selectionid="2857977"
+                            selectionkey="2857977_0_00" runner="Papua New Guinea" marketname="Match Odds" inplay="1"
+                            handicap="0">26</a>
+                    </dd>
+                    <dd class="col-info">
+                        <a id="multiMarketPin" class="add-pin" style="cursor: pointer"
+                            title="Add to Multi Markets">Pin</a>
+                    </dd>
+                </dl>
+                <dl id="event_32154228" class="game-list-col" style="display: flex;" eventtype="4"
+                    competitionid="11365612" eventid="32154228" marketid="1.210807370" opendate="2023-03-13 08:00"
+                    opendatetime="1678674600000" elapsedtime="0" inplay="1" firstteam="New Zealand"
+                    secondteam="Sri Lanka" eventname="New Zealand v Sri Lanka">
+                    <dt id="eventInfo" style="cursor: pointer">
+                        <img id="playIcon" class="icon-in_play"
+                            src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+                        <a id="vsName" vsinfo=""
+                            href="/exchange/member/fullMarket?eventType=4&amp;eventId=32154228&amp;marketId=1.210807370">New
+                            Zealand<span>v</span>Sri Lanka</a>
+                        <span id="dateTimeInfo" class="game-list-time"><span class="in_play">In-Play</span></span>
+                        <span class="game-live" id="streamingIcon" style="display: inline-flex;">Live</span>
+                        <span class="game-E" id="sportsBookEIcon_1" style="display: none;"><i></i>Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_137" style="display: none;"><i></i>e-Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_4" style="display: none;"><i></i>Cricket</span>
+                        <span class="game-E" id="sportsBookEIcon_2" style="display: none;"><i></i>Tennis</span>
+                        <span class="game-fancy in-play" id="fancyBetIcon"
+                            style="cursor: pointer; display: inline-flex;">Fancy</span><!-- icon for fancy bet -->
+                        <span class="game-bookmaker" id="bookMakerIcon"
+                            style="cursor: pointer; display: inline-flex;">BookMaker</span><!-- icon for fancy bet -->
+                        <span class="game-sportsbook" id="feedingSiteIcon" style="display: none;">Sportsbook</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_1" style="display: none;">Premium Tennis</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_2" style="display: inline-flex;">Premium
+                            Cricket</span>
+                    </dt>
+                    <dd id="matched" class="col-matched">PTH262,956K</dd>
+                    <dd id="selectTemp" class="col-visit">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back spark" side="Back" selectionid="448" selectionkey="448_0_00"
+                            runner="New Zealand" marketname="Match Odds" inplay="1" handicap="0">1.11</a> <a id="btnLay"
+                            class="btn-lay spark" side="Lay" selectionid="448" selectionkey="448_0_00"
+                            runner="New Zealand" marketname="Match Odds" inplay="1" handicap="0">1.12</a>
+                    </dd>
+                    <dd class="col-draw" style="">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back spark" side="Back" selectionid="60443" selectionkey="60443_0_00"
+                            runner="The Draw" marketname="Match Odds" inplay="1" handicap="0">9.4</a> <a id="btnLay"
+                            class="btn-lay" side="Lay" selectionid="60443" selectionkey="60443_0_00" runner="The Draw"
+                            marketname="Match Odds" inplay="1" handicap="0">9.6</a>
+                    </dd>
+                    <dd class="col-home disabled">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back" selectionid="7337" selectionkey="7337_0_00"
+                            runner="Sri Lanka" marketname="Match Odds" inplay="1" handicap="0">730</a> <a id="btnLay"
+                            class="btn-lay spark" side="Lay" selectionid="7337" selectionkey="7337_0_00"
+                            runner="Sri Lanka" marketname="Match Odds" inplay="1" handicap="0">&nbsp;</a>
+                    </dd>
+                    <dd class="col-info">
+                        <a id="multiMarketPin" class="add-pin" style="cursor: pointer"
+                            title="Add to Multi Markets">Pin</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="game-wrap" id="inPlayEventType_2" style="">
+            <h3>
+                <a id="eventType" class="to-expand">Tennis</a>
+            </h3>
+            <ul class="slip-head">
+                <li class="col-game" style="width: calc(63.8% - 41px);"></li>
+                <li class="col-matched">Matched</li>
+                <li class="col-visit">1</li>
+                <li class="col-draw" style="display: none;">x</li>
+                <li class="col-home">2</li>
+                <li class="col-info"></li>
+            </ul>
+            <div id="inplayGameList" class="game-list">
+                <dl id="event_-10407692" class="game-list-col" style="display: flex;" eventtype="2" competitionid="-1"
+                    eventid="-10407692" marketid="-10407730" opendate="2023-03-13 10:30" opendatetime="1678683600000"
+                    elapsedtime="0" inplay="1" firstteam="Cho, I-Hsuan" secondteam="Yadav, Sanya"
+                    eventname="Cho, I-Hsuan v Yadav, Sanya">
+                    <dt id="eventInfo" style="cursor: pointer; width: calc(63.8% - 41px);">
+                        <img id="playIcon" class="icon-in_play"
+                            src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+                        <a id="vsName" vsinfo=""
+                            href="/exchange/member/fullMarket?eventType=2&amp;eventId=-10407692&amp;marketId=-10407730">Cho,
+                            I-Hsuan<span>v</span>Yadav, Sanya</a>
+                        <span id="dateTimeInfo" class="game-list-time"><span class="in_play">In-Play</span></span>
+                        <span class="game-live" id="streamingIcon" style="display: none;">Live</span>
+                        <span class="game-E" id="sportsBookEIcon_1" style="display: none;"><i></i>Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_137" style="display: none;"><i></i>e-Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_4" style="display: none;"><i></i>Cricket</span>
+                        <span class="game-E" id="sportsBookEIcon_2" style="display: none;"><i></i>Tennis</span>
+                        <span class="game-fancy" id="fancyBetIcon"
+                            style="cursor: pointer; display: none;">Fancy</span><!-- icon for fancy bet -->
+                        <span class="game-bookmaker" id="bookMakerIcon"
+                            style="cursor: pointer; display: none;">BookMaker</span><!-- icon for fancy bet -->
+                        <span class="game-sportsbook" id="feedingSiteIcon" style="display: none;">Sportsbook</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_1" style="display: none;">Premium Tennis</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_2" style="display: inline-flex;">Premium
+                            Cricket</span>
+                    </dt>
+                    <dd id="matched" class="col-matched">PTH0</dd>
+                    <dd id="selectTemp" class="col-visit">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-draw" style="display: none;">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">--</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">--</a>
+                    </dd>
+                    <dd class="col-home">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-info">
+                        <a id="multiMarketPin" class="add-pin" style="cursor: pointer"
+                            title="Add to Multi Markets">Pin</a>
+                    </dd>
+                </dl>
+                <dl id="event_-10407691" class="game-list-col" style="display: flex;" eventtype="2" competitionid="-1"
+                    eventid="-10407691" marketid="-10407729" opendate="2023-03-13 10:30" opendatetime="1678683600000"
+                    elapsedtime="0" inplay="1" firstteam="Dennehy, Sahra" secondteam="Zhang, Jiale"
+                    eventname="Dennehy, Sahra v Zhang, Jiale">
+                    <dt id="eventInfo" style="cursor: pointer; width: calc(63.8% - 41px);">
+                        <img id="playIcon" class="icon-in_play"
+                            src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+                        <a id="vsName" vsinfo=""
+                            href="/exchange/member/fullMarket?eventType=2&amp;eventId=-10407691&amp;marketId=-10407729">Dennehy,
+                            Sahra<span>v</span>Zhang, Jiale</a>
+                        <span id="dateTimeInfo" class="game-list-time"><span class="in_play">In-Play</span></span>
+                        <span class="game-live" id="streamingIcon" style="display: none;">Live</span>
+                        <span class="game-E" id="sportsBookEIcon_1" style="display: none;"><i></i>Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_137" style="display: none;"><i></i>e-Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_4" style="display: none;"><i></i>Cricket</span>
+                        <span class="game-E" id="sportsBookEIcon_2" style="display: none;"><i></i>Tennis</span>
+                        <span class="game-fancy" id="fancyBetIcon"
+                            style="cursor: pointer; display: none;">Fancy</span><!-- icon for fancy bet -->
+                        <span class="game-bookmaker" id="bookMakerIcon"
+                            style="cursor: pointer; display: none;">BookMaker</span><!-- icon for fancy bet -->
+                        <span class="game-sportsbook" id="feedingSiteIcon" style="display: none;">Sportsbook</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_1" style="display: none;">Premium Tennis</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_2" style="display: inline-flex;">Premium
+                            Cricket</span>
+                    </dt>
+                    <dd id="matched" class="col-matched">PTH0</dd>
+                    <dd id="selectTemp" class="col-visit">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-draw" style="display: none;">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">--</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">--</a>
+                    </dd>
+                    <dd class="col-home">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-info">
+                        <a id="multiMarketPin" class="add-pin" style="cursor: pointer"
+                            title="Add to Multi Markets">Pin</a>
+                    </dd>
+                </dl>
+                <dl id="event_-10407690" class="game-list-col" style="display: flex;" eventtype="2" competitionid="-1"
+                    eventid="-10407690" marketid="-10407728" opendate="2023-03-13 10:30" opendatetime="1678683600000"
+                    elapsedtime="0" inplay="1" firstteam="Nur Azizah, Tiara Naura" secondteam="Vinahradava, Hanna"
+                    eventname="Nur Azizah, Tiara Naura v Vinahradava, Hanna">
+                    <dt id="eventInfo" style="cursor: pointer; width: calc(63.8% - 41px);">
+                        <img id="playIcon" class="icon-in_play"
+                            src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+                        <a id="vsName" vsinfo=""
+                            href="/exchange/member/fullMarket?eventType=2&amp;eventId=-10407690&amp;marketId=-10407728">Nur
+                            Azizah, Tiara Naura<span>v</span>Vinahradava, Hanna</a>
+                        <span id="dateTimeInfo" class="game-list-time"><span class="in_play">In-Play</span></span>
+                        <span class="game-live" id="streamingIcon" style="display: none;">Live</span>
+                        <span class="game-E" id="sportsBookEIcon_1" style="display: none;"><i></i>Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_137" style="display: none;"><i></i>e-Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_4" style="display: none;"><i></i>Cricket</span>
+                        <span class="game-E" id="sportsBookEIcon_2" style="display: none;"><i></i>Tennis</span>
+                        <span class="game-fancy" id="fancyBetIcon"
+                            style="cursor: pointer; display: none;">Fancy</span><!-- icon for fancy bet -->
+                        <span class="game-bookmaker" id="bookMakerIcon"
+                            style="cursor: pointer; display: none;">BookMaker</span><!-- icon for fancy bet -->
+                        <span class="game-sportsbook" id="feedingSiteIcon" style="display: none;">Sportsbook</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_1" style="display: none;">Premium Tennis</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_2" style="display: inline-flex;">Premium
+                            Cricket</span>
+                    </dt>
+                    <dd id="matched" class="col-matched">PTH0</dd>
+                    <dd id="selectTemp" class="col-visit">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-draw" style="display: none;">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">--</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">--</a>
+                    </dd>
+                    <dd class="col-home">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-info">
+                        <a id="multiMarketPin" class="add-pin" style="cursor: pointer"
+                            title="Add to Multi Markets">Pin</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="game-wrap col3" id="inPlayEventType_137" style="">
+            <h3>
+                <a id="eventType" class="to-expand">E-Soccer </a>
+            </h3>
+            <ul class="slip-head">
+                <li class="col-game"></li>
+                <li class="col-matched">Matched</li>
+                <li class="col-visit">1</li>
+                <li class="col-draw" style="">x</li>
+                <li class="col-home">2</li>
+                <li class="col-info"></li>
+            </ul>
+            <div id="inplayGameList" class="game-list">
+                <dl id="event_-10406081" class="game-list-col" style="display: flex;" eventtype="137" competitionid="-1"
+                    eventid="-10406081" marketid="-10406119" opendate="2023-03-10 05:45" opendatetime="1678407300000"
+                    elapsedtime="0" inplay="1" firstteam="RB Leipzig (Pipis)" secondteam="SC Freiburg (Billiot)"
+                    eventname="RB Leipzig (Pipis) v SC Freiburg (Billiot)">
+                    <dt id="eventInfo" style="cursor: pointer">
+                        <img id="playIcon" class="icon-in_play"
+                            src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+                        <a id="vsName" vsinfo=""
+                            href="/exchange/member/fullMarket?eventType=137&amp;eventId=-10406081&amp;marketId=-10406119">RB
+                            Leipzig (Pipis)<span>v</span>SC Freiburg (Billiot)</a>
+                        <span id="dateTimeInfo" class="game-list-time"><span class="in_play">In-Play</span></span>
+                        <span class="game-live" id="streamingIcon" style="display: none;">Live</span>
+                        <span class="game-E" id="sportsBookEIcon_1" style="display: none;"><i></i>Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_137"
+                            style="display: inline-flex;"><i></i>e-Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_4" style="display: none;"><i></i>Cricket</span>
+                        <span class="game-E" id="sportsBookEIcon_2" style="display: none;"><i></i>Tennis</span>
+                        <span class="game-fancy" id="fancyBetIcon"
+                            style="cursor: pointer; display: none;">Fancy</span><!-- icon for fancy bet -->
+                        <span class="game-bookmaker" id="bookMakerIcon"
+                            style="cursor: pointer; display: none;">BookMaker</span><!-- icon for fancy bet -->
+                        <span class="game-sportsbook" id="feedingSiteIcon" style="display: none;">Sportsbook</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_1" style="display: none;">Premium Tennis</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_2" style="display: inline-flex;">Premium
+                            Cricket</span>
+                    </dt>
+                    <dd id="matched" class="col-matched">PTH0</dd>
+                    <dd id="selectTemp" class="col-visit">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-draw" style="">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">--</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">--</a>
+                    </dd>
+                    <dd class="col-home">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-info">
+                        <a id="multiMarketPin" class="add-pin" style="cursor: pointer"
+                            title="Add to Multi Markets">Pin</a>
+                    </dd>
+                </dl>
+                <dl id="event_-10406925" class="game-list-col" style="display: flex;" eventtype="137" competitionid="-1"
+                    eventid="-10406925" marketid="-10406963" opendate="2023-03-11 22:30" opendatetime="1678554000000"
+                    elapsedtime="0" inplay="1" firstteam="Manchester United FC (Hermanito)"
+                    secondteam="Liverpool FC (Gaga)" eventname="Manchester United FC (Hermanito) v Liverpool FC (Gaga)">
+                    <dt id="eventInfo" style="cursor: pointer">
+                        <img id="playIcon" class="icon-in_play"
+                            src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+                        <a id="vsName" vsinfo=""
+                            href="/exchange/member/fullMarket?eventType=137&amp;eventId=-10406925&amp;marketId=-10406963">Manchester
+                            United FC (Hermanito)<span>v</span>Liverpool FC (Gaga)</a>
+                        <span id="dateTimeInfo" class="game-list-time"><span class="in_play">In-Play</span></span>
+                        <span class="game-live" id="streamingIcon" style="display: none;">Live</span>
+                        <span class="game-E" id="sportsBookEIcon_1" style="display: none;"><i></i>Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_137"
+                            style="display: inline-flex;"><i></i>e-Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_4" style="display: none;"><i></i>Cricket</span>
+                        <span class="game-E" id="sportsBookEIcon_2" style="display: none;"><i></i>Tennis</span>
+                        <span class="game-fancy" id="fancyBetIcon"
+                            style="cursor: pointer; display: none;">Fancy</span><!-- icon for fancy bet -->
+                        <span class="game-bookmaker" id="bookMakerIcon"
+                            style="cursor: pointer; display: none;">BookMaker</span><!-- icon for fancy bet -->
+                        <span class="game-sportsbook" id="feedingSiteIcon" style="display: none;">Sportsbook</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_1" style="display: none;">Premium Tennis</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_2" style="display: inline-flex;">Premium
+                            Cricket</span>
+                    </dt>
+                    <dd id="matched" class="col-matched">PTH0</dd>
+                    <dd id="selectTemp" class="col-visit">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-draw" style="">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">--</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">--</a>
+                    </dd>
+                    <dd class="col-home">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-info">
+                        <a id="multiMarketPin" class="add-pin" style="cursor: pointer"
+                            title="Add to Multi Markets">Pin</a>
+                    </dd>
+                </dl>
+                <dl id="event_-10407678" class="game-list-col" style="display: flex;" eventtype="137" competitionid="-1"
+                    eventid="-10407678" marketid="-10407716" opendate="2023-03-13 11:16" opendatetime="1678686360000"
+                    elapsedtime="0" inplay="0" firstteam="FC Bayern Munich (Bronyn)"
+                    secondteam="Manchester City FC (Honey)"
+                    eventname="FC Bayern Munich (Bronyn) v Manchester City FC (Honey)">
+                    <dt id="eventInfo" style="cursor: pointer">
+                        <img id="playIcon" class="icon-no_play"
+                            src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+                        <a id="vsName" vsinfo=""
+                            href="/exchange/member/fullMarket?eventType=137&amp;eventId=-10407678&amp;marketId=-10407716">FC
+                            Bayern Munich (Bronyn)<span>v</span>Manchester City FC (Honey)</a>
+                        <span id="dateTimeInfo" class="game-list-time">Starting in 1' </span>
+                        <span class="game-live" id="streamingIcon" style="display: none;">Live</span>
+                        <span class="game-E" id="sportsBookEIcon_1" style="display: none;"><i></i>Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_137"
+                            style="display: inline-flex;"><i></i>e-Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_4" style="display: none;"><i></i>Cricket</span>
+                        <span class="game-E" id="sportsBookEIcon_2" style="display: none;"><i></i>Tennis</span>
+                        <span class="game-fancy" id="fancyBetIcon"
+                            style="cursor: pointer; display: none;">Fancy</span><!-- icon for fancy bet -->
+                        <span class="game-bookmaker" id="bookMakerIcon"
+                            style="cursor: pointer; display: none;">BookMaker</span><!-- icon for fancy bet -->
+                        <span class="game-sportsbook" id="feedingSiteIcon" style="display: none;">Sportsbook</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_1" style="display: none;">Premium Tennis</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_2" style="display: inline-flex;">Premium
+                            Cricket</span>
+                    </dt>
+                    <dd id="matched" class="col-matched">PTH0</dd>
+                    <dd id="selectTemp" class="col-visit">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-draw" style="">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">--</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">--</a>
+                    </dd>
+                    <dd class="col-home">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-info">
+                        <a id="multiMarketPin" class="add-pin" style="cursor: pointer"
+                            title="Add to Multi Markets">Pin</a>
+                    </dd>
+                </dl>
+                <dl id="event_-10407679" class="game-list-col" style="display: flex;" eventtype="137" competitionid="-1"
+                    eventid="-10407679" marketid="-10407717" opendate="2023-03-13 11:28" opendatetime="1678687080000"
+                    elapsedtime="0" inplay="0" firstteam="Liverpool FC (Petruchio)"
+                    secondteam="FC Bayern Munich (Bronyn)"
+                    eventname="Liverpool FC (Petruchio) v FC Bayern Munich (Bronyn)">
+                    <dt id="eventInfo" style="cursor: pointer">
+                        <img id="playIcon" class="icon-no_play"
+                            src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+                        <a id="vsName" vsinfo=""
+                            href="/exchange/member/fullMarket?eventType=137&amp;eventId=-10407679&amp;marketId=-10407717">Liverpool
+                            FC (Petruchio)<span>v</span>FC Bayern Munich (Bronyn)</a>
+                        <span id="dateTimeInfo" class="game-list-time">Starting in 13' </span>
+                        <span class="game-live" id="streamingIcon" style="display: none;">Live</span>
+                        <span class="game-E" id="sportsBookEIcon_1" style="display: none;"><i></i>Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_137"
+                            style="display: inline-flex;"><i></i>e-Soccer</span>
+                        <span class="game-E" id="sportsBookEIcon_4" style="display: none;"><i></i>Cricket</span>
+                        <span class="game-E" id="sportsBookEIcon_2" style="display: none;"><i></i>Tennis</span>
+                        <span class="game-fancy" id="fancyBetIcon"
+                            style="cursor: pointer; display: none;">Fancy</span><!-- icon for fancy bet -->
+                        <span class="game-bookmaker" id="bookMakerIcon"
+                            style="cursor: pointer; display: none;">BookMaker</span><!-- icon for fancy bet -->
+                        <span class="game-sportsbook" id="feedingSiteIcon" style="display: none;">Sportsbook</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_1" style="display: none;">Premium Tennis</span>
+                        <span class="game-sportsbook" id="sportsBookIcon_2" style="display: inline-flex;">Premium
+                            Cricket</span>
+                    </dt>
+                    <dd id="matched" class="col-matched">PTH0</dd>
+                    <dd id="selectTemp" class="col-visit">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-draw" style="">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">--</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">--</a>
+                    </dd>
+                    <dd class="col-home">
+                        <div class="suspend" style="display: none;">
+                            <span>Suspend</span>
+                        </div>
+                        <a id="btnBack" class="btn-back" side="Back">&nbsp;</a> <a id="btnLay" class="btn-lay"
+                            side="Lay">&nbsp;</a>
+                    </dd>
+                    <dd class="col-info">
+                        <a id="multiMarketPin" class="add-pin" style="cursor: pointer"
+                            title="Add to Multi Markets">Pin</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div id="contentBox" class="content-box"></div>
+    </div>
+    <div class="one_click-wrap">
+        <div class="overlay" name="oneClickBetDialog" style="display:none;"></div>
+        <div id="oneClickBetDialog" class="dialog-wrap" name="oneClickBetDialog" style="display:none;">
+            <h4>One Click Bet ON
+            </h4>
+            <div class="dialog-content">
+                <p>Stake selected will be placed immediately once you click on the market odds.
+                    <br><span class="attention">
+                        Attention: Back/Lay at your own risk</span>
+                </p>
+            </div>
+            <ul class="btn-wrap break">
+                <li><a id="ok" class="btn-send" style="cursor:pointer;">OK</a></li>
+            </ul>
+            <img class="arrow-dialog" src="https://statics3.skyexch.bike/images/transparent.gif">
+        </div>
+        <div id="oneClickBetStakeBox" class="one_click-setting" name="oneClickBetStakeBox" style="display:none;">
+            <h4>One Click Bet Stake
+            </h4>
+            <ul class="one_click-stake">
+                <li><a class="btn select" name="betStake" index="0" style="cursor:pointer;">10</a></li>
+                <li><a class="btn" name="betStake" index="1" style="cursor:pointer;">30</a></li>
+                <li><a class="btn" name="betStake" index="2" style="cursor:pointer;">50</a></li>
+                <li><a class="btn" name="betStake" index="3" style="cursor:pointer;">100</a></li>
+            </ul>
+            <a id="edit" class="a-edit" style="cursor:pointer;">Edit<img
+                    src="https://statics3.skyexch.bike/images/transparent.gif"></a>
+        </div>
+        <div id="editOneClickBetStakeBox" class="one_click-setting" name="oneClickBetStakeBox" style="display:none;">
+            <h4>Edit One Click Bet Stake
+            </h4>
+            <ul class="one_click-stake">
+                <li><input type="text" name="editBetStake" index="0" value=""></li>
+                <li><input type="text" name="editBetStake" index="1" value=""></li>
+                <li><input type="text" name="editBetStake" index="2" value=""></li>
+                <li><input type="text" name="editBetStake" index="3" value=""></li>
+            </ul>
+            <a id="save" class="btn-send" style="cursor:pointer;">Save
+            </a>
+        </div>
+    </div>
+</div>
+<app-aside></app-aside>

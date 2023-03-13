@@ -1,0 +1,275 @@
+<app-profile-sidebar></app-profile-sidebar>
+<div class="col-center report"> <!-- Loading Wrap -->
+    <div id="loading" class="loading-wrap" style="display: none;">
+        <ul class="loading">
+            <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+            <li>Loading...
+            </li>
+            <br>
+            <li><span id="progress"></span></li>
+        </ul>
+    </div>
+
+    <!-- Message -->
+    <div id="message" class="message-wrap success">
+        <a class="btn-close">Close</a>
+        <p></p>
+    </div>
+
+    <script language="JavaScript" type="text/javascript">
+        (function () {
+            $j('.btn-close').click(function () {
+                $j('#message').hide();
+            });
+        })();
+    </script>
+
+    <h2>My Bets
+    </h2>
+
+    <ul class="tab col3">
+        <li><a class="select" href="current_bets.jsp">Current Bets
+            </a></li>
+        <li><a href="bet_history.jsp">Bets History
+            </a></li>
+
+        <li><a href="profit_loss.jsp">Profit &amp; Loss
+            </a></li>
+
+    </ul>
+
+    <!-- Tab -->
+
+    <ul class="report-tab-wrap" style="display:block">
+        <li class="report-tab  select" id="reportType_exchange" data-reporttabtype="0">
+            Exchange
+        </li>
+        <li class="report-tab " id="reportType_fancyBet" data-reporttabtype="7">
+            FancyBet
+        </li>
+        <li class="report-tab " id="reportType_sportsBook" data-reporttabtype="2">
+            Sportsbook
+        </li>
+        <li class="report-tab " id="reportType_bookMaker" data-reporttabtype="3">
+            BookMaker
+        </li>
+        <li class="report-tab " id="reportType_binary" data-reporttabtype="5">
+            Binary
+        </li>
+    </ul>
+
+    <!-- function -->
+    <div class="function-wrap">
+        <ul class="input-list">
+            <li><label>Bet Status
+                </label></li>
+            <li>
+                <select id="betStatus" fdprocessedid="rt5rga">
+                    <option value="">All</option>
+                    <option value="Unmatched">Unmatched</option>
+                    <option value="Matched">Matched</option>
+                </select>
+            </li>
+            <li></li>
+            <li><label>Order By
+                </label></li>
+            <li>
+                <input id="orderBetPlaced" type="checkbox" checked=""><label for="orderBetPlaced">Bet placed
+                </label>
+                <input id="orderMarket" type="checkbox"><label for="orderMarket">Market
+                </label>
+            </li>
+        </ul>
+    </div>
+    <!-- function end-->
+
+    <table style="display: none">
+        <tbody>
+            <tr>
+                <td class="align-L">
+                    <img id="arrow" class="fromto" src="https://statics3.skyexch.bike/images/transparent.gif">
+                </td>
+            </tr>
+
+            <tr id="tempTr">
+                <td class="align-L"><label id="title"></label></td>
+                <td id="selection"></td>
+                <td><span id="type"></span></td>
+                <td><a id="betId" href="javascript: void(0);"></a></td>
+                <td><span id="betPlaced" class="small-date"></span></td>
+                <td id="oddsReq"></td>
+                <td id="matched"></td>
+                <td id="unMatched"></td>
+                <td id="avgOdds"></td>
+                <td><span id="dateMatched" class="small-date"></span></td>
+            </tr>
+
+            <tr id="tempDetailTr" class="expand" style="display: none">
+                <td colspan="3"></td>
+                <td colspan="7">
+                    <img class="expand-arrow" src="https://statics3.skyexch.bike/images/transparent.gif">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Bet taken
+                                </th>
+                                <th width="16%">Odds req.
+                                </th>
+                                <th width="17%">Stake
+                                </th>
+                                <th width="24%">Liability
+                                </th>
+                                <th width="24%">Odds matched
+                                </th>
+                            </tr>
+                        </tbody>
+                        <tbody id="sub_content">
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr id="tempSubTr">
+                <td><span id="betTaken" class="small-date"></span></td>
+                <td id="txOddsReq"></td>
+                <td id="txStake"></td>
+                <td id="txLiability"></td>
+                <td id="txOddsMatched"></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input id="cancelCheckBox" type="checkbox">
+                </td>
+            </tr>
+
+            <!-- Cancel Button -->
+            <tr id="cancelContent">
+                <td colspan="4">
+                    <ul class="btn-wrap">
+                        <li><a id="cancelBtn" class="btn" href="#">Cancel
+                            </a></li>
+                    </ul>
+                </td>
+                <td colspan="6"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table id="Unmatched_Table" class="table-s">
+        <caption>Unmatched
+        </caption>
+        <tbody>
+            <tr>
+                <th id="Unmatched_market" width="" class="align-L"><input id="checkAll" type="checkbox"
+                        style="display: none;">Market
+                </th>
+                <th id="Unmatched_selection" width="10%">Selection
+                </th>
+                <th id="Unmatched_type" width="3%">Type
+                </th>
+                <th id="Unmatched_betId" width="9%">Bet ID
+                </th>
+                <th id="Unmatched_betPlaced" width="8%">Bet placed
+                </th>
+                <th id="Unmatched_oddsReq" width="8%">Odds req.
+                </th>
+                <th id="Unmatched_matched" width="9%">Matched
+                </th>
+                <th id="Unmatched_unMatched" width="10%">Unmatched
+                </th>
+                <th id="Unmatched_avgOdds" width="10%" style="display: none;">Avg. odds matched
+                </th>
+                <th id="Unmatched_dateMatched" width="10%">Date matched
+                </th>
+            </tr>
+        </tbody>
+        <tbody id="Unmatched_Content">
+            <tr id="noDataTemplate" style="display: table-row;">
+                <td class="no-data" colspan="9">
+                    <p>You have no bets in this time period.
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table id="Waiting_Table" class="table-s" style="display: none;">
+        <caption>Pending
+        </caption>
+        <tbody>
+            <tr>
+                <th id="Matched_market" width="" class="align-L">Market
+                </th>
+                <th id="Matched_selection" width="10%">Selection
+                </th>
+                <th id="Matched_type" width="3%">Type
+                </th>
+                <th id="Matched_betId" width="9%">Bet ID
+                </th>
+                <th id="Matched_betPlaced" width="8%">Bet placed
+                </th>
+                <th id="Matched_oddsReq" width="8%">Odds req.
+                </th>
+                <th id="Matched_matched" width="9%">Matched
+                </th>
+                <th id="Matched_unMatched" width="10%">Unmatched
+                </th>
+                <th id="Matched_avgOdds" width="10%">Avg. odds matched
+                </th>
+                <th id="Matched_dateMatched" width="10%">Date matched
+                </th>
+            </tr>
+        </tbody>
+        <tbody id="Waiting_Content">
+        </tbody>
+    </table>
+
+    <table id="Matched_Table" class="table-s">
+        <caption>Matched
+        </caption>
+        <tbody>
+            <tr>
+                <th id="Matched_market" width="" class="align-L">Market
+                </th>
+                <th id="Matched_selection" width="10%">Selection
+                </th>
+                <th id="Matched_type" width="3%">Type
+                </th>
+                <th id="Matched_betId" width="9%">Bet ID
+                </th>
+                <th id="Matched_betPlaced" width="8%">Bet placed
+                </th>
+                <th id="Matched_oddsReq" width="8%">Odds req.
+                </th>
+                <th id="Matched_matched" width="9%">Matched
+                </th>
+                <th id="Matched_unMatched" width="10%" style="display: none;">Unmatched
+                </th>
+                <th id="Matched_avgOdds" width="10%">Avg. odds matched
+                </th>
+                <th id="Matched_dateMatched" width="10%">Date matched
+                </th>
+            </tr>
+        </tbody>
+        <tbody id="Matched_Content">
+            <tr id="noDataTemplate" style="display: table-row;">
+                <td class="no-data" colspan="9">
+                    <p>You have no bets in this time period.
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table style="display: none;">
+        <tbody>
+            <tr id="noDataTemplate" style="display: none;">
+                <td class="no-data" colspan="9">
+                    <p>You have no bets in this time period.
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

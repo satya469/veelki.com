@@ -1,0 +1,171 @@
+<div id="centerColumn" class="col-center inplay">
+
+    <!-- Message -->
+
+
+    <!-- Loading Wrap -->
+    <div id="loading" class="loading-wrap" style="display: none;">
+        <ul class="loading">
+            <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+            <li>Loading...
+            </li>
+            <br>
+            <li><span id="progress"></span></li>
+        </ul>
+    </div>
+
+    <!-- Message -->
+    <div id="message" class="message-wrap success">
+        <a class="btn-close">Close</a>
+        <p></p>
+    </div>
+
+    <script language="JavaScript" type="text/javascript">
+        (function () {
+            $j('.btn-close').click(function () {
+                $j('#message').hide();
+            });
+        })();
+    </script>
+
+    <div id="oneClickLoading" class="loading-wrap" style="display:none">
+        <ul class="loading">
+            <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+            <li id="oneClickTime">Place Bets
+            </li>
+        </ul>
+    </div>
+
+    <div class="marquee-box" style="display: flex">
+        <h4>News</h4>
+        <div class="marquee">
+            <div style="width: 100000px; transform: translateX(1007px); animation: 58.3118s linear 0s infinite normal none running marqueeAnimation-1332564;"
+                class="js-marquee-wrapper">
+                <div class="js-marquee" style="margin-right: 0px; float: left;"><a><span>13 Mar 2023</span>Event : New
+                        Zealand v Sri Lanka... Market : Bookmaker :- New Zealand '1-4' (IST 11:13:25 Around) Bets Voided
+                        Because Wrong Odds Offered By Mistake.... Sorry for the Inconvenience&nbsp;Caused</a><a><span>13
+                            Mar 2023</span>Event :- India v Australia .. Market :- 50 Over AUS (2) '124.80.120' (IST
+                        13:00:17 - 13:00:37) Bets Voided Because 48.6th Ball (No Ball Shown Late In TV) .. Sorry for the
+                        Inconvenience&nbsp;Caused</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- day -->
+    <div class="result-search">
+        <ul id="resultTab" class="tab col2">
+            <li><a id="today" href="#Today" class="select">Today
+                </a></li>
+            <li><a id="yesterday" href="#Yesterday">Yesterday
+                </a></li>
+        </ul>
+        <select id="sports" fdprocessedid="1bai4p">
+            <option value="4">CRICKET
+            </option>
+            <option value="1">SOCCER
+            </option>
+            <option value="137">E_SOCCER
+            </option>
+        </select>
+    </div>
+
+    <div class="over-wrap" style="height: calc(100% - 39px - 31px - 35px)">
+        <table id="Result_Table" class="table01">
+            <caption class="align-L" colspan="4">Result
+            </caption>
+            <tbody>
+                <tr>
+                    <th width="20%" class="align-L">Event Date/Time</th>
+                    <th class="align-L">Event Name</th>
+                    <th id="Result_Title_1" width="20%">Home</th>
+                    <th id="Result_Title_2" width="20%">Away</th>
+                </tr>
+            </tbody>
+            <tbody id="Result_Content">
+                <tr id="noDataTemplate" style="display: table-row;">
+                    <td class="no-data" colspan="9">
+                        <p>There are no events to be displayed.
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table style="display: none">
+            <tbody>
+                <tr id="tempTr">
+                    <td id="eventDate" class="align-L"></td>
+                    <td id="eventName" class="align-L"></td>
+                    <td><strong><span id="resultItem1"></span></strong></td>
+                    <td><strong><span id="resultItem2"></span></strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table style="display: none;">
+            <tbody>
+                <tr id="noDataTemplate" style="display: none;">
+                    <td class="no-data" colspan="9">
+                        <p>There are no events to be displayed.
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="one_click-wrap">
+
+        <div class="overlay" name="oneClickBetDialog" style="display:none;"></div>
+
+
+        <div id="oneClickBetDialog" class="dialog-wrap" name="oneClickBetDialog" style="display:none;">
+            <h4>One Click Bet ON
+            </h4>
+            <div class="dialog-content">
+                <p>Stake selected will be placed immediately once you click on the market odds.
+                    <br><span class="attention">
+                        Attention: Back/Lay at your own risk</span>
+                </p>
+            </div>
+            <ul class="btn-wrap break">
+
+                <li><a id="ok" class="btn-send" style="cursor:pointer;">OK</a></li>
+            </ul>
+            <img class="arrow-dialog" src="https://statics3.skyexch.bike/images/transparent.gif">
+        </div>
+
+
+        <div id="oneClickBetStakeBox" class="one_click-setting" name="oneClickBetStakeBox" style="display:none;">
+            <h4>One Click Bet Stake
+            </h4>
+            <ul class="one_click-stake">
+                <li><a class="btn select" name="betStake" index="0" style="cursor:pointer;">10</a></li>
+                <li><a class="btn" name="betStake" index="1" style="cursor:pointer;">30</a></li>
+                <li><a class="btn" name="betStake" index="2" style="cursor:pointer;">50</a></li>
+                <li><a class="btn" name="betStake" index="3" style="cursor:pointer;">100</a></li>
+            </ul>
+            <a id="edit" class="a-edit" style="cursor:pointer;">Edit<img
+                    src="https://statics3.skyexch.bike/images/transparent.gif"></a>
+        </div>
+
+
+        <div id="editOneClickBetStakeBox" class="one_click-setting" name="oneClickBetStakeBox" style="display:none;">
+            <h4>Edit One Click Bet Stake
+            </h4>
+            <ul class="one_click-stake">
+                <li><input type="text" name="editBetStake" index="0" value=""></li>
+                <li><input type="text" name="editBetStake" index="1" value=""></li>
+                <li><input type="text" name="editBetStake" index="2" value=""></li>
+                <li><input type="text" name="editBetStake" index="3" value=""></li>
+            </ul>
+            <a id="save" class="btn-send" style="cursor:pointer;">Save
+            </a>
+        </div>
+    </div>
+
+
+</div>
+
+<app-aside></app-aside>

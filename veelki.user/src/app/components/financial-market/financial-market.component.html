@@ -1,0 +1,1140 @@
+<div id="centerColumn" class="col-center binary">
+
+    <!-- Message -->
+
+
+    <!-- Loading Wrap -->
+    <div id="loading" class="loading-wrap" style="display:none">
+        <ul class="loading">
+            <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+            <li>Loading...
+            </li>
+            <br>
+            <li><span id="progress"></span></li>
+        </ul>
+    </div>
+
+    <!-- Message -->
+    <div id="message" class="message-wrap success">
+        <a class="btn-close">Close</a>
+        <p></p>
+    </div>
+
+    <div id="oneClickLoading" class="loading-wrap" style="display:none">
+        <ul class="loading">
+            <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+            <li id="oneClickTime">Place Bets
+            </li>
+        </ul>
+    </div>
+
+    <div class="marquee-box" style="display: flex">
+        <h4>News</h4>
+        <div class="marquee">
+            <div style="width: 100000px; transform: translateX(1007px); animation: 58.3118s linear 0s infinite normal none running marqueeAnimation-335897;"
+                class="js-marquee-wrapper">
+                <div class="js-marquee" style="margin-right: 0px; float: left;"><a><span>13 Mar 2023</span>Event : New
+                        Zealand v Sri Lanka... Market : Bookmaker :- New Zealand '1-4' (IST 11:13:25 Around) Bets Voided
+                        Because Wrong Odds Offered By Mistake.... Sorry for the Inconvenience&nbsp;Caused</a><a><span>13
+                            Mar 2023</span>Event :- India v Australia .. Market :- 50 Over AUS (2) '124.80.120' (IST
+                        13:00:17 - 13:00:37) Bets Voided Because 48.6th Ball (No Ball Shown Late In TV) .. Sorry for the
+                        Inconvenience&nbsp;Caused</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- Game Head -->
+    <div id="gameHead" class="game-head" style="display: none;">
+
+        <!-- Team Table -->
+        <!-- <a class="favor select">Add Favorite</a> -->
+
+        <a id="refreshButton" class="refresh" style="cursor:pointer">Refresh</a>
+        <a id="multiMarketPin" class="add-pin" name="gameHeadPin" style="cursor: pointer; display: none;"
+            title="Add to Multi Markets"></a>
+        <table id="gameTeam" class="game-team">
+            <tbody>
+                <tr id="noTeam" style="display:none;">
+                    <td class="game-name">-event name-<span>All Markets</span></td>
+                </tr>
+                <tr id="twoTeam" style="display:none;">
+                    <td id="gameVisit" class="game-visit">-visit-<span></span></td>
+                    <td id="gameVs" class="game-vs">
+                        <div>All Markets<span>VS</span></div>
+                    </td>
+                    <td id="gameHome" class="game-home">-home-<span></span></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="lineMarketRulesBtn" class="btn-rules" style="cursor:pointer; display: none;"><img
+                src="https://statics3.skyexch.bike/images/transparent.gif">Rules</a>
+        <div id="lineMarketRulesWrap" class="rules-wrap" style="display: none;">
+            <h3>Line Market Rules and Information</h3>
+            <div class="rules-content">
+                <p>How many runs would be scored in mentioned overs, If <strong> 'Back/Yes' </strong> bet is made then
+                    it will be win bet if the runs
+                    scored in the mentioned overs are <strong> equal or more </strong> then the Backed Runs otherwise it
+                    will be a Lost bets. If <strong>
+                        'Lay/No' </strong> bet is made then it will be a win bet if Runs scored in the mentioned overs
+                    are <strong> less </strong> than
+                    the lay runs otherwise it will be lost bet. All the line markets will be settled only if the
+                    mentioned stipulated overs are completed
+                    or if the Batting team is bowled out (All out) or the runs are chased, given the inning's
+                    stipulated(or reduced) overs are more than
+                    or equal to the stipulated over of that particular line Market.</p>
+                <p><strong> "Matched Tied" </strong> and <strong> "Completed Match" </strong> doesn't affect the
+                    settling of Line markets.</p>
+            </div>
+            <ul class="btn-wrap break">
+                <li><a id="lineMarketRulesOk" class="btn" style="cursor:pointer">OK</a></li>
+            </ul>
+        </div>
+
+
+        <table id="cricketScoreBoard" class="game-scores" style="display: none;">
+            <tbody>
+                <tr>
+
+                    <td id="gameHeadPinSpace" class="scores-space"></td>
+                    <td class="scores-team">
+                        <h4 id="teamHome">HOME</h4>
+                        <h4 id="teamAway">AWAY</h4>
+                        <ul class="scores-time">
+                            <li id="description" class="filter-first"></li>
+                            <li id="currentDay"></li>
+                        </ul>
+                    </td>
+                    <td id="inningsBox1" class="scores-box" style="display: none;">
+                        <h4 id="runsHome"><span></span></h4>
+                        <h4 id="runsAway"><span></span></h4>
+                        <span id="inningsIndex" class="scores-inns">Innings 1</span>
+                    </td>
+
+
+                    <td id="inningsBoxTemplate" class="scores-box" style="display: none;">
+                        <h4 id="runsHome"><span></span></h4>
+                        <h4 id="runsAway"><span></span></h4>
+                        <span id="inningsIndex" class="scores-inns"></span>
+                    </td>
+
+                    <td class="scores-space"></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+
+        <table id="tennisScoreBoard" class="game-scores tennis" style="display: none;">
+            <tbody>
+                <tr>
+
+                    <td id="gameHeadPinSpace" class="scores-space"></td>
+
+                    <td class="scores-team">
+                        <h4 id="teamHome">Home</h4>
+                        <h4 id="teamAway">Away</h4>
+                        <ul class="scores-time">
+                            <li id="currentSet" class="filter-first"></li>
+                            <li id="fullTimeElapsed"></li>
+                            <li><span id="court"></span></li>
+                        </ul>
+                    </td>
+
+                    <td id="setBox1" class="scores-box">
+                        <h4 id="setHome"></h4>
+                        <h4 id="setAway"></h4>
+                        <span class="scores-inns">1</span>
+                    </td>
+                    <td id="setBox2" class="scores-box">
+                        <h4 id="setHome"></h4>
+                        <h4 id="setAway"></h4>
+                        <span class="scores-inns">2</span>
+                    </td>
+                    <td id="setBox3" class="scores-box last-box">
+                        <h4 id="setHome"></h4>
+                        <h4 id="setAway"></h4>
+                        <span class="scores-inns">3</span>
+                    </td>
+
+                    <td id="points" class="scores-box last-box">
+                        <h4 id="pointsHome" class="scores-now">0</h4>
+                        <h4 id="pointsAway" class="scores-now">0</h4>
+                        <span class="scores-inns">Points</span>
+                    </td>
+
+                    <td id="aces" class="scores-box scores-other">
+                        <h4 id="acesHome">0</h4>
+                        <h4 id="acesAway">0</h4>
+                        <span class="scores-inns">Aces</span>
+                    </td>
+                    <td id="faults" class="scores-box scores-other">
+                        <h4 id="faultsHome">0</h4>
+                        <h4 id="faultsAway">0</h4>
+                        <span class="scores-inns">Faults</span>
+                    </td>
+                    <td id="breaks" class="scores-box scores-other last-box">
+                        <h4 id="breaksHome">0</h4>
+                        <h4 id="breaksAway">0</h4>
+                        <span class="scores-inns">Breaks</span>
+                    </td>
+                    <td class="scores-space"></td>
+
+                    <td id="setBoxTemplate" class="scores-box last-box" style="display: none;">
+                        <h4 id="setHome"></h4>
+                        <h4 id="setAway"></h4>
+                        <span id="setIndex" class="scores-inns"></span>
+                    </td>
+
+                    <td class="scores-space"></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div id="soccerScoreBoard" class="game-scores" style="display: none;">
+            <ul>
+                <li class="game-visit">
+                    <h4 id="teamHome"></h4>
+                </li>
+                <li class="scores-box">
+                    <p id="vsScores" class="scores-now"></p>
+                    <span id="timeElapsed" class="scores-now"></span>
+                </li>
+                <li class="game-home">
+                    <h4 id="teamAway"></h4>
+                </li>
+            </ul>
+
+            <div class="game-progress">
+                <div class="progress-bar">
+
+                    <div id="progressPercent" class="progress-now" style="width: 0%;"></div>
+
+
+
+                    <img id="soccerEventTemplate" class="" style="left: 0%; display: none;"
+                        src="https://statics3.skyexch.bike/images/transparent.gif">
+
+                    <div id="popupTemplate" class="score-pop" style="left: 0%; display: none;">
+                        <ul>
+                            <li id="matchTime" class="scores-now"></li>
+                            <li><img class="" src="https://statics3.skyexch.bike/images/transparent.gif"></li>
+                        </ul>
+                    </div>
+
+                    <span id="sumTemplate" class="sum-status" style="left: 0%; display: none;"></span>
+
+                    <div id="sumPopupTemplate" class="score-pop-last" style="left: 0%; display: none;">
+                        <ul id="list">
+                            <li id="matchTimeTemplate" class="scores-now" style="display: none;"></li>
+                            <li id="iconTemplate" style="display: none;"><img class=""
+                                    src="https://statics3.skyexch.bike/images/transparent.gif"></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <table id="basketballScoreBoard" class="game-scores tennis" style="display: none;">
+            <tbody>
+                <tr>
+                    <td class="scores-space"></td>
+                    <td class="scores-team">
+                        <h4 id="teamHome">HOME</h4>
+                        <h4 id="teamAway">AWAY</h4>
+                        <ul class="scores-time">
+                            <li class="filter-first" id="matchStatus"></li>
+                            <li id="timeElapsed"></li>
+                        </ul>
+                    </td>
+                    <td id="period1" class="scores-box">
+                        <h4 id="homeScore">-</h4>
+                        <h4 id="awayScore">-</h4>
+                        <span class="scores-inns">1</span>
+                    </td>
+                    <td id="period2" class="scores-box">
+                        <h4 id="homeScore">-</h4>
+                        <h4 id="awayScore">-</h4>
+                        <span class="scores-inns">2</span>
+                    </td>
+                    <td id="period3" class="scores-box">
+                        <h4 id="homeScore">-</h4>
+                        <h4 id="awayScore">-</h4>
+                        <span class="scores-inns">3</span>
+                    </td>
+                    <td id="period4" class="scores-box last-box">
+                        <h4 class="scores-now" id="homeScore">-</h4>
+                        <h4 class="scores-now" id="awayScore">-</h4>
+                        <span class="scores-inns">4</span>
+                    </td>
+                    <td id="totalScore" class="scores-box last-box">
+                        <h4 class="scores-now" id="homeScore">-</h4>
+                        <h4 class="scores-now" id="awayScore">-</h4><span class="scores-inns">Points</span>
+                    </td>
+                    <td class="scores-space"></td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Scores Table finished -->
+
+        <div id="scoresEvent" class="scores-event" style="display: none;"><img
+                src="https://statics3.skyexch.bike/images/transparent.gif"></div>
+
+        <!-- Tab Market -->
+        <ul id="tabMarketList" class="tab-HS" style="display: none;"></ul>
+
+        <li id="tabMarketTemplate" style="display: none;"><a id="tabName" class="" style="cursor:pointer;">Win</a></li>
+
+        <div class="game-info-wrap">
+            <!-- Game Information -->
+            <ul class="game-info">
+                <li id="infoLive" class="info-live" style="display: none;"><a class="btn-live"><img class="icon-live"
+                            src="https://statics3.skyexch.bike/images/transparent.gif">Live</a></li>
+                <li id="gameInfoDate"><img class="icon-time"
+                        src="https://statics3.skyexch.bike/images/transparent.gif">Thu 9 Jun, --:--</li>
+                <!-- <li><img class="icon-live" src="/images/transparent.gif" />Live</li> -->
+                <!-- <li><img class="icon-irun" src="/images/transparent.gif" />In-Play</li> -->
+                <!-- <li><img class="icon-cashout" src="/images/transparent.gif" />Cash Out</li> -->
+                <!-- Low Liquidity Tag -->
+            </ul>
+
+            <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+
+            <dl id="minMaxBox" class="fancy-info" style="display: none;">
+                <dt id="minMaxDt" style="display: none;">Min/Max</dt>
+                <dt id="maxDt" style="display: none;">Max</dt>
+                <dd id="minMaxInfo">0 / 0</dd>
+            </dl>
+
+
+            <div id="fancyBetRulesWrap" class="rules-wrap" style="display: none;">
+                <h3 id="fancyBetHeader">Rules of Fancy Bets</h3>
+                <h3 id="electionHeader" style="display: none;">Rules of Election Fancy Bets</h3>
+                <div class="rules-content">
+                    <ol id="fancyBetRules" name="fancyBetRules">
+                    </ol>
+                    <ol id="electionRules" style="display: none;">
+                        <li>Election result declared by Election Commission of India will be valid in our Exchange.</li>
+                        <li>Accidental issues in Election will Not Be counted in our Exchange.</li>
+                    </ol>
+                </div>
+                <ul class="btn-wrap break">
+                    <li><a class="btn" onclick="javascript: $j('[id^=fancyBetRulesWrap]').fadeOut();">OK</a></li>
+                </ul>
+            </div>
+
+            <div id="sportsBookRulesWrap_1" class="rules-wrap" style="display: none;">
+
+                <h3 id="sportsbookRulesTitle">Rules of Premium Tennis</h3>
+                <div class="rules-content">
+                    <ol id="owTennisRulesContent" style="display: none;">
+                        <li>Handicap
+                            <ul>
+                                <li>Set Handicap betting are settle based on the Sets</li>
+                                <li>For Tennis Set hdp betting, the player you wager on must cover/beat the set Spread.
+                                    This means that the favored player must win by
+                                    more than the outlined number of sets or the underdog will receive that number of
+                                    sets as a head start. In the above exmaple, If you
+                                    wager on Andreas Seppi +1.5, he would need to win the match by any score or
+                                    alternately lose by 1 set. If you wager on Daniil Medvedec
+                                    -1.5, he would need to win by 2 set .
+                                </li>
+                                <li>If the scheduled number of sets required to win a match is changed from that
+                                    originally scheduled then all bets will be void, except
+                                    for those that have been unconditionally determined.
+                                </li>
+                                <li>All bets will be consider void if the match is not completed.</li>
+                            </ul>
+                        </li>
+                        <li>Over/Under
+                            <ul>
+                                <li>Game Total settle based on the total number of Games played of the match.</li>
+                                <li>All bets will be consider void if the match is not completed.</li>
+                            </ul>
+                        </li>
+                        <li>Money Line
+                            <ul>
+                                <li>Money line markets refer to the winner of the match or specified set.</li>
+                                <li>If a player does not start a tournament or match , disqualified, retires during the
+                                    match, then all bets on that player will be
+                                    void.
+                                </li>
+                                <li>If a match is postponed or suspended then all bets are still considered valid if the
+                                    match is completed.</li>
+                                <li>All bets will still be considered valid regardless of any change of venue or court
+                                    surface (including moving matches from outdoor to
+                                    indoor courts or vice versa).
+                                </li>
+                                <li>All bets will be consider void if the match is not completed.</li>
+                            </ul>
+                        </li>
+                        <li>Game Handicap (Tennis)
+                            <ul>
+                                <li>Game Hdandicap betting are settled based on Games.</li>
+                                <li>For Tennis Game Hdp betting , the player you wager on must cover/beat the game
+                                    spread. This means that the favored player must win by
+                                    more than the outlined number of games or the underdog will receive that number of
+                                    games as a head start. In the above example, if you
+                                    wager on Andreas Seppi +3.5, he would need to win the match by any score or
+                                    alternately lose by 3 games or less. If you wager on
+                                    Daniil Medvedev -3.5, he would need to win by 4 games or more.
+                                </li>
+                                <li>All bets will be consider void if the match is not completed.</li>
+                            </ul>
+                        </li>
+                        <li>Set x Winner (Tennis)
+                            <ul>
+                                <li>Set X Winner refers to the result of the specified set. All bets will be considered
+                                    void if the specified set is not completed.</li>
+                            </ul>
+                        </li>
+                        <li>Set x Total Game O/U (Tennis)
+                            <ul>
+                                <li>Set X Total Game O/U refers to total Game of the specified set. All bets will be
+                                    considered void if the specified set is not
+                                    completed.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <ol id="owSoccerRulesContent" style="display: none;">
+                        <li>FT.1X2:1X2 means betting in any one of three possible winning outcomes for an Event. 1
+                            refers to the team that is named first (usually the
+                            home team); X refers to the game resulting in a draw or tie; 2 refers to the team that is
+                            named second (usually the away team).
+                        </li>
+                        <li>1H 1X2:1st Half 1X2 means betting in any one of three possible winning outcomes of the first
+                            half for an Event. 1 refers to the team that is
+                            named first (usually the home team); X refers to the game resulting in a draw or tie; 2
+                            refers to the team that is named second (usually the
+                            away team).
+                        </li>
+                        <li>Over/Under: Over/Under means betting that is determined by the total number of points
+                            (goals, games etc) in the final result of an Event. If
+                            the total is more than the Over/Under pre-designated line then the winning result is Over;
+                            if the total is less than the Over/Under
+                            pre-designated line then the winning result is Under.
+                        </li>
+                        <li>1H Over/Under: 1st Half Over/Under means betting that is determined by the total number of
+                            points in the result of the first half of an Event.
+                            If the total is more than the Over/Under pre-designated line then the winning result is
+                            Over; if the total is less than the Over/Under
+                            pre-designated line then the winning result is Under.
+                        </li>
+                        <li>
+                            Over/Under Guideline:
+                            <ul style="list-style-type: lower-roman">
+                                <li>Goal line under 2
+                                    <div>
+                                        Bets win if there is either 0 or 1 goal scored in the match. If there are two
+                                        goals exactly then the stake is returned. Bets lose
+                                        if there are three or more goals scored in the match.
+                                    </div>
+                                </li>
+
+                                <li>Goal line over 2
+                                    <div>
+                                        Bets win if there are three or more goals scored in the match. If there are two
+                                        goals exactly the stake is returned. Bets lose if
+                                        there is 0 or 1 goal scored in the match.
+                                    </div>
+                                </li>
+
+                                <li>Goal line under 2.25
+                                    <div>
+                                        Bets win if there is either 0 or 1 goal scored in the match. If there are two
+                                        goals exactly half the stake will win and half will
+                                        be returned. Bets lose if there are three or more goals scored in the match.
+                                    </div>
+                                </li>
+                                <li>Goal line over 2.25
+                                    <div>
+                                        Bets win if there are three or more goals scored in the match. If there are two
+                                        goals exactly half the stake will be returned and
+                                        half will be lost. Bets lose if there is 0 or 1 goal scored in the match.
+                                    </div>
+                                </li>
+                                <li>Goal line under 2.5
+                                    <div>
+                                        Bets win if there are 0, 1 or 2 goals scored in the match. Bets lose if there
+                                        are three or more goals scored in the match.
+                                    </div>
+                                </li>
+                                <li>Goal line over 2.5
+                                    <div>
+                                        Bets win if there are three or more goals scored in the match. Bets lose if
+                                        there are 0, 1 or 2 goals scored in the match.
+                                    </div>
+                                </li>
+                                <li>Goal line under 2.75
+                                    <div>
+                                        Bets win if there are 0, 1 or 2 goals scored in the match. If there are three
+                                        goals exactly half the stake will be returned and
+                                        half will be lost. Bets lose if there are four or more goals scored in the
+                                        match.
+                                    </div>
+                                </li>
+                                <li>Goal line over 2.75
+                                    <div>
+                                        Bets win if there are four or more goals scored in the match. If there are three
+                                        goals exactly half the stake will win and half
+                                        will be returned. Bets lose if there are 0, 1 or 2 goals scored in the match.
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li>Double Chance: The following options are available:
+                            <ul>
+                                <li>1 or X - If the result is either a home or draw then bets on this option are
+                                    winners.</li>
+                                <li>X or 2 - If the result is either a draw or away then bets on this option are
+                                    winners.</li>
+                                <li>1 or 2 - If the result is either a home or away then bets on this option are
+                                    winners.</li>
+                                <li>If a match is played at a neutral venue the team listed first is deemed the home
+                                    team for betting purposes.</li>
+                            </ul>
+                        </li>
+                        <li>Odd/Even: Odd/Even means betting that is determined by whether the total number of points
+                            (goals, games etc) in the final result of an Event
+                            is Odd or Even.
+                        </li>
+                        <li>1H Odd/Even: 1st Half Odd/Even means betting that is determined by whether the total number
+                            of points at the end of the first half of an Event
+                            is Odd or Even. 1st half bets will be void if an Event is abandoned before the end of the
+                            first half. But if an Event is abandoned after the
+                            end of the first half, all 1st half bets will be valid.
+                        </li>
+                        <li>Handicap: Handicap means betting when one competitor or team receives a virtual head start
+                            (effectively leading by that head start before the
+                            Event begins). The winner is the competitor or team with the better score after adding the
+                            given handicap to the result. Remaining Handicap
+                            rules are set out in the Specific Event Betting Rules.
+                        </li>
+                        <li>1H Handicap: 1st Half Handicap means betting on the team with the better score after adding
+                            the given handicap to the result of the first half
+                            of an Event.
+                        </li>
+                        <li>Correct Score (AOS) :
+                            <ul>
+                                <li>Correct Score means betting to predict the final score at the end of full-time.</li>
+                                <li>First Half Correct Score means betting to predict the final score at the end of
+                                    First Half.</li>
+                                <li>Correct Score to win "AOS" means the selected team must win to a score not listed in
+                                    the selection.</li>
+                                <li>Example:
+                                    <ul>
+                                        <li>Result for 5-0UP - 5:1, 6:2 and etc (Lose) / 5:0, 6:1 and etc (Win)</li>
+                                        <li>Result for 0-5UP - 1:5, 2:6 and etc (Lose) / 0:5, 1:6 and etc (Win)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>E-Soccer bets whenever applicable, are governed by the same rules for bets placed on real
+                            sporting events. The Company provides information
+                            (e.g. neutral ground, Red card, timer, statistical information, dates, commencement, etc) as
+                            a service and accepts no liability whatsoever.
+                            The timer and red card notices are given for reference purposes only.
+                        </li>
+                        <li>In case there is a technical issue or malfunction in a match, all placed bets will be voided
+                            and refunded in accordance with our general
+                            betting rules and regulations.
+                        </li>
+                        <li>The Company reserves its right to void any bet when it deems necessary under the
+                            circumstances. The decision of the Company with respect to
+                            any bet is final.
+                        </li>
+                    </ol>
+                </div>
+                <ul class="btn-wrap break">
+                    <li><a onclick="$j('[id^=sportsBookRulesWrap_1]').fadeOut()" class="btn" href="#">OK</a></li>
+                </ul>
+            </div>
+
+            <a id="openStreaming" class="open-tv-wrap" style="display: none;">Live</a>
+
+            <dl class="game-matched">
+                <dt id="gameMatchedName">Matched
+                </dt>
+                <dd id="gameMatched">USD $--.00</dd>
+            </dl>
+        </div>
+    </div>
+    <div id="overWrap" class="over-wrap" style="height: calc(100% - 26px)">
+
+        <div class="game-head">
+            <!-- Message -->
+            <div id="message" class="message-wrap success" style="display:none">
+                <a class="btn-close" href="#">Close</a>
+                <p>Your cash out was successful !</p>
+            </div>
+
+            <a style="cursor: pointer" class="refresh">Refresh</a>
+
+            <!-- Use in Horsebook or Golf -->
+            <table class="game-team">
+                <tbody>
+                    <tr>
+                        <td class="game-name pin-out">
+                            Binary
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="game-info-wrap">
+                <!-- Game Information -->
+
+                <!-- Rules of Fancy Bets -->
+                <div id="binaryRulesWrap" class="rules-wrap">
+                    <h3>Rules of Binary</h3>
+
+                    <div class="rules-content">
+                        <ol>
+                            <li>All session's bets will be confirmed at market rate only.</li>
+                            <li>All session's settlement price means result can be checked from exchange's official
+                                sites.</li>
+                            <li>All session's result will be settlement price provided by exchange after market close.
+                            </li>
+                            <li>Every product has two types of prices SPOT and FUTURE. We provide only near month's
+                                FUTURE price in Binary
+                                Session. You can check it from the official website of that product.
+                            </li>
+                            <li>Session's timings : NFY, B-NFY, AXS, ICI, RIL, SBI, TT STL - Monday to Friday 09:20 a.m.
+                                to 3:30 p.m. GOLD,
+                                SILVER, CRUDE - Monday to Friday 09:05 a.m. to 11:30 p.m. CMX CRUDE, DOWJONES, NASDAQ,
+                                SNP - Monday to Friday 7:30
+                                p.m. to 12:00 a.m.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <ul class="btn-wrap break">
+                        <li><a class="btn" href="javascript:$j('#binaryRulesWrap').fadeOut()">OK</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Table -->
+        <div id="financialTableTemplate" class="bets-wrap fancy_bet " style="display: none;"><!-- zone-1 -->
+            <!-- daily-head tab -->
+            <div id="financialHead" class="gametab-head">
+                <h4 id="dailyTabHead">
+                    <span>
+                        Daily<strong></strong>
+                    </span>
+                </h4>
+                <a class="btn_rules" href="javascript:$j('#binaryRulesWrap').fadeIn()"></a>
+            </div>
+            <table id="financialMarketList" class="bets"><!-- disabled cooldown -->
+                <colgroup>
+                    <col span="1" width="280">
+                    <col span="1" width="70">
+                    <col span="1" width="70">
+                    <col span="1" width="70">
+                    <col span="1" width="70">
+                    <col span="1" width="70">
+                    <col span="1" width="70">
+                </colgroup>
+
+                <tbody>
+                    <tr class="colgroup-adjust">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="bet-all">
+                        <td colspan="3"></td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td class="refer-book" colspan="2"></td>
+                    </tr>
+
+
+                    <tr id="suspendTemplate" class="fancy-suspend-tr" style="display: none;">
+                        <th></th>
+                        <td colspan="2"></td>
+                        <td class="fancy-suspend-td" colspan="2">
+                            <div id="suspendClass" class="fancy-suspend"><span id="info">Suspend</span></div>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+
+                    <tr id="delayTemplate" class="fancy-suspend-tr" style="display: none;">
+                        <th></th>
+                        <td colspan="2"></td>
+                        <td class="fancy-suspend-td" colspan="2">
+                            <div class="fancy-suspend"><span id="info">Delay Betting</span></div>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+
+
+                    <tr id="financialMarketTemplate" style="display: none;">
+                        <th colspan="3">
+                            <dl class="fancy-th-layout">
+                                <dt>
+                                    <p id="marketName"><a href=""></a></p>
+                                    <span id="before" class="win" style="display: none;"></span>
+                                    <span id="after" class="to-lose" style="display: none;"></span>
+                                </dt>
+                                <dd class="dd-tips">
+                                    <ul class="fancy-tips">
+                                        <li id="remarkFirstRow" style="display: none;"></li>
+                                        <li id="remarkSecondRow" style="display: none;"></li>
+                                    </ul>
+                                    <a id="financialBookBtn" class="btn-book" style="display: none;">Book</a>
+                                </dd>
+                            </dl>
+                        </th>
+                        <td id="lay_1" class="lay-1">
+                            <a id="priceInfo" style="cursor: pointer"><span></span></a>
+                        </td>
+                        <td id="back_1" class="back-1">
+                            <a id="priceInfo" style="cursor: pointer"><span></span></a>
+                        </td>
+                        <td class="td-fancy_merge" colspan="2">
+                            <dl class="fancy-info">
+                                <dt>Min/Max</dt>
+                                <dd id="minMax"></dd>
+                            </dl>
+                            <dl class="fancy-info">
+                                <dt id="rebateName">Rebate</dt>
+                                <dd id="rebate"></dd>
+                            </dl>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="financialTable_665" class="bets-wrap fancy_bet " style=""><!-- zone-1 -->
+            <!-- daily-head tab -->
+            <div id="financialHead" class="gametab-head">
+                <h4 id="dailyTabHead" class="select">
+                    <span>
+                        Daily<strong>2023-03-13</strong>
+                    </span>
+                </h4>
+                <a class="btn_rules" href="javascript:$j('#binaryRulesWrap').fadeIn()"></a>
+            </div>
+            <table id="financialMarketList" class="bets"><!-- disabled cooldown -->
+                <colgroup>
+                    <col span="1" width="280">
+                    <col span="1" width="70">
+                    <col span="1" width="70">
+                    <col span="1" width="70">
+                    <col span="1" width="70">
+                    <col span="1" width="70">
+                    <col span="1" width="70">
+                </colgroup>
+
+                <tbody>
+                    <tr class="colgroup-adjust">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="bet-all">
+                        <td colspan="3"></td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td class="refer-book" colspan="2"></td>
+                    </tr>
+
+
+                    <tr id="suspendTemplate" class="fancy-suspend-tr" style="display: none;">
+                        <th></th>
+                        <td colspan="2"></td>
+                        <td class="fancy-suspend-td" colspan="2">
+                            <div id="suspendClass" class="fancy-suspend"><span id="info">Suspend</span></div>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+
+                    <tr id="delayTemplate" class="fancy-suspend-tr" style="display: none;">
+                        <th></th>
+                        <td colspan="2"></td>
+                        <td class="fancy-suspend-td" colspan="2">
+                            <div class="fancy-suspend"><span id="info">Delay Betting</span></div>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+
+
+                    <tr id="financialMarketTemplate" style="display: none;">
+                        <th colspan="3">
+                            <dl class="fancy-th-layout">
+                                <dt>
+                                    <p id="marketName"><a href=""></a></p>
+                                    <span id="before" class="win" style="display: none;"></span>
+                                    <span id="after" class="to-lose" style="display: none;"></span>
+                                </dt>
+                                <dd class="dd-tips">
+                                    <ul class="fancy-tips">
+                                        <li id="remarkFirstRow" style="display: none;"></li>
+                                        <li id="remarkSecondRow" style="display: none;"></li>
+                                    </ul>
+                                    <a id="financialBookBtn" class="btn-book" style="display: none;">Book</a>
+                                </dd>
+                            </dl>
+                        </th>
+                        <td id="lay_1" class="lay-1">
+                            <a id="priceInfo" style="cursor: pointer"><span></span></a>
+                        </td>
+                        <td id="back_1" class="back-1">
+                            <a id="priceInfo" style="cursor: pointer"><span></span></a>
+                        </td>
+                        <td class="td-fancy_merge" colspan="2">
+                            <dl class="fancy-info">
+                                <dt>Min/Max</dt>
+                                <dd id="minMax"></dd>
+                            </dl>
+                            <dl class="fancy-info">
+                                <dt id="rebateName">Rebate</dt>
+                                <dd id="rebate"></dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr id="suspend_3481" class="fancy-suspend-tr" style="display: none;" status="1">
+                        <th></th>
+                        <td colspan="2"></td>
+                        <td class="fancy-suspend-td" colspan="2">
+                            <div id="suspendClass" class=""><span id="info">Suspend</span></div>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr id="financialMarket_3_665_3481" style="" status="1">
+                        <th colspan="3">
+                            <dl class="fancy-th-layout">
+                                <dt>
+                                    <p id="marketName"><a href=""></a>CRUDEOIL</p>
+                                    <span id="before" class="win" style="display: none;"></span>
+                                    <span id="after" class="to-lose" style="display: none;"></span>
+                                </dt>
+                                <dd class="dd-tips">
+                                    <ul class="fancy-tips">
+                                        <li id="remarkFirstRow" style="">23:30 PM</li>
+                                        <li id="remarkSecondRow" style="display: none;"></li>
+                                    </ul>
+                                    <a id="financialBookBtn" class="btn-book" style="display: none;">Book</a>
+                                </dd>
+                            </dl>
+                        </th>
+                        <td id="lay_1" class="lay-1 spark">
+                            <a id="priceInfo" style="cursor: pointer">6326<span>100</span></a>
+                        </td>
+                        <td id="back_1" class="back-1 spark">
+                            <a id="priceInfo" style="cursor: pointer">6329<span>100</span></a>
+                        </td>
+                        <td class="td-fancy_merge" colspan="2">
+                            <dl class="fancy-info">
+                                <dt>Min/Max</dt>
+                                <dd id="minMax"> 5.00 / 800.00</dd>
+                            </dl>
+                            <dl class="fancy-info">
+                                <dt id="rebateName" style="display: none;">Rebate</dt>
+                                <dd id="rebate" style="display: none;"></dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr id="suspend_3482" class="fancy-suspend-tr" style="display: none;" status="1">
+                        <th></th>
+                        <td colspan="2"></td>
+                        <td class="fancy-suspend-td" colspan="2">
+                            <div id="suspendClass" class=""><span id="info">Suspend</span></div>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr id="financialMarket_3_665_3482" style="" status="1">
+                        <th colspan="3">
+                            <dl class="fancy-th-layout">
+                                <dt>
+                                    <p id="marketName"><a href=""></a>GOLD</p>
+                                    <span id="before" class="win" style="display: none;"></span>
+                                    <span id="after" class="to-lose" style="display: none;"></span>
+                                </dt>
+                                <dd class="dd-tips">
+                                    <ul class="fancy-tips">
+                                        <li id="remarkFirstRow" style="">23:30 PM</li>
+                                        <li id="remarkSecondRow" style="display: none;"></li>
+                                    </ul>
+                                    <a id="financialBookBtn" class="btn-book" style="display: none;">Book</a>
+                                </dd>
+                            </dl>
+                        </th>
+                        <td id="lay_1" class="lay-1">
+                            <a id="priceInfo" style="cursor: pointer">56475<span>100</span></a>
+                        </td>
+                        <td id="back_1" class="back-1">
+                            <a id="priceInfo" style="cursor: pointer">56487<span>100</span></a>
+                        </td>
+                        <td class="td-fancy_merge" colspan="2">
+                            <dl class="fancy-info">
+                                <dt>Min/Max</dt>
+                                <dd id="minMax"> 5.00 / 800.00</dd>
+                            </dl>
+                            <dl class="fancy-info">
+                                <dt id="rebateName" style="display: none;">Rebate</dt>
+                                <dd id="rebate" style="display: none;"></dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr id="suspend_3483" class="fancy-suspend-tr" style="display: none;" status="1">
+                        <th></th>
+                        <td colspan="2"></td>
+                        <td class="fancy-suspend-td" colspan="2">
+                            <div id="suspendClass" class=""><span id="info">Suspend</span></div>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr id="financialMarket_3_665_3483" style="" status="1">
+                        <th colspan="3">
+                            <dl class="fancy-th-layout">
+                                <dt>
+                                    <p id="marketName"><a href=""></a>SILVER</p>
+                                    <span id="before" class="win" style="display: none;"></span>
+                                    <span id="after" class="to-lose" style="display: none;"></span>
+                                </dt>
+                                <dd class="dd-tips">
+                                    <ul class="fancy-tips">
+                                        <li id="remarkFirstRow" style="">23:30 PM</li>
+                                        <li id="remarkSecondRow" style="display: none;"></li>
+                                    </ul>
+                                    <a id="financialBookBtn" class="btn-book" style="display: none;">Book</a>
+                                </dd>
+                            </dl>
+                        </th>
+                        <td id="lay_1" class="lay-1 spark">
+                            <a id="priceInfo" style="cursor: pointer">63529<span>100</span></a>
+                        </td>
+                        <td id="back_1" class="back-1">
+                            <a id="priceInfo" style="cursor: pointer">63544<span>100</span></a>
+                        </td>
+                        <td class="td-fancy_merge" colspan="2">
+                            <dl class="fancy-info">
+                                <dt>Min/Max</dt>
+                                <dd id="minMax"> 5.00 / 800.00</dd>
+                            </dl>
+                            <dl class="fancy-info">
+                                <dt id="rebateName" style="display: none;">Rebate</dt>
+                                <dd id="rebate" style="display: none;"></dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr id="suspend_3484" class="fancy-suspend-tr" style="display: none;" status="1">
+                        <th></th>
+                        <td colspan="2"></td>
+                        <td class="fancy-suspend-td" colspan="2">
+                            <div id="suspendClass" class=""><span id="info">Suspend</span></div>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr id="financialMarket_3_665_3484" style="" status="1">
+                        <th colspan="3">
+                            <dl class="fancy-th-layout">
+                                <dt>
+                                    <p id="marketName"><a href=""></a>BANKNIFTY</p>
+                                    <span id="before" class="win" style="display: none;"></span>
+                                    <span id="after" class="to-lose" style="display: none;"></span>
+                                </dt>
+                                <dd class="dd-tips">
+                                    <ul class="fancy-tips">
+                                        <li id="remarkFirstRow" style="">15:30 PM</li>
+                                        <li id="remarkSecondRow" style="display: none;"></li>
+                                    </ul>
+                                    <a id="financialBookBtn" class="btn-book" style="display: none;">Book</a>
+                                </dd>
+                            </dl>
+                        </th>
+                        <td id="lay_1" class="lay-1 spark">
+                            <a id="priceInfo" style="cursor: pointer">40112<span>100</span></a>
+                        </td>
+                        <td id="back_1" class="back-1 spark">
+                            <a id="priceInfo" style="cursor: pointer">40122<span>100</span></a>
+                        </td>
+                        <td class="td-fancy_merge" colspan="2">
+                            <dl class="fancy-info">
+                                <dt>Min/Max</dt>
+                                <dd id="minMax"> 5.00 / 800.00</dd>
+                            </dl>
+                            <dl class="fancy-info">
+                                <dt id="rebateName" style="display: none;">Rebate</dt>
+                                <dd id="rebate" style="display: none;"></dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr id="suspend_3485" class="fancy-suspend-tr" style="display: none;" status="1">
+                        <th></th>
+                        <td colspan="2"></td>
+                        <td class="fancy-suspend-td" colspan="2">
+                            <div id="suspendClass" class=""><span id="info">Suspend</span></div>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr id="financialMarket_3_665_3485" style="" status="1">
+                        <th colspan="3">
+                            <dl class="fancy-th-layout">
+                                <dt>
+                                    <p id="marketName"><a href=""></a>NIFTY</p>
+                                    <span id="before" class="win" style="display: none;"></span>
+                                    <span id="after" class="to-lose" style="display: none;"></span>
+                                </dt>
+                                <dd class="dd-tips">
+                                    <ul class="fancy-tips">
+                                        <li id="remarkFirstRow" style="">15:30 PM</li>
+                                        <li id="remarkSecondRow" style="display: none;"></li>
+                                    </ul>
+                                    <a id="financialBookBtn" class="btn-book" style="display: none;">Book</a>
+                                </dd>
+                            </dl>
+                        </th>
+                        <td id="lay_1" class="lay-1 spark">
+                            <a id="priceInfo" style="cursor: pointer">17332<span>100</span></a>
+                        </td>
+                        <td id="back_1" class="back-1">
+                            <a id="priceInfo" style="cursor: pointer">17336<span>100</span></a>
+                        </td>
+                        <td class="td-fancy_merge" colspan="2">
+                            <dl class="fancy-info">
+                                <dt>Min/Max</dt>
+                                <dd id="minMax"> 5.00 / 800.00</dd>
+                            </dl>
+                            <dl class="fancy-info">
+                                <dt id="rebateName" style="display: none;">Rebate</dt>
+                                <dd id="rebate" style="display: none;"></dd>
+                            </dl>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <table style="display: none;">
+            <tbody>
+
+                <tr id="financialBetTemplate" class="fancy-quick-tr" style="display: none;">
+                    <td colspan="7">
+                        <dl id="classWrap" class="quick_bet-wrap slip-back">
+                            <dt id="financialBetHeader" class="">
+
+                                <span id="financialAcceptCheck" class="bet-check">
+                                    <input id="financialAcceptAnyOdds" type="checkbox">
+                                    <label for="financialAcceptAnyOdds">Accept Any Price</label>
+                                </span>
+
+                            </dt>
+                            <dd class="col-btn"><a id="cancel" class="btn" style="cursor:pointer;">Cancel
+                                </a></dd>
+                            <dd id="oddsHeader" class="col-odd">
+                                <ul class="quick-bet-confirm">
+                                    <li id="price"></li>
+                                    <li id="odds" class="quick-bet-confirm-title"></li>
+                                </ul>
+                            </dd>
+                            <dd class="col-stake">
+                                <input id="inputStake" type="text" value="">
+                            </dd>
+                            <dd class="col-send">
+                                <a id="placeBet" class="btn-send disable" style="cursor:pointer;">Place Bets
+                                </a>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+
+
+                <tr id="financialBarTemplate" class="fancy-quick-tr" style="display: none;">
+                    <td colspan="7">
+                        <dl class="quick_bet-wrap quick_bet-progress">
+                            <dd id="progressBar" class="progress-bar" style="width: 0%;"></dd>
+                            <dd class="progress-bar-txt">Placing your bets, Please wait <span id="secRemain">0 sec
+                                    remainingâ¦</span></dd>
+                        </dl>
+                    </td>
+                </tr>
+
+
+                <tr id="financialBetMessageTemplate" class="fancy-quick-tr" style="display: none;">
+                    <td colspan="7">
+                        <dl id="classWrap" class="quick_bet-wrap quick_bet-message success">
+                            <dd id="info">
+                                <strong id="header">Bet Matched</strong>
+                                USD$ at odds Profit:
+                                <a id="close" class="btn-close" style="cursor:pointer;">Close</a>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="one_click-wrap">
+
+        <div class="overlay" name="oneClickBetDialog" style="display:none;"></div>
+
+
+        <div id="oneClickBetDialog" class="dialog-wrap" name="oneClickBetDialog" style="display:none;">
+            <h4>One Click Bet ON
+            </h4>
+            <div class="dialog-content">
+                <p>Stake selected will be placed immediately once you click on the market odds.
+                    <br><span class="attention">
+                        Attention: Back/Lay at your own risk</span>
+                </p>
+            </div>
+            <ul class="btn-wrap break">
+
+                <li><a id="ok" class="btn-send" style="cursor:pointer;">OK</a></li>
+            </ul>
+            <img class="arrow-dialog" src="https://statics3.skyexch.bike/images/transparent.gif">
+        </div>
+
+
+        <div id="oneClickBetStakeBox" class="one_click-setting" name="oneClickBetStakeBox" style="display:none;">
+            <h4>One Click Bet Stake
+            </h4>
+            <ul class="one_click-stake">
+                <li><a class="btn select" name="betStake" index="0" style="cursor:pointer;">10</a></li>
+                <li><a class="btn" name="betStake" index="1" style="cursor:pointer;">30</a></li>
+                <li><a class="btn" name="betStake" index="2" style="cursor:pointer;">50</a></li>
+                <li><a class="btn" name="betStake" index="3" style="cursor:pointer;">100</a></li>
+            </ul>
+            <a id="edit" class="a-edit" style="cursor:pointer;">Edit<img
+                    src="https://statics3.skyexch.bike/images/transparent.gif"></a>
+        </div>
+
+
+        <div id="editOneClickBetStakeBox" class="one_click-setting" name="oneClickBetStakeBox" style="display:none;">
+            <h4>Edit One Click Bet Stake
+            </h4>
+            <ul class="one_click-stake">
+                <li><input type="text" name="editBetStake" index="0" value=""></li>
+                <li><input type="text" name="editBetStake" index="1" value=""></li>
+                <li><input type="text" name="editBetStake" index="2" value=""></li>
+                <li><input type="text" name="editBetStake" index="3" value=""></li>
+            </ul>
+            <a id="save" class="btn-send" style="cursor:pointer;">Save
+            </a>
+        </div>
+    </div>
+
+
+</div>
+
+<app-aside></app-aside>

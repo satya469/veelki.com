@@ -1,0 +1,168 @@
+<app-profile-sidebar></app-profile-sidebar>
+<div id="report" class="col-center report">
+
+
+    <!-- Loading Wrap -->
+    <div id="loading" class="loading-wrap" style="display: none;">
+        <ul class="loading">
+            <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+            <li>Loading...
+            </li>
+            <br>
+            <li><span id="progress"></span></li>
+        </ul>
+    </div>
+
+    <!-- Message -->
+    <div id="message" class="message-wrap success">
+        <a class="btn-close">Close</a>
+        <p></p>
+    </div>
+
+    <script language="JavaScript" type="text/javascript">
+        (function () {
+            $j('.btn-close').click(function () {
+                $j('#message').hide();
+            });
+        })();
+    </script>
+    <h2>Activity Log
+    </h2>
+    <table style="display:none">
+        <tbody>
+            <tr id="tempTr">
+                <td class="align-L" id="loginDate"></td>
+                <td class="align-L" id="loginMessage"><span class="green"></span></td>
+                <td id="ipAddress"></td>
+                <td id="isp"></td>
+                <td id="location"></td>
+                <td id="userAgentType"></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Report Table -->
+    <table class="table01">
+        <tbody>
+            <tr>
+                <th width="15%" class="align-L">Login Date &amp; Time
+                </th>
+                <th width="15%" class="align-L">Login Status
+                </th>
+                <th width="12%">IP Address
+                </th>
+                <th width="28%">ISP
+                </th>
+                <th width="">City/State/Country
+                </th>
+                <th width="">User Agent Type
+                </th>
+            </tr>
+        </tbody>
+        <tbody id="content">
+            <tr id="tempTr">
+                <td class="align-L" id="loginDate">2023-03-13 10:46:57</td>
+                <td class="align-L green" id="loginMessage">Login Success</td>
+                <td id="ipAddress">27.58.123.16</td>
+                <td id="isp">Bharti Airtel Ltd.</td>
+                <td id="location">Suratgarh, Rajasthan, IN</td>
+                <td id="userAgentType">Browser</td>
+            </tr>
+            <tr id="tempTr">
+                <td class="align-L" id="loginDate">2023-03-11 22:09:00</td>
+                <td class="align-L green" id="loginMessage">Login Success</td>
+                <td id="ipAddress">182.69.100.242</td>
+                <td id="isp">Bharti Airtel Ltd.</td>
+                <td id="location">Jaipur, Rajasthan, IN</td>
+                <td id="userAgentType">Browser</td>
+            </tr>
+            <tr id="tempTr">
+                <td class="align-L" id="loginDate">2023-03-09 22:01:44</td>
+                <td class="align-L green" id="loginMessage">Login Success</td>
+                <td id="ipAddress">223.190.15.188</td>
+                <td id="isp">Bharti Airtel Ltd.</td>
+                <td id="location">Jaipur, Rajasthan, IN</td>
+                <td id="userAgentType">Browser (mobile)</td>
+            </tr>
+            <tr id="tempTr">
+                <td class="align-L" id="loginDate">2023-03-09 21:44:32</td>
+                <td class="align-L green" id="loginMessage">Login Success</td>
+                <td id="ipAddress">223.190.15.188</td>
+                <td id="isp">Bharti Airtel Ltd.</td>
+                <td id="location">Jaipur, Rajasthan, IN</td>
+                <td id="userAgentType">Browser</td>
+            </tr>
+            <tr id="tempTr">
+                <td class="align-L" id="loginDate">2023-03-08 20:05:10</td>
+                <td class="align-L green" id="loginMessage">Login Success</td>
+                <td id="ipAddress">103.87.58.128</td>
+                <td id="isp">Globe Vision</td>
+                <td id="location">Jaipur, Rajasthan, IN</td>
+                <td id="userAgentType">Browser</td>
+            </tr>
+            <tr id="tempTr">
+                <td class="align-L" id="loginDate">2023-03-08 20:03:38</td>
+                <td class="align-L green" id="loginMessage">Login Success</td>
+                <td id="ipAddress">103.87.58.128</td>
+                <td id="isp">Globe Vision</td>
+                <td id="location">Jaipur, Rajasthan, IN</td>
+                <td id="userAgentType">Browser</td>
+            </tr>
+            <tr id="tempTr">
+                <td class="align-L" id="loginDate">2023-03-08 20:01:07</td>
+                <td class="align-L green" id="loginMessage">Login Success</td>
+                <td id="ipAddress">103.87.58.128</td>
+                <td id="isp">Globe Vision</td>
+                <td id="location">Jaipur, Rajasthan, IN</td>
+                <td id="userAgentType">Browser</td>
+            </tr>
+            <tr id="tempTr">
+                <td class="align-L" id="loginDate">2023-03-08 12:54:59</td>
+                <td class="align-L green" id="loginMessage">Login Success</td>
+                <td id="ipAddress">42.105.236.108</td>
+                <td id="isp">Vodafone India Ltd.</td>
+                <td id="location">Mumbai, Maharashtra, IN</td>
+                <td id="userAgentType">Browser (mobile)</td>
+            </tr>
+            <tr id="tempTr">
+                <td class="align-L" id="loginDate">2023-03-08 12:53:42</td>
+                <td class="align-L green" id="loginMessage">Login Success</td>
+                <td id="ipAddress">42.105.236.108</td>
+                <td id="isp">Vodafone India Ltd.</td>
+                <td id="location">Mumbai, Maharashtra, IN</td>
+                <td id="userAgentType">Browser (mobile)</td>
+            </tr>
+            <tr id="tempTr">
+                <td class="align-L" id="loginDate">2023-03-08 12:49:21</td>
+                <td class="align-L green" id="loginMessage">Login Success</td>
+                <td id="ipAddress">106.196.9.25</td>
+                <td id="isp">Bharti Airtel Ltd.</td>
+                <td id="location">Ranaghat, West Bengal, IN</td>
+                <td id="userAgentType">Browser (mobile)</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Pages List -->
+
+    <script type="text/javascript" src="/js/util/PageUtil.js?v=20230310_1678444800000"></script>
+    <div>
+        <ul style="display: none">
+            <li id="prev"><a href="javascript:void(0);">Prev
+                </a></li>
+            <li id="next"><a href="javascript:void(0);">Next
+                </a></li>
+            <li id="pageNumber"><a href="javascript:void(0);"></a></li>
+            <li id="more"><a href="javascript:void(0);">...</a></li>
+            <input type="text" id="goToPageNumber" onkeyup="return PageHandler.validatePageNumber(this)" maxlength="6"
+                size="4">
+            <li><a id="goPageBtn">GO</a></li>
+        </ul>
+        <ul id="pageNumberContent" class="pages">
+            <li id="prev"><a href="javascript:void(0);" class="disable" style="pointer-events: none;">Prev
+                </a></li>
+            <li id="pageNumber"><a href="javascript:void(0);" class="select" style="pointer-events: none;">1</a></li>
+            <li id="next"><a href="javascript:void(0);" class="disable" style="pointer-events: none;">Next
+                </a></li>
+        </ul>
+    </div>
+
+</div>
