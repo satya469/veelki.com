@@ -1,25 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Veelki.Admin.Models;
+using Veelki.Data.Entities;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Veelki.Admin.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly UserManager<Users> _userManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(UserManager<Users> userManager)
         {
-            _logger = logger;
+            _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
+            var user = Request.Cookies["loginUserDetail"]!=null? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]):null; 
+            if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
             return View();
         }
 

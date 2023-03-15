@@ -1,0 +1,257 @@
+﻿@using Veelki.Data.Entities;
+@{
+    ViewData["Title"] = "TeamMarketWatch";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var betList = ViewBag.BetList as List<Bets>;
+}
+<style>
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        color: #3F4254;
+        background-color: #E4E6EF;
+    }
+
+    .betfair-tbl {
+        margin-bottom: 0;
+    }
+
+    .p-rltv {
+        position: relative;
+    }
+
+    table {
+        border-collapse: collapse;
+        background-color: transparent;
+    }
+
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+        padding: 8px;
+        line-height: 1.42857143;
+        vertical-align: top;
+        border-top: 1px solid #ddd;
+    }
+
+    .tbl-bets th {
+        padding: 5px;
+        border-top: none;
+        text-align: center;
+    }
+
+    .table td, .table th {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #c8ced3;
+    }
+
+    .show-xs {
+        display: none;
+    }
+
+    .table tbody + tbody {
+        border-top: 2px solid #c8ced3;
+    }
+
+    .tbl-bets .odd-row {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .odd-row .team-name {
+        text-align: left;
+        padding-left: 6px;
+    }
+
+    .tbl-bets td {
+        text-align: center;
+        font-size: 12x;
+        padding: 3px 0;
+        font-weight: 700;
+        border-top: none;
+    }
+
+    .back-1 {
+        background-color: #d7e8f4 !important;
+        border-left-color: #fff;
+    }
+
+    .lay-3 {
+        background-color: #f6e6ea !important;
+        border-left-color: #fff;
+    }
+
+    .back-2 {
+        background-color: #b7d5eb !important;
+        border-left-color: #fff;
+    }
+
+    .lay-2 {
+        background-color: #efd3d9 !important;
+        border-left-color: #fff;
+    }
+
+    .back-3 {
+        background-color: #72bbef !important;
+        border-left-color: #fff;
+    }
+
+    .lay-1 {
+        background-color: #faa9ba !important;
+        border-left-color: #fff;
+    }
+
+    .tbl-bets .odd-row td span {
+        display: block;
+        font-weight: 400;
+        font-size: 11px;
+    }
+
+    .minus-book {
+        color: #d0021b;
+        display: block;
+        font-weight: 700 !important;
+    }
+
+    .odd-row .team-name .title {
+        font-size: 12px;
+        display: block;
+        font-weight: 700;
+    }
+
+    .title {
+        font-size: 18px;
+        color: black;
+    }
+
+    .tableHeight {
+        max-height: 500px;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+</style>
+<div class="container">
+    <h2>Market Watch Details</h2>
+    <div class="row">
+        @if (ViewBag.MatchOdds != null)
+        {
+            foreach (var matchOdds in ViewBag.MatchOdds)
+            {
+                <div class="col-sm-6 tableHeight">
+
+                    <div class="title">@matchOdds.marketName</div>
+                    <div class="table-responsive">
+                        <table class="table tbl-bets betfair-tbl p-rltv">
+                            <tr style="background-color: #1e1e2d !important;color:white;">
+                                <th colspan="1"></th>
+                                <th colspan="3">Back</th>
+                                <th colspan="3">Lay</th>
+                            </tr>
+                            <tbody>
+                                @foreach (var runner in matchOdds.oddsData.runners)
+                                {
+                                    int b = 1;
+                                    int l = 1;
+                                    <tr style="position: relative;" class="odd-row">
+                                        <td class="team-name">
+                                            <span class="title"> @runner.runnerName</span>
+                                            <span class="minus-book"><i class="fa fa-arrow-right"></i> @runner.handicap <span class="BetvalueCls"></span></span>
+                                        </td>
+                                        @foreach (var backList in runner.price.back)
+                                        {
+                                            <td class="back-@b count"><a>@backList.price <span>@backList.size</span></a></td>
+                                            b++;
+                                        }
+                                        @foreach (var layList in runner.price.lay)
+                                        {
+                                            <td class="lay-@l count"><a>@layList.price <span>@layList.size</span></a></td>
+                                            l++;
+                                        }
+
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            }
+        }
+        <div class="col-sm-6 tableHeight">
+            <div class="title">User Online</div>
+            <table class="table">
+                <tr style="background-color: #1e1e2d !important;color:white;">
+                    <th>S.No.</th>
+                    <th colspan="2"></th>
+                    <th>User</th>
+                    <th>Runner</th>
+                    <th>Odds</th>
+                    <th>Stack</th>
+                    <th>P&L</th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>D</td>
+                        <td>C</td>
+                        <td>Demou</td>
+                        <td>asfsdf sf s fsd fds f</td>
+                        <td>53.00</td>
+                        <td>400</td>
+                        <td>400</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mt-10">
+        <div class="title">Bet List</div>
+        <div class="col-sm-12">
+            <table class="sportesTbl table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th>S NO.</th>
+                        <th>Tournament Name</th>
+                        <th>Type</th>
+                        <th>BetType</th>
+                        <th>OddsRequest</th>
+                        <th>AmountStake</th>
+                        <th>Status</th>
+                        <th>UserId</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (betList.Count() > 0)
+                    {
+                        int i = 1;
+                        foreach (var item in betList)
+                        {
+                            <tr>
+                                <td scope="row">@i</td>
+                                <td>
+                                    @item.Event
+                                </td>
+                                <td>@item.Type</td>
+                                <td>@item.BetType</td>
+                                <td>@item.OddsRequest</td>
+                                <td>@item.AmountStake</td>
+                                <td>@item.Status</td>
+                                <td>@item.UserId</td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section PageJs{
+    <script src="~/js/custom.js"></script>
+    <script type="text/javascript">
+
+    </script>
+}

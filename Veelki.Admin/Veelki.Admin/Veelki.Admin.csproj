@@ -1,16 +1,54 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>aspnet-Veelki.Admin-4F4A7C75-8B6A-4382-A87C-63E67A412293</UserSecretsId>
+    <UserSecretsId>aspnet-Veelki.Admin-08330986-C2FB-48A0-BB6A-01D4597153FC</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.24" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.24" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.24" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.24" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.24" />
+    <Compile Remove="wwwroot\assets\Img\**" />
+    <Compile Remove="wwwroot\assets\vendors\**" />
+    <Content Remove="wwwroot\assets\Img\**" />
+    <Content Remove="wwwroot\assets\vendors\**" />
+    <EmbeddedResource Remove="wwwroot\assets\Img\**" />
+    <EmbeddedResource Remove="wwwroot\assets\vendors\**" />
+    <None Remove="wwwroot\assets\Img\**" />
+    <None Remove="wwwroot\assets\vendors\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="3.3.7" />
+    <PackageReference Include="Bootstrap.Datepicker" Version="1.8.0.1" />
+    <PackageReference Include="jQuery" Version="3.3.1" />
+    <PackageReference Include="jQuery.Validation" Version="1.17.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.21" />
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="3.2.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Veelki.Core\Veelki.Core.csproj" />
+    <ProjectReference Include="..\Veelki.Data\Veelki.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\LogoImages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\images\download-loader.svg" />
+    <None Include="wwwroot\assets\images\insta-icon.svg" />
+    <None Include="wwwroot\assets\images\login-icon.svg" />
+    <None Include="wwwroot\assets\images\mike-phone.svg" />
+    <None Include="wwwroot\assets\images\phone-icon.svg" />
+    <None Include="wwwroot\assets\images\shear-icon.svg" />
+    <None Include="wwwroot\assets\images\sky-icon.svg" />
+    <None Include="wwwroot\assets\images\verifycode.gr" />
+    <None Include="wwwroot\assets\js\site.js" />
   </ItemGroup>
 
 </Project>

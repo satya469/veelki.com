@@ -1,0 +1,63 @@
+﻿@model List<RB444.Model.ViewModel.AccountStatementVM>
+@{
+    ViewData["Title"] = "AccountStatement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card card-custom">
+    <div class="card-body">
+        <!--begin: Datatable-->
+        <table class="table table-striped table-hover table-bordered table-head-custom" id="kt_datatable">
+            <thead style="background-color: #1e1e2d;">
+                <tr>
+                    <th>
+                        Date/Time
+                    </th>
+                    <th>
+                        Deposit
+                    </th>
+                    <th>
+                        Withdraw
+                    </th>
+                    <th>
+                        Balance
+                    </th>
+                    <th>
+                        Remark
+                    </th>
+                    <th>
+                        From -> To
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CreatedDate</td>
+                            <td><label>@(item.Deposit > 0 ? item.Deposit.ToString() : "-")</label></td>
+                            <td><label style="color:red;">@(item.Withdraw > 0 ? "(" + item.Withdraw.ToString() + ")" : "(0)")</label></td>
+                            <td><label>@item.Balance</label></td>
+                            <td>@item.Remark</td>
+                            <td>@item.FromUser <b> -> </b>@item.ToUser</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section PageJs{
+    <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.0/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#kt_datatable").DataTable();
+            $(".dataTables_length").addClass("bs-select");
+        });
+    </script>
+
+}

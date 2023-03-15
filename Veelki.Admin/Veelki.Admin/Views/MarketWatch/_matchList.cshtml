@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Veelki.Data.Entities.Matches>
+
+<table class="sportesTbl table table-striped table-dark">
+    <thead>
+        <tr>
+            <th>S NO.</th>
+            <th>Match Name</th>
+            <th>Date</th>
+            <th>ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td scope="row">@i</td>
+                    <td>
+                        <a href="~/MarketWatch/TeamMarketWatch?marketId=@item.marketId&eventId=@item.eventId&SportId=@item.SportId">
+                            @item.eventName
+                        </a>
+                    </td>
+                    <td>@item.MatchDate</td>
+                    <td>
+                        <a href="javascript:;">
+                            <i class="fa fa-eye fa-lg showModel"></i>
+                        </a>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>
+@*<button type="button" style="background-color: #6593db; border-color: #6593db; ">BetList</button>*@
+<div class="modal" tabindex="-1" id="marketPositionModal">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Market Position</h4>
+                <button type="button" class="close hideModel">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="view-rolling row">
+                        <label class="col-md-12 col-3 col-form-label">Match odds</label>
+                        @{
+                            int team1 = -2800;
+                            int team2 = 461;
+                            int team3 = 600;
+                            if (team1 < 0)
+                            {
+                                <div class="col-md-4 col-8 col-form-label"><span> <b>West Indies:</b><b style="color:red;">@team1</b>, </span></div>
+                            }
+                            else
+                            {
+                                <div class="col-md-4 col-8 col-form-label"><span> <b>West Indies:</b><b style="color:green;">@team1</b>, </span></div>
+                            }
+
+                            if (team2 < 0)
+                            {
+                                <div class="col-md-4 col-8 col-form-label"><span> <b>India:</b><b style="color:red;">@team2</b>, </span></div>
+                            }
+                            else
+                            {
+                                <div class="col-md-4 col-8 col-form-label"><span> <b>India:</b><b style="color:green;">@team2</b>, </span></div>
+                            }
+
+                            if (team3 < 0)
+                            {
+                                <div class="col-md-4 col-8 col-form-label"><span> <b>The Draw:</b><b style="color:red;">@team3</b> </span></div>
+                            }
+                            else
+                            {
+                                <div class="col-md-4 col-8 col-form-label"><span> <b>The Draw:</b><b style="color:green;">@team3</b> </span></div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".showModel").click(function () {
+            debugger;
+            $("#marketPositionModal").modal('show');
+        });
+
+        $(".hideModel").click(function () {
+            debugger;
+            $("#marketPositionModal").modal('hide');
+        });
+    });
+</script>

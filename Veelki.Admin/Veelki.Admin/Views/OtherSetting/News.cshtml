@@ -1,0 +1,180 @@
+﻿@model IEnumerable<Veelki.Data.Entities.News>
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h2>News Content</h2>
+    <div class="row p-4">
+        <button class="btn btn-primary btn-sm w-auto" onclick="getRequest()">Create News</button>
+    </div>
+    <table class="sportesTbl table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>S NO.</th>
+                <th>Content</th>
+                <th>ACTION</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                int i = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td scope="row">@i</td>
+                        <td id="NewsText_@item.Id">@item.NewsText</td>
+                        @if (item.Status == true)
+                        {
+                            <td id="Status_@item.Id" style="color:lawngreen;">
+                                Active
+                            </td>
+                        }
+                        else
+                        {
+                            <td style="color:orangered;">
+                                DeActive
+                            </td>
+                        }
+
+                        <td>
+                            <a onclick="getRequest(@item.Id)" class="Edit"><i class="fa fa-edit"></i></a>
+                        </td>
+                        <td>
+                            <a onclick="deleteRequest(@item.Id)"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    i++;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="all-modals">
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form id="request-form" autocomplete="off" class="" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">News</h5>
+                        <button type="button" class="close" onclick="closeModel();">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-horizontal">
+                            <div class="error" style="display:none;" id="error"></div>
+                            <input type="hidden" id="idNews" value="0">
+                            <div class="form-group d-flex justify-content-between align-items-center mb-75">
+                                <div class="col-md-12">
+                                    <textarea type="text" rows="4" style="min-width:100%" class="form-control" id="NewsText" placeholder="News Text"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group d-flex justify-content-between align-items-center mb-75">
+                                <div class="form-group d-flex justify-content-between align-items-center mb-75">
+                                    <div class="col-md-12">
+                                        <input type="checkbox" id="Status" />
+                                        <label class="form-label">Status</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" id="cancle" class="btn btn-light" onclick="closeModel();">Cancel</button>
+                        <button type="button" id="btn-save" class="btn btn-primary font-weight-bold" onclick="return saveRequest()">Save</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section PageJs{
+    <script src="~/js/custom.js"></script>
+    <script type="text/javascript">
+        function getRequest(id = null) {
+            if (id != null) {
+                $("#idNews").text(id);
+                $("#NewsText").val($("#NewsText_" + parseInt(id)).text());
+                $("#Status").prop("checked",$("#Status_" + parseInt(id)).text().trim() === 'Active' ? true : false);
+            }
+            $('#registerModal').modal('show');
+        }
+
+        function closeModel() {
+            $('#registerModal').modal('hide');
+        }
+        function saveRequest() {
+            const formData = new FormData();
+            formData.append("Id", $("#idNews").text());
+            formData.append("NewsText", $("#NewsText").val());
+            formData.append("Status", $("#Status").prop("checked"));
+
+            let addRequestJson = {
+                apiUrl: "@Url.Action("AddUpdatedCreateNews", "OtherSetting")",
+                postData: formData
+            }
+            $(".loader").show();
+            promiseAjaxPost.call(addRequestJson, false).then(
+                (res) => {
+                    $(".loader").hide();;
+                    if (res.IsSuccess && res.Status == 200) {
+                        messagePopup.responseSuccess(res.Message).then(
+                            (r) => { if (r == true) { location.reload(); } }
+                        )
+                    } else if (res.IsSuccess && res.Status == 208) {
+                        messagePopup.responseWarning(res.Message);
+                    } else {
+                        messagePopup.responseError(res.Message);
+                    }
+                },
+                (err) => {
+                    messagePopup.error(err.statusText);
+                }
+            )
+            return false;
+        }
+
+        function deleteRequest(id) {
+            const formData = new FormData();
+            formData.append("id", id);
+
+            let addRequestJson = {
+                apiUrl: "@Url.Action("DeleteNews", "OtherSetting")",
+                postData: formData
+            }
+            $(".loader").show();
+            promiseAjaxPost.call(addRequestJson, false).then(
+                (res) => {
+                    $(".loader").hide();;
+                    if (res.IsSuccess && res.Status == 200) {
+                        messagePopup.responseSuccess(res.Message).then(
+                            (r) => { if (r == true) { location.reload(); } }
+                        )
+                    } else if (res.IsSuccess && res.Status == 208) {
+                        messagePopup.responseWarning(res.Message);
+                    } else {
+                        messagePopup.responseError(res.Message);
+                    }
+                },
+                (err) => {
+                    messagePopup.error(err.statusText);
+                }
+            )
+            return false;
+        }
+
+
+    </script>
+}
+
