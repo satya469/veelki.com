@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Veelki.Data.UOW;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
-using Veelki.Data.UOW;
 
 namespace Veelki.Data.Infrastructure
 {
@@ -12,11 +12,11 @@ namespace Veelki.Data.Infrastructure
 
         private bool _isDisposed;
         SqlConnection _connection;
-
+        
 
         public Database(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
+            _connectionString = configuration.GetConnectionString("DefaultConnection"); 
         }
 
         public DbConnection NewConnection()
@@ -48,7 +48,7 @@ namespace Veelki.Data.Infrastructure
         }
 
         public IUnitOfWork NewUnitOfWork() => new UnitOfWork(false);
-        public IUnitOfWork NewAsyncUnitOfWork() => new UnitOfWork(true);
+        public IUnitOfWork NewAsyncUnitOfWork() => new UnitOfWork(true);       
 
         public void Dispose()
         {

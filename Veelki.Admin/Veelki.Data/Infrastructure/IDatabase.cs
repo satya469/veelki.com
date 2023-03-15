@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Veelki.Data.UOW;
+using System;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
-using Veelki.Data.UOW;
+
 
 namespace Veelki.Data.Infrastructure
 {

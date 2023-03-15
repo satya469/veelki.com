@@ -1,0 +1,180 @@
+﻿<html class="loaded">
+<!-- BEGIN: Head-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+    <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="PIXINVENT">
+    <title>RB444</title>
+    @*<link rel="apple-touch-icon" href="~/assets/images/ico/apple-icon-120.png">*@
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+    <!-- BEGIN: Vendor CSS-->
+
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/vendors.min.css">
+    <!-- END: Vendor CSS-->
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/themes/dark-layout.css">
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" href="~/css/toastr.min.css">
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href=" https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href=" https://cdn.datatables.net/datetime/1.1.1/css/dataTables.dateTime.min.css" rel="stylesheet" />
+    <!-- END: Custom CSS-->
+
+    <link href="~/Content/site.css" rel="stylesheet" />
+    <link href="~/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/assets/css/bootstrap-extended.css" rel="stylesheet" />
+    <link href="~/assets/css/colors.css" rel="stylesheet" />
+    <link href="~/assets/css/components.css" rel="stylesheet" />
+    <link href="~/assets/css/themes/bordered-layout.css" rel="stylesheet" />
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <link href="~/assets/css/core/menu/menu-types/vertical-menu.css" rel="stylesheet" />
+
+    <link href="~/assets/css/themes/dark-layout.css" rel="stylesheet" />
+
+    <link href="~/css/NewCss/style.bundle.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <style>
+        .loader {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            z-index: 9999;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(255,255,255,0.7);
+        }
+
+            .loader img {
+                margin: auto;
+            }
+    </style>
+    @*@Styles.Render("~/Content/css")*@
+</head>
+<!-- END: Head-->
+<!-- BEGIN: Body-->
+
+<body class="pace-done vertical-layout navbar-floating footer-static vertical-menu-modern menu-expanded" data-open="click" data-menu="vertical-menu-modern" data-col="">
+    <div class="pace pace-inactive">
+        <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+            <div class="pace-progress-inner"></div>
+        </div>
+        <div class="pace-activity"></div>
+    </div>
+    @Html.Partial("_AdminHeader")
+    @Html.Partial("_AdminSidebar")
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper container-xxl p-0">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <section id="Home">
+                    @RenderBody()
+                </section>
+
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
+    <div class="drag-target" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
+
+    <!-- BEGIN: Footer-->
+
+    <button class="btn btn-primary btn-icon scroll-top waves-effect waves-float waves-light" type="button" style="display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></button>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/assets/vendors/js/vendors.min.js"></script>
+    <script src="~/assets/vendors/js/extensions/moment.min.js"></script>
+    <script src="~/assets/js/core/app-menu.js"></script>
+    <script src="~/assets/js/core/app.js"></script>
+    <script src="~/assets/js/scripts/pages/app-invoice-list.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("PageJs", false)
+    @RenderSection("scripts", required: false)
+    <script src="~/js/toastr.min.js"></script>
+    <script src="~/js/sweetalert.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $(".menu-content > li > a ,.showLoaderCls").click(function () {
+                $(".loader").show();
+            });
+            $("button[type='submit']").on("click", function () {
+                $(".loader").show();
+            });
+            $(".customeDdl li > a").click(function () {
+                  var dId = $(this).attr("id");
+                  var data = {};
+                  data.id = dId;
+                  $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeviceChange")',
+                    data: '{deviceId: ' + JSON.stringify(data) + '}',
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (responce) {
+                        var deviceInfo = responce.isDeviceChange;
+                            $(".dName").text(deviceInfo.deviceName != null ? deviceInfo.deviceName : "Unknown");
+                            $(".dSymbolCode").text(deviceInfo.deviceSymbolCode != null ? "("+deviceInfo.deviceSymbolCode+")" : "Unknown");
+                            $(".dOnLine").text(deviceInfo.onLine != null ? deviceInfo.onLine : "Unknown");
+                            $(".deviceType").text(deviceInfo.deviceType != null ? deviceInfo.deviceType : "Unknown");
+                            $(".band").text(deviceInfo.band != null ? deviceInfo.band :"Unknown" );
+                            $(".csq").text(deviceInfo.csq != null ? deviceInfo.csq : "Unknown");
+                            $(".currentCls").text(deviceInfo.ratedCur != null ? deviceInfo.ratedCur : 0);
+                            $(".voltageCls").text(deviceInfo.ratedVol != null ? deviceInfo.ratedVol : 0);
+                            if (deviceInfo.status == "1:指令分闸" || deviceInfo.status == "10:定时分闸") {
+                                 $("#switchBtn").removeClass("swOn").addClass("swOff");
+                            }
+                            else{
+                                 $("#switchBtn").removeClass("swOff").addClass("swOn");
+                            }
+                    }
+                  });
+            });
+        });
+        $(window).on('load', function () {
+            if (feather) {
+                feather.replace({
+                    width: 14,
+                    height: 14
+                });
+            }
+        })
+
+        $(function () {
+                        var errorMsg = "@(TempData["ErrorMsg"] as string)";
+                          if (errorMsg !== "") {
+                                toastr.error(errorMsg);
+                          }
+                        var successMsg = "@(TempData["SuccessMsg"] as string)";
+                          if (successMsg !== "") {
+                                toastr.success(successMsg);
+                          }
+        });
+    </script>
+    @*<svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M-1 160L-1 160C-1 160 56.5 160 56.5 160C56.5 160 113 160 113 160C113 160 169.5 160 169.5 160C169.5 160 226 160 226 160C226 160 282.5 160 282.5 160C282.5 160 339 160 339 160C339 160 339 160 339 160 "></path></svg>*@
+
+    <!-- BEGIN: Page Loader-->
+    <div class="loader" style="display:none;">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/35771931234507.564a1d2403b3a.gif" />
+    </div>
+    <!-- END: Page Loader-->
+</body>
+</html>

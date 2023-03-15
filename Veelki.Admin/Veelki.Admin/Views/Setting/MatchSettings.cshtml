@@ -1,0 +1,191 @@
+﻿@model IEnumerable<Veelki.Data.Entities.SportsEvent>
+@using Veelki.Data.Entities;
+@{
+    ViewData["Title"] = "MatchSettings";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var sportsList = ViewBag.SportsList as List<Sports>;
+}
+
+<h2>Match Settings</h2>
+
+<div class="container">
+    <div class="row p-4 form-group">
+        <div class="col-md-3">
+            <label class="control-label"> Status</label>
+
+            <select class="form-control" id="ddlStatus">
+                <option value="0">Please Select status</option>
+                <option value="1">Active</option>
+                <option value="2">Inactive</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="control-label"> Sport Name</label>
+            <select class="form-control" id="ddlSportName" onchange="getSeriesName()">
+                <option value="0">Please Select Sport</option>
+                @foreach (var item in sportsList)
+                {
+                <option value="@item.Id">@item.SportName</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="control-label"> Series</label>
+            <select class="form-control" id="SeriesName"></select>
+        </div>
+        <div class="col-md-3 mt-auto">
+            <button class="btn btn-primary" type="button" onclick="Filter()">Filter</button>
+        </div>
+        @*<div class="col-md-3 mt-auto">
+                <a href="~/setting/CreateMatchSetting" class="btn btn-primary"> Manual Series</a>
+            </div>*@
+    </div>
+    <div id="filterList">
+        <partial name="_matchSettingList" model="Model" />
+    </div>
+</div>
+@section PageJs{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".showModel").click(function () {
+                var id = $(this).attr("id").split("_")[1];
+                $("#matchModal_" + id).removeClass("fade");
+                $("#matchModal_" + id).modal('show');
+            });
+
+            $(".hideModel").click(function () {
+                var id = $(this).attr("id").split("_")[1];
+                $("#matchModal_" + id).addClass("fade");
+                $("#matchModal_" + id).modal('hide');
+            });
+            $(".btnEdit").click(function () {
+                var id = $(this).attr("data-value");
+                var checkedid = $(this).find("input");
+                console.log(checkedid);
+                if (checkedid.is(":checked")) {
+                    console.log("true");
+                }
+                else {
+                    console.log("false");
+                }
+
+            });
+            $('#ddlStatus').on('change', function () {
+                search();
+            });
+            $('#ddlSportName').on('change', function () {
+                getSeriesName();
+            });
+
+        });
+
+        function UpdateMatch(gId, sId) {
+            const formData = new FormData();
+             formData.append("Status", $('#checkBoxAction_' + gId).prop('checked'));
+             formData.append("SportId", sId);
+             formData.append("gameId", $("#gameId_" + gId).val());
+
+            let uploadAttachmentJson = {
+                apiUrl: "@Url.Action("UpdatedMatch", "Setting")",
+                postData: formData
+            }
+            $(".loader").show();
+            promiseAjaxPost.call(uploadAttachmentJson, false).then(
+                (res) => {
+                    $(".loader").hide();;
+                    if (res.IsSuccess && res.Status == 200) {
+                        messagePopup.responseSuccess(res.Message);
+                    } else {
+                        messagePopup.responseError(res.Message);
+                    }
+                },
+                (err) => {
+                    messagePopup.error(err.statusText);
+                }
+            )
+        }
+
+        function getSeriesName() {
+            const formData = new FormData();
+            formData.append("SportId", $('#ddlSportName').val());
+
+            let getEventJson = {
+                apiUrl: "@Url.Action("GetSeriesBySportId", "Setting")",
+                postData: formData
+            }
+            $(".loader").show();
+            promiseAjaxPost.call(getEventJson, false).then(
+                (res) => {
+                    $(".loader").hide();;
+                    $('#SeriesName').find('option').remove().end();
+                    if (res.length>0) {
+                        $.each(res, function (key, value) {
+                            $('#SeriesName').append($("<option></option>").val(value.tournamentId).html(value.tournamentName));
+                        });
+                    }
+                    else {
+
+                        $('#SeriesName').append($("<option></option>").val(0).html('No Event'));
+                    }
+                },
+                (err) => {
+                    messagePopup.error(err.statusText);
+                }
+            )
+        }
+
+        function Filter() {
+            var statusVal = $('#ddlStatus').val();
+            debugger;
+            const formData = new FormData();
+            formData.append("SportId", $('#ddlSportName').val());
+            formData.append("SeriesId", $('#SeriesName').val());
+            formData.append("Type", statusVal);
+            let getAircraftJson = {
+                apiUrl: "@Url.Action("GetSeriesMatchList", "Setting")",
+                postData: formData,
+                dataType: 'html'
+            }
+            $(".loader-1.loading-img").show();
+            promiseAjaxPost.call(getAircraftJson, false).then(
+                (res) => {
+                    $(".loader-1.loading-img").hide();
+                    $("#filterList").html(res);
+                },
+                (err) => {
+                    messagePopup.error(err.statusText);
+                }
+            )
+        }
+
+        function search() {
+            const ddlStatus = $("#ddlStatus").val();
+            const ddlSportName = $("#ddlSportName").val();
+            const name = $("#SeriesName").text();
+            var data = {
+                status: ddlStatus,
+                SportName: ddlSportName,
+                Name: name
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Home/SearchSeries",
+                data: JSON.stringify(data),
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (response) {
+                    if (response.Inserted) {
+                        window.location.href = response.Url;
+                    }
+                    else {
+                        alert("Error occured!!")
+                    }
+                },
+                error: function () {
+                    alert("Error occured!!")
+                }
+            });
+        }
+    </script>
+}
+

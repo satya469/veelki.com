@@ -1,0 +1,152 @@
+﻿@model RB444.Model.ViewModel.UserProfileVM
+@{
+    ViewData["Title"] = "UserProfile";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .profile-box {
+        border: 1px solid #EBEBEB;
+        border-radius: 8px;
+        background: #fff;
+    }
+
+        .profile-box .box-headline {
+            background: #273F51;
+            color: #fff;
+            padding: 5px 20px;
+            border: 1px solid #EBEBEB;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .profile-box .profile-info {
+            padding: 0 20px;
+        }
+
+    .row.info-block {
+        padding: 10px 0;
+        border-bottom: 2px solid #EBEBEB;
+        align-items: center;
+    }
+
+        .row.info-block label {
+            margin: 0;
+        }
+
+        .row.info-block:last-child {
+            border: none;
+        }
+</style>
+
+<input type="hidden"  asp-for="UserId"/>
+<div class="container">
+    <div class="profile-box">
+        <div class="box-headline" ><h2 style="color: #f3e8e8 !important;">Account Details</h2></div>
+        <div class="profile-info">
+            <div class="row info-block">
+                <div class="col-2"><label>Name</label></div>
+                <div class="col-8">@Model.Name</div>
+            </div>
+            <div class="row info-block">
+                <div class="col-2"><label>Commission</label></div>
+                <div class="col-8">@Model.Commision</div>
+            </div>
+            <div class="row info-block">
+                <div class="col-2"><label>Rolling Commission</label></div>
+                <div class="col-8">
+                    <input type="checkbox" style="display:none" id="RollingCommission" @(Model.RollingCommission ? "checked" : string.Empty) />
+                    <i class="fas fa-eye update-rolling-commission show-btn"></i>
+                </div>
+            </div>
+            @if (Model.IsAdmin)
+            {
+                <div class="row info-block">
+                    <div class="col-2"><label>Agent Rolling Commission</label></div>
+                    <div class="col-8">
+                        <input type="checkbox" style="display:none" id="AgentRollingCommission" @(Model.AgentRollingCommission ? "checked" : string.Empty) />
+                        <i class="fas fa-eye update-rolling-commission show-btn"></i>
+                    </div>
+                </div>
+            }
+            <div class="row info-block">
+                <div class="col-2"><label>Currency</label></div>
+                <div class="col-8">IN</div>
+            </div>
+            <div class="row info-block">
+                @if (Model.IsAdmin)
+                {
+                    <div class="col-2"><label>Rate</label></div>
+                    <div class="col-8">20</div>
+                }
+                else
+                {
+                    <div class="col-2"><label>Exposure Limit</label></div>
+                    <div class="col-8"><span>@Model.ExposureLimit</span><input type="text" style="display:none" id="ExposureLimit" value="@Model.ExposureLimit" /><i class="fas fa-edit ml-5 update-exposure-limit show-btn"></i></div>
+                }
+            </div>
+            <div class="row info-block">
+                <div class="col-2"><label>Mobile Number</label></div>
+                <div class="col-8"><span>@Model.MobileNumber</span><input type="text" style="display:none" id="MobileNumber" value="@Model.MobileNumber" /><i class="fas fa-edit ml-5 update-mobile-number show-btn"></i></div>
+            </div>
+            <div class="row info-block">
+                <div class="col-2"><label>Password</label></div>
+                <div class="col-8"><span>*********</span><input type="text" style="display:none" id="Password" /><i class="fas fa-edit ml-5 update-password show-btn"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageJs{
+    <script>
+        $(function () {
+            $(".show-btn").click(function () {
+                $(this).parent().find("input").show().focus();
+                $(this).hide();
+                $(this).parent().find("span").hide();
+            });
+
+            //$(".info-block input").on('keypress', function (e) {
+            //    if (e.which == 13) {
+            //        UpdateUserProfile($(this));
+            //    }
+            //});
+
+            $(".info-block input").focusout(function () {
+                if (confirm("Are you sure, you want to update user information?")) {
+                    UpdateUserProfile($(this));
+                }
+                else {
+                    $(this).hide();
+                    $(this).parent().find("i").show().focus();
+                    $(this).hide();
+                    $(this).parent().find("span").show();
+                }
+            });
+
+            function UpdateUserProfile($this) {
+                var id = $this.attr("id");
+                var value = $this.val();
+                var userId = $("#UserId").val();
+
+                var postData = {
+                    "id": id,
+                    "value": value,
+                    "userId": userId
+                };
+
+                var url = "/user/UpdateUserProfile";
+
+                $.post(url, postData, function (data) {
+                    if (data.issuccess) {
+                        toastr.success(data.message);
+                        window.location.reload();
+                    }
+                    else {
+                        toastr.error(data.message);
+                    }
+                });
+            }
+        });
+    </script>
+}
+

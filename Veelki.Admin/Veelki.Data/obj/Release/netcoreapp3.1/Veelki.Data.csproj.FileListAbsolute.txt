@@ -1,0 +1,10 @@
+D:\NewVeelki\Veelki.Data\bin\Release\netcoreapp3.1\Veelki.Data.deps.json
+D:\NewVeelki\Veelki.Data\bin\Release\netcoreapp3.1\Veelki.Data.dll
+D:\NewVeelki\Veelki.Data\bin\Release\netcoreapp3.1\Veelki.Data.pdb
+D:\NewVeelki\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.csproj.AssemblyReference.cache
+D:\NewVeelki\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\NewVeelki\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.AssemblyInfoInputs.cache
+D:\NewVeelki\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.AssemblyInfo.cs
+D:\NewVeelki\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.csproj.CoreCompileInputs.cache
+D:\NewVeelki\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.dll
+D:\NewVeelki\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.pdb

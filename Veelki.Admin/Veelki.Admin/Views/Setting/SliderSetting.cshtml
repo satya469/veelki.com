@@ -1,0 +1,54 @@
+﻿@using Veelki.Data.Entities
+@model IEnumerable<Slider>
+@{
+    ViewData["Title"] = "Slider Setting";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Slider Images</h2>
+    <div class="row p-4">
+        <a href="~/home/SaveSliderImages" class="btn btn-primary btn-sm">Save Slider Images</a>
+    </div>
+    <table class="sportesTbl table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>S NO.</th>
+                <th>Id</th>
+                <th>Image</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                int i = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td scope="row">@i</td>
+                        <td scope="row">@item.Id</td>
+                        <td><img style="height:50px; width:100px;" src="../@item.FilePath" /></td>
+                        <td>
+                            <a data-value="@item.Id"
+                               href="javascript:void(0)" class="btnEdit">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <span class="switch switch-success">
+                                            <label>
+                                                <input type="checkbox" checked="@item.Status" name="select" id="checkBoxAction" />
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                    i++;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

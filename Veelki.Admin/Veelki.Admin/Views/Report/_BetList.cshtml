@@ -1,0 +1,70 @@
+﻿@model RB444.Model.Model.UserBetPagination;
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="sportesTbl table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th>Bet ID</th>
+                        <th>Event </th>
+                        <th>Market</th>
+                        <th>Selection</th>
+                        <th>Type</th>
+                        <th>Odds Req.</th>
+                        <th>Stake</th>
+                        <th>Place Time</th>
+                        <th>Matched Time</th>
+                        <th>Settle Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.betList.Count() > 0)
+                    {
+                        foreach (var item in Model.betList)
+                        {
+                            <tr>
+                                <td>
+                                    @item.BetId
+                                </td>
+                                <td>@item.Event</td>
+                                <td>@item.Market</td>
+                                <td>@item.Selection</td>
+                                <td>@item.Type</td>
+                                <td>@item.OddsRequest</td>
+                                <td>@item.AmountStake</td>
+                                <td>@item.PlaceTime</td>
+                                <td>@item.MatchedTime</td>
+                                <td>@item.UpdatedDate</td>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="10" class="text-center">No Data Found</td></tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@if (Model.TotalRecord > 0)
+{
+    <div class="row" style="float:right !important;">
+        <div class="col-md-12 mt-1 d-flex">
+            <p class="text-decoration-none text-dark mr-2">
+                <span class="font-weight-bold">@Model.ShowPageInfo</span> Of
+                @Model.TotalRecord
+            </p>
+            <div>
+                <button type="button" class="btn border-0 p-0" id="prev-btn" onclick="SearchBetData(@Model.PreviousPage)" @(Model.PreviousPage == 0 ? "disabled" : "")>
+                    <img src="~/assets/prev.svg">
+                </button>
+                <button type="button" class="btn border-0 p-0" id="next-btn" onclick="SearchBetData(@Model.NextPage)" @(Model.NextPage == 0 ? "disabled" : "")>
+                    <img src="~/assets/next.svg">
+                </button>
+            </div>
+        </div>
+    </div>
+}

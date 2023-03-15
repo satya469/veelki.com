@@ -1,0 +1,417 @@
+﻿@using Veelki.Models.Model
+@using Veelki.Data.Entities
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .hideDiv {
+        display: none;
+    }
+    /*------------------------------------------bharat*/
+    .headerRegisterUser {
+        padding: .8rem 1.5rem .6rem 1.5rem;
+    }
+
+    .bodyRegisterUser {
+        padding: .2rem 0rem 0rem 1.4rem;
+    }
+
+    .footerRegisterUser {
+        padding: 0rem 1.4rem 0.8rem 1.4rem;
+    }
+
+    .columnMargin {
+        margin-bottom: 5px !important;
+    }
+
+    .inputBorder {
+        border: 1px solid #7a7d83 !important;
+    }
+</style>
+
+@{
+    var user = ViewBag.LoginUser;
+    List<Users> usersList = ViewBag.Users;
+    List<UserRoles> userRoles = ViewBag.UserRoles;
+}
+
+<div class="container">
+    <div class="row">
+        @{
+            int i = 0;
+            foreach (var item in userRoles)
+            {
+                @if (user.RoleId <= i && i < 7)
+                {
+                    <div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">
+                        <div class="card card-custom card-stretch gutter-b">
+                            <div class="card-header border-0">
+                                <h3 class="card-title font-weight-bolder text-dark" style="font-style:italic;">@item.Name</h3>
+                                @if (user.RoleId == i || user.RoleId == 1 || user.RoleId == 2 || user.RoleId == 3 || user.RoleId == 4)
+                                {
+                                    <div class="card-toolbar">
+                                        <button type="button" class="btn btn-light card-title btn-sm font-size-sm font-weight-bolder text-dark editRegisterl" id="@i">
+                                            Create
+                                        </button>
+                                    </div>
+                                }
+                            </div>
+                            @if (usersList != null && usersList.Count() >= 0)
+                            {
+                                var counter = 0;
+                                <div class="card-body pt-2">
+                                    @foreach (var userData in usersList.Where(x => x.RoleId == (i + 1)).ToList())
+                                    {
+                                        <div class="d-flex align-items-center mb-4 @(counter++ > 4 ? "hidden" : string.Empty)">
+                                            <div class="flex-column flex-grow-1">
+                                                <a href="/User/RegisterUsersList?id=@(i+1)&userId=@(userData.Id)" class="text-dark-75 text-hover-primary font-weight-bold font-size-lg">@userData.FullName</a>
+                                                <span class="text-muted font-weight-bold" style="float: right; font-size: 12px; color: black !important;">Available Balance (@userData.AssignCoin)</span>
+                                            </div>
+                                        </div>
+                                    }
+                                    @if (usersList.Where(x => x.RoleId == (i + 1)).Count() > 3)
+                                    {
+                                        <br />
+                                        <a href="/User/RegisterUsersList?id=@(i+1)&userId=0" class="font-weight-bold font-size-lg mb-1 show-more-btn">See more...</a>
+                                    }
+                                    <!--end::Item-->
+                                </div>
+                            }
+                            <!--end::Body-->
+                        </div>
+                        <!--end:List Widget 4-->
+                    </div>
+                }
+                i++;
+            }
+        }
+    </div>
+</div>
+<form id="request-form" autocomplete="off" class="" method="post">
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header headerRegisterUser">
+                    <h5 class="modal-title" id="exampleModalTitle">Add</h5>
+                    <button type="button" class="close" onclick="closeModel();">
+                        ×
+                    </button>
+                </div>
+                <div class="modal-body bodyRegisterUser">
+                    <div class="form-horizontal">
+                        <input type="hidden" class="form-control" id="idModel">
+                        <input type="hidden" asp-for="RoleId" value="">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                            <div class="col-md-4">
+                                <label class="form-label" asp-for="UserName">UserName</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control inputBorder" asp-for="UserName" placeholder="UserName">
+                                <span asp-validation-for="UserName" class="text-danger" id="UserNameError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                            <div class="col-md-4">
+                                <label class="form-label" asp-for="Email">Email</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control inputBorder" asp-for="Email" placeholder="Email">
+                                <span asp-validation-for="Email" class="text-danger" id="EmailError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                            <div class="col-md-4">
+                                <label class="form-label" asp-for="FullName">Name</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control inputBorder" asp-for="FullName" placeholder="Name">
+                                <span asp-validation-for="FullName" class="text-danger" id="FullNameError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                            <div class="col-md-4">
+                                <label class="form-label" for="PasswordReg">Password</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="password" class="form-control inputBorder" id="PasswordReg" placeholder="Password">
+                                <span class="text-danger" id="PasswordRegError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                            <div class="col-md-4">
+                                <label class="form-label" for="ConfirmPasswordReg">Confirm Password</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="password" class="form-control inputBorder" id="ConfirmPasswordReg" placeholder="Confirm Password">
+                                <span class="text-danger" id="ConfirmPasswordRegError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                            <div class="col-md-4">
+                                <label class="form-label" asp-for="PhoneNumber">Mobile Number</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control inputBorder" asp-for="PhoneNumber" placeholder="Mobile Number">
+                                <span class="text-danger" id="PhoneNumberError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                            <div class="col-md-4">
+                                <label class="form-label" asp-for="City">City</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control inputBorder" asp-for="City" placeholder="City">
+                                <span class="text-danger" id="CityError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                            <div class="col-md-4">
+                                <label class="form-label" asp-for="State">State</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control inputBorder" asp-for="State" placeholder="State">
+                                <span class="text-danger" id="StateError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                            <div class="col-md-4">
+                                <label class="form-label" asp-for="AssignCoin">Opening Balance</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control inputBorder" asp-for="AssignCoin" placeholder="Opening Balance">
+                                <span class="text-danger" id="AssignCoinError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                            <div class="col-md-4">
+                                <label class="form-label" asp-for="Commision">Commission(%)</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control inputBorder" asp-for="Commision" placeholder="Commission(%)">
+                                <span class="text-danger" id="CommisionError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                            <div class="col-md-4">
+                                <label class="form-label" asp-for="ExposureLimit">Exposure Limit</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control inputBorder" asp-for="ExposureLimit" placeholder="Exposure Limit">
+                                <span class="text-danger" id="ExposureLimitError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                            <div class="col-md-4">
+                                <label class="form-label" asp-for="RollingCommission">Rolling Commissiom</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="checkbox" asp-for="RollingCommission" onchange="showHideLimit()" />
+                                <label asp-for="RollingCommission"></label>
+                            </div>
+                        </div>
+                        <div id="rollingCommissionShow" class="hideDiv">
+                            <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                                <div class="col-md-4">
+                                    <label class="form-label" asp-for="RollingCommisionVm.Fancy">Fancy</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control inputBorder" asp-for="RollingCommisionVm.Fancy" value="0">
+                                </div>
+                            </div>
+                            <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                                <div class="col-md-4">
+                                    <label class="form-label" asp-for="RollingCommisionVm.Matka">Matka</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control inputBorder" asp-for="RollingCommisionVm.Matka" value="0">
+                                </div>
+                            </div>
+                            <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                                <div class="col-md-4">
+                                    <label class="form-label" asp-for="RollingCommisionVm.Casino">Casino</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control inputBorder" asp-for="RollingCommisionVm.Casino" value="0">
+                                </div>
+                            </div>
+                            <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                                <div class="col-md-4">
+                                    <label class="form-label" asp-for="RollingCommisionVm.Binary">Binary</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control inputBorder" asp-for="RollingCommisionVm.Binary" value="0">
+                                </div>
+                            </div>
+                            <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                                <div class="col-md-4">
+                                    <label class="form-label" asp-for="RollingCommisionVm.SportBook">Sportbook</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control inputBorder" asp-for="RollingCommisionVm.SportBook" value="0">
+                                </div>
+                            </div>
+                            <div class="form-group d-flex justify-content-between align-items-center mb-75 columnMargin">
+                                <div class="col-md-4">
+                                    <label class="form-label" asp-for="RollingCommisionVm.Bookmaker">Bookmaker</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control inputBorder" asp-for="RollingCommisionVm.Bookmaker" value="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-primary font-weight-bold" onclick="closeModel();">Close</button>
+                    <button type="button" class="btn btn-primary font-weight-bold" onclick="saveRequest();">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section PageJs{
+    <script src="~/js/custom.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document.body).on("click", ".editRegisterl", function () {
+                var id = $(this).attr('id');
+                var roleName = $(this).parent().parent().find("h3").text();
+                $('#exampleModalTitle').html("Add " + roleName);
+                $("#RoleId").val(parseInt(id) + 1);
+                $('#registerModal').modal('show');
+            });
+        });
+
+        function closeModel() {
+            $('#registerModal').modal('hide');
+        };
+
+        function showHideLimit() {
+            if ($('#RollingCommission').prop('checked')) {
+                $("#rollingCommissionShow").removeClass('hideDiv');
+            }
+            else {
+                $("#rollingCommissionShow").addClass('hideDiv');
+            }
+        }
+        function validationCheck() {
+            var Error = false;
+            $('#UserNameError').text('');
+            $('#EmailError').text('');
+            $('#FullNameError').text('');
+            $('#PasswordRegError').text('');
+            $('#ConfirmPasswordRegError').text('');
+            $('#PhoneNumberError').text('');
+            $('#CityError').text('');
+            $('#StateError').text('');
+            $('#AssignCoinError').text('');
+            $('#CommisionError').text('');
+            $('#ExposureLimitError').text('');
+
+            if ($("#UserName").val() == null || $("#UserName").val() == '' || $("#UserName").val().trim() == '') {
+                $('#UserNameError').text('Please enter UserName');
+                Error = true;
+            }
+            if ($("#Email").val() == null || $("#Email").val() == '' || $("#Email").val().trim() == '') {
+                $('#EmailError').text('Please enter Email');
+                Error = true;
+            }
+            if ($("#FullName").val() == null || $("#FullName").val() == '' || $("#FullName").val().trim() == '') {
+                $('#FullNameError').text('Please enter Full Name');
+                Error = true;
+            }
+            if ($("#PasswordReg").val() == null || $("#PasswordReg").val() == '' || $("#PasswordReg").val().trim() == '') {
+                $('#PasswordRegError').text('Please enter Password');
+                Error = true;
+            }
+            if ($("#ConfirmPasswordReg").val() == null || $("#ConfirmPasswordReg").val() == '' || $("#ConfirmPasswordReg").val().trim() == '') {
+                $('#ConfirmPasswordRegError').text('Please enter Confirm Password');
+                Error = true;
+            }
+            if ($("#PhoneNumber").val() == null || $("#PhoneNumber").val() == '' || $("#PhoneNumber").val().trim() == '') {
+                $('#PhoneNumberError').text('Please enter PhoneNumber');
+                Error = true;
+            }
+            if ($("#City").val() == null || $("#City").val() == '' || $("#City").val().trim() == '') {
+                $('#CityError').text('Please enter City');
+                Error = true;
+            }
+            if ($("#State").val() == null || $("#State").val() == '' || $("#State").val().trim() == '') {
+                $('#StateError').text('Please enter State');
+                Error = true;
+            }
+            if ($("#AssignCoin").val() == null || $("#AssignCoin").val() == '' || $("#AssignCoin").val().trim() == '') {
+                $('#AssignCoinError').text('Please enter Assign Coin');
+                Error = true;
+            }
+            if ($("#Commision").val() == null || $("#Commision").val() == '' || $("#Commision").val().trim() == '') {
+                $('#CommisionError').text('Please enter Commision');
+                Error = true;
+            }
+            if ($("#ExposureLimit").val() == null || $("#ExposureLimit").val() == '' || $("#ExposureLimit").val().trim() == '') {
+                $('#ExposureLimitError').text('Please enter Exposure Limit');
+                Error = true;
+            }
+            return Error;
+        }
+
+        function saveRequest() {
+
+            var validation = validationCheck();
+
+            if (validation==true) {
+                return false;
+            }
+            const formData = new FormData();
+            formData.append("RoleId", $("#RoleId").val());
+            formData.append("UserName", $("#UserName").val());
+            formData.append("Email", $("#Email").val() );
+            formData.append("FullName", $("#FullName").val());
+            formData.append("Password", $("#PasswordReg").val());
+            formData.append("ConfirmPassword", $("#ConfirmPasswordReg").val());
+            formData.append("PhoneNumber", $("#PhoneNumber").val());
+            formData.append("City", $("#City").val());
+            formData.append("State", $("#State").val());
+            formData.append("AssignCoin", $("#AssignCoin").val());
+            formData.append("Commision", $("#Commision").val());
+            formData.append("ExposureLimit", $("#ExposureLimit").val());
+            formData.append("RollingCommission", $("#RollingCommission").prop("checked"));
+            if ($("#RollingCommission").prop("checked")) {
+                formData.append(`RollingCommisionVm.Fancy`, $("#RollingCommisionVm_Fancy").val());
+                formData.append(`RollingCommisionVm.Matka`, $("#RollingCommisionVm_Matka").val());
+                formData.append(`RollingCommisionVm.Casino`, $("#RollingCommisionVm_Casino").val());
+                formData.append(`RollingCommisionVm.Binary`, $("#RollingCommisionVm_Binary").val());
+                formData.append(`RollingCommisionVm.SportBook`, $("#RollingCommisionVm_SportBook").val());
+                formData.append(`RollingCommisionVm.Bookmaker`, $("#RollingCommisionVm_Bookmaker").val());
+            }
+            let addRequestJson = {
+                apiUrl: "@Url.Action("Register", "Account")",
+                postData: formData
+            }
+
+            promiseAjaxPost.call(addRequestJson, false).then(
+                (res) => {
+                    if (res.IsSuccess && res.Status == 200) {
+                        messagePopup.responseSuccess(res.Message).then(
+                            (r) => { if (r == true) { location.reload(); } }
+                        )
+                    } else if (res.IsSuccess && res.Status == 208) {
+                        messagePopup.responseWarning(res.Message);
+                    } else {
+                        messagePopup.responseError(res.Message);
+                    }
+                },
+                (err) => {
+                    messagePopup.error(err.statusText);
+                }
+            )
+            return false;
+        }
+
+    </script>
+}

@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Veelki.Data.Entities.Bets>
+@using Veelki.Data.Entities;
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var sportsList = ViewBag.SportsList as List<Sports>;
+}
+
+<div class="container">
+    <h2>Settlement Data</h2>
+    <div class="row p-4 form-group">
+        <div class="col-md-3">
+            <label class="control-label">Sport Name</label>
+
+            <select class="form-control" id="ddlSportName" onchange="getSeriesName()">
+                <option value="0">Please Select Sport</option>
+                @foreach (var item in sportsList)
+                {
+                    <option value="@item.Id">@item.SportName</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="control-label">Event Name</label>
+            <select class="form-control" id="ddlSeries">
+            </select>
+
+        </div>
+
+        <div class="col-md-3 mt-auto">
+            <button class="btn btn-primary" type="button" onclick="SearchBetData()">Search</button>
+        </div>
+    </div>
+    <div id="searchList">
+        <partial name="_SettlementList" model="Model" />
+    </div>
+</div>
+
+@section PageJs{
+    <script src="~/js/custom.js"></script>
+    <script type="text/javascript">
+        function getSeriesName() {
+            const formData = new FormData();
+            formData.append("SportId", $('#ddlSportName').val());
+
+            let getEventJson = {
+                apiUrl: "@Url.Action("GetBetEventData", "Report")",
+                postData: formData
+            }
+            $(".loader").show();
+            promiseAjaxPost.call(getEventJson, false).then(
+                (res) => {
+                    $(".loader").hide();;
+                    $('#ddlSeries').find('option').remove().end();
+                    if (res.length>0) {
+                        $.each(res, function (key, value) {
+                            $('#ddlSeries').append($("<option></option>").val(value.eventId).html(value.event));
+                        });
+                    }
+                    else {
+                       
+                        $('#ddlSeries').append($("<option></option>").val(0).html('No Event'));
+                    }
+                },
+                (err) => {
+                    messagePopup.error(err.statusText);
+                }
+            )
+        }
+
+        function SearchBetData() {
+            const formData = new FormData();
+            formData.append("EventId", $('#ddlSeries').val());
+
+            let betListJson = {
+                apiUrl: "@Url.Action("GetSettlementDataList", "Report")",
+                postData: formData,
+                dataType: 'html'
+            }
+            $(".loader").show();
+            promiseAjaxPost.call(betListJson, false).then(
+                (res) => {
+                    $(".loader").hide();;
+                    $("#searchList").html(res);
+                },
+                (err) => {
+                    messagePopup.error(err.statusText);
+                }
+            )
+        }
+    </script>
+
+
+}
+

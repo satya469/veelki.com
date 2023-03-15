@@ -1,0 +1,173 @@
+﻿@model RB444.Model.Model.UserBetPagination;
+@{
+    ViewData["Title"] = "Bet Data List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var user = ViewBag.LoginUser;
+}
+<style>
+    .form-control[readonly] {
+        background-color: #F3F6F9 !important;
+    }
+    .lbl-to{
+        line-height: 35px;
+        text-align: center;
+    }
+    .btncls {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+</style>
+<div class="container">
+    <h2> Bet Data List</h2>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="card card-report card-accent-primary py-4 px-4">
+                <div class="card-body row p-0">
+                    <div class="col-md-6 row">
+                        <div class="col-md-8 col-8">
+                            <div class="form-group">
+                                <input id="startDatepicker" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-4">
+                            <div class="form-group">
+                                <input id="StartTime" type="text" class="form-control" value="01:00" readonly="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 row">
+                        <div class="col-md-1 p-0">
+                            <div class="form-group text-center"><span class="lbl-to"> TO</span></div>
+                        </div>
+                        <div class="col-md-7 col-8">
+                            <div class="form-group">
+                                <input id="endDatepicker" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-4">
+                            <div class="form-group">
+                                <input id="EndTime" type="text" class="form-control" value="23:00" readonly="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 ">
+                        <div class="row">
+                            <div class="col-md-12 row">
+                                <div class="col-md-3 col-6">
+                                    <div class="form-group">
+                                        <select class="form-control" id="ddlSport">
+                                            <option value="">Select Sport</option>
+                                            <option value="555">Manual Odds</option>
+                                            <option value="666">Fancy</option>
+                                            <option value="777">Sportbook</option>
+                                            <option value="4">Cricket </option>
+                                            <option value="2">Tennis </option>
+                                            <option value="1">Soccer </option>
+                                            <option value="6">Casino </option>
+                                            <option value="5">Lottery </option>
+                                            <option value="11">Horse Racing </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="form-group">
+                                        <select class="form-control" id="ddlType">
+                                            <option value="">Select Type</option>
+                                            <option value="1">Settle</option>
+                                            <option value="2">Unsettle</option>
+                                            <option value="888">Void</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6"> <button class="btn btn-primary btncls" type="button" onclick="SearchBetData(1,1)">Just For Today</button></div>
+                                <div class="col-md-3 col-6"> <button class="btn btn-primary btncls" type="button" onclick="SearchBetData(1,0)">Get History</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="card card-accent-primary">
+                <div class="card-header"> Bet History </div>
+                <div class="card-body" id="searchList">
+                    <partial name="_BetList" model="Model" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageJs{
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#startDatepicker").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0"
+            });
+            $("#startDatepicker").datepicker("setDate", "-0d");
+            $("#endDatepicker").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0"
+            });
+            $("#endDatepicker").datepicker("setDate", "-0d");
+        });
+    </script>
+
+    <script src="~/js/custom.js"></script>
+    <script type="text/javascript">
+        var IsTodayHistory=false;
+        function SearchBetData(PageNumber = 1, TodayHistory) {
+            if (TodayHistory != null) {
+                IsTodayHistory = TodayHistory==1?true:false;
+            }
+            const ddlSport = $("#ddlSport").val();
+            if (ddlSport == "" && ddlSport == 0) {
+                toastr.error("Please select sport.");
+                return false;
+            }
+            const ddlType = $("#ddlType").val();
+            if (ddlType == "" && ddlType == 0) {
+                toastr.error("Please select settlement Type.");
+                return false;
+            }
+            const formData = new FormData();
+            formData.append("PageNumber", PageNumber);
+            formData.append("PageSize", 10);
+            formData.append("TodayHistory", IsTodayHistory);
+            formData.append("StartDate", $("#startDatepicker").val());
+            formData.append("StartTime", $("#StartTime").val());
+            formData.append("EndDate", $("#endDatepicker").val());
+            formData.append("EndTime", $("#EndTime").val());
+            formData.append("SportId", ddlSport);
+            formData.append("IsSettlement", ddlType);
+
+            let betListJson = {
+                apiUrl: "@Url.Action("GetBetDataList", "Report")",
+                postData: formData,
+                dataType: 'html'
+            }
+            $(".loader").show();
+            promiseAjaxPost.call(betListJson, false).then(
+                (res) => {
+                    $(".loader").hide();;
+                    $("#searchList").html(res);
+                },
+                (err) => {
+                    messagePopup.error(err.statusText);
+                }
+            )
+        }
+    </script>
+
+
+}

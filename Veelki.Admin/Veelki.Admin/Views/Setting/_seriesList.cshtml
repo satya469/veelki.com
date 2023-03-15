@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Veelki.Data.Entities.Series>
+<table class="sportesTbl table table-striped table-dark">
+    <thead>
+        <tr>
+            <th>S NO.</th>
+            <th>Tournament Name</th>
+            <th>ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td scope="row">@i</td>
+                    <td>
+                        @item.tournamentName
+                    </td>
+                    <td>
+                        <input id="tournamentName_@item.tournamentId" type="hidden"  value="@item.tournamentName"/>
+                        <a href="javascript:void(0)" onchange="UpdateSeries(@item.tournamentId,@item.SportId);">
+                            <div class="row">
+                                <div class="col-3">
+                                    <span class="switch switch-success">
+                                        <label>
+                                            <input type="checkbox" checked="@item.Status" name="select" id="checkBoxAction_@item.tournamentId" />
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>

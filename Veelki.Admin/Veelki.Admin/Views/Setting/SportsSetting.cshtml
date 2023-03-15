@@ -1,0 +1,195 @@
+﻿
+@{
+    ViewBag.Title = "SportsSetting";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Sports Settings</h2>
+    <table class="sportesTbl table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>S NO.</th>
+                <th>SPORT</th>
+                <th>ACTION</th>
+                <th>HIGHLIGHT</th>
+                <th>SETTING</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.SportsList != null)
+            {
+                int i = 1;
+                foreach (var item in ViewBag.SportsList)
+                {
+                    <tr>
+                        <td scope="row">@i</td>
+                        <td>@item.SportName</td>
+                        <td>
+                            <a data-value="@i"
+                               href="javascript:void(0)" class="btnEdit">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <span class="switch switch-success">
+                                            <label>
+                                                <input type="checkbox" checked="@item.Status" name="select" id="Status_@item.Id" disabled />
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                        <td>
+                            <a data-value="@i"
+                               href="javascript:void(0)" class="btnEdit">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <span class="switch switch-success">
+                                            <label>
+                                                <input type="checkbox" checked="@item.Highlight" name="select" id="Highlight_@item.Id" disabled />
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                        <td>
+                            <button id="btnShowModal_@item.Id" type="button"
+                                    class="btn btn-primary btn-sm showModel">
+                                Setting
+                            </button>
+
+                            <div class="modal fade" tabindex="-1" id="settingModal_@item.Id"
+                                 data-keyboard="false" data-backdrop="static">
+                                <div class="modal-dialog modal-md">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Sport Setting</h4>
+                                            <button id="btnHideModal_@item.Id" type="button" class="close hideModel" data-dismiss="modal">
+                                                ×
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="hidden" id="sportName_@item.Id" value="@item.SportName" />
+                                            <input type="hidden" id="sequence_@item.Id" value="@item.Sequence" />
+                                            <div class="form-group">
+                                                <label>Min Odd Limit</label>
+                                                <input class="form-control" type="number"
+                                                       placeholder="Min Odd Limit..." id="text_minOdd_@item.Id" value="@item.MinOddLimit" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Max Odd Limit</label>
+                                                <input class="form-control" placeholder="Max Odd Limit..."
+                                                       type="number" id="text_maxOdd_@item.Id" value="@item.MaxOddLimit" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Max Stack Limit</label>
+                                                <input class="form-control" type="number"
+                                                       placeholder="Max Stack Limit..." id="text_maxStackLimit_@item.Id" value="@item.MaxStackLimit" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Bet Delay Time</label>
+                                                <input class="form-control" placeholder="Bet Delay Time"
+                                                       type="number" id="text_betDelayTime_@item.Id" value="@item.BetDelayTime" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Action</label>
+                                                <span class="switch switch-success">
+                                                    <label>
+                                                        <input type="checkbox" checked="@item.Status" name="select" id="checkBoxStatus_@item.Id" />
+                                                        <span></span>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Highlight</label>
+                                                <span class="switch switch-success">
+                                                    <label>
+                                                        <input type="checkbox" checked="@item.Highlight" name="select" id="checkBoxHighlight_@item.Id" />
+                                                        <span></span>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" id="submitBtn_@item.Id" class="btn btn-primary submitBtn">Submit</button>
+                                            <button type="button" id="btnHideModal_@item.Id" class="btn btn-danger hideModel">
+                                                close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    i++;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@section PageJs{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".showModel").click(function () {
+                var id = $(this).attr("id").split("_")[1];
+                $("#settingModal_" + id).removeClass("fade");
+                $("#settingModal_" + id).modal('show');
+            });
+
+            $(".hideModel").click(function () {
+                var id = $(this).attr("id").split("_")[1];
+                $("#settingModal_" + id).addClass("fade");
+                $("#settingModal_" + id).modal('hide');
+            });
+          
+            $(".submitBtn").click(function () {
+                const id = $(this).parents().eq(3).attr("id").split("_")[1];
+
+                const minOddLimit = $("#text_minOdd_" + id).val();
+                const maxOddLimit = $("#text_maxOdd_" + id).val();
+                const sportName = $("#sportName_" + id).val();
+                const sequence = $("#sequence_" + id).val();
+                const status = document.getElementById("checkBoxStatus_" + id).checked;
+                const highlight = document.getElementById("checkBoxHighlight_" + id).checked;
+                let formData = new FormData();
+                formData.append("Id", id);
+                formData.append("MinOddLimit", minOddLimit);
+                formData.append("MaxOddLimit", maxOddLimit);
+                formData.append("MaxStackLimit", $("#text_maxStackLimit_" + id).val());
+                formData.append("BetDelayTime", $("#text_betDelayTime_" + id).val());
+                formData.append("SportName", sportName);
+                formData.append("Status", status);
+                formData.append("Highlight", highlight);
+                formData.append("Sequence", sequence);
+
+                let addRequestJson = {
+                apiUrl: "@Url.Action("SportsSetting", "Setting")",
+                postData: formData
+            }
+            $(".loader").show();
+            promiseAjaxPost.call(addRequestJson, false).then(
+                (res) => {
+                    $(".loader").hide();;
+                    if (res.IsSuccess && res.Status == 200) {
+                        messagePopup.responseSuccess(res.Message).then(
+                            (r) => { if (r == true) { location.reload(); } }
+                        )
+                    } else if (res.IsSuccess && res.Status == 208) {
+                        messagePopup.responseWarning(res.Message);
+                    } else {
+                        messagePopup.responseError(res.Message);
+                    }
+                },
+                (err) => {
+                    messagePopup.error(err.statusText);
+                }
+            )
+            return false;
+
+            });
+        });
+    </script>
+}

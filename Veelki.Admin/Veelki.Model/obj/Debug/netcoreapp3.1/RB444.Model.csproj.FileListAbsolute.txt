@@ -1,0 +1,78 @@
+E:\Projects\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.deps.json
+E:\Projects\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.dll
+E:\Projects\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.pdb
+E:\Projects\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projects\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.AssemblyInfoInputs.cache
+E:\Projects\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.AssemblyInfo.cs
+E:\Projects\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.CoreCompileInputs.cache
+E:\Projects\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.dll
+E:\Projects\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.pdb
+E:\Projects\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Data.dll
+E:\Projects\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Data.pdb
+E:\Projects\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.AssemblyReference.cache
+E:\Projects\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.CopyComplete
+D:\Wpf Project\RB444\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.deps.json
+D:\Wpf Project\RB444\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.dll
+D:\Wpf Project\RB444\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.pdb
+D:\Wpf Project\RB444\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Data.dll
+D:\Wpf Project\RB444\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Data.pdb
+D:\Wpf Project\RB444\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.AssemblyReference.cache
+D:\Wpf Project\RB444\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Wpf Project\RB444\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.AssemblyInfoInputs.cache
+D:\Wpf Project\RB444\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.AssemblyInfo.cs
+D:\Wpf Project\RB444\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.CoreCompileInputs.cache
+D:\Wpf Project\RB444\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.CopyComplete
+D:\Wpf Project\RB444\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.dll
+D:\Wpf Project\RB444\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.pdb
+E:\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.deps.json
+E:\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.dll
+E:\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.pdb
+E:\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Data.dll
+E:\RB444\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Data.pdb
+E:\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.AssemblyReference.cache
+E:\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.GeneratedMSBuildEditorConfig.editorconfig
+E:\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.AssemblyInfoInputs.cache
+E:\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.AssemblyInfo.cs
+E:\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.CoreCompileInputs.cache
+E:\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.CopyComplete
+E:\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.dll
+E:\RB444\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.pdb
+C:\Arun\Projects\RB444\rb444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.deps.json
+C:\Arun\Projects\RB444\rb444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.dll
+C:\Arun\Projects\RB444\rb444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.pdb
+C:\Arun\Projects\RB444\rb444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Data.dll
+C:\Arun\Projects\RB444\rb444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Data.pdb
+C:\Arun\Projects\RB444\rb444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.AssemblyReference.cache
+C:\Arun\Projects\RB444\rb444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Arun\Projects\RB444\rb444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.AssemblyInfoInputs.cache
+C:\Arun\Projects\RB444\rb444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.AssemblyInfo.cs
+C:\Arun\Projects\RB444\rb444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.CoreCompileInputs.cache
+C:\Arun\Projects\RB444\rb444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.CopyComplete
+C:\Arun\Projects\RB444\rb444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.dll
+C:\Arun\Projects\RB444\rb444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.pdb
+D:\Projects\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.deps.json
+D:\Projects\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.dll
+D:\Projects\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.pdb
+D:\Projects\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Data.dll
+D:\Projects\RB444\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Data.pdb
+D:\Projects\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.AssemblyReference.cache
+D:\Projects\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.AssemblyInfoInputs.cache
+D:\Projects\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.AssemblyInfo.cs
+D:\Projects\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.CoreCompileInputs.cache
+D:\Projects\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.CopyComplete
+D:\Projects\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.dll
+D:\Projects\RB444\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.pdb
+D:\NewVeelki\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.deps.json
+D:\NewVeelki\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.dll
+D:\NewVeelki\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Model.pdb
+D:\NewVeelki\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Data.dll
+D:\NewVeelki\RB444.Model\bin\Debug\netcoreapp3.1\RB444.Data.pdb
+D:\NewVeelki\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.AssemblyReference.cache
+D:\NewVeelki\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\NewVeelki\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.AssemblyInfoInputs.cache
+D:\NewVeelki\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.AssemblyInfo.cs
+D:\NewVeelki\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.CoreCompileInputs.cache
+D:\NewVeelki\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.csproj.CopyComplete
+D:\NewVeelki\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.dll
+D:\NewVeelki\RB444.Model\obj\Debug\netcoreapp3.1\RB444.Model.pdb
