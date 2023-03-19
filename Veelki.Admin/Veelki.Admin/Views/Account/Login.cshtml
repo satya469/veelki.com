@@ -37,7 +37,8 @@
                                 <li><input type="password" asp-for="Password" placeholder="password"></li>
                                 <li class="">
                                     <input type="text" asp-for="TxtValidationCode" placeholder="Validation Code">
-                                    <input type="text" asp-for="ValidationCode" value="@ViewBag.ValidationCode" hidden placeholder="Validation Code">
+                                    <input type="text" asp-for="ValidationCode" value="@ViewBag.ValidationCode" hidden placeholder="Validation Code" />
+                                    <span class="validation-code">3434</span>
                                     @*<img src="~/assets/images/verifycode.gr" alt="">*@
                                 </li>
                                 <li>

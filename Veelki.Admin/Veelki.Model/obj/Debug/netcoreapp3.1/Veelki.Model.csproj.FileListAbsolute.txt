@@ -11,3 +11,16 @@ D:\NewVeelki\Veelki.Model\obj\Debug\netcoreapp3.1\Veelki.Model.csproj.CoreCompil
 D:\NewVeelki\Veelki.Model\obj\Debug\netcoreapp3.1\Veelki.Model.csproj.CopyComplete
 D:\NewVeelki\Veelki.Model\obj\Debug\netcoreapp3.1\Veelki.Model.dll
 D:\NewVeelki\Veelki.Model\obj\Debug\netcoreapp3.1\Veelki.Model.pdb
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Model\bin\Debug\netcoreapp3.1\Veelki.Model.deps.json
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Model\bin\Debug\netcoreapp3.1\Veelki.Model.dll
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Model\bin\Debug\netcoreapp3.1\Veelki.Model.pdb
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Model\bin\Debug\netcoreapp3.1\Veelki.Data.dll
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Model\bin\Debug\netcoreapp3.1\Veelki.Data.pdb
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Model\obj\Debug\netcoreapp3.1\Veelki.Model.csproj.AssemblyReference.cache
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Model\obj\Debug\netcoreapp3.1\Veelki.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Model\obj\Debug\netcoreapp3.1\Veelki.Model.AssemblyInfoInputs.cache
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Model\obj\Debug\netcoreapp3.1\Veelki.Model.AssemblyInfo.cs
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Model\obj\Debug\netcoreapp3.1\Veelki.Model.csproj.CoreCompileInputs.cache
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Model\obj\Debug\netcoreapp3.1\Veelki.Model.csproj.CopyComplete
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Model\obj\Debug\netcoreapp3.1\Veelki.Model.dll
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Model\obj\Debug\netcoreapp3.1\Veelki.Model.pdb
