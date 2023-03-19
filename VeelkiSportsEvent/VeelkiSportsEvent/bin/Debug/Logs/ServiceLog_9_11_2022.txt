@@ -1,0 +1,3 @@
+Service is started at 9/11/2022 10:25:58 AM
+Insert Sorts Event at 9/11/2022 10:26:12 AM
+Service is stopped at 9/11/2022 10:28:58 AM

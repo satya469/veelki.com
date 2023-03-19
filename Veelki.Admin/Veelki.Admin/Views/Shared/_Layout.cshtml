@@ -5,43 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Veelki.Admin</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link href="~/css/NewCss/loader.css" rel="stylesheet" />
+    
+    <link href="~/assets/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Veelki.Admin</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="top">
+        <div class="header">
+            <h1><a href="/agent/index.jsp">SKYEXCHANGE</a></h1>
+            <!-- <img src="images/download-page-logo.png" alt=""> -->
+
+            <ul class="account-wrap">
+                <li><span>MA</span><strong>sskydemo0</strong></li>
+                <!-- single balance 加 no-multi -->
+                <li class="main-wallet no-multi">
+                    <!-- 加open打開-->
+                    <a href="#multi-balance_pop" class="a-wallet">
+                        <ul>
+                            <li>
+                                <span>Main</span>
+                                <strong id="mainBalance">PTH 0.00</strong>
+                            </li>
+                        </ul>
+                        <p class="loading-bar" id="menuRefreshLoading" style="display: none;">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </p>
+                    </a>
+
+                    <a id="topRefresh" class="a-refresh" style="cursor: pointer"><img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Menu Wrap -->
+        <div class="menu-wrap">
+            <div class="main_wrap">
+                <ul class="menu">
+
+                    <li>
+                        <a id="menu_downline_list" class="select" href="/agent/index.jsp">
+                            Downline List
+                        </a>
+                    </li>
+                    <li>
+                        <a id="menu_my_account" class="" href="/agent/myAccount/accountSummary.jsp">
+                            My Account
+                        </a>
+                    </li>
+                    <li>
+                        <a id="menu_my_report" class="menu-drop" href="#">
+                            My Report
+                        </a>
+                        <ul>
+
+                            <li>
+                                <a href="/agent/myReport/downLineProfitLoss.jsp">
+                                    Profit/Loss Report by Downline
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/agent/myReport/marketProfitLoss.jsp">
+                                    Profit/Loss Report by Market
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a id="menu_bet_list" class="" href="/agent/betList/betList.jsp">
+                            BetList
+                        </a>
+                    </li>
+                    <li>
+                        <a id="menu_risk_management" class="" href="/agent/riskManagement/riskManagement.jsp">
+                            Risk Management
+                        </a>
+                    </li>
+                    <li>
+                        <a id="menu_banking" class="" href="/agent/banking/cashBanking.jsp">
+                            Banking
+                        </a>
+                    </li>
+                    <li class="logout">
+                        <a id="logout">Logout<img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
+                    </li>
+                    <li class="time_zone"><span>Time Zone :</span> GMT+5:30</li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </div>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    @*<footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - Veelki.Admin - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
