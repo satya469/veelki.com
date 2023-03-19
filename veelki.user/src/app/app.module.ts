@@ -23,6 +23,20 @@ import { ActivityLogComponent } from './components/my-account/activity-log/activ
 import { FullmarketComponent } from './components/fullmarket/fullmarket.component';
 import { ProfileSidebarComponent } from './components/my-account/profile-sidebar/profile-sidebar.component';
 import { ProfitLossComponent } from './components/my-account/profit-loss/profit-loss.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NewsComponent } from './components/news/news.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StackReducer } from './store/reducers/stack.reducer';
+import { InplayReducer } from './store/reducers/inplay.reducer';
+import { SportReducer } from './store/reducers/getSport.reducer';
+import { SportEffect } from './store/effects/getSport.effect';
+import { InplayEffect } from './store/effects/inplay.effect';
+import { StackEffects } from './store/effects/stack.effect';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { TableRowComponent } from './components/table-row/table-row.component';
 
 @NgModule({
   declarations: [
@@ -46,11 +60,23 @@ import { ProfitLossComponent } from './components/my-account/profit-loss/profit-
     ActivityLogComponent,
     FullmarketComponent,
     ProfileSidebarComponent,
-    ProfitLossComponent
+    ProfitLossComponent,
+    NewsComponent,
+    TableRowComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    StoreModule.forRoot({StackData : StackReducer, InplayData : InplayReducer, SportData : SportReducer}),
+    EffectsModule.forRoot([StackEffects,InplayEffect, SportEffect]),
+    StoreDevtoolsModule.instrument({
+      maxAge : 25,
+      logOnly : true,
+      autoPause : true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

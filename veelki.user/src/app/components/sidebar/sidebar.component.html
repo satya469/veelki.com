@@ -1,76 +1,11 @@
-<div class="col-left" style="">
-    <!-- Sub Menu and Path -->
-
-
-    <!-- Sub Menu and Path -->
-    <div class="sub_path" id="subMenu" style="height: calc(100% - 0px);">
-        <!-- Path -->
-        <div class="path">
-            Sports
-        </div>
-        <!-- Sub Menu -->
-        <ul id="listBoardLoading" class="loading" style="display:none;">
-            <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
-            <li>Loading...
-            </li>
-        </ul>
-        <!-- Sub Menu -->
+<div class="col-left">
+    <div class="sub_path">
+        <div class="path">Sports </div>
         <ul id="listBoard" class="menu-list">
-            <li id="allSports" class="path-last" style="display: none;">
-
-                <a href="/exchange/member/index.jsp">All Sports</a>
-
+            <li class="path-last"><a>All Sports</a></li>
+            <li style="display: list-item;" *ngFor="let sidebar of sidebarList">
+                <a style="cursor: pointer" (click)="getSportTournamentsList(sidebar.id)">{{sidebar.sportName}}</a>
             </li>
-            <li id="listBoardTemplate" style="display:none">
-                <a id="arrow" class="Go" style="cursor: pointer">Go</a>
-                <a id="name" style="cursor: pointer"></a>
-            </li>
-            <li id="naviMenu_4" style="display: list-item;" sortname="Cricket" istodayscard="0" todayscardgroup="1"
-                title="Cricket">
-                <a id="arrow" class="Go" style="cursor: pointer" type="EVENT_TYPE">Go</a>
-                <a id="name" style="cursor: pointer" type="EVENT_TYPE">Cricket</a>
-            </li>
-            <li id="naviMenu_1" style="display: list-item;" sortname="Soccer" istodayscard="0" todayscardgroup="1"
-                title="Soccer">
-                <a id="arrow" class="Go" style="cursor: pointer" type="EVENT_TYPE">Go</a>
-                <a id="name" style="cursor: pointer" type="EVENT_TYPE">Soccer</a>
-            </li>
-            <li id="naviMenu_2" style="display: list-item;" sortname="Tennis" istodayscard="0" todayscardgroup="1"
-                title="Tennis">
-                <a id="arrow" class="Go" style="cursor: pointer" type="EVENT_TYPE">Go</a>
-                <a id="name" style="cursor: pointer" type="EVENT_TYPE">Tennis</a>
-            </li>
-            <li id="naviMenu_137" style="display: list-item;" sortname="E_soccer" istodayscard="0" todayscardgroup="1"
-                title="E_soccer">
-                <a id="arrow" class="Go" style="cursor: pointer" type="EVENT_TYPE">Go</a>
-                <a id="name" style="cursor: pointer" type="EVENT_TYPE">E_soccer</a>
-            </li>
-            <li id="naviMenu_9999999" style="display: list-item;" sortname="FancyBet" istodayscard="0"
-                todayscardgroup="1" title="FancyBet">
-                <a id="arrow" class="Go" style="cursor: pointer" type="EVENT_TYPE">Go</a>
-                <a id="name" style="cursor: pointer" type="EVENT_TYPE">FancyBet</a>
-            </li>
-            <li id="naviMenu_7" style="display: list-item;" sortname="Horse Racing" istodayscard="0" todayscardgroup="1"
-                title="Horse Racing">
-                <a id="arrow" class="Go" style="cursor: pointer" type="EVENT_TYPE">Go</a>
-                <a id="name" style="cursor: pointer" type="EVENT_TYPE">Horse Racing</a>
-            </li>
-            <li id="naviMenu_7" style="display: list-item;" sortname="Horse Racing - Today's Card" istodayscard="1"
-                todayscardgroup="1" title="Horse Racing - Today's Card">
-                <a id="arrow" class="Go" style="cursor: pointer; display: none;" type="EVENT_TYPE">Go</a>
-                <a id="name" style="cursor: pointer" type="EVENT_TYPE">Horse Racing - Today's Card</a>
-            </li>
-            <li id="naviMenu_2378962" style="display: list-item;" sortname="Election" istodayscard="0"
-                todayscardgroup="1" title="Election">
-                <a id="arrow" class="Go" style="cursor: pointer" type="EVENT_TYPE">Go</a>
-                <a id="name" style="cursor: pointer" type="EVENT_TYPE">Election</a>
-            </li>
-        </ul>
-        <ul id="topCompetitions" style="display:none">
-            <li class="menu-group-title">Top Competitions</li>
-        </ul>
-        <ul id="commonGroup" style="display:none">
-            <li class="menu-group-title">Common</li>
         </ul>
     </div>
 </div>

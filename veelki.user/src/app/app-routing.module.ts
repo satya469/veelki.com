@@ -21,7 +21,7 @@ const routes: Routes = [
     path: '', component: LayoutComponent, children: [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'allsport-highlight', component: AllsportHighlightComponent },
+      { path: 'allsport-highlight/:id', component: AllsportHighlightComponent },
       { path: 'financial-market', component: FinancialMarketComponent },
       { path: 'inplay', component: InplayComponent },
       { path: 'horse-racing', component: HorseRacingComponent },
