@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Veelki.Data\Veelki.Data.csproj" />
-    <ProjectReference Include="..\RB444.Model\Veelki.Model.csproj" />
     <ProjectReference Include="..\Veelki.Model\Veelki.Model.csproj" />
   </ItemGroup>
 

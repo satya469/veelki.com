@@ -1,0 +1,44 @@
+﻿Installing assembly 'D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.InstallLog
+   assemblypath = D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe
+Installing service 88cricxSportsEventService...
+Service 88cricxSportsEventService has been successfully installed.
+Creating EventLog source 88cricxSportsEventService in log Application...
+Committing assembly 'D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.InstallLog
+   assemblypath = D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe
+Uninstalling assembly 'D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.InstallLog
+   assemblypath = D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe
+Removing EventLog source 88cricxSportsEventService.
+Service 88cricxSportsEventService is being removed from the system...
+Service 88cricxSportsEventService was successfully removed from the system.
+Attempt to stop service 88cricxSportsEventService.
+Installing assembly 'D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.InstallLog
+   assemblypath = D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe
+Installing service 88cricxSportsEventService...
+Service 88cricxSportsEventService has been successfully installed.
+Creating EventLog source 88cricxSportsEventService in log Application...
+Committing assembly 'D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.InstallLog
+   assemblypath = D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe
+Uninstalling assembly 'D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.InstallLog
+   assemblypath = D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe
+Removing EventLog source 88cricxSportsEventService.
+Service 88cricxSportsEventService is being removed from the system...
+Service 88cricxSportsEventService was successfully removed from the system.
+Attempt to stop service 88cricxSportsEventService.

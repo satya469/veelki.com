@@ -1,0 +1,11 @@
+D:\Projects\88cricxSportsEvent\88cricxSportsEvent\obj\Debug\_88cricxSportsEvent.ProjectInstaller.resources
+D:\Projects\88cricxSportsEvent\88cricxSportsEvent\obj\Debug\88cricxSportsEvent.csproj.GenerateResource.cache
+D:\Projects\88cricxSportsEvent\88cricxSportsEvent\obj\Debug\88cricxSportsEvent.csproj.CoreCompileInputs.cache
+D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe.config
+D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.exe
+D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\88cricxSportsEvent.pdb
+D:\Projects\88cricxSportsEvent\88cricxSportsEvent\obj\Debug\88cricxSportsEvent.exe
+D:\Projects\88cricxSportsEvent\88cricxSportsEvent\obj\Debug\88cricxSportsEvent.pdb
+D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\88cricxSportsEvent\88cricxSportsEvent\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\88cricxSportsEvent\88cricxSportsEvent\obj\Debug\88cricxSportsEvent.csproj.CopyComplete

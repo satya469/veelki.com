@@ -8,3 +8,13 @@ D:\NewVeelki\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.AssemblyInfo.cs
 D:\NewVeelki\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.csproj.CoreCompileInputs.cache
 D:\NewVeelki\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.dll
 D:\NewVeelki\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.pdb
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Data\bin\Release\netcoreapp3.1\Veelki.Data.deps.json
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Data\bin\Release\netcoreapp3.1\Veelki.Data.dll
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Data\bin\Release\netcoreapp3.1\Veelki.Data.pdb
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.csproj.AssemblyReference.cache
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.AssemblyInfoInputs.cache
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.AssemblyInfo.cs
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.csproj.CoreCompileInputs.cache
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.dll
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Data\obj\Release\netcoreapp3.1\Veelki.Data.pdb

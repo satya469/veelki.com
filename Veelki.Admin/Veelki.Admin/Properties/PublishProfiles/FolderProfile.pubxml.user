@@ -4,7 +4,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>D:\Projects\RB444\AdminPublish</_PublishTargetUrl>
-    <History>True|2022-08-31T16:16:31.6743966Z;True|2022-08-31T21:15:20.1023391+05:30;True|2022-08-29T21:27:54.4759819+05:30;True|2022-08-29T21:04:59.9980270+05:30;True|2022-08-29T20:52:46.2114965+05:30;True|2022-08-19T13:35:34.3428491+05:30;True|2022-07-29T20:07:32.6946503+05:30;</History>
+    <_PublishTargetUrl>D:\Projects\veelki.com\Veelki.Admin\AdminPublish</_PublishTargetUrl>
+    <History>True|2023-03-18T05:45:53.7909339Z;True|2023-03-16T22:33:08.7723109+05:30;</History>
   </PropertyGroup>
 </Project>
