@@ -1,0 +1,68 @@
+﻿@model List<RB444.Model.ViewModel.RollingCommisionVM>
+@{
+    ViewData["Title"] = "RollingCommision";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card card-custom">
+    <div class="card-header flex-wrap py-5">
+        <div class="card-title">
+            <h3 class="card-label">
+                Rolling Commision
+            </h3>
+        </div>
+
+    </div>
+    <div class="card-body">
+        <!--begin: Datatable-->
+        <table class="table table-striped table-hover table-bordered table-head-custom" id="kt_datatable">
+            <thead style="background-color: #1e1e2d;">
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Fancy
+                    </th>
+                    <th>
+                        Matka
+                    </th>
+                    <th>
+                        Casino
+                    </th>
+                    <th>
+                        Binary
+                    </th>
+                    <th>
+                        Sport Book
+                    </th>
+                    <th>
+                        Bookmaker
+                    </th>
+                    <th>
+                        From -> To
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Fancy</td>
+                            <td>@item.Matka</td>
+                            <td>@item.Casino</td>
+                            <td>@item.Binary</td>
+                            <td>@item.SportBook</td>
+                            <td>@item.Bookmaker</td>
+                            <td>@item.FromUserName<b> -> </b>@item.ToUserName</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,264 @@
+﻿@using Veelki.Models.ViewModel
+@model LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+    <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="PIXINVENT">
+    <title>Veelki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">    
+    <link href="~/assets/css/style.css" rel="stylesheet">
+</head>
+<body class="adminpanle-page">
+    <div class="container-adminpanle">
+        <div class="login-sec">
+            <div class="container">
+                <div class="login-inner">
+                    <div class="login-left">
+                        <img class="dekstop-img" src="~/assets/images/bg-login_wrap.png" alt="">
+                        <img class="responsive-img" src="~/assets/images/KV-pic.png" alt="">
+                        <div class="mobile-logo">
+                            <h1>SKYEXCHANGE</h1>
+                        </div>
+                    </div>
+                    <div class="login-right">
+                        <p class="font-size20">Agent login</p>
+                        <form id="account" method="post">
+                            <ul>
+                                <li><input type="text" asp-for="UserName" placeholder="username"></li>
+                                <li><input type="password" asp-for="Password" placeholder="password"></li>
+                                <li class="">
+                                    <input type="text" asp-for="TxtValidationCode" placeholder="Validation Code">
+                                    <input type="text" asp-for="ValidationCode" value="@ViewBag.ValidationCode" hidden placeholder="Validation Code" />
+                                    <span class="validation-code">3434</span>
+                                    @*<img src="~/assets/images/verifycode.gr" alt="">*@
+                                </li>
+                                <li>
+                                    <button type="submit">
+                                        Login
+                                        <img src="~/assets/images/login-icon.svg" alt="">
+                                    </button>
+                                </li>
+                            </ul>
+                        </form>
+
+                        <div class="responsive-support-sec">
+                            <ul>
+                                <li>
+                                    <div class="responsive-support-btn">
+                                        <div class="support-btn">
+                                            <ul>
+                                                <li><img src="~/assets/images/mike-phone.svg" alt=""></li>
+                                                <li><a href="#">Customer support1</a></li>
+                                                <li class="support-border"><a href="#">support2</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="support-btn">
+                                            <ul>
+                                                <li><img src="~/assets/images/phone-icon.svg" alt=""></li>
+                                                <li><a href="#">+918335896365</a></li>
+                                                <li class="support-border"><a href="#">+918335896365</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="border-line"></div>
+                                </li>
+                                <li>
+                                    <div class="support-btn-sec social-sec">
+                                        <div class="support-btn">
+                                            <ul>
+                                                <li><img src="~/assets/images/sky-icon.svg" alt=""></li>
+                                                <li>
+                                                    <a href="#">Skype</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="support-btn">
+                                            <ul>
+                                                <li><img src="~/assets/images/shear-icon.svg" alt=""></li>
+                                                <li>
+                                                    <a href="#">Email</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                        <div class="support-btn">
+                                            <ul>
+                                                <li><img src="~/assets/images/insta-icon.svg" alt=""></li>
+                                                <li>
+                                                    <a href="#">insta</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="Customer-support-sec">
+            <div class="container">
+                <div class="Customer-support-inner desktop-support-sec">
+                    <ul>
+                        <li>
+                            <div class="support-btn-sec">
+                                <div class="support-btn">
+                                    <ul>
+                                        <li><img src="~/assets/images/mike-phone.svg" alt=""></li>
+                                        <li><a href="#">Customer support1</a></li>
+                                        <li class="support-border"><a href="#">support2</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="support-btn">
+                                    <ul>
+                                        <li><img src="~/assets/images/phone-icon.svg" alt=""></li>
+                                        <li><a href="#">+918335896365</a></li>
+                                        <li class="support-border"><a href="#">+918335896365</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="border-line"></div>
+                        </li>
+                        <li>
+                            <div class="support-btn-sec social-sec">
+                                <div class="support-btn">
+                                    <ul>
+                                        <li><img src="~/assets/images/sky-icon.svg" alt=""></li>
+                                        <li>
+                                            <a class="dekstop-text" href="#">skyexchangeofficial</a>
+                                            <a class="responsive-text" href="#">Skype</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="support-btn">
+                                    <ul>
+                                        <li><img src="~/assets/images/shear-icon.svg" alt=""></li>
+                                        <li>
+                                            <a class="dekstop-text" href="#">info@skyexchange.com</a>
+                                            <a class="responsive-text" href="#">Email</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="support-btn">
+                                    <ul>
+                                        <li><img src="~/assets/images/insta-icon.svg" alt=""></li>
+                                        <li>
+                                            <a class="dekstop-text" href="#">officialskyexchange</a>
+                                            <a class="responsive-text" href="#">insta</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Powered by -->
+
+        <div class="Powered-by">
+            <div class="container">
+                <div class="Powered-by-inner">
+                    <ul>
+                        <li>
+                            <h3>
+                                <span>Powered by</span>
+                                <img src="~/assets/images/logo-betfair.png" alt="">
+                            </h3>
+                        </li>
+                        <li>
+                            <iframe src="https://licensing.gaming-curacao.com/validator/?lh=7a83475c9e54450a218a18bd28e33fad&amp;template=seal" width="150" height="50" style="border:none;"></iframe>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#">Sky Infotech Limited</a> is licensed and regulated
+                                by Government of Curacao under license no 365/JAZ Sub-License GLH-OCCHKTW0707072017.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="browsers-sec">
+            <div class="container">
+                <div class="browsers-inner">
+                    <img src="~/assets/images/icon-browser-W.png" alt="">
+                    <p>
+                        Our website works best in the newest and last prior version of these browsers:<br>
+                        Google Chrome. Firefox
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/custom.js"></script>
+</body>
+
+@*<body style="background: url('https://ag.starbet9.com/assets/img/bg-login.jpg');">
+    <section>
+        <div class="container">
+            <center><div class="img"></div></center>
+            <div class="content">
+                <div class="formbox">
+                    <h2>Please Login to continue</h2>
+
+                    <form id="account" method="post" class="auth-login-form mt-2">
+                        <div class="form-group">
+                            <input asp-for="UserName" class="form-control" type="text" placeholder="Username" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Password" class="form-control" type="password" placeholder="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100" style="background-color: #f67d30 !important;">Log in</button>
+                    </form>
+
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="~/assets/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/assets/js/toastr.min.js"></script>
+    <script>
+        $(function () {
+                        var errorMsg = "@(TempData["ErrorMsg"] as string)";
+                          if (errorMsg !== "") {
+                                toastr.error(errorMsg);
+                          }
+                        var successMsg = "@(TempData["SuccessMsg"] as string)";
+                          if (successMsg !== "") {
+                                toastr.success(successMsg);
+                          }
+        });
+    </script>
+</body>*@
+</html>

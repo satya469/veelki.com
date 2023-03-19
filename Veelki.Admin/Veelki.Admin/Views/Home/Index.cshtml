@@ -1,8 +1,594 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using Veelki.Data.Entities
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div id="mainWrap" class="main_wrap">
+
+    <div class="marquee-box">
+        <h4>News</h4>
+        <div class="marquee marquee-sec">
+            <div class="marquee-inner">
+                <marquee attribute_name="attribute_value" ....more attributes>
+                    <div class="js-marquee" style="margin-right: 0px; float: left;">
+                        <a><span>12 Mar 2023</span>Event : New Zealand v Sri Lanka.... Market : 80 Over SL (2) '192-193' (IST 06:58:54 - 06:59:05) Bets Voided Because of Wrong Commentary.... Sorry for the Inconvenience&nbsp;Caused</a>
+                        <a><span>21 Jan 2022</span>Match :- Minister Group Dhaka vs Khulna Tigers .. Market .. Bookmaker .. Selection :- Khulna Tigers ' 2 - 6 ' ( IST 21:18:35 - 21:18:38 ) Bets Voided Because Wrong Odds Offered Bymistake ... Sorry for the Inconveniences Caused</a>
+                        <a><span>04 Sep 2021</span>WHITE LABEL OF SKYEXCHANGE IS AVAILABLE NOW - CONTACT YOUR UPLINE.</a>
+
+
+                    </div>
+                </marquee>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="total_all">
+
+        <div class="search-wrap" id="userSearchUl">
+            <div>
+                <input class="search-input" type="text" name="userId" id="userId" placeholder="Find member..." fdprocessedid="h7v17r">
+                <button class="search-but" id="searchUserId" fdprocessedid="5fyv4">Search</button>
+            </div>
+        </div>
+
+        <ul class="input-list" id="accountStatusUl">
+            <li><strong>Status</strong></li>
+            <li>
+                <select class="" name="accountStatus" id="accountStatus" fdprocessedid="oesvqi">
+
+                    <option value="0">
+                        ACTIVE
+                    </option>
+
+                    <option value="1">
+                        SUSPENDED
+                    </option>
+
+                    <option value="2">
+                        LOCKED
+                    </option>
+
+                    <option value="-1">ALL</option>
+                </select>
+            </li>
+        </ul>
+
+        <div class="agent_path">
+            <ul id="agentPath" class="agent_path-L" style="display: none;">
+
+                <li id="path6" class="" style="display: none;">
+                    <a href="javascript: void(0);">
+                        <span class="lv_0">
+                            COM
+                        </span>
+                        <strong></strong>
+                    </a>
+                </li>
+
+                <li id="pathCurrency" class="currency_tag" style="display: none;">
+                    <a href="javascript: void(0);">
+                        <span class=""></span>
+                        <strong></strong>
+                    </a>
+                </li>
+
+                <li id="path5" class="" style="display: none;">
+                    <a href="javascript: void(0);">
+                        <span class="lv_1">
+                            SS
+                        </span>
+                        <strong></strong>
+                    </a>
+                </li>
+
+                <li id="path4" class="" style="display: none;">
+                    <a href="javascript: void(0);">
+                        <span class="lv_2">
+                            SUP
+                        </span>
+                        <strong></strong>
+                    </a>
+                </li>
+
+                <li id="path3" class="last_li">
+                    <a href="javascript: void(0);">
+                        <span class="lv_3">
+                            MA
+                        </span>
+                        <strong>sskydemo0</strong>
+                    </a>
+                </li>
+
+                <li id="path0" class="" style="display: none;">
+                    <a href="javascript: void(0);">
+                        <span class="lv_4">
+                            PL
+                        </span>
+                        <strong></strong>
+                    </a>
+                </li>
+
+                <ul class="account_pop" id="accountPop">
+                    <li id="popTmp" style="display: none;">
+                        <a href=""></a>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+
+        <a id="refresh" class="btn_replay"><img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
+
+
+        <a class="add_member" href="#" onclick="CreateAccountHandler.showDialog()">
+            <img src="https://statics3.skyexch.bike/images/transparent.gif">Add Player
+        </a>
+
+    </div>
+
+    <div id="totalBox" class="total_box">
+
+        <dl id="creditLimitDL" class="total_dl" style="display: none">
+            <dt>
+                Credit Limit
+            </dt>
+            <dd id="myCreditLimit">PTH 0.00</dd>
+        </dl>
+        <dl id="creditGivenOutDL" class="total_dl" style="display: none">
+            <dt>
+                Total Credit Given Out
+            </dt>
+            <dd id="totalCreditGivenOut">PTH 0.00</dd>
+        </dl>
+        <dl id="creditAvailBalDL" class="total_dl" style="display: none">
+            <dt>
+                Credit Avail Bal
+            </dt>
+            <dd id="myCreditAvailBal">PTH 0.00</dd>
+        </dl>
+        <dl id="totalBalanceDL" class="total_dl">
+            <dt>
+                Total Balance
+            </dt>
+            <dd id="totalBalance">PTH 0.00</dd>
+        </dl>
+        <dl id="totalExposureDL" class="total_dl">
+            <dt>
+                Total Exposure
+            </dt>
+            <dd id="totalExposure">PTH 0.00</dd>
+        </dl>
+        <dl id="myCurrentPLDL" class="total_dl" style="display: none">
+            <dt>
+                Today P/L with Upline
+            </dt>
+            <dd id="myCurrentPL">PTH 0.00</dd>
+        </dl>
+        <dl id="availableBalanceDL" class="total_dl">
+            <dt>
+                Total Avail. bal.
+            </dt>
+            <dd id="totalAvailBal">PTH 0.00</dd>
+        </dl>
+        <dl id="masterBalanceDL" class="total_dl">
+            <dt>
+                Balance
+            </dt>
+            <dd id="mastersBalance">PTH 0.00</dd>
+        </dl>
+        <dl id="masterAvailableBalanceDL" class="total_dl">
+            <dt>
+                Available Balance
+            </dt>
+            <dd id="mastersAvailBal">PTH 0.00</dd>
+        </dl>
+        <dl id="transferablePLWithUplineDL" class="total_dl" style="display: none">
+            <dt>
+                Transferable P/L with Upline
+            </dt>
+            <dd id="transferablePLWithUpline">PTH 0.00</dd>
+        </dl>
+        <dl id="totalUsersDL" class="total_dl">
+            <dt>
+                Total Users
+            </dt>
+            <dd id="totalUsers">1</dd>
+        </dl>
+
+    </div>
+
+    <!-- Center Column -->
+    <div id="widthAll" class="width-all">
+
+
+        <!-- Loading Wrap -->
+        <div id="loading" class="loading-wrap" style="display: none;">
+            <ul class="loading">
+                <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+                <li>
+                    Loading...
+                </li>
+                <br>
+                <li><span id="progress"></span></li>
+            </ul>
+        </div>
+
+        <!-- Message -->
+        <div id="message" class="message-wrap success">
+            <a class="btn-close">Close</a>
+            <p></p>
+        </div>
+
+        <!-- Report Table -->
+        <table id="tableTemplate" class="table01 margin-table" style="display: none">
+            <tbody>
+                <tr>
+                    <th id="accountTh" width="" class="align-L">
+                        Account
+                    </th>
+                    <th id="creditRefTh" width="10%">
+                        Credit Ref.
+                    </th>
+                    <th id="initialCreditLimitTh" width="10%" style="display: none">
+                        Initial Credit Limit
+                    </th>
+                    <th id="creditLimitTh" width="9%" style="display: none">
+                        Credit Limit
+                    </th>
+
+                    <th id="todayPLTh" width="9%" style="display: none">
+                        Today P/L
+                    </th>
+                    <th id="transferablePLTh" width="9%" style="display: none">
+                        Transferable P/L
+                    </th>
+                    <th id="balanceTh" width="10%">
+                        Balance
+                    </th>
+                    <th id="exposureTh" width="10%">
+                        Exposure
+                    </th>
+                    <th id="availableBalanceTh" width="10%">
+                        Avail. bal.
+                    </th>
+                    <th id="playerBalanceTh" width="10%" style="display: none">
+                        Player Balance
+                    </th>
+                    <th id="exposureLimitTh" width="10%" style="display: none">
+                        Exposure Limit
+                    </th>
+
+                    <th id="refPLTh" width="10%">
+                        Ref. P/L
+                    </th>
+                    <th id="statusTh" width="10%">
+                        Status
+                    </th>
+                    <th id="actionTh" width="13%">
+                        Action
+                    </th>
+                </tr>
+                <tr id="dataTemplate" style="display: none">
+                    <td id="accountCol" class="align-L">
+                        <a id="account" class="ico_account" href="#" style="float: none"></a>
+                    </td>
+                    <td id="creditRef" class="credit-amount-member"><a id="creditRefBtn" class="favor-set" href="javascript:void(0);"></a></td>
+                    <td id="initialCreditLimit" style="display: none"></td>
+                    <td id="creditLimit" style="display: none"></td>
+
+                    <td id="currentPL" style="display: none"></td>
+                    <td id="transferablePL" style="display: none"></td>
+                    <td id="balance"></td>
+                    <td id="currentExposure"></td>
+                    <td id="available"></td>
+                    <td id="playerBalance" style="display: none"></td>
+                    <td id="exposureLimit" style="display: none"></td>
+
+                    <td id="refPL"></td>
+                    <td id="statusCol">
+                        <ul id="tipsPopup" class="status-popup" style="display: none">
+                        </ul>
+                        <span id="status"></span>
+                    </td>
+                    <td id="actionCol">
+                        <ul class="action">
+                            <li>
+                                <a id="banking" class="bank" href="#bank">
+                                    Bank
+                                </a>
+                            </li>
+                            <li>
+                                <a id="p_l" class="p_l" href="#">
+                                    Betting Profit &amp; Loss
+                                </a>
+                            </li>
+                            <li>
+                                <a id="betting_history" class="betting_history" href="#">
+                                    Betting History
+                                </a>
+                            </li>
+                            <li>
+                                <a id="change" class="status" href="#change">
+                                    Change Status
+                                </a>
+                            </li>
+                            <li>
+                                <a id="profile" class="profile" href="#">
+                                    Profile
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table><table id="resultTable" class="table01 margin-table" style="display: table;">
+            <tbody>
+                <tr>
+                    <th id="accountTh" width="" class="align-L">
+                        Account
+                    </th>
+                    <th id="creditRefTh" width="10%">
+                        Credit Ref.
+                    </th>
+                    <th id="initialCreditLimitTh" width="10%" style="display: none">
+                        Initial Credit Limit
+                    </th>
+                    <th id="creditLimitTh" width="9%" style="display: none">
+                        Credit Limit
+                    </th>
+
+                    <th id="todayPLTh" width="9%" style="display: none">
+                        Today P/L
+                    </th>
+                    <th id="transferablePLTh" width="9%" style="display: none">
+                        Transferable P/L
+                    </th>
+                    <th id="balanceTh" width="10%">
+                        Balance
+                    </th>
+                    <th id="exposureTh" width="10%">
+                        Exposure
+                    </th>
+                    <th id="availableBalanceTh" width="10%">
+                        Avail. bal.
+                    </th>
+                    <th id="playerBalanceTh" width="10%" style="display: none">
+                        Player Balance
+                    </th>
+                    <th id="exposureLimitTh" width="10%">
+                        Exposure Limit
+                    </th>
+
+                    <th id="refPLTh" width="10%">
+                        Ref. P/L
+                    </th>
+                    <th id="statusTh" width="10%">
+                        Status
+                    </th>
+                    <th id="actionTh" width="13%">
+                        Action
+                    </th>
+                </tr>
+                <tr id="dataTemplate" style="display: none">
+                    <td id="accountCol" class="align-L">
+                        <a id="account" class="ico_account" href="#" style="float: none"></a>
+                    </td>
+                    <td id="creditRef" class="credit-amount-member"><a id="creditRefBtn" class="favor-set" href="javascript:void(0);"></a></td>
+                    <td id="initialCreditLimit" style="display: none"></td>
+                    <td id="creditLimit" style="display: none"></td>
+
+                    <td id="currentPL" style="display: none"></td>
+                    <td id="transferablePL" style="display: none"></td>
+                    <td id="balance"></td>
+                    <td id="currentExposure"></td>
+                    <td id="available"></td>
+                    <td id="playerBalance" style="display: none"></td>
+                    <td id="exposureLimit" style="display: none"></td>
+
+                    <td id="refPL"></td>
+                    <td id="statusCol">
+                        <ul id="tipsPopup" class="status-popup" style="display: none">
+                        </ul>
+                        <span id="status"></span>
+                    </td>
+                    <td id="actionCol">
+                        <ul class="action">
+                            <li>
+                                <a id="banking" class="bank" href="#bank">
+                                    Bank
+                                </a>
+                            </li>
+                            <li>
+                                <a id="p_l" class="p_l" href="#">
+                                    Betting Profit &amp; Loss
+                                </a>
+                            </li>
+                            <li>
+                                <a id="betting_history" class="betting_history" href="#">
+                                    Betting History
+                                </a>
+                            </li>
+                            <li>
+                                <a id="change" class="status" href="#change">
+                                    Change Status
+                                </a>
+                            </li>
+                            <li>
+                                <a id="profile" class="profile" href="#">
+                                    Profile
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr id="0" style="display: table-row;" main_userid="userdemoo">
+                    <td id="accountCol" class="align-L"><span class="order" id="number">1.</span><span class="lv_4">PL</span><span class="account_name">userdemoo</span></td>
+                    <td id="creditRef0" class="credit-amount-member"><a id="creditRefBtn" class="favor-set" href="javascript:void(0);" onclick="CreditReferenceHandler.showDialog(0,'userdemoo',1)">0.00</a></td>
+                    <td id="initialCreditLimit0" style="display: none">0.00</td>
+                    <td id="creditLimit0" style="display: none">0.00</td>
+
+                    <td id="currentPL0" style="display: none">0.00</td>
+                    <td id="transferablePL0" style="display: none">0.00</td>
+                    <td id="balance0"><a href="#" onclick="VendorBalanceDetailHandler.balanceShowing('userdemoo','1', function () { IndexHandler.listMember(IndexHandler.pageNumber); }, $j(this))" class="link-open">0.00</a></td>
+                    <td id="currentExposure0">0.00</td>
+                    <td id="available0">0.00</td>
+                    <td id="playerBalance" style="display: none"></td>
+                    <td id="exposureLimit0" style="display: table-cell;">100,000.00</td>
+
+                    <td id="refPL0">0.00</td>
+                    <td id="statusCol">
+                        <ul id="tipsPopup" class="status-popup" style="display: none">
+                        </ul>
+                        <span id="status0" class="status-active status-active-center"><img src="/images/transparent.gif">Active</span>
+                    </td>
+                    <td id="actionCol">
+                        <ul class="action">
+                            <li>
+                                <a id="banking" class="bank" href="#bank" style="display: none;">
+                                    Bank
+                                </a>
+                            </li>
+                            <li>
+                                <a id="p_l0" class="p_l" href="/agent/memberList/profitAndLoss.jsp?uid=userdemoo&amp;site=1">
+                                    Betting Profit &amp; Loss
+                                </a>
+                            </li>
+                            <li>
+                                <a id="betting_history0" class="betting_history" href="/agent/memberList/bettingHistory.jsp?uid=userdemoo&amp;site=1">
+                                    Betting History
+                                </a>
+                            </li>
+                            <li>
+                                <a id="change0" class="status" href="#change" onclick="ChangeStatusHandler.showDialog(0,'userdemoo',1)">
+                                    Change Status
+                                </a>
+                            </li>
+                            <li>
+                                <a id="profile0" class="profile" href="/agent/memberList/accountSummary.jsp?uid=userdemoo&amp;site=1">
+                                    Profile
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table style="display: none">
+            <tbody>
+                <tr id="tempBalanceTr" class="expand first expand-balance">
+                    <td colspan="2"></td>
+                    <td colspan="7">
+                        <img class="expand-arrow" src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <table>
+                            <tbody id="tempVendorContent">
+                                <tr>
+                                    <th width="12%" class="align-L">Game</th>
+                                    <th width="13%">Balance</th>
+                                    <th width="8%"><a id="recallAll" href="#" class="btn-recall">Recall All</a></th>
+                                    <th></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr id="tempVendorTr">
+                    <td id="vendorTitle" class="align-L">Houise</td>
+                    <td id="vendorBalance">200,000,000,000.00</td>
+                    <td><a id="recall" href="#" class="btn-recall">Recall</a></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Report Table -->
+    <div id="tableOneBox" class="table_one_box" style="display: none">
+
+
+    </div>
 </div>
+
+<div>
+    <ul style="display: none">
+        <li id="prev">
+            <a href="javascript:void(0);">
+                Prev
+            </a>
+        </li>
+        <li id="next">
+            <a href="javascript:void(0);">
+                Next
+            </a>
+        </li>
+        <li id="pageNumber"><a href="javascript:void(0);"></a></li>
+        <li id="more"><a href="javascript:void(0);">...</a></li>
+        <input type="text" id="goToPageNumber" onkeyup="return PageHandler.validatePageNumber(this)" maxlength="6" size="4">
+        <li><a id="goPageBtn">GO</a></li>
+    </ul>
+
+    <ul id="pageNumberContent" class="pages">
+        <li id="prev">
+            <a href="javascript:void(0);" class="disable" style="pointer-events: none;">
+                Prev
+            </a>
+        </li>
+        <li id="pageNumber"><a href="javascript:void(0);" class="select" style="pointer-events: none;">1</a></li>
+        <li id="next">
+            <a href="javascript:void(0);" class="disable" style="pointer-events: none;">
+                Next
+            </a>
+        </li>
+        <input type="text" id="goToPageNumber_1" onkeyup="return PageHandler.validatePageNumber(this)" maxlength="6" size="4" fdprocessedid="pe6xe69">
+        <a id="goPageBtn_1">GO</a>
+    </ul>
+</div>
+
+<div class="footer_info">
+    <div class="main_wrap">
+        <ul class="action">
+            <li class="bank">
+                <p>
+                    Bank
+                </p>
+            </li>
+            <li class="p_l">
+                <p>
+                    Betting Profit &amp; Loss
+                </p>
+            </li>
+            <li class="betting_history">
+                <p>
+                    Betting History
+                </p>
+            </li>
+            <li class="profile">
+                <p>
+                    Profile
+                </p>
+            </li>
+            <li class="status">
+                <p>
+                    Change Status
+                </p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+@*@section PageJs{
+        <script>
+            $(function () {
+                $("#SportMenu li a").click(function () {
+                    var id = $(this).attr("data-id");
+                    $("tbody").hide();
+                    $("#" + id).show();
+                });
+            });
+        </script>
+    }*@

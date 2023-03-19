@@ -3,7 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using static Dapper.SqlMapper;
 
 namespace Veelki.Data.Repository
 {
@@ -172,7 +175,7 @@ namespace Veelki.Data.Repository
         /// <param name="parameters">The parameters to use for this query.</param>
         /// <param name="readerFuncs">The readerFuncs use for get Table Name</param>
         /// <returns>List</returns>
-        Task<List<object>> GetQueryMultipleAsync(string sql, object parameters, params Func<SqlMapper.GridReader, object>[] readerFuncs);
+        Task<List<object>> GetQueryMultipleAsync(string sql, object parameters, params Func<GridReader, object>[] readerFuncs);
         /// <summary>
         /// Executes a single-row query, returning the data typed as TReturn.
         /// </summary>
@@ -380,7 +383,7 @@ namespace Veelki.Data.Repository
         /// <param name="sql">The SQL to execute for this query.</param>
         /// <param name="param">The parameters to use for this query.</param>
         /// <returns></returns>
-        Task<SqlMapper.GridReader> QueryMultipleAsync(string sql, object param = null);
+        Task<GridReader> QueryMultipleAsync(string sql, object param = null);
         /// <summary>
         /// Executes a single-row query, returning the data typed as TReturn.
         /// </summary>

@@ -1,0 +1,239 @@
+﻿@model IEnumerable<Veelki.Data.Entities.Slider>
+@{
+    ViewData["Title"] = "SliderImages";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Slider Images</h2>
+    <div class="row p-4">
+        <button class="btn btn-primary btn-sm w-auto" onclick="getRequest()">Add Slider Image</button>
+    </div>
+    <table class="sportesTbl table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>S NO.</th>
+                <th>Image</th>
+                <th>ACTION</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                int i = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@i</th>
+                        <td><img style="height:50px; width:100px;" src="../@item.FilePath" /></td>
+                        @if (item.Status == true)
+                        {
+                            <td id="Status_@item.Id" style="color:lawngreen;">
+                                <a onclick="statusChange(@item.Id,false)">Active</a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td style="color:orangered;">
+                                <a onclick="statusChange(@item.Id,true)">DeActive</a>
+                            </td>
+                        }
+                        <td>
+                            <a onclick="deleteRequest(@item.Id,'@item.FilePath')"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    i++;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="all-modals">
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form id="request-form" autocomplete="off" class="" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Slider Image</h5>
+                        <button type="button" class="close" onclick="closeModel();">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-horizontal">
+                            <div class="error" style="display:none;" id="error"></div>
+                            <div class="image-input image-input-empty image-input-outline">
+                                <img src="~/common/UserProfile.png" id="account-upload-img" class="image-input-wrapper" alt="profile image" />
+
+                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                    <i class="fa fa-pen icon-sm text-muted"></i>
+                                    <input type="file" id="ProfileImage" name="file" hidden accept="image/*" />
+                                </label>
+                                <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow resetBtn" data-action="remove" data-toggle="tooltip" title="Remove avatar">
+                                    <i class="fa fa-times "></i>
+                                </span>
+                            </div>
+                            <div class="form-group d-flex justify-content-between align-items-center mb-75">
+                                <div class="form-group d-flex justify-content-between align-items-center mb-75">
+                                    <div class="col-md-12 mt-10 d-flex">
+                                        <input type="checkbox" id="Status" style="width: 20px;height: 20px;">
+                                        <label class="form-label ml-2" style="font-size: 20px!important;">Status</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" id="cancle" class="btn btn-light" onclick="closeModel();">Cancel</button>
+                        <button type="button" id="btn-save" class="btn btn-primary font-weight-bold" onclick="return saveRequest()">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageJs{
+    <script src="~/js/custom.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var accountUploadImg = $('#account-upload-img');
+            var accountUploadBtn = $('#ProfileImage');
+
+            // Update user photo on click of button
+            if (accountUploadBtn) {
+                accountUploadBtn.on('change', function (e) {
+                    var reader = new FileReader(),
+                        files = e.target.files;
+                    reader.onload = function () {
+                        if (accountUploadImg) {
+                            accountUploadImg.attr('src', reader.result);
+                        }
+                    };
+                    reader.readAsDataURL(files[0]);
+                });
+            }
+            // Reset Photo
+            $(".resetBtn").click(function () {
+                $("#ProfileImage").val("");
+                accountUploadImg.attr('src', '/common/UserProfile.png');
+            });
+        });
+
+        function getRequest() {
+            $('#registerModal').modal('show');
+        }
+        function closeModel() {
+            $('#registerModal').modal('hide');
+        }
+
+        function saveRequest() {
+            let formdata = new FormData();
+            let fileList = document.getElementById("ProfileImage").files;
+            if (fileList.length > 0) {
+                for (const file of fileList) {
+                    formdata.append(file.name, file);
+                }
+                formdata.append("Status", $("#Status").prop("checked"));
+                let uploadAttachmentJson = {
+                    apiUrl: "@Url.Action("AddUpdatedSliderImages", "OtherSetting")",
+                    postData: formdata
+                }
+                $(".loader").show();
+                promiseAjaxPost.call(uploadAttachmentJson, false).then(
+                    (res) => {
+                        $(".loader").hide();;
+                        if (res.IsSuccess && res.Status == 200) {
+                            messagePopup.responseSuccess(res.Message).then(
+                                (r) => { if (r == true) { location.reload() } }
+                            )
+                        } else {
+                            messagePopup.responseError(res.Message);
+                        }
+                    },
+                    (err) => {
+                        messagePopup.error(err.statusText);
+                    }
+                )
+            }
+            else {
+                messagePopup.responseError("Please upload Image.");
+            }
+        }
+
+        function deleteRequest(id, imagePath) {
+            const formData = new FormData();
+            formData.append("id", id);
+            formData.append("imagePath", imagePath);
+
+            let addRequestJson = {
+                apiUrl: "@Url.Action("DeleteSlider", "OtherSetting")",
+                postData: formData
+            }
+            $(".loader").show();
+            promiseAjaxPost.call(addRequestJson, false).then(
+                (res) => {
+                    $(".loader").hide();;
+                    if (res.IsSuccess && res.Status == 200) {
+                        messagePopup.responseSuccess(res.Message).then(
+                            (r) => { if (r == true) { location.reload(); } }
+                        )
+                    } else if (res.IsSuccess && res.Status == 208) {
+                        messagePopup.responseWarning(res.Message);
+                    } else {
+                        messagePopup.responseError(res.Message);
+                    }
+                },
+                (err) => {
+                    messagePopup.error(err.statusText);
+                }
+            )
+            return false;
+        }
+
+        function statusChange(id, status) {            
+            if (id == null || id == 0) {
+                return false;
+            }
+            const formData = new FormData();
+            formData.append("id", id);
+            formData.append("status", status);
+            formData.append("api", 2);
+
+            let addRequestJson = {
+                apiUrl: "@Url.Action("ChangeStatus", "OtherSetting")",
+                postData: formData
+            }
+
+            $(".loader").show();
+            promiseAjaxPost.call(addRequestJson, false).then(
+                (res) => {
+                    $(".loader").hide();;
+                    if (res.IsSuccess && res.Status == 200) {
+                        messagePopup.responseSuccess(res.Message).then(
+                            (r) => { if (r == true) { location.reload(); } }
+                        )
+                    } else if (res.IsSuccess && res.Status == 208) {
+                        messagePopup.responseWarning(res.Message);
+                    } else {
+                        messagePopup.responseError(res.Message);
+                    }
+                },
+                (err) => {
+                    messagePopup.error(err.statusText);
+                }
+            )
+            return false;
+        }
+
+    </script>
+}
+
+
+
+
+
+

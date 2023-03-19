@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+    <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="PIXINVENT">
+    <title>RB444</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/NewCss/semi-dark-layout.css">
+
+    <link rel="stylesheet" type="text/css" href="~/css/NewCss/horizontal-menu.css">
+    <link rel="stylesheet" type="text/css" href="~/css/NewCss/form-validation.css">
+
+    <link rel="stylesheet" type="text/css" href="~/css/NewCss/page-auth.css">
+    <link href="~/css/NewCss/components.css" rel="stylesheet">
+    <link href="~/css/NewCss/Site.css" rel="stylesheet">
+    <link href="~/css/NewCss/style.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+
+</head>
+<body class="horizontal-layout horizontal-menu blank-page navbar-floating footer-static">
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <div class="auth-wrapper auth-v1 px-2">
+                    <img src="../@ViewBag.Logo" />
+                    <div class="auth-inner py-2">
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/js/toastr.min.js"></script>
+    @RenderSection("scripts", required: false)
+    <script>
+        $(function () {
+                        var errorMsg = "@(TempData["ErrorMsg"] as string)";
+                          if (errorMsg !== "") {
+                                toastr.error(errorMsg);
+                          }
+                        var successMsg = "@(TempData["SuccessMsg"] as string)";
+                          if (successMsg !== "") {
+                                toastr.success(successMsg);
+                          }
+        });
+    </script>
+</body>
+</html>

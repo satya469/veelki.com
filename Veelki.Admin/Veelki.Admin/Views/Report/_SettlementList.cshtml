@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Veelki.Data.Entities.Bets>
+<table class="sportesTbl table table-striped table-dark">
+    <thead>
+        <tr>
+            <th>S NO.</th>
+            <th>Tournament Name</th>
+            <th>Selection</th>
+            <th>Type</th>
+            <th>BetType</th>
+            <th>OddsRequest</th>
+            <th>AmountStake</th>
+            <th>IsSettlement</th>
+            <th>Status</th>
+            <th>UserId</th>
+            <th>Result</th>
+            <th>ResultAmount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+        <tr>
+            <td scope="row">@i</td>
+            <td>
+                @item.Event
+            </td>
+            <td>@item.Selection</td>
+            <td>@item.Type</td>
+            <td>@item.BetType</td>
+            <td>@item.OddsRequest</td>
+            <td>@item.AmountStake</td>
+            <td>
+                @if (item.IsSettlement == 1)
+                {<span>Settle</span> }
+                else if (item.IsSettlement == 2)
+                { <span>Unsettle</span>}
+                else
+                { <span>Void</span>}
+            </td>
+            <td>@item.Status</td>
+            <td>@item.UserId</td>
+            <td>
+                @if (item.ResultType == 1)
+                {<span>Win</span> }
+                else if (item.ResultType == 2)
+                { <span>Loss</span>}
+                else if (item.ResultType == 3)
+                { <span>Draw</span>}
+                else if (item.ResultType == 4)
+                { <span>Tie</span>}
+                else
+                {
+                    <span>no result</span>}
+            </td>
+            <td>
+                @item.ResultAmount
+            </td>
+        </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>
