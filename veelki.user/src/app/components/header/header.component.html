@@ -14,7 +14,7 @@
                 </ul>
             </div>
         </div>
-        <ul class="login-wrap">
+        <ul class="login-wrap" style="display:none">
             <li class="user error"><input id="loginName" type="text" placeholder="Username" fdprocessedid="s6cch9"></li>
             <li><input id="password" type="password" placeholder="Password" fdprocessedid="42p01"></li>
             <li class="valid-code" style="display: block"> <input id="validCode" type="text" placeholder="Validation"
@@ -29,6 +29,101 @@
                     up</a></li>
             <li id="errorMsg" class="error" style="display:none"></li>
         </ul>
+        <ul class="account-wrap">
+			<li class="main-wallet">
+				<a id="multiWallet" href="#multiBalancePop" class="a-wallet">
+					<ul id="accountCredit">
+						<li><span>Main Balance</span> <span id="betCredit">PTH 0.00</span></li>
+						<li><span>Exposure</span> <span id="totalExposure">0.00</span></li>
+						<li class="nums">+<span id="vendorQuantity">5</span></li>
+					</ul>
+					<!-- show wallet-->
+					<div class="wallet-detail" id="multiBalancePop">
+						<div class="wallet-detail-group">
+							<dl class="wallet-detail-content">
+								<dt>Main Balance</dt>
+								<dd class="wallet-balance-num"><span class="badge-currency" id="currency">USD</span><span id="mainBalance">0.00</span></dd>
+								<dd class="wallet-exposure">Exposure <span id="mainExposure">0.00</span></dd>
+							</dl>
+						</div>
+						<div id="walletContent" class="wallet-detail-group">
+						</div>
+						<div id="walletTemp" class="wallet-detail-group" style="display: none;">
+							<dl id="tempDl" class="wallet-detail-content">
+								<dt id="vendorTitle">Housie Balance</dt>
+								<dd class="wallet-balance-num"><span class="badge-currency" id="vendorCurrency">USD</span><span id="vendorBalance">$ 0.00</span>
+								</dd>
+								<dd class="wallet-recall">
+									<button class="btn-recall" id="recall">Recall</button>
+								</dd>
+							</dl>
+							<dl id="recallAllDl" class="wallet-detail-content">
+								<dd class="align-R">
+									<button class="btn-recall" id="recallAll">Recall All</button>
+								</dd>
+							</dl>
+						</div>
+						<div class="btn-box">
+							<button class="btn" onclick="location.href='javascript:history.back();'">Close</button>
+						</div>
+					</div>
+					
+					<p class="loading-bar" id="menuRefreshLoading" style="display: none;">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</p>
+				</a>
+				<a id="menuRefresh" class="a-refresh" href="#" title="Refresh Main Wallet"><img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
+			</li>
+			
+			
+			<li class="account" style="display: "><a id="accountPopup" style="cursor: pointer">My Account
+			</a>
+				
+				<ul id="account_pop" style="display: block;">
+					<li>
+						<h4>
+							userdemoo
+							<span class="gmt" title="Time Zone">GMT+5:30</span>
+						</h4>
+					</li>
+					
+					<li><a href="/exchange/member/myAccount/detail.jsp" target="_blank">My Profile
+					</a></li>
+					
+					<li><a href="/exchange/member/myAccount/summary.jsp" target="_blank">Balance Overview
+					</a></li>
+					
+					<li><a href="/exchange/member/myAccount/accountCashStatement.jsp" target="_blank">Account Statement
+					</a></li>
+					
+					<li><a href="/exchange/member/myAccount/current_bets.jsp" target="_blank">My Bets
+					</a></li>
+					<li><a href="/exchange/member/myAccount/bet_history.jsp" target="_blank">Bets History
+					</a></li>
+					
+					
+					<li><a href="/exchange/member/myAccount/profit_loss.jsp" target="_blank">Profit &amp; Loss
+					</a></li>
+					
+					
+					
+					<li><a href="/exchange/member/myAccount/activityLog.jsp" target="_blank">Activity Log
+					</a></li>
+					
+					
+					<li class="logout"><a id="logout">LOGOUT<img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
+					</li>
+					
+				</ul>
+			</li>
+		</ul>
     </div> <!-- Menu Wrap -->
     <div class="menu-wrap">
         <div class="full-wrap">
@@ -36,13 +131,17 @@
                 <li><a routerLink="/home" neua="Home">Home</a></li>
                 <li><a routerLink="/inplay">In-Play</a></li>
                 <li><a routerLink="/multimarket">Multi Markets</a></li>
-                <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>3</span> Cricket </a></li>
-                <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>77</span> Soccer </a> </li>
-                <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>9</span> Tennis </a> </li>
+                <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>3</span> Cricket </a>
+                </li>
+                <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>77</span> Soccer </a>
+                </li>
+                <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>9</span> Tennis </a>
+                </li>
                 <li ui-use="sportradar_virtual_sports"> <a class=""
                         href="javascript:CommonTransferWalletHandler.openDepositPage('1', 'BetRadar', 'SPORTRADAR', '', 'SPORTRADAR_VIRTUAL_001', '', true)"
                         neua="Virtual Cricket"> Virtual Cricket </a> </li>
-                <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>9</span> E-Soccer </a> </li>
+                <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>9</span> E-Soccer </a>
+                </li>
                 <li><a routerLink="/allsport-highlight">Binary</a></li>
                 <li ui-use="mt5"><a class=""
                         href="javascript:CommonTransferWalletHandler.openDepositPage('4', 'Sky Trader', '', '', '', '', false)"
