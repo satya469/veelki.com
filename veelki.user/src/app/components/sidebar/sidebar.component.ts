@@ -22,11 +22,17 @@ export class SidebarComponent implements OnInit {
     this.isSportTournamentsCollapsed.length = 0;
   }
 
+  resetSidebar(){
+    this.sportTournamentsList = [];
+    this.tournamentEventsList = [];
+  }
+
   getSportTournamentsList:any = (sportId:string) =>{
     this.service.get(`exchange/GetSeries?SportId=${sportId}&type=1`)
     .subscribe((response:ResponseModel) => {
       if(response.data != null && response.isSuccess == true){
-        this.sidebarList = response.data;
+        this.sportTournamentsList = response.data;
+        //this.sidebarList = this.sidebarList?.filter((x:any) => x.id == sportId)
       }
     });
     
@@ -37,14 +43,6 @@ export class SidebarComponent implements OnInit {
     .subscribe((response:ResponseModel) => {
       if(response.data != null){
         this.tournamentEventsList = response.data;
-        for(let a = 0; a < this.sportTournamentsList.length; a++){
-          if(a != index){
-            this.isSportTournamentsCollapsed[a] = false;
-          }else{
-            console.log(this.isSportTournamentsCollapsed[a]);
-            this.isSportTournamentsCollapsed[a] = (!this.isSportTournamentsCollapsed[a] ? true : false);
-          }
-        }
       }
     });
   }
@@ -70,4 +68,5 @@ interface TournamentEventsList {
   eventId: string;
   eventName: string;
   marketId: string;
+  tournamentId: string;
 }

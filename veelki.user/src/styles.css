@@ -1132,13 +1132,14 @@ td .fancy-info dt,
     position: relative;
     min-width: 1350px;
     max-width: calc(100% - 40px);
-    height: calc(100% - 105px);
+    height: calc(100vh - 105px);
     margin: 0 auto
 }
 
 .over-wrap {
     overflow: hidden;
-    overflow-y: visible
+    overflow-y: visible;
+    max-height: 85vh;
 }
 
 .pop-warp,
@@ -1249,7 +1250,7 @@ td .fancy-info dt,
 
 .full-wrap .col-left {
     height: 100%;
-    overflow: hidden
+    overflow: hidden;
 }
 
 .col-center {
@@ -4688,7 +4689,8 @@ textarea:focus {
 }
 
 .sub_path {
-    position: relative
+    position: relative;
+    height: 100%;
 }
 
 .full-wrap .sub_path .menu-list {
@@ -5467,17 +5469,22 @@ body {
 
 .promo-banner-wrap {
     position: relative;
-    overflow: hidden;
     width: 100%;
-    height: 0;
     margin-bottom: 15px;
-    padding-top: 24.8366%
+    min-height: 200px;
 }
 
 .promo-banner-wrap.active {
     overflow: hidden;
     padding-top: 0;
     height: auto
+}
+
+.promo-banner-wrap .owl-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .promo-banner-loading {
@@ -5489,6 +5496,10 @@ body {
     height: 100%;
     background: #000 url(assets/images/promo/loading.svg) center center no-repeat;
     background-size: 80px
+}
+
+.promo-banner-loading.d-none {
+    display: none;
 }
 
 .promo-banner img {

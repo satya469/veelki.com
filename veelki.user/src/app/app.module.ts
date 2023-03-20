@@ -37,6 +37,9 @@ import { StackEffects } from './store/effects/stack.effect';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { TableRowComponent } from './components/table-row/table-row.component';
+import { SliderComponent } from './components/slider/slider.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -62,13 +65,16 @@ import { TableRowComponent } from './components/table-row/table-row.component';
     ProfileSidebarComponent,
     ProfitLossComponent,
     NewsComponent,
-    TableRowComponent
+    TableRowComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    CarouselModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot(),
     StoreModule.forRoot({StackData : StackReducer, InplayData : InplayReducer, SportData : SportReducer}),
     EffectsModule.forRoot([StackEffects,InplayEffect, SportEffect]),

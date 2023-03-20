@@ -2,10 +2,32 @@
     <div class="sub_path">
         <div class="path">Sports </div>
         <ul id="listBoard" class="menu-list">
-            <li class="path-last"><a>All Sports</a></li>
-            <li style="display: list-item;" *ngFor="let sidebar of sidebarList">
-                <a style="cursor: pointer" (click)="getSportTournamentsList(sidebar.id)">{{sidebar.sportName}}</a>
-            </li>
+            <li class="path-last" *ngIf="sportTournamentsList.length > 0"><a (click)="resetSidebar()">All Sports</a></li>
+            <ng-container *ngFor="let sidebar of sidebarList">
+                <li style="display: list-item;" *ngIf="sportTournamentsList.length == 0"
+                    [ngClass]="{'menu-select-head' : sportTournamentsList[0]?.sportId == sidebar.id }">
+                    <a style="cursor: pointer" [routerLink]="['/allsport-highlight',sidebar.id]" (click)="getSportTournamentsList(sidebar.id)">{{sidebar.sportName}}</a>
+                </li>
+                <li style="display: list-item;" *ngIf="sportTournamentsList.length > 0 && sportTournamentsList[0]?.sportId == sidebar.id"
+                    [ngClass]="{'menu-select-head' : sportTournamentsList[0]?.sportId == sidebar.id }">
+                    <a style="cursor: pointer" [routerLink]="['/allsport-highlight',sidebar.id]" (click)="getSportTournamentsList(sidebar.id)">{{sidebar.sportName}}</a>
+                </li>
+                <ng-container *ngFor="let sportTournaments of sportTournamentsList;let i=index">
+                    <li [ngClass]="{'menu-group-title' : tournamentEventsList[0]?.tournamentId == sportTournaments.tournamentId }" style="display: list-item;" *ngIf="tournamentEventsList.length == 0 && sidebar.id == sportTournaments.sportId">
+                        <a style="cursor: pointer"
+                            (click)="getTournamentEventsList(sportTournaments.sportId, sportTournaments.tournamentId, i)">{{sportTournaments.tournamentName}}</a>
+                    </li>
+                    <li [ngClass]="{'menu-group-title' : tournamentEventsList[0]?.tournamentId == sportTournaments.tournamentId }" style="display: list-item;" *ngIf="tournamentEventsList[0]?.tournamentId == sportTournaments.tournamentId && sidebar.id == sportTournaments.sportId">
+                        <a style="cursor: pointer"
+                            (click)="getTournamentEventsList(sportTournaments.sportId, sportTournaments.tournamentId, i)">{{sportTournaments.tournamentName}}</a>
+                    </li>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngFor="let tournamentEvents of tournamentEventsList">
+                <li style="display: list-item;">
+                    <a style="cursor: pointer" [routerLink]="['/fullmarket', tournamentEvents.marketId, tournamentEvents.eventId, tournamentEvents.sportId]">{{tournamentEvents.eventName}}</a>
+                </li>
+            </ng-container>
         </ul>
     </div>
 </div>

@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: 'inplay', component: InplayComponent },
       { path: 'horse-racing', component: HorseRacingComponent },
       { path: 'event-result', component: EventResultComponent },
-      { path: 'fullmarket', component: FullmarketComponent},
+      { path: 'fullmarket/:marketId/:eventId/:sportId', component: FullmarketComponent},
       { path: 'multimarket', component: MultimarketComponent},
       { path: 'account/my-profile', component: MyProfileComponent },
       { path: 'account/summary', component: SummaryComponent },
