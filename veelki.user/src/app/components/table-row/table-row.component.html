@@ -9,9 +9,9 @@
 <div class="game-list">
     <dl class="game-list-col" *ngFor="let tableColumn of tableRowList" style="display: flex;">
         <dt style="cursor: pointer">
-            <img class="icon-in_play" src="https://statics3.skyexch.bike/images/transparent.gif">
+            <img class="icon-in_play" src="asstes/images/transparent.gif">
             <span class="game-low_liq" style="display: none;">Low Liquidity</span>
-            <a>{{tableColumn.eventName.split("/")[0]}}</a>
+            <a [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.eventName.split("/")[0]}}</a>
             <span class="game-list-time" *ngIf="tableColumn.inPlay=='True'"><span class="in_play">In-Play</span></span>
             <span class="game-live">Live</span>
             <span class="game-E"><i></i>Soccer</span>

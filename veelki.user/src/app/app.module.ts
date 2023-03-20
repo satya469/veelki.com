@@ -40,6 +40,7 @@ import { TableRowComponent } from './components/table-row/table-row.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatchOddComponent } from './components/fullmarket/match-odd/match-odd.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProfitLossComponent,
     NewsComponent,
     TableRowComponent,
-    SliderComponent
+    SliderComponent,
+    MatchOddComponent
   ],
   imports: [
     BrowserModule,

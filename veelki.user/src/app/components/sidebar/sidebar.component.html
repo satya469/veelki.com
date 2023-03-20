@@ -25,7 +25,7 @@
             </ng-container>
             <ng-container *ngFor="let tournamentEvents of tournamentEventsList">
                 <li style="display: list-item;">
-                    <a style="cursor: pointer" [routerLink]="['/fullmarket', tournamentEvents.marketId, tournamentEvents.eventId, tournamentEvents.sportId]">{{tournamentEvents.eventName}}</a>
+                    <a style="cursor: pointer" [routerLink]="['/fullmarket', tournamentEvents.marketId, tournamentEvents.gameId, tournamentEvents.eid]">{{tournamentEvents.eventName}}</a>
                 </li>
             </ng-container>
         </ul>

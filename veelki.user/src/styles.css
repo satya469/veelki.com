@@ -1638,23 +1638,23 @@ table .btn-send {
 }
 
 .icon-time {
-    /*background: url(assets/images/main/icon-time.png)*/
+    background: url(assets/images/main/icon-time.png)
 }
 
 .icon-live {
-    /*background: url(assets/images/main/icon-live.png)*/
+    background: url(assets/images/main/icon-live.png)
 }
 
 .icon-irun {
-    /*background: url(assets/images/main/icon-irun.png)*/
+    background: url(assets/images/main/icon-irun.png)
 }
 
 .icon-predict {
-    /*background: url(assets/images/main/icon-chart.png)*/
+    background: url(assets/images/main/icon-chart.png)
 }
 
 .icon-cashout {
-    /*background: url(assets/images/main/icon-cashout.png)*/
+    background: url(assets/images/main/icon-cashout.png)
 }
 
 .icon-in_play {
@@ -8004,7 +8004,7 @@ img.support-ig {
 .match-odds img {
     vertical-align: top;
     background-repeat: no-repeat;
-    /*background-image: url(assets/images/main/img-match_odds.png);*/
+    background-image: url(assets/images/main/img-match_odds.png);
     background-repeat: no-repeat;
     height: 30px;
     width: 20px
@@ -8762,7 +8762,7 @@ img.support-ig {
 .bets .back-all,
 .bets-HS .back-all,
 .bets-GH .back-all {
-    /*background-image: url(assets/images/main/bg-backall-left.png);*/
+    background-image: url(assets/images/main/bg-backall-left.png);
     background-repeat: no-repeat;
     background-position: initial
 }
@@ -8771,28 +8771,28 @@ img.support-ig {
 .bets-HS .back-all img,
 .bets-GH .back-all img {
     left: 11px;
-    /*background-image: url(assets/images/bg/bg-backall.png);*/
+    background-image: url(assets/images/bg/bg-backall.png);
     background-repeat: repeat-x
 }
 
 .bets .back-all:hover,
 .bets-HS .back-all:hover,
 .bets-GH .back-all:hover {
-    /*background-image: url(assets/images/main/bg-backall-left_hover.png);*/
+    background-image: url(assets/images/main/bg-backall-left_hover.png);
     background-position: initial
 }
 
 .bets .back-all:hover img,
 .bets-HS .back-all:hover img,
 .bets-GH .back-all:hover img {
-    /*background-image: url(assets/images/bg/bg-backall_hover.png);*/
+    background-image: url(assets/images/bg/bg-backall_hover.png);
     background-repeat: repeat-x
 }
 
 .bets .lay-all,
 .bets-HS .lay-all,
 .bets-GH .lay-all {
-    /*background-image: url(assets/images/main/bg-layall-right.png);*/
+    background-image: url(assets/images/main/bg-layall-right.png);
     background-position: right top
 }
 
@@ -8800,7 +8800,7 @@ img.support-ig {
 .bets-HS .lay-all img,
 .bets-GH .lay-all img {
     right: 11px;
-    /*background-image: url(assets/images/bg/bg-layall.png);*/
+    background-image: url(assets/images/bg/bg-layall.png);
     background-repeat: repeat-x;
     background-position: initial
 }
@@ -8808,14 +8808,14 @@ img.support-ig {
 .bets .lay-all:hover,
 .bets-HS .lay-all:hover,
 .bets-GH .lay-all:hover {
-    /*background-image: url(assets/images/main/bg-layall-right_hover.png);*/
+    background-image: url(assets/images/main/bg-layall-right_hover.png);
     background-position: right top
 }
 
 .bets .lay-all:hover img,
 .bets-HS .lay-all:hover img,
 .bets-GH .lay-all:hover img {
-    /*background-image: url(assets/images/bg/bg-layall_hover.png);*/
+    background-image: url(assets/images/bg/bg-layall_hover.png);
     background-repeat: repeat-x;
     background-position: initial
 }
@@ -8903,7 +8903,7 @@ img.support-ig {
 .bets.disable .back-all,
 .disable.bets-HS .back-all,
 .disable.bets-GH .back-all {
-    /*background-image: url(assets/images/main/bg-backall-left_disable.png)*/
+    background-image: url(assets/images/main/bg-backall-left_disable.png)
 }
 
 .bets.disable .back-all img,
@@ -8916,7 +8916,7 @@ img.support-ig {
 .bets.disable .lay-all,
 .disable.bets-HS .lay-all,
 .disable.bets-GH .lay-all {
-    /*background-image: url(assets/images/main/bg-layall-right_disable.png);*/
+    background-image: url(assets/images/main/bg-layall-right_disable.png);
     background-position: right top
 }
 
@@ -9004,25 +9004,25 @@ img.support-ig {
 .disabled .back-all:hover {
     cursor: not-allowed;
     background-color: rgba(0, 0, 0, 0);
-    /*background-image: url(assets/images/main/bg-backall-left-disabled.png)*/
+    background-image: url(assets/images/main/bg-backall-left-disabled.png)
 }
 
 .disabled .back-all img,
 .disabled .back-all:hover img {
-    /*background: url(assets/images/bg-backall-disabled.png)*/
+    background: url(assets/images/bg-backall-disabled.png)
 }
 
 .disabled .lay-all,
 .disabled .lay-all:hover {
     cursor: not-allowed;
     background-color: rgba(0, 0, 0, 0);
-    /*background-image: url(assets/images/main/bg-layall-right-disabled.png);*/
+    background-image: url(assets/images/main/bg-layall-right-disabled.png);
     background-position: right top
 }
 
 .disabled .lay-all img,
 .disabled .lay-all:hover img {
-    /*background-image: url(assets/images/bg-layall-disabled.png);*/
+    background-image: url(assets/images/bg-layall-disabled.png);
     background-position: right top
 }
 

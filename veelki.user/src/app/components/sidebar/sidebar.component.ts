@@ -66,6 +66,8 @@ interface SportTournamentsList {
 interface TournamentEventsList {
   sportId: string;
   eventId: string;
+  eid: string;
+  gameId: string;
   eventName: string;
   marketId: string;
   tournamentId: string;
