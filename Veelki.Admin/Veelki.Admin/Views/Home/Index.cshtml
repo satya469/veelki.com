@@ -1,44 +1,1367 @@
-﻿@using Veelki.Data.Entities
+﻿@model Veelki.Models.Model.RegisterListVM;
 @{
-    ViewBag.Title = "Dashboard";
+    ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var roleId = ViewBag.roleIdBass;
 }
 
+@Html.HiddenFor(x => x.LoginUserRole)
+
+<div style="display: none"><input type="password" autocomplete="new-password"></div>
+<!-- Add Member pop start -->
+
+
+
+
+
+<div id="createModal" class="pop_bg" style="display:none">
+    <div class="pop_box ">
+        <a class="close_pop" href="#" onclick="CreateAccountHandler.hideDialog()">close_pop</a>
+        <!-- message -->
+        <div id="message" class="message-wrap success" style="display:none">
+            <a class="btn-close" href="#">Close</a>
+            <p></p>
+        </div>
+        <h3>
+            Add Player
+        </h3>
+        <ul class="half_box add-member-box">
+            <li class="add_account_box">
+                <dl class="border_b">
+                    <dt>
+                        E-mail
+                    </dt>
+                    <dd>
+                        <input id="email" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                               maxlength="50">
+                        <span class="must">＊</span>
+                    </dd>
+                    <dt>
+                        Username
+                    </dt>
+                    <dd>
+                        <input id="userName" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                               maxlength="16">
+                        <span class="must">＊</span>
+                        <span id="userNameErrorText" class="error-text" style="display:none"></span>
+                    </dd>
+                    <dt>
+                        Password
+                    </dt>
+                    <dd>
+                        <input id="userPassword" type="password" onclick="location.href='#stake'"
+                               placeholder="Enter">
+                        <span class="must">＊</span>
+                        <span id="passwordErrorText" class="error-text" style="display:none"></span>
+                    </dd>
+                    <dt>
+                        Confirm Password
+                    </dt>
+                    <dd>
+                        <input id="repeatPassword" type="password" onclick="location.href='#stake'"
+                               placeholder="Enter">
+                        <span class="must">＊</span>
+                        <span id="repeatPasswordErrorText" class="error-text" style="display:none"></span>
+                    </dd>
+                </dl>
+                <dl class="">
+                    <dt>
+                        First Name
+                    </dt>
+                    <dd>
+                        <input id="firstName" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                               maxlength="16">
+                    </dd>
+                    <dt>
+                        Last Name
+                    </dt>
+                    <dd>
+                        <input id="lastName" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                               maxlength="16">
+                    </dd>
+                    <dt>Phone</dt>
+                    <dd>
+                        <input id="phone" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                               maxlength="16">
+                    </dd>
+
+                    <dt>
+                        Exposure
+                    </dt>
+                    <dd>
+                        <input id="exposure" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                               maxlength="12">
+                        <span class="must">＊</span>
+                    </dd>
+
+                    <dt>Commission(%)</dt>
+                    <dd>
+                        <input id="commission" type="text" onclick="location.href='#tax'" placeholder="Enter"
+                               value="">
+                        <span class="must">＊</span>
+                    </dd>
+
+
+
+
+                    <dt>
+                        Time Zone
+                    </dt>
+                    <dd>
+                        <select name="timezone" id="timezone">
+
+                            <option value="Pacific/Midway">
+                                Pacific/Midway(GMT-11:00)
+                            </option>
+
+                            <option value="Pacific/Honolulu">
+                                Pacific/Honolulu(GMT-10:00)
+                            </option>
+
+                            <option value="America/Juneau">
+                                America/Juneau(GMT-9:00)
+                            </option>
+
+                            <option value="America/Los_Angeles">
+                                America/Los_Angeles(GMT-8:00)
+                            </option>
+
+                            <option value="America/Phoenix">
+                                America/Phoenix(GMT-7:00)
+                            </option>
+
+                            <option value="America/Chicago">
+                                America/Chicago(GMT-6:00)
+                            </option>
+
+                            <option value="America/New_York">
+                                America/New_York(GMT-5:00)
+                            </option>
+
+                            <option value="America/Santiago">
+                                America/Santiago(GMT-4:00)
+                            </option>
+
+                            <option value="America/Sao_Paulo">
+                                America/Sao_Paulo(GMT-3:00)
+                            </option>
+
+                            <option value="Atlantic/South_Georgia">
+                                Atlantic/South_Georgia(GMT-2:00)
+                            </option>
+
+                            <option value="Atlantic/Azores">
+                                Atlantic/Azores(GMT-1:00)
+                            </option>
+
+                            <option value="Europe/London">
+                                Europe/London(GMT+0:00)
+                            </option>
+
+                            <option value="Europe/Paris">
+                                Europe/Paris(GMT+1:00)
+                            </option>
+
+                            <option value="Africa/Cairo">
+                                Africa/Cairo(GMT+2:00)
+                            </option>
+
+                            <option value="Asia/Qatar">
+                                Asia/Qatar(GMT+3:00)
+                            </option>
+
+                            <option value="Asia/Dubai">
+                                Asia/Dubai(GMT+4:00)
+                            </option>
+
+                            <option value="Asia/Karachi">
+                                Asia/Karachi(GMT+5:00)
+                            </option>
+
+                            <option value="IST" selected="selected">
+                                IST(Bangalore / Bombay / New Delhi) (GMT+5:30)
+                            </option>
+
+                            <option value="Asia/Kathmandu">
+                                Asia/Kathmandu(GMT+5:45)
+                            </option>
+
+                            <option value="Asia/Dhaka">
+                                Asia/Dhaka(GMT+6:00)
+                            </option>
+
+                            <option value="Asia/Bangkok">
+                                Asia/Bangkok(GMT+7:00)
+                            </option>
+
+                            <option value="Asia/Hong_Kong">
+                                Asia/Hong_Kong(GMT+8:00)
+                            </option>
+
+                            <option value="Asia/Tokyo">
+                                Asia/Tokyo(GMT+9:00)
+                            </option>
+
+                            <option value="Australia/Adelaide">
+                                Australia/Adelaide(GMT+9:30)
+                            </option>
+
+                            <option value="Australia/Melbourne">
+                                Australia/Melbourne(GMT+10:00)
+                            </option>
+
+                            <option value="Asia/Magadan">
+                                Asia/Magadan(GMT+11:00)
+                            </option>
+
+                            <option value="Pacific/Fiji">
+                                Pacific/Fiji(GMT+12:00)
+                            </option>
+
+                        </select>
+                        <span class="must">＊</span>
+                    </dd>
+
+                </dl>
+            </li>
+            <li class="pt_allowed_box" style="display: none;">
+
+
+
+
+
+
+
+                <div class="pt_allowed" style="display: none;">
+                    <dl>
+                        <dt class="dt_w50">
+                            PT Allowed To Player
+                            (%)
+                        </dt>
+                        <dd>
+                            <input id="memberMaxPT" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                                   value="0">
+                        </dd>
+                    </dl>
+
+
+
+
+
+
+
+                </div>
+                <div class="sports_box" style="height: 350px;overflow: hidden;overflow-y: auto;">
+                    <p>
+                        My Sports PT Setting
+                        <span id="settingNote" class="note" style="display: none;">
+                            PT setting % value must be
+                            multiplier of 5 :
+                        </span>
+                    </p>
+
+                    <ul class="half_box">
+                        <li>
+                            <div id="sportsSet" class="sports_set">
+                                <dl class="bg_head">
+                                    <dt>
+                                        All Sports Set
+                                    </dt>
+                                    <dd>
+                                        <input id="allowOneMaxPT" type="text" onclick="location.href='#stake'"
+                                               placeholder="Enter" value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#" name="copy_one_up">up</a></li>
+                                            <li><a class="down" href="#" name="copy_one_down">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+
+
+
+
+                                </dl>
+
+                                <dl class="">
+                                    <dt>
+                                        Soccer
+                                    </dt>
+
+                                    <dd class="">
+                                        <input id="soccer_PT" type="text" name="normal" data-type="1" value="0">
+                                    </dd>
+                                    <div class="tips-popup" style="display: none">
+                                        multiplier of 5
+                                    </div>
+
+
+
+                                </dl>
+
+                                <dl class="bg_dark">
+                                    <dt>
+                                        Tennis
+                                    </dt>
+
+                                    <dd class="">
+                                        <input id="tennis_PT" type="text" name="normal" data-type="2" value="0">
+                                    </dd>
+                                    <div class="tips-popup" style="display: none">
+                                        multiplier of 5
+                                    </div>
+
+
+
+                                </dl>
+
+                                <dl class="">
+                                    <dt>
+                                        Cricket
+                                    </dt>
+
+                                    <dd class="">
+                                        <input id="cricket_PT" type="text" name="normal" data-type="4" value="0">
+                                    </dd>
+                                    <div class="tips-popup" style="display: none">
+                                        multiplier of 5
+                                    </div>
+
+
+
+                                </dl>
+
+                                <dl class="bg_dark">
+                                    <dt>
+                                        Rugby Union
+                                    </dt>
+
+                                    <dd class="">
+                                        <input id="rugby_union_PT" type="text" name="normal" data-type="5"
+                                               value="0">
+                                    </dd>
+                                    <div class="tips-popup" style="display: none">
+                                        multiplier of 5
+                                    </div>
+
+
+
+                                </dl>
+
+                                <dl class="">
+                                    <dt>
+                                        Horse Racing
+                                    </dt>
+
+                                    <dd class="">
+                                        <input id="horse_racing_PT" type="text" name="normal" data-type="7"
+                                               value="0">
+                                    </dd>
+                                    <div class="tips-popup" style="display: none">
+                                        multiplier of 5
+                                    </div>
+
+
+
+                                </dl>
+
+                                <dl class="bg_dark">
+                                    <dt>
+                                        Greyhound Racing
+                                    </dt>
+
+                                    <dd class="">
+                                        <input id="greyhound_racing_PT" type="text" name="normal" data-type="4339"
+                                               value="0">
+                                    </dd>
+                                    <div class="tips-popup" style="display: none">
+                                        multiplier of 5
+                                    </div>
+
+
+
+                                </dl>
+
+                                <dl class="">
+                                    <dt>
+                                        American Football
+                                    </dt>
+
+                                    <dd class="">
+                                        <input id="american_football_PT" type="text" name="normal" data-type="6423"
+                                               value="0">
+                                    </dd>
+                                    <div class="tips-popup" style="display: none">
+                                        multiplier of 5
+                                    </div>
+
+
+
+                                </dl>
+
+                                <dl class="bg_dark">
+                                    <dt>
+                                        Basketball
+                                    </dt>
+
+                                    <dd class="">
+                                        <input id="basketball_PT" type="text" name="normal" data-type="7522"
+                                               value="0">
+                                    </dd>
+                                    <div class="tips-popup" style="display: none">
+                                        multiplier of 5
+                                    </div>
+
+
+
+                                </dl>
+
+                                <dl class="">
+                                    <dt>
+                                        Politics
+                                    </dt>
+
+                                    <dd class="">
+                                        <input id="politics_PT" type="text" name="normal" data-type="2378961"
+                                               value="0">
+                                    </dd>
+                                    <div class="tips-popup" style="display: none">
+                                        multiplier of 5
+                                    </div>
+
+
+
+                                </dl>
+
+                                <dl class="bg_dark">
+                                    <dt>
+                                        E-Soccer
+                                    </dt>
+
+                                    <dd class="">
+                                        <input id="e_soccer_PT" type="text" name="normal" data-type="137" value="0">
+                                    </dd>
+                                    <div class="tips-popup" style="display: none">
+                                        multiplier of 5
+                                    </div>
+
+
+
+                                </dl>
+
+                                <dl class="">
+                                    <dt>
+                                        Kabaddi
+                                    </dt>
+
+                                    <dd class="">
+                                        <input id="kabaddi_PT" type="text" name="normal" data-type="138" value="0">
+                                    </dd>
+                                    <div class="tips-popup" style="display: none">
+                                        multiplier of 5
+                                    </div>
+
+
+
+                                </dl>
+
+                            </div>
+                            <p style="display: ">My PT Allowed <strong id="yourPT">0</strong>%</p>
+                        </li>
+
+                        <li>
+
+                            <div id="fancyBetSet" class="sports_set" style="display: none;height: 150px;">
+                                <dl class="bg_head">
+                                    <dt>FancyBet Setting</dt>
+                                </dl>
+
+                                <dl class="">
+                                    <dt>
+                                        Master Agent
+                                    </dt>
+                                    <dd>
+                                        <input id="company_fancy_bet_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter" data-type="company"
+                                               value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="bg_dark" id="fancyBetSSSPt">
+                                    <dt>SSS</dt>
+                                    <dd>
+                                        <input id="sss_fancy_bet_PT" type="text" onclick="location.href='#stake'"
+                                               placeholder="Enter" data-type="sss" value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="" id="fancyBetDirectLevelPt">
+                                    <dt>
+                                        Player
+                                    </dt>
+                                    <dd>
+                                        <input id="shareHolder_fancy_bet_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter"
+                                               data-type="shareHolder" value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <p id="fancyBetTotalPTCol" style="display: none">
+                                FancyBet total PT allowed <strong id="fancyBetTotalPT">0</strong>%
+                            </p>
+                        </li>
+
+                        <li>
+                            <div id="bookMakerSet" class="sports_set" style="display: none;height: 115px;">
+                                <dl class="bg_head">
+                                    <dt>BookMaker Setting</dt>
+                                </dl>
+
+                                <dl class="">
+                                    <dt>
+                                        Master Agent
+                                    </dt>
+                                    <dd>
+                                        <input id="company_book_maker_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter" data-type="company"
+                                               value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="bg_dark" id="bookMakerDirectLevelPt">
+                                    <dt>
+                                        Player
+                                    </dt>
+                                    <dd>
+                                        <input id="shareHolder_book_maker_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter"
+                                               data-type="shareHolder" value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <p id="bookMakerTotalPTCol" style="display: none">
+                                BookMaker total PT allowed <strong id="bookMakerTotalPT">0</strong>%
+                            </p>
+                        </li>
+
+                        <li>
+                            <div id="sportsbookTennisSet" class="sports_set" style="display: none;height: 115px;">
+                                <dl class="bg_head">
+                                    <dt>SportsBook</dt>
+                                    <dd><a class="toggle_on" href="#" id="edit_allow_sportsbookTennis">ON</a></dd>
+                                </dl>
+
+                                <dl class="">
+                                    <dt>
+                                        Master Agent
+                                    </dt>
+                                    <dd>
+                                        <input id="company_sportsbook_tennis_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter" data-type="company"
+                                               value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                <dl class="bg_dark">
+                                    <dt>
+                                        Player
+                                    </dt>
+                                    <dd>
+                                        <input id="shareHolder_sportsbook_tennis_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter"
+                                               data-type="shareHolder" value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <p style="display: none">
+                                Sportsbook total PT allowed <strong id="sportsbookTennisTotalPT">0</strong>%
+                            </p>
+                        </li>
+
+                        <li>
+                            <div id="sportsbookPremiumCricketSet" class="sports_set" style="display: none;">
+                                <dl class="bg_head">
+                                    <dt>SportsBook - Premium</dt>
+                                    <dd>
+                                        <a class="toggle_on" href="#"
+                                           id="edit_allow_sportsbookPremiumCricket">ON</a>
+                                    </dd>
+                                </dl>
+
+                                <dl class="">
+                                    <dt>
+                                        Master Agent
+                                    </dt>
+                                    <dd>
+                                        <input id="company_sportsbookPremiumCricket_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter" data-type="company"
+                                               value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+
+                                </dl>
+
+                                <dl class="bg_dark">
+                                    <dt>
+                                        Player
+                                    </dt>
+                                    <dd>
+                                        <input id="shareHolder_sportsbookPremiumCricket_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter"
+                                               data-type="shareHolder" value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <p style="display: none">
+                                Premium total PT allowed <strong id="sportsbookPremiumCricketTotalPT">0</strong>%
+                            </p>
+                        </li>
+
+
+                        <li>
+                            <div id="financialBinarySet" class="sports_set" style="display: none;">
+                                <dl class="bg_head">
+                                    <dt>Binary Setting</dt>
+                                </dl>
+
+                                <dl class="">
+                                    <dt>
+                                        Master Agent
+                                    </dt>
+                                    <dd>
+                                        <input id="company_financialBinary_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter" data-type="company"
+                                               value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+
+                                </dl>
+
+                                <dl class="bg_dark">
+                                    <dt>
+                                        Player
+                                    </dt>
+                                    <dd>
+                                        <input id="shareHolder_financialBinary_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter"
+                                               data-type="shareHolder" value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <p style="display: none">
+                                Binary total PT allowed <strong id="financialBinaryTotalPT">0</strong>%
+                            </p>
+                        </li>
+
+
+                        <li>
+                            <div id="LUCKCO7Set" class="sports_set" style="display: none;">
+                                <dl class="bg_head">
+                                    <dt>Mini Game Setting</dt>
+                                    <dd style="display: none">
+                                        <a class="toggle_on" href="#" id="new_allow_LUCKCO7">ON</a>
+                                    </dd>
+                                </dl>
+
+                                <dl class="bg_dark">
+                                    <dt>
+                                        R&amp;G
+                                    </dt>
+                                    <br>
+                                    <dt>
+                                        Master Agent
+                                    </dt>
+
+                                    <dd>
+                                        <input id="rng_agent_LUCKCO7_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter" data-type="agent"
+                                               data-categorytype="rng" value="100">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+
+                                    <dt>
+                                        Player
+                                    </dt>
+                                    <dd>
+                                        <input id="rng_downline_LUCKCO7_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter"
+                                               data-type="downline" data-categorytype="rng" value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <p style="display: none">
+                                    RNG total PT allowed <strong id="LUCKCO7_rng_TotalPT"></strong>%
+                                </p>
+
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <div id="casinoSet" class="sports_set" style="display: none;">
+                                <dl class="bg_head">
+                                    <dt>Casino Setting</dt>
+                                    <dd style="display: none">
+                                        <a class="toggle_on" href="#" id="new_allow_casino">ON</a>
+                                    </dd>
+                                </dl>
+
+                                <dl class="bg_dark">
+                                    <dt>
+                                        Live
+                                    </dt>
+                                    <br>
+                                    <dt>
+                                        Master Agent
+                                    </dt>
+
+                                    <dd>
+                                        <input id="live_agent_casino_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter" data-type="agent"
+                                               data-categorytype="live" value="100">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+
+                                    <dt>
+                                        Player
+                                    </dt>
+                                    <dd>
+                                        <input id="live_downline_casino_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter"
+                                               data-type="downline" data-categorytype="live" value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <p style="display: none">
+                                    LIVE total PT allowed <strong id="casino_live_TotalPT">100</strong>%
+                                </p>
+
+                                <dl class="">
+                                    <dt>
+                                        R&amp;G
+                                    </dt>
+                                    <br>
+                                    <dt>
+                                        Master Agent
+                                    </dt>
+
+                                    <dd>
+                                        <input id="rng_agent_casino_PT" type="text" onclick="location.href='#stake'"
+                                               placeholder="Enter" data-type="agent" data-categorytype="rng"
+                                               value="100">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+
+                                    <dt>
+                                        Player
+                                    </dt>
+                                    <dd>
+                                        <input id="rng_downline_casino_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter"
+                                               data-type="downline" data-categorytype="rng" value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <p style="display: none">
+                                    RNG total PT allowed <strong id="casino_rng_TotalPT">100</strong>%
+                                </p>
+
+                                <dl class="bg_dark">
+                                    <dt>
+                                        SLOT
+                                    </dt>
+                                    <br>
+                                    <dt>
+                                        Master Agent
+                                    </dt>
+
+                                    <dd>
+                                        <input id="slot_agent_casino_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter" data-type="agent"
+                                               data-categorytype="slot" value="100">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+
+                                    <dt>
+                                        Player
+                                    </dt>
+                                    <dd>
+                                        <input id="slot_downline_casino_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter"
+                                               data-type="downline" data-categorytype="slot" value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <p style="display: none">
+                                    SLOT total PT allowed <strong id="casino_slot_TotalPT">100</strong>%
+                                </p>
+
+                                <dl class="">
+                                    <dt>
+                                        Virtual Sports
+                                    </dt>
+                                    <br>
+                                    <dt>
+                                        Master Agent
+                                    </dt>
+
+                                    <dd>
+                                        <input id="virtual_agent_casino_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter" data-type="agent"
+                                               data-categorytype="virtual" value="100">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+
+                                    <dt>
+                                        Player
+                                    </dt>
+                                    <dd>
+                                        <input id="virtual_downline_casino_PT" type="text"
+                                               onclick="location.href='#stake'" placeholder="Enter"
+                                               data-type="downline" data-categorytype="virtual" value="0">
+                                        <ul class="odd-add">
+                                            <li><a class="up" href="#">up</a></li>
+                                            <li><a class="down" href="#">down</a></li>
+                                        </ul>
+                                        <div class="tips-popup" style="display: none">
+                                            multiplier of 5
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <p style="display: none">
+                                    VIRTUAL total PT allowed <strong id="casino_virtual_TotalPT">100</strong>%
+                                </p>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <div class="btn_box">
+            <a href="#" id="createBtn" class="btn-send">
+                Create
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Banking pop start -->
+<div id="bankingModal" class="pop_bg" style="display:none">
+    <div class="pop_box">
+        <!-- Loading Wrap -->
+        <div id="bankingModalLoading" class="overlay">
+            <!-- add style="display:block" to show loading -->
+            <div class="loading-wrap" style="display:block">
+                <ul class="loading">
+                    <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+                    <li>Loading…</li>
+                </ul>
+            </div>
+        </div>
+        <a class="close_pop" href="javascript: void(0)" onclick="BankingHandler.hideDialog()">close_pop</a>
+
+        <h3>
+            Edit Credit
+        </h3>
+        <ul class="tab">
+            <li>
+                <a id="deposit" href="javascript: void(0)">
+                    Credit IN
+                </a>
+            </li>
+            <li>
+                <a id="withdraw" href="javascript: void(0)">
+                    Credit OUT
+                </a>
+            </li>
+            <li>
+                <a id="initCreditLimit" href="javascript: void(0)">
+                    Initial Credit Limit
+                </a>
+            </li>
+        </ul>
+        <div class="total_box">
+            <dl class="total_dl">
+                <dt id="bankingTitle"></dt>
+                <dd id="displayName"></dd>
+            </dl>
+            <dl id="bankingBalanceDL" class="total_dl" style="display: none">
+                <dt>
+                    Balance
+                </dt>
+                <dd id="bankingBalance"></dd>
+            </dl>
+            <dl id="bankingCreditLimitDL" class="total_dl" style="display: none">
+                <dt>
+                    Credit Limit
+                </dt>
+                <dd id="editCreditLimit"></dd>
+            </dl>
+            <dl id="bankingInitialCreditLimitDL" class="total_dl" style="display: none">
+                <dt>
+                    Initial Credit Limit
+                </dt>
+                <dd id="editInitialCreditLimit"></dd>
+            </dl>
+        </div>
+        <dl class="form_list">
+            <dt>
+                Amount
+            </dt>
+            <dd id="allAmountOption" class="radio_enter">
+                <input id="allAmount" name="bankingAmount" class="radio" type="radio" value="all">
+                <label for="allAmount">
+                    All
+                </label>
+            </dd>
+            <dd id="cusAmountOption" class="radio_enter">
+                <input id="cusAmount" name="bankingAmount" class="radio" type="radio" value="cus">
+                <input id="amount" type="text" onclick="location.href='#stake'" placeholder="Enter">
+                <span id="bankingAmountMust" class="must">＊</span>
+            </dd>
+            <dd id="cusInitCreditLimit">
+                <input id="editInitCreditLimit" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                       onkeyup="return BankingHandler.checkCreditLimit(this)">
+                <span id="bankingInitCreditLimitMust" class="must">＊</span>
+            </dd>
+            <dt style="display: block">
+                Password
+            </dt>
+            <dd style="display: block">
+                <input id="bankingPassword" type="password" onclick="location.href='#stake'" placeholder="Enter">
+                <span class="must">＊</span>
+            </dd>
+            <dt>
+                Remarks
+            </dt>
+            <dd>
+                <textarea id="remarks" type="text" cols="45" rows="5" placeholder="Enter"></textarea>
+            </dd>
+            <dd>
+                <a id="bankingBtn" class="btn-send" href="javascript: void(0)"></a>
+                <a id="editCreditLimitBtn" class="btn-send" href="javascript: void(0)"
+                   style="display: none">Submit</a>
+            </dd>
+        </dl>
+
+    </div>
+</div>
+
+
+<!-- Change status pop start -->
+<div id="changeStatusModal" class="pop_bg" style="display: none;">
+    <div class="pop_box">
+        <a class="close_pop" href="javascript: void(0)" onclick="ChangeStatusHandler.hideDialog()">close_pop</a>
+        <h3>
+            Change Status
+        </h3>
+        <div class="status_id">
+            <p id="changeAccount"></p>
+            <p class="status-active" id="originalStatus"></p>
+        </div>
+
+        <div class="white-wrap">
+
+            <ul id="statusBtn" class="status_but">
+                <li>
+                    <a id="activeBtn" class="but_active" href="#active" data-status="active">
+                        <img class="" src="https://statics3.skyexch.bike/images/transparent.gif">
+                        Active
+                    </a>
+                </li>
+                <li>
+                    <a id="suspendBtn" class="but_suspend" href="#suspend" data-status="suspend">
+                        <img class="" src="https://statics3.skyexch.bike/images/transparent.gif">
+                        Suspend
+                    </a>
+                </li>
+                <li>
+                    <a id="lockedBtn" class="but_locked" href="#locked" data-status="locked">
+                        <img class="" src="https://statics3.skyexch.bike/images/transparent.gif">
+                        Locked
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="suspend-wrap" id="maxWinLossSuspendDiv" style="display: none">
+            <div class="status_id" id="maxWinLossSuspendStatus"></div>
+
+            <div class="fix-content">
+                <p id="maxLossSuspendInfo" style="display: none">
+                    Please change downline Max Loss Limit over the
+                    total loss or executed on Transferable P/L, before you unsuspend.
+                </p>
+                <p id="maxWinSuspendInfo" style="display: none">
+                    Please change downline Max Win Limit over the total
+                    win or executed on Transferable P/L, before you unsuspend.
+                </p>
+
+                <ul class="status_but">
+                    <li>
+                        <a class="but_suspend disable" id="maxLossUnSuspendBtn"
+                           href="javascript:void (0);">
+                            Unsuspend <strong>Loss</strong> Limit
+                        </a>
+                    </li>
+                    <li>
+                        <a class="but_suspend disable" id="maxWinUnSuspendBtn" href="javascript:void (0);">
+                            Unsuspend
+                            <strong>Win</strong> Limit
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="suspend-wrap" id="passLockDiv" style="display: none">
+            <div class="sys-lock status_id">
+                <p class="status-lock">
+                    <img src="https://statics3.skyexch.bike/images/transparent.gif">Passlocked
+                </p>
+            </div>
+
+            <div class="fix-content">
+                <ul class="status_but">
+                    <li>
+                        <a class="but_locked" id="unPassLockBtn" href="javascript:void (0);">
+                            Unlock
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sys-suspend status_id" id="systemSuspendMessage" style="display: none">
+            <p class="status-suspend">
+                <img src="https://statics3.skyexch.bike/images/transparent.gif">System Suspend
+            </p>
+        </div>
+
+        <div class="sys-lock status_id" id="systemLockedMessage" style="display: none">
+            <p class="status-lock">
+                <img src="https://statics3.skyexch.bike/images/transparent.gif">System Locked
+            </p>
+        </div>
+
+        <div class="btn_box inline-form">
+            <dl class="form_list" style="display: inline">
+
+                <dt>
+                    Password
+                </dt>
+                <dd>
+                    <input id="changeStatusPassword" type="password" placeholder="Enter" fdprocessedid="d6kei">
+                </dd>
+            </dl>
+            <div class="btn_box">
+                <a id="changeStatusBtn" class="btn-send" href="javascript: void(0)">
+                    Change
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="creditReferenceModel" class="pop_bg" style="display:none">
+    <div class="pop_refer">
+        <a class="close_pop" href="javascript: void(0)" onclick="CreditReferenceHandler.hideDialog()">close_pop</a>
+        <h3>
+            Credit Reference Edit
+        </h3>
+
+        <div class="wrap-refer_edit">
+            <dl>
+                <dt>
+                    Current
+                </dt>
+                <dd>
+                    <a class="btn" id="creditReferenceLog" href="javascript: void(0)">
+                        Log
+                    </a>
+                    <strong id="creditReference"></strong>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>
+                    New
+                </dt>
+                <dd>
+                    <input type="text" id="newCreditReference" onclick="location.href='#stake'" placeholder="Enter">
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>
+                    Password
+                </dt>
+                <dd>
+                    <input id="changeCreditReferencePassword" type="password" onclick="location.href='#stake'"
+                           placeholder="Enter">
+                </dd>
+            </dl>
+        </div>
+        <ul class="btn-wrap">
+            <li>
+                <a id="changeCreditReferenceBtn" class="btn-send" href="javascript: void(0)">
+                    Submit
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Top start -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script language="javascript" type="text/javascript">
+    if (typeof (PageConfig) == 'undefined') {
+        PageConfig = {};
+    }
+    PageConfig.CurrencyTypeName = 'PTH';
+    PageConfig.currencySymbol = '';
+    PageConfig.site = 1;
+    PageConfig.balance = 0;
+    PageConfig.agentLevel = 3;
+    PageConfig.isSubAccount = false;
+    PageConfig.ENABLE_SEPARATE_AGENT_PLAYER_LOGIN = true;
+    PageConfig.userId = 'subhodip';
+
+    $j(document).ready(function () {
+        I18N.addResource({
+            'msg.error.account.isSuspended': 'Account is suspended! Please contact your upline.'
+        });
+
+        AgentTopHandler.init();
+        MenuHandler.init();
+    });
+
+</script>
+
+
+<!-- Top end -->
 
 <div id="mainWrap" class="main_wrap">
 
     <div class="marquee-box">
         <h4>News</h4>
-        <div class="marquee marquee-sec">
-            <div class="marquee-inner">
-                <marquee attribute_name="attribute_value" ....more attributes>
-                    <div class="js-marquee" style="margin-right: 0px; float: left;">
-                        <a><span>12 Mar 2023</span>Event : New Zealand v Sri Lanka.... Market : 80 Over SL (2) '192-193' (IST 06:58:54 - 06:59:05) Bets Voided Because of Wrong Commentary.... Sorry for the Inconvenience&nbsp;Caused</a>
-                        <a><span>21 Jan 2022</span>Match :- Minister Group Dhaka vs Khulna Tigers .. Market .. Bookmaker .. Selection :- Khulna Tigers ' 2 - 6 ' ( IST 21:18:35 - 21:18:38 ) Bets Voided Because Wrong Odds Offered Bymistake ... Sorry for the Inconveniences Caused</a>
-                        <a><span>04 Sep 2021</span>WHITE LABEL OF SKYEXCHANGE IS AVAILABLE NOW - CONTACT YOUR UPLINE.</a>
-
-
-                    </div>
-                </marquee>
+        <div class="marquee">
+            <div style="width: 100000px; transform: translateX(1278px); animation: 197.822s linear 0s infinite normal none running marqueeAnimation-4878180;"
+                 class="js-marquee-wrapper">
+                <div class="js-marquee" style="margin-right: 0px; float: left;">
+                    <a>
+                        <span>22 Mar 2023</span>Event :-
+                        India v Australia .. Market :- D Warner Runs , D Warner Run Bhav , D Warner Boundaries ,
+                        H.M.B Face By D Warner , D Warner Odd Run 1 ,&amp; D Warner Even Run 1 .. Whole Market
+                        Voided Because He didn't came for Opening , So we have created a new Market by adding (N)
+                        after the Market Name .. Sorry for the Inconvenience Caused
+                    </a><a>
+                        <span>
+                            22 Mar
+                            2023
+                        </span>Event :- India v Australia .. Market .. 15 Over AUS '87 - 88' (IST 14:30:39 -
+                        14:31:03) , 20 Over AUS '113.90.110' (IST 14:30:59 - 14:31:25) &amp; 2nd Wkt AUS Run Bhav
+                        '73.6.9' (IST 14:30:30 - 14:30:50) Bets Voided Because Of Wrong Commentary .. Sorry for the
+                        Inconvenience Caused
+                    </a><a>
+                        <span>22 Mar 2023</span>Event :- India v Australia .. Market :-
+                        11.6 Ball Run AUS .. Whole Market Voided Because Of Wrong Commentary .. Sorry for the
+                        Inconvenience Caused
+                    </a><a>
+                        <span>22 Mar 2023</span>Event : India v Australia .. Market :-
+                        1.3 Over IND '6 - 7' (IST 18:10:28 - 18:10:46) , 2 Over IND '9 - 10' (18:10:27 - 18:12:49) ,
+                        3 Over IND '14 - 15' (IST 18:10:31 - 18:12:49) , 5 Over IND '25 - 26' (IST 18:10:32 -
+                        18:10:55) , 8 Over IND '42 - 44' (IST 18:09:11 - 18:10:46) , 10 Over IND '55 - 56' ,
+                        "56.90.110" (IST 18:10:28 - 18:10:45) Bets Voided &amp; " 1.2 Ball Run IND " Whole Market
+                        Voided Because 1.1st Ball ( NO BALL Shown Late In TV ) .. Sorry for the Inconvenience
+                        Caused
+                    </a><a>
+                        <span>22 Mar 2023</span>Event : India v Australia .. Market :- " 4th WKT Caught
+                        Out IND 1 " Whole Market Voided Because Wrong Market Offered By Mistake , So we have
+                        created a new Market by adding (N) after the Market Name .. Sorry for the Inconvenience
+                        Caused
+                    </a><a>
+                        <span>22 Mar 2023</span>Event : India v Australia .. Market :- " 20.4 Ball Run
+                        IND " Whole Market Voided Because Wrong Rate Offered By Mistake .. Sorry for the
+                        Inconvenience Caused
+                    </a><a>
+                        <span>22 Mar 2023</span>Event : India v Australia .. Market :-
+                        Kohli Boundaries " 3 - 4 " (IST 20:20:20 - 02:21:36) Bets Voided Because Wrong Rate Offered
+                        By Mistake .. Sorry for the Inconvenience Caused
+                    </a><a>
+                        <span>21 Jan 2022</span>Match :-
+                        Minister Group Dhaka vs Khulna Tigers .. Market .. Bookmaker .. Selection :- Khulna Tigers '
+                        2 - 6 ' ( IST 21:18:35 - 21:18:38 ) Bets Voided Because Wrong Odds Offered Bymistake ...
+                        Sorry for the Inconveniences Caused
+                    </a><a>
+                        <span>04 Sep 2021</span>WHITE LABEL OF SKYEXCHANGE
+                        IS AVAILABLE NOW - CONTACT YOUR UPLINE.
+                    </a>
+                </div>
             </div>
         </div>
-
-
     </div>
 
     <div class="total_all">
 
-        <div class="search-wrap" id="userSearchUl">
+        <div class="search-wrap" id="userSearchUl" style="">
             <div>
-                <input class="search-input" type="text" name="userId" id="userId" placeholder="Find member..." fdprocessedid="h7v17r">
-                <button class="search-but" id="searchUserId" fdprocessedid="5fyv4">Search</button>
+                <input class="search-input" type="text" name="userId" id="userId" placeholder="Find member..."
+                       fdprocessedid="7wj81">
+                <button class="search-but" id="searchUserId" fdprocessedid="jzguft">Search</button>
             </div>
         </div>
 
         <ul class="input-list" id="accountStatusUl">
             <li><strong>Status</strong></li>
             <li>
-                <select class="" name="accountStatus" id="accountStatus" fdprocessedid="oesvqi">
+                <select class="" name="accountStatus" id="accountStatus" fdprocessedid="d6e5mkr">
 
                     <option value="0">
                         ACTIVE
@@ -94,12 +1417,12 @@
                     </a>
                 </li>
 
-                <li id="path3" class="last_li">
+                <li id="path3" class="last_li" style="">
                     <a href="javascript: void(0);">
                         <span class="lv_3">
                             MA
                         </span>
-                        <strong>sskydemo0</strong>
+                        <strong>subhodip</strong>
                     </a>
                 </li>
 
@@ -112,25 +1435,22 @@
                     </a>
                 </li>
 
-                <ul class="account_pop" id="accountPop">
+                <ul class="account_pop" id="accountPop" style="">
                     <li id="popTmp" style="display: none;">
                         <a href=""></a>
                     </li>
                 </ul>
             </ul>
         </div>
-
+        
         <a id="refresh" class="btn_replay"><img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
-
 
         <a class="add_member" href="#" onclick="CreateAccountHandler.showDialog()">
             <img src="https://statics3.skyexch.bike/images/transparent.gif">Add Player
         </a>
-
     </div>
 
-    <div id="totalBox" class="total_box">
-
+    <div id="totalBox" class="total_box" style="">
         <dl id="creditLimitDL" class="total_dl" style="display: none">
             <dt>
                 Credit Limit
@@ -149,13 +1469,13 @@
             </dt>
             <dd id="myCreditAvailBal">PTH 0.00</dd>
         </dl>
-        <dl id="totalBalanceDL" class="total_dl">
+        <dl id="totalBalanceDL" class="total_dl" style="">
             <dt>
                 Total Balance
             </dt>
             <dd id="totalBalance">PTH 0.00</dd>
         </dl>
-        <dl id="totalExposureDL" class="total_dl">
+        <dl id="totalExposureDL" class="total_dl" style="">
             <dt>
                 Total Exposure
             </dt>
@@ -167,23 +1487,23 @@
             </dt>
             <dd id="myCurrentPL">PTH 0.00</dd>
         </dl>
-        <dl id="availableBalanceDL" class="total_dl">
+        <dl id="availableBalanceDL" class="total_dl" style="">
             <dt>
                 Total Avail. bal.
             </dt>
             <dd id="totalAvailBal">PTH 0.00</dd>
         </dl>
-        <dl id="masterBalanceDL" class="total_dl">
+        <dl id="masterBalanceDL" class="total_dl" style="">
             <dt>
                 Balance
             </dt>
-            <dd id="mastersBalance">PTH 0.00</dd>
+            <dd id="mastersBalance">PTH 30.00</dd>
         </dl>
-        <dl id="masterAvailableBalanceDL" class="total_dl">
+        <dl id="masterAvailableBalanceDL" class="total_dl" style="">
             <dt>
                 Available Balance
             </dt>
-            <dd id="mastersAvailBal">PTH 0.00</dd>
+            <dd id="mastersAvailBal">PTH 30.00</dd>
         </dl>
         <dl id="transferablePLWithUplineDL" class="total_dl" style="display: none">
             <dt>
@@ -191,19 +1511,16 @@
             </dt>
             <dd id="transferablePLWithUpline">PTH 0.00</dd>
         </dl>
-        <dl id="totalUsersDL" class="total_dl">
+        <dl id="totalUsersDL" class="total_dl" style="">
             <dt>
                 Total Users
             </dt>
             <dd id="totalUsers">1</dd>
         </dl>
-
     </div>
 
     <!-- Center Column -->
     <div id="widthAll" class="width-all">
-
-
         <!-- Loading Wrap -->
         <div id="loading" class="loading-wrap" style="display: none;">
             <ul class="loading">
@@ -221,15 +1538,15 @@
             <a class="btn-close">Close</a>
             <p></p>
         </div>
-
+        
         <!-- Report Table -->
         <table id="tableTemplate" class="table01 margin-table" style="display: none">
             <tbody>
                 <tr>
-                    <th id="accountTh" width="" class="align-L">
+                    <th id="accountTh" width="" class="align-L" style="">
                         Account
                     </th>
-                    <th id="creditRefTh" width="10%">
+                    <th id="creditRefTh" width="10%" style="">
                         Credit Ref.
                     </th>
                     <th id="initialCreditLimitTh" width="10%" style="display: none">
@@ -245,13 +1562,13 @@
                     <th id="transferablePLTh" width="9%" style="display: none">
                         Transferable P/L
                     </th>
-                    <th id="balanceTh" width="10%">
+                    <th id="balanceTh" width="10%" style="">
                         Balance
                     </th>
-                    <th id="exposureTh" width="10%">
+                    <th id="exposureTh" width="10%" style="">
                         Exposure
                     </th>
-                    <th id="availableBalanceTh" width="10%">
+                    <th id="availableBalanceTh" width="10%" style="">
                         Avail. bal.
                     </th>
                     <th id="playerBalanceTh" width="10%" style="display: none">
@@ -260,40 +1577,42 @@
                     <th id="exposureLimitTh" width="10%" style="display: none">
                         Exposure Limit
                     </th>
-
-                    <th id="refPLTh" width="10%">
+                    <th id="refPLTh" width="10%" style="">
                         Ref. P/L
                     </th>
-                    <th id="statusTh" width="10%">
+                    <th id="statusTh" width="10%" style="">
                         Status
                     </th>
-                    <th id="actionTh" width="13%">
+                    <th id="actionTh" width="13%" style="">
                         Action
                     </th>
                 </tr>
                 <tr id="dataTemplate" style="display: none">
-                    <td id="accountCol" class="align-L">
+                    <td id="accountCol" style="" class="align-L">
                         <a id="account" class="ico_account" href="#" style="float: none"></a>
                     </td>
-                    <td id="creditRef" class="credit-amount-member"><a id="creditRefBtn" class="favor-set" href="javascript:void(0);"></a></td>
+                    <td id="creditRef" class="credit-amount-member" style="">
+                        <a id="creditRefBtn" class="favor-set"
+                           href="javascript:void(0);"></a>
+                    </td>
                     <td id="initialCreditLimit" style="display: none"></td>
                     <td id="creditLimit" style="display: none"></td>
 
                     <td id="currentPL" style="display: none"></td>
                     <td id="transferablePL" style="display: none"></td>
-                    <td id="balance"></td>
-                    <td id="currentExposure"></td>
-                    <td id="available"></td>
+                    <td id="balance" style=""></td>
+                    <td id="currentExposure" style=""></td>
+                    <td id="available" style=""></td>
                     <td id="playerBalance" style="display: none"></td>
                     <td id="exposureLimit" style="display: none"></td>
 
-                    <td id="refPL"></td>
-                    <td id="statusCol">
+                    <td id="refPL" style=""></td>
+                    <td id="statusCol" style="">
                         <ul id="tipsPopup" class="status-popup" style="display: none">
                         </ul>
                         <span id="status"></span>
                     </td>
-                    <td id="actionCol">
+                    <td id="actionCol" style="">
                         <ul class="action">
                             <li>
                                 <a id="banking" class="bank" href="#bank">
@@ -325,13 +1644,14 @@
                 </tr>
 
             </tbody>
-        </table><table id="resultTable" class="table01 margin-table" style="display: table;">
+        </table>
+        <table id="resultTable" class="table01 margin-table" style="display: table;">
             <tbody>
                 <tr>
-                    <th id="accountTh" width="" class="align-L">
+                    <th id="accountTh" width="" class="align-L" style="">
                         Account
                     </th>
-                    <th id="creditRefTh" width="10%">
+                    <th id="creditRefTh" width="10%" style="">
                         Credit Ref.
                     </th>
                     <th id="initialCreditLimitTh" width="10%" style="display: none">
@@ -347,55 +1667,58 @@
                     <th id="transferablePLTh" width="9%" style="display: none">
                         Transferable P/L
                     </th>
-                    <th id="balanceTh" width="10%">
+                    <th id="balanceTh" width="10%" style="">
                         Balance
                     </th>
-                    <th id="exposureTh" width="10%">
+                    <th id="exposureTh" width="10%" style="">
                         Exposure
                     </th>
-                    <th id="availableBalanceTh" width="10%">
+                    <th id="availableBalanceTh" width="10%" style="">
                         Avail. bal.
                     </th>
                     <th id="playerBalanceTh" width="10%" style="display: none">
                         Player Balance
                     </th>
-                    <th id="exposureLimitTh" width="10%">
+                    <th id="exposureLimitTh" width="10%" style="">
                         Exposure Limit
                     </th>
 
-                    <th id="refPLTh" width="10%">
+                    <th id="refPLTh" width="10%" style="">
                         Ref. P/L
                     </th>
-                    <th id="statusTh" width="10%">
+                    <th id="statusTh" width="10%" style="">
                         Status
                     </th>
-                    <th id="actionTh" width="13%">
+                    <th id="actionTh" width="13%" style="">
                         Action
                     </th>
                 </tr>
                 <tr id="dataTemplate" style="display: none">
-                    <td id="accountCol" class="align-L">
+                    <td id="accountCol" style="" class="align-L">
                         <a id="account" class="ico_account" href="#" style="float: none"></a>
                     </td>
-                    <td id="creditRef" class="credit-amount-member"><a id="creditRefBtn" class="favor-set" href="javascript:void(0);"></a></td>
+                    <td id="creditRef" class="credit-amount-member" style="">
+                        <a id="creditRefBtn" class="favor-set"
+                           href="javascript:void(0);"></a>
+                    </td>
                     <td id="initialCreditLimit" style="display: none"></td>
                     <td id="creditLimit" style="display: none"></td>
 
                     <td id="currentPL" style="display: none"></td>
                     <td id="transferablePL" style="display: none"></td>
-                    <td id="balance"></td>
-                    <td id="currentExposure"></td>
-                    <td id="available"></td>
+                    <td id="balance" style=""></td>
+                    <td id="currentExposure" style=""></td>
+                    <td id="available" style=""></td>
                     <td id="playerBalance" style="display: none"></td>
                     <td id="exposureLimit" style="display: none"></td>
 
-                    <td id="refPL"></td>
-                    <td id="statusCol">
+                    <td id="refPL" style=""></td>
+                    <td id="statusCol" style="">
                         <ul id="tipsPopup" class="status-popup" style="display: none">
                         </ul>
                         <span id="status"></span>
                     </td>
-                    <td id="actionCol">
+                    <td id="actionCol" style="">
                         <ul class="action">
                             <li>
                                 <a id="banking" class="bank" href="#bank">
@@ -426,27 +1749,37 @@
                     </td>
                 </tr>
 
-                <tr id="0" style="display: table-row;" main_userid="userdemoo">
-                    <td id="accountCol" class="align-L"><span class="order" id="number">1.</span><span class="lv_4">PL</span><span class="account_name">userdemoo</span></td>
-                    <td id="creditRef0" class="credit-amount-member"><a id="creditRefBtn" class="favor-set" href="javascript:void(0);" onclick="CreditReferenceHandler.showDialog(0,'userdemoo',1)">0.00</a></td>
+                <tr id="0" style="display: table-row;" main_userid="vermaarun1995">
+                    <td id="accountCol" style="" class="align-L">
+                        <span class="order" id="number">1.</span><span class="lv_4">PL</span><span class="account_name">vermaarun1995</span>
+                    </td>
+                    <td id="creditRef0" class="credit-amount-member" style="">
+                        <a id="creditRefBtn" class="favor-set"
+                           href="javascript:void(0);"
+                           onclick="CreditReferenceHandler.showDialog(0,'vermaarun1995',1)">0.00</a>
+                    </td>
                     <td id="initialCreditLimit0" style="display: none">0.00</td>
                     <td id="creditLimit0" style="display: none">0.00</td>
 
                     <td id="currentPL0" style="display: none">0.00</td>
                     <td id="transferablePL0" style="display: none">0.00</td>
-                    <td id="balance0"><a href="#" onclick="VendorBalanceDetailHandler.balanceShowing('userdemoo','1', function () { IndexHandler.listMember(IndexHandler.pageNumber); }, $j(this))" class="link-open">0.00</a></td>
-                    <td id="currentExposure0">0.00</td>
-                    <td id="available0">0.00</td>
+                    <td id="balance0" style="">
+                        <a href="#"
+                           onclick="VendorBalanceDetailHandler.balanceShowing('vermaarun1995','1', function () { IndexHandler.listMember(IndexHandler.pageNumber); }, $j(this))"
+                           class="link-open">0.00</a>
+                    </td>
+                    <td id="currentExposure0" style="">0.00</td>
+                    <td id="available0" style="">0.00</td>
                     <td id="playerBalance" style="display: none"></td>
-                    <td id="exposureLimit0" style="display: table-cell;">100,000.00</td>
+                    <td id="exposureLimit0" style="display: table-cell;">100.00</td>
 
-                    <td id="refPL0">0.00</td>
-                    <td id="statusCol">
+                    <td id="refPL0" style="">0.00</td>
+                    <td id="statusCol" style="">
                         <ul id="tipsPopup" class="status-popup" style="display: none">
                         </ul>
-                        <span id="status0" class="status-active status-active-center"><img src="/images/transparent.gif">Active</span>
+                        <span id="status0" class="status-active"><img src="/images/transparent.gif">Active</span>
                     </td>
-                    <td id="actionCol">
+                    <td id="actionCol" style="">
                         <ul class="action">
                             <li>
                                 <a id="banking" class="bank" href="#bank" style="display: none;">
@@ -454,22 +1787,27 @@
                                 </a>
                             </li>
                             <li>
-                                <a id="p_l0" class="p_l" href="/agent/memberList/profitAndLoss.jsp?uid=userdemoo&amp;site=1">
-                                    Betting Profit &amp; Loss
+                                <a id="p_l0" class="p_l"
+                                   href="bating-profile.html">
+                                    Betting
+                                    Profit &amp; Loss
                                 </a>
                             </li>
                             <li>
-                                <a id="betting_history0" class="betting_history" href="/agent/memberList/bettingHistory.jsp?uid=userdemoo&amp;site=1">
-                                    Betting History
+                                <a id="betting_history0" class="betting_history"
+                                   href="bating-history.html">
+                                    Betting
+                                    History
                                 </a>
                             </li>
                             <li>
-                                <a id="change0" class="status" href="#change" onclick="ChangeStatusHandler.showDialog(0,'userdemoo',1)">
+                                <a id="change0" class="status" href="#change" onclick="ChangeStatusHandler.showDialog(0,'vermaarun1995',1)">
                                     Change Status
                                 </a>
                             </li>
                             <li>
-                                <a id="profile0" class="profile" href="/agent/memberList/accountSummary.jsp?uid=userdemoo&amp;site=1">
+                                <a id="profile0" class="profile"
+                                   href="account-summry.html">
                                     Profile
                                 </a>
                             </li>
@@ -513,6 +1851,8 @@
     </div>
 </div>
 
+
+<script type="text/javascript" src="/js/util/PageUtil.js?v=20230320_1679280600000"></script>
 <div>
     <ul style="display: none">
         <li id="prev">
@@ -527,7 +1867,8 @@
         </li>
         <li id="pageNumber"><a href="javascript:void(0);"></a></li>
         <li id="more"><a href="javascript:void(0);">...</a></li>
-        <input type="text" id="goToPageNumber" onkeyup="return PageHandler.validatePageNumber(this)" maxlength="6" size="4">
+        <input type="text" id="goToPageNumber" onkeyup="return PageHandler.validatePageNumber(this)" maxlength="6"
+               size="4">
         <li><a id="goPageBtn">GO</a></li>
     </ul>
 
@@ -543,7 +1884,8 @@
                 Next
             </a>
         </li>
-        <input type="text" id="goToPageNumber_1" onkeyup="return PageHandler.validatePageNumber(this)" maxlength="6" size="4" fdprocessedid="pe6xe69">
+        <input type="text" id="goToPageNumber_1" onkeyup="return PageHandler.validatePageNumber(this)"
+               maxlength="6" size="4" fdprocessedid="pkeeic">
         <a id="goPageBtn_1">GO</a>
     </ul>
 </div>
@@ -579,16 +1921,36 @@
         </ul>
     </div>
 </div>
+<!-- notice Pop Up Wrap -->
+<div id="siteAnnouncement" class="overlay" style="display: none">
+    <div class="announce-wrap">
+        <div class="announce-header">
+            <h1>Notice</h1>
+        </div>
+        <div class="tc-content" id="siteAnnouncement_content">
+            <p>text</p>
+            <img src="" alt="">
+        </div>
+        <ul class="announce-footer">
+            <li>
+                <a href="#" class="btn-send" onclick="javascript:$j('#siteAnnouncement').hide();">Agree</a>
+            </li>
+        </ul>
+    </div>
+</div>
 
+<script language="JavaScript" type="text/javascript">
+    PageConfig.userName = "subhodip";
+    PageConfig.memberSite = "1";
+    PageConfig.isMemberModule = true;
+    PageConfig.pathObj = { "currencyName": "PTH", "site": 1, "nodeList": [{ "userType": 3, "userID": "subhodip" }] };
+    (function () {
+        PathHandler.init();
+    })();
 
-@*@section PageJs{
-        <script>
-            $(function () {
-                $("#SportMenu li a").click(function () {
-                    var id = $(this).attr("data-id");
-                    $("tbody").hide();
-                    $("#" + id).show();
-                });
-            });
-        </script>
-    }*@
+    (function () {
+        $j('.btn-close').click(function () {
+            $j('#message').hide();
+        });
+    })();
+</script>

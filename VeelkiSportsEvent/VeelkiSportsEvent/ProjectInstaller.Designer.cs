@@ -36,15 +36,16 @@ namespace VeelkiSportsEvent
             // 
             // serviceProcessInstaller1
             // 
-            this.serviceProcessInstaller1.Account = ServiceAccount.LocalSystem;
+            this.serviceProcessInstaller1.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
             this.serviceProcessInstaller1.Password = null;
             this.serviceProcessInstaller1.Username = null;
             // 
             // serviceInstaller1
-            //
-            this.serviceInstaller1.Description = "88cricxSportsEventService";
-            this.serviceInstaller1.DisplayName = "88cricxSportsEventService";
-            this.serviceInstaller1.ServiceName = "88cricxSportsEventService";
+            // 
+            this.serviceInstaller1.Description = "VeelkiSportsEventService";
+            this.serviceInstaller1.DisplayName = "VeelkiSportsEventService";
+            this.serviceInstaller1.ServiceName = "VeelkiSportsEventService";
+            this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
             // 

@@ -1,0 +1,38 @@
+<div class="animated fadeIn divider-top">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 p-mobile-0">
+            <div class="card card-accent-primary">
+                <div class="card-header account-detail-head"> Activity Log </div>
+                <div class="card-body account-stat-body">
+                    <div class="row">
+                        <div class="col-md-12 p-mobile-0">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <th>Login Date & Time</th>
+                                        <th>IP Address</th>
+                                        <th>ISP</th>
+                                        <th>City/State/Country</th>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngIf="activityLog">
+                                            <tr *ngFor="let activeLog of activityLog">
+                                                <td>{{activeLog.loginDate | date:'medium'}}</td>
+                                                <td>{{activeLog.ipAddress}}</td>
+                                                <td>{{activeLog.isp}}</td>
+                                                <td>{{activeLog.address}}</td>
+                                            </tr>
+                                            <tr *ngIf="activityLog.length === 0">
+                                                <td colspan="4">No record found.</td>
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

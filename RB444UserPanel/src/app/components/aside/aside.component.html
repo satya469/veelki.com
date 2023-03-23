@@ -1,0 +1,110 @@
+<div class="card mb-0 desktop-stream">
+    <div class="card-header card-accrdn"><strong>Live Streaming</strong></div>
+</div>
+<div class="">
+    <div class="card open-bet mb-0 b-none">
+        <div class="card-header card-accrdn openbetlist"><strong>Open Bets</strong><button
+                class="close show-xs cls-openbet" type="button"><span aria-hidden="true">×</span></button></div>
+        <div class="card-body open-bet-btns" *ngIf="isLoginUser==true">
+            <div class="col-sm-12 p-0 mlist-openbets">
+                <select class="desktop-bets" [(ngModel)]="selectBetId" (change)="getBetList()">
+                    <option value="0">Select Market</option>
+                    <option *ngFor="let market of marketList" [ngValue]="market.eventId">{{market.event}}</option>
+                </select>
+                <nav class="all-sports-list">
+                    <ul class="sport-nav">
+                        <li>dd</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="col-md-12 p-mobile-0 p-0">
+        <div class="bet_slip over-wrap racing-tab px-2" id="openBetSlip" *ngIf="betListData.length > 0">
+            <div class="table-responsive">
+                <table class="table table-sm table-bordered" style="font-size: 11px;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Bet Id</th>
+                            <th scope="col">Event/Market Name</th>
+                            <th scope="col">Odds Request</th>
+                            <th scope="col">Amount Stake</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let betData of betListData">
+                            <td scope="col">{{betData.betId}}</td>
+                            <td scope="col">{{betData.event}}</td>
+                            <td scope="col">{{betData.oddsRequest}}</td>
+                            <td scope="col">{{betData.amountStake}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> -->
+    <div class="col-md-12 p-mobile-0 p-0">
+        <div class="bet_slip over-wrap racing-tab " *ngIf="betListData.length > 0">
+            <div class="matchunmatch-tab tab-container">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item active"><a class="nav-link active" href="javascript:void(0);"
+                            id=""><span></span><span>Matched</span>
+                        </a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane">
+                        <ng-container *ngFor="let betData of betListData; let ind = index;">
+                            <div class="slip-list" id="txnList" name="txn" style="clear: both;">
+                                <ul class="matched-head" id="backSlipHeader" *ngIf="betData.type=='back'">
+                                    <li class="col-bet">Back (Bet For)</li>
+                                    <li class="col-odd">Odds</li>
+                                    <li class="col-stake">Stake</li>
+                                    <li class="col-profit">Profit</li>
+                                </ul>
+                                <ul class="matched-head" id="backSlipHeader" *ngIf="betData.type=='lay'">
+                                    <li class="col-bet">Lay (Bet For)</li>
+                                    <li class="col-odd">Odds</li>
+                                    <li class="col-stake">Stake</li>
+                                    <li class="col-profit">Profit</li>
+                                </ul>
+                                <dl [ngClass]="betData.type=='back' ? 'slip-back' : 'slip-lay'" id="txn_304145953" style="display: block;">
+                                    <dt>
+                                        <span class="slip-type">{{betData.type == 'back' ? "Back" : "Lay" }}</span>
+                                        <span class="short-amount">{{betData.selection}}</span>
+                                        <span id="marketName">{{betData.market}}</span>
+                                    </dt>
+                                    <dd class="col-odd" id="price">{{betData.oddsRequest}}</dd>
+                                    <dd class="col-stake" id="size" title="$10"> {{betData.amountStake}}</dd>
+                                    <dd class="col-profit text-right" id="profitLiability">
+                                        <span style="margin-left: 5px;"> {{betData.resultAmount}} </span>
+                                    </dd>
+                                    <dd class="refer" style="clear: both; display: block;" *ngIf="showBetInfo[ind]">
+                                        <span id="betId"><b>Ref</b>: {{betData.betId}} </span>
+                                        <span id="placeDate">{{betData.placeTime | date : 'medium'}}</span>
+                                    </dd>
+                                </dl>
+                                <ul class="matched-head" id="laySlipHeader" *ngIf="betData.type=='back'">
+                                    <li class="col-bet">Lay (Bet Against)</li>
+                                    <li class="col-odd">Odds</li>
+                                    <li class="col-stake">Stake</li>
+                                    <li class="col-profit">Liability</li>
+                                </ul>
+                                <ul class="matched-head" id="laySlipHeader" *ngIf="betData.type=='lay'">
+                                    <li class="col-bet">Back (Bet Against)</li>
+                                    <li class="col-odd">Odds</li>
+                                    <li class="col-stake">Stake</li>
+                                    <li class="col-profit">Liability</li>
+                                </ul>
+                            </div>
+                            <div class="full_btn">
+                                <ul class="slip-option">
+                                    <li><input name="openOption" type="checkbox" [(ngModel)]="showBetInfo[ind]" /><label for="showBetInfo">Bet Info</label></li>
+                                </ul>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

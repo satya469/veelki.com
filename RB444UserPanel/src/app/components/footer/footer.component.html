@@ -1,0 +1,29 @@
+<nav class="mobile-footer-menu" *ngIf="isLoginUser==true">
+    <ul>
+        <li>
+            <a class="ui-link" [routerLink]="['/home']" routerLinkActive="active">
+                <img class="icon-home" src="https://dream444.com/assets/img/home.svg">Home
+            </a>
+        </li>
+        <li>
+            <a class="ui-link" [routerLink]="['/inplay']" routerLinkActive="active">
+                <img class="icon-inplay" src="https://dream444.com/assets/img/timer.svg">In-Play
+            </a>
+        </li>
+        <li class="main-nav">
+            <a class="ui-link" [routerLink]="['/sports']" routerLinkActive="active"><img class="icon-sports"
+                    src="https://dream444.com/assets/img/trophy.svg">Sports</a>
+        </li>
+        <li>
+            <a class="ui-link" [routerLink]="['/multimarket']" routerLinkActive="active">
+                <img class="icon-pin" src="https://dream444.com/assets/img/paper-push-pin.svg">Multi Markets
+            </a>
+        </li>
+        <li>
+            <a class="ui-link" [routerLink]="['/account']" routerLinkActive="active">
+                <img class="icon-account" src="https://dream444.com/assets/img/user.svg">Account
+            </a>
+        </li>
+
+    </ul>
+</nav>

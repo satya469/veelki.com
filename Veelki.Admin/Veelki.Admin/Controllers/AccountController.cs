@@ -49,12 +49,14 @@ namespace Veelki.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.ValidationCode = commonFun.GenerateRandomNo();
                 return View(model);
             }
             try
             {
                 if (model.ValidationCode != model.TxtValidationCode)
                 {
+                    ViewBag.ValidationCode = commonFun.GenerateRandomNo();
                     return View(model);
                 }
                 Users user = null;

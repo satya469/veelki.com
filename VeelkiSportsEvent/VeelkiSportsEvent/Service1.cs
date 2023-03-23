@@ -70,7 +70,7 @@ namespace VeelkiSportsEvent
             CommonReturnResponse commonModel = null;
             try
             {
-                commonModel = Get<CommonReturnResponse, CommonReturnResponse>("http://api.88cricx.com/api/exchange/GetSportsEventsForWindowService");
+                commonModel = Get<CommonReturnResponse, CommonReturnResponse>("http://api.veelki.com/api/exchange/GetSportsEventsForWindowService");
             }
             catch (Exception ex)
             {

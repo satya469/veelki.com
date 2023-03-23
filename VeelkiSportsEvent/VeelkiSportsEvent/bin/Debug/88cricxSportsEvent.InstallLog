@@ -42,3 +42,24 @@ Removing EventLog source 88cricxSportsEventService.
 Service 88cricxSportsEventService is being removed from the system...
 Service 88cricxSportsEventService was successfully removed from the system.
 Attempt to stop service 88cricxSportsEventService.
+Installing assembly 'D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\88cricxSportsEvent.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\88cricxSportsEvent.exe
+   logfile = D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\88cricxSportsEvent.InstallLog
+Installing service VeelkiSportsEventService...
+Service VeelkiSportsEventService has been successfully installed.
+Creating EventLog source VeelkiSportsEventService in log Application...
+Committing assembly 'D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\88cricxSportsEvent.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\88cricxSportsEvent.exe
+   logfile = D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\88cricxSportsEvent.InstallLog
+Uninstalling assembly 'D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\88cricxSportsEvent.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\88cricxSportsEvent.exe
+   logfile = D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\88cricxSportsEvent.InstallLog
+Removing EventLog source VeelkiSportsEventService.
+Service VeelkiSportsEventService is being removed from the system...
+Service VeelkiSportsEventService was successfully removed from the system.

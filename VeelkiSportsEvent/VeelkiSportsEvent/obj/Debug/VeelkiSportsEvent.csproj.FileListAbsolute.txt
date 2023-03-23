@@ -1,0 +1,11 @@
+D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\88cricxSportsEvent.exe.config
+D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\88cricxSportsEvent.exe
+D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\88cricxSportsEvent.pdb
+D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\obj\Debug\VeelkiSportsEvent.csproj.GenerateResource.cache
+D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\obj\Debug\VeelkiSportsEvent.csproj.CoreCompileInputs.cache
+D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\obj\Debug\VeelkiSportsEvent.csproj.CopyComplete
+D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\obj\Debug\88cricxSportsEvent.exe
+D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\obj\Debug\88cricxSportsEvent.pdb
+D:\Projects\veelki.com\VeelkiSportsEvent\VeelkiSportsEvent\obj\Debug\VeelkiSportsEvent.ProjectInstaller.resources

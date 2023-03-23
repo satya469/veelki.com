@@ -1,0 +1,35 @@
+<nav class="sidebar-nav ps ps--active-y">
+    <div class="top-head-sport">
+        <a class="path-back" (click)="getSportList()">
+            <i aria-hidden="true" class="fa fa-ellipsis-v"></i>
+        </a>
+        <ul class="text-right mr-2">
+            <li><a (click)="getSportList()" style="cursor: pointer;">Sports</a></li>
+        </ul>
+    </div>
+    <perfect-scrollbar>
+        <ul class="nav" id="mainDDL" *ngIf="!isSportTournaments">
+            <li class="nav-item nav-dropdown cricketDDL" *ngFor="let sidebar of pageMenu">
+                <a class="nav-link nav-dropdown-toggle" [routerLink]="['/allsport-highlight',sidebar.id]"
+                    (click)="getSportTournamentsList(sidebar.id)"> {{sidebar.sportName}} </a>
+            </li>
+        </ul>
+        <ul class="nav" id="mainDDL" *ngIf="isSportTournaments">
+            <li class="nav-item nav-dropdown cricketDDL"
+                *ngFor="let sportTournaments of sportTournamentsList;let i=index">
+                <a class="nav-link nav-dropdown-toggle" href="javascript:;"
+                    (click)="getTournamentEventsList(sportTournaments.sportId, sportTournaments.tournamentId, i)"
+                    [attr.aria-expanded]="isSportTournamentsCollapsed[i] ? isSportTournamentsCollapsed[i] : false">
+                    {{sportTournaments.tournamentName}}</a>
+                <ul class="nav-dropdown-items" #collapse="ngbCollapse"
+                    [(ngbCollapse)]="!isSportTournamentsCollapsed[i]">
+                    <li class="nav-item toggleSidbar" *ngFor="let tournamentEvents of tournamentEventsList">
+                        <a class="nav-link ml-2"
+                            [routerLink]="['/fullmarket', tournamentEvents.marketId, tournamentEvents.eventId, tournamentEvents.sportId]"><i
+                                aria-hidden="true" class="fa fa-arrow-right"></i> {{tournamentEvents.eventName}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </perfect-scrollbar>
+</nav>

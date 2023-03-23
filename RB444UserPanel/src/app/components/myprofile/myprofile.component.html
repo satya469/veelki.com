@@ -1,0 +1,116 @@
+<div class="animated fadeIn divider-top">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 p-mobile-0">
+            <div class="card card-accent-primary">
+                <div class="card-header account-detail-head"> Account Details </div>
+                <div class="card-body account-detail-body">
+                    <div class="bd-example">
+                        <dl class="row">
+                            <dt class="col-sm-3">Name</dt>
+                            <dd class="col-sm-9">{{userData?.fullName}}</dd>
+                            <dt class="col-sm-3">Commission</dt>
+                            <dd class="col-sm-9"> {{userData?.commision}} </dd>
+                            <dt class="col-sm-3">Rolling Commission</dt>
+                            <dd class="col-sm-9"><a (click)="openRollingCommissionModal(rollingCommissionModal)"><i
+                                        class="fa fa-eye fa-lg"></i></a></dd>
+                            <dt class="col-sm-3">Exposure Limit</dt>
+                            <dd class="col-sm-9"> {{userData?.exposureLimit}} </dd>
+                            <dt class="col-sm-3">Mobile Number</dt>
+                            <dd class="col-sm-9"> {{userData?.phoneNumber}} </dd>
+                            <dt class="col-sm-3">Currency</dt>
+                            <dd class="col-sm-9"> IR </dd>
+                            <dt class="col-sm-3">Password</dt>
+                            <dd class="col-sm-9"><span class="mr-3">*********</span><a class="edit-password"
+                                    (click)="openChangePasswordModal(changePasswordModal)"> Edit
+                                    <i class="fa fa-pencil-square-o fa-lg"></i></a></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #rollingCommissionModal let-modal>
+    <div class="modal-header account-detail-head">
+        <h5 class="modal-title">Rolling Commission</h5>
+        <button type="button" class="btn-close close" aria-label="Close" (click)="modal.dismiss()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div class="col-md-12">
+            <div class="view-rolling row"><label class="col-md-2 col-3 col-form-label">Fancy</label>
+                <div class="col-md-8 col-8 col-form-label"><span> {{rollingData?.fancy}}</span></div>
+            </div>
+            <div class="view-rolling row"><label class="col-md-2 col-3 col-form-label">Matka</label>
+                <div class="col-md-8 col-8 col-form-label"><span> {{rollingData?.matka}}</span></div>
+            </div>
+            <div class="view-rolling row"><label class="col-md-2 col-3 col-form-label">Casino</label>
+                <div class="col-md-8 col-8 col-form-label"><span> {{rollingData?.casino}}</span></div>
+            </div>
+            <div class="view-rolling row"><label class="col-md-2 col-3 col-form-label">Binary</label>
+                <div class="col-md-8 col-8 col-form-label"><span> {{rollingData?.binary}}</span></div>
+            </div>
+            <div class="view-rolling row"><label class="col-md-2 col-3 col-form-label">Sportbook</label>
+                <div class="col-md-8 col-8 col-form-label"><span> {{rollingData?.sportBook}}</span></div>
+            </div>
+            <div class="view-rolling row"><label class="col-md-2 col-3 col-form-label">Bookmaker</label>
+                <div class="col-md-8 col-8 col-form-label"><span> {{rollingData?.bookmaker}}</span></div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #changePasswordModal let-modal>
+    <form [formGroup]="changePasswordForm" method="post" role="form" (ngSubmit)="formSubmit()" novalidate>
+        <div class="modal-header account-detail-head">
+            <h5 class="modal-title">Change Password</h5>
+            <button type="button" class="btn-close close" aria-label="Close" (click)="modal.dismiss()">&times;</button>
+        </div>
+        <div class="modal-body row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="oldPassword">Old Password <span class="asterisk_input"></span></label>
+                    <input class="form-control" formControlName="oldPassword" placeholder="Old Password.."
+                        type="password">
+                    <div class="form-control-feedback" *ngIf="isFormSubmit">
+                        <span class="error-message"
+                            *ngIf="changePasswordForm.controls.oldPassword.errors?.['required']">Please enter old
+                            password</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="newPassword">New Password <span class="asterisk_input"></span></label>
+                    <input class="form-control" formControlName="newPassword" placeholder="New Password.."
+                        type="password" (change)="onPasswordChange()">
+                    <div *ngIf="isFormSubmit">
+                        <span class="error-message"
+                            *ngIf="changePasswordForm.controls.newPassword.errors?.['required']">New Password Is
+                            Required.</span>
+                        <span class="error-message"
+                            *ngIf="changePasswordForm.controls.newPassword.errors?.['pattern']">Invalid Password
+                            Format.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="confirmPass">Confirm Password <span class="asterisk_input"></span></label>
+                    <input class="form-control" formControlName="confirmPass" placeholder="Confirm Password.."
+                        type="password" (change)="onPasswordChange()">
+                    <div *ngIf="isFormSubmit">
+                        <span class="error-message"
+                            *ngIf="changePasswordForm.controls.confirmPass.errors?.['required']">Confirm Password Is
+                            Required.</span>
+                        <span class="error-message"
+                            *ngIf="changePasswordForm.controls.confirmPass.errors?.['mismatch']">Confirm Password Not
+                            Same as Password.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer"><button class="btn btn-primary" type="submit">Yes</button><button
+                class="btn btn-secondary" type="button" (click)="modal.dismiss()">No</button></div>
+    </form>
+</ng-template>

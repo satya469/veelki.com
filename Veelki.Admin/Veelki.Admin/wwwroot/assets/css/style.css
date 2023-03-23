@@ -14,7 +14,7 @@ body.adminpanle-page{
     background-size: cover;
     background-repeat: no-repeat;
     height: auto;
-    padding: 108px 0px 50px;
+    padding: 100px 0px 50px;
 }
 
 .font-size20{
@@ -23,7 +23,7 @@ body.adminpanle-page{
 
 .container-adminpanle{
     width: 100%;
-    max-width: 540px;
+    max-width: 580px;
     margin: 0px auto;
     padding: 0px 20px;
 }
@@ -38,7 +38,7 @@ body.adminpanle-page{
 }
 
 .login-left{
-    width: 51%;
+    width: 46.6%;
 }
 
 .login-left img{
@@ -57,46 +57,31 @@ padding: 100px 0px 0px 25px;
 border-radius: 0px 8px 8px 0px;
 }
 
-    .login-right p{
-        margin-bottom:16px;
-    }
 
-
-    .login-right ul li {
-        width: 220px;
-        margin-top: 0px;
-        position:relative;
-    }
-
-.login-right ul li span {
-    font-size: 18px;
-    font-weight: 700;
-    color: #000;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+.login-right ul li{
+    width: 220px;
+    margin-top: 15px;
 }
 
 .login-right ul li input{
     width: 100%;
-    padding: 8px 5px;
-    border-radius: 4px;
+    padding: 11px 10px;
+    border-radius: 5px;
     font-size: 14px;
     border: none;
 }
 
-        .login-right ul li button {
-            width: 100%;
-            height: 36px;
-            color: #ffb600 !important;
-            border-color: #222;
-            background-image: linear-gradient(180deg, #474747 0%, #070707 100%);
-            border: 1px solid #777;
-            border-radius: 5px;
-            font-size: 15px;
-            font-weight: bold;
-            margin-top: 5px;
-        }
+.login-right ul li button{
+    width: 100%;
+    height: 36px;
+    color: #ffb600 !important;
+    border-color: #222;
+    background-image: linear-gradient(180deg, #474747 0%, #070707 100%);
+    border: 1px solid #777;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
 
 .login-right ul li button:hover{
     background-image: linear-gradient(0deg, #474747 0%, #070707 100%);
@@ -115,27 +100,24 @@ border-radius: 0px 8px 8px 0px;
     top: 14px;
 }
 
-.Customer-support-sec{
-    margin-top:25px;
-}
 
-.support-btn-sec {
+
+.support-btn-sec{
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.Customer-support-inner > ul > li {
-    margin-top: 8px;
+.Customer-support-inner>ul>li{
+    margin-top: 15px;
 }
 
-.Customer-support-inner ul li .support-btn {
+.Customer-support-inner ul li .support-btn{
     background-color: rgba(0,0,0,.5);
     width: 49%;
-    padding: 13.4px 0px 9.4px;
-    border-radius: 8px;
-    border: 1px solid rgba(151,151,151,.5);
+    padding: 16px 0px;
+    border-radius: 10px;
 }
 
 .Customer-support-inner ul li .support-btn ul{
@@ -172,7 +154,7 @@ border-radius: 0px 8px 8px 0px;
 .border-line{
     background-color: rgba(0,0,0,.5);
     width: 100%;
-    height: 17.6px;
+    height: 20px;
     border-radius: 50px;
    
 }
@@ -1563,9 +1545,9 @@ p {
     margin-top: -10px
 }
 
-/*.loading {
+.loading {
     padding: 5% 0
-}*/
+}
 
 .loading li {
     list-style: none;
@@ -1574,11 +1556,11 @@ p {
     margin-bottom: 3px
 }
 
-/*.loading img {
+.loading img {
     width: 38px;
     height: 22px;
     background: url(../images/right/loading60.png) repeat-x
-}*/
+}
 
 .table01,
 .table_one,
@@ -8757,7 +8739,7 @@ table .expand-open {
 
 .margin-table .account_name {
     word-break: break-all;
-    width: calc(100% - 69px)
+    /* width: calc(100% - 69px) */
 }
 
 .table01 td,
@@ -8968,7 +8950,7 @@ table .expand-open {
 .lv_3,
 .lv_2,
 .lv_1 {
-    width: 26px;
+    /* width: 26px; */
     height: 15px;
     line-height: 15px;
     text-decoration: none !important;
@@ -8976,7 +8958,8 @@ table .expand-open {
     background: #d77319;
     border-radius: 4px;
     margin-right: 5px;
-    font-size: 10px
+    font-size: 10px;
+    padding:0px 5px;
 }
 
 .lv_1 {
@@ -10490,7 +10473,7 @@ th+.full-amount {
     top: 0;
     right: 0;
     content: "";
-    background-image: url(../images/bg-topplay-R.png);
+    background-image: url(../images/bg-topplay-R-select.png);
     background-repeat: no-repeat;
     height: 28px;
     width: 19px
@@ -10500,7 +10483,7 @@ th+.full-amount {
     height: 100%;
     background-repeat: repeat-x;
     padding-left: 10px;
-    background-image: url(../images/bg/bg-topplay.png);
+    background-image: url(../images/bg-topplay-select.png);
     background-repeat: repeat-x
 }
 
@@ -10525,7 +10508,7 @@ th+.full-amount {
 
 .tab-topplay .select a {
     color: #254d6a;
-    background-image: url(../images/bg/bg-topplay-select.png);
+    background-image: url(../images/bg-topplay.png);
     background-repeat: repeat-x
 }
 

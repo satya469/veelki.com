@@ -30,7 +30,7 @@ namespace VeelkiSportsEvent
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            this.ServiceName = "88cricxSportsEventService";
+            this.ServiceName = "VeelkiSportsEventService";
         }
 
         #endregion

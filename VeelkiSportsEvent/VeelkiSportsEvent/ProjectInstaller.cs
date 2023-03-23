@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace _88cricxSportsEvent
+namespace VeelkiSportsEvent
 {
     [RunInstaller(true)]
     public partial class ProjectInstaller : System.Configuration.Install.Installer

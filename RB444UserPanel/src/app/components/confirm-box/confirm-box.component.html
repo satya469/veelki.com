@@ -1,0 +1,25 @@
+<ng-template #confirmModal let-modal>
+    <div class="modal-content">
+        <div class="login-popup-content ">
+            <div class="header-popup"><span class="close" aria-label="Close" (click)="modal.dismiss()"><i class="fa fa-times"></i></span></div>
+            <div class="login-panel-container confirm-container ">
+                <div class="confirm-text">
+                    <div class="text1 text-confirm-bold">Non-Gambling Territories.</div>
+                    <hr class="confirm-line">
+                    <div class="text2">Connecting to our site from non gambling countries, it
+                        will be User's responsibility to ensure that their use of the service is lawful.</div>
+                </div>
+                <div class="confirm-text">
+                    <div class="text1 text-confirm-bold">Underage gambling is prohibited.</div>
+                    <hr class="confirm-line">
+                    <div class="text2">Please confirm if you are <span class="text-confirm-bold">18 years old and
+                            above</span> as of today.</div>
+                </div>
+                <div class="confirm-button"><button
+                        class="btn-verification btn-confirm" (click)="setModelConfirmation(true)"><span>Confirm</span></button><button
+                        class="btn-verification"  (click)="setModelConfirmation(false)"><a href="javascript:;"
+                            style="color: #ffffff;"><span>Exit</span></a></button></div>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -26,5 +26,6 @@ namespace RB444.Model.ViewModel
         public long AvailableBalance { get; set; }
         public long ProfitAndLoss { get; set; }
         public bool IsAbleToChange { get; set; }
+        public string RoleName { get; set; }
     }
 }

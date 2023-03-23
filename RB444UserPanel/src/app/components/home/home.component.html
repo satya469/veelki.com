@@ -1,0 +1,92 @@
+<div class="animated fadeIn hideevent-search">
+    <div class="row">
+        <div class="col-md-12 marquee-text">
+            <div class="marquee-box d-flex">
+                <h4 class="text-nowrap"><i class="fa fa-microphone"></i> News </h4>
+                <marquee scrollamount="5">
+                    <ul class="list-inline">
+                        <ng-container *ngFor="let news of sportNews">
+                            <li class="list-inline-item mr-5" *ngIf="news.status">{{news.newsText}}</li>
+                        </ng-container>
+                    </ul>
+                </marquee>
+            </div>
+        </div>
+        <div class="col-md-12 mobile-display-view">
+            <div class="sport-img mb-21234" style="position: relative;">
+                <app-slider></app-slider>
+            </div>
+        </div>
+        <div class="col-md-12 mobile-display-view">
+            <div class="game-highlight-wrap">
+                <h3>Highlights</h3>
+                <div class="game-menu-tab hidden-xs homeevent tab-container">
+                    <ul ngbNav #nav="ngbNav" (navChange)="navChange($event)" (activeIdChange)="activeIdChange($event)"
+                        [(activeId)]="active" class="nav-tabs">
+                        <li [ngbNavItem]="4" >
+                            <a ngbNavLink *ngIf="cricketData">Cricket</a>
+                            <ng-template ngbNavContent>
+                                <div class="row" *ngIf="sportData">
+                                    <div class="col-md-12 mobile-width">
+                                        <table class="table table-hover">
+                                            <app-table-row [tableRowList]="sportData" [multiMarketPin]="true"
+                                                class="d-table w-100"></app-table-row>
+                                            <tbody *ngIf="sportData.length === 0">
+                                                <tr>
+                                                    <td colspan="6">There are no events to be displayed.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </li>
+                        <li [ngbNavItem]="1" >
+                            <a ngbNavLink *ngIf="soccerData">Soccer</a>
+                            <ng-template ngbNavContent>
+                                <div class="row" *ngIf="sportData">
+                                    <div class="col-md-12 mobile-width">
+                                        <table class="table table-hover">
+                                            <app-table-row [tableRowList]="sportData" [multiMarketPin]="true"
+                                                class="d-table w-100"></app-table-row>
+                                            <tbody *ngIf="sportData.length === 0">
+                                                <tr>
+                                                    <td colspan="6">There are no events to be displayed.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </li>
+                        <li [ngbNavItem]="2" >
+                            <a ngbNavLink *ngIf="tennisData">Tennis</a>
+                            <ng-template ngbNavContent>
+                                <div class="row" *ngIf="sportData">
+                                    <div class="col-md-12 mobile-width">
+                                        <table class="table table-hover">
+                                            <app-table-row [tableRowList]="sportData" [multiMarketPin]="true"
+                                                class="d-table w-100"></app-table-row>
+                                            <tbody *ngIf="sportData.length === 0">
+                                                <tr>
+                                                    <td colspan="6">There are no events to be displayed.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </li>
+                    </ul>
+                    <div class="game-menu-tab inplay-match">
+                        <div class="row">
+                            <div class="col-md-12 mobile-width">
+                                <div [ngbNavOutlet]="nav"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
