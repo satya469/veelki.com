@@ -23,22 +23,26 @@
                 </ul>
             </div>
         </div>
-        <ul class="login-wrap" style="display:none">
-            <li class="user error"><input id="loginName" type="text" placeholder="Username" fdprocessedid="s6cch9"></li>
-            <li><input id="password" type="password" placeholder="Password" fdprocessedid="42p01"></li>
-            <li class="valid-code" style="display: block"> <input id="validCode" type="text" placeholder="Validation"
-                    maxlength="4" fdprocessedid="nk3uz"> <img id="authenticateImage"
-                    src="https://bxawscf.skyexch.bike/verifycode.gr?v=1678553277974"> </li>
-            <li><input id="valid" name="valid" type="hidden" value="4934786d-0ae4-4860-9843-d6fdca23b082"></li>
-            <li> <a id="loginBtn" class="btn-login" onclick="javascript: return LoginHandler.check(event);">Login <img
-                        class="icon-login" src="assets/images/transparent.gif?v=1678553205059">
-                </a> </li>
-            <li><a class="btn-signup"
-                    onclick="window.open('https://wa.link/skyexch', '_blank', config='height=850,width=1200,location=no');">Sign
-                    up</a></li>
-            <li id="errorMsg" class="error" style="display:none"></li>
-        </ul>
-        <ul class="account-wrap">
+        <form [formGroup]="loginForm" *ngIf="!isLoginUser" method="post" role="form" (ngSubmit)="loginFormSubmit()">
+            <ul class="login-wrap">
+                <li><input formControlName="email" placeholder="Username" type="text" placeholder="Username">
+                </li>
+                <li><input formControlName="password" placeholder="Password" type="password" placeholder="Password"></li>
+                <!-- <li class="valid-code" style="display: block"> <input id="validCode" type="text"
+                        placeholder="Validation" maxlength="4" fdprocessedid="nk3uz"> <img id="authenticateImage"
+                        src="https://bxawscf.skyexch.bike/verifycode.gr?v=1678553277974"> </li> -->
+                <!-- <li><input id="valid" name="valid" type="hidden" value="4934786d-0ae4-4860-9843-d6fdca23b082"></li> -->
+                <li> <button type="submit" class="btn-login">Login
+                        <img class="icon-login" src="assets/images/transparent.gif?v=1678553205059">
+                </button> </li>
+                <!-- <li><a class="btn-signup"
+                        onclick="window.open('https://wa.link/skyexch', '_blank', config='height=850,width=1200,location=no');">Sign
+                        up</a></li> -->
+                <li id="errorMsg" class="error" style="padding-left: 0px;"><span class="err-invalid" *ngIf="isSubmitted && formSubmitError != null">
+                    <span>{{formSubmitError}}</span></span></li>
+            </ul>
+        </form>
+        <ul class="account-wrap" *ngIf="isLoginUser">
             <li class="main-wallet">
                 <a id="multiWallet" href="#multiBalancePop" class="a-wallet">
                     <ul id="accountCredit">
@@ -97,13 +101,14 @@
 
             <li class="account" ngbDropdown>
                 <a id="accountPopup" style="cursor: pointer" ngbDropdownToggle>My Account</a>
-                <ul  class="" aria-labelledby="accountPopup" ngbDropdownMenu>
+                <ul class="" aria-labelledby="accountPopup" ngbDropdownMenu>
                     <li>
                         <h4>userdemoo <span class="gmt" title="Time Zone">GMT+5:30</span></h4>
                     </li>
                     <li><a href="/exchange/member/myAccount/detail.jsp" target="_blank">My Profile</a></li>
                     <li><a href="/exchange/member/myAccount/summary.jsp" target="_blank">Balance Overview</a></li>
-                    <li><a href="/exchange/member/myAccount/accountCashStatement.jsp" target="_blank">Account Statement</a></li>
+                    <li><a href="/exchange/member/myAccount/accountCashStatement.jsp" target="_blank">Account
+                            Statement</a></li>
                     <li><a href="/exchange/member/myAccount/current_bets.jsp" target="_blank">My Bets</a></li>
                     <li><a href="/exchange/member/myAccount/bet_history.jsp" target="_blank">Bets History</a></li>
                     <li><a href="/exchange/member/myAccount/profit_loss.jsp" target="_blank">Profit &amp; Loss</a></li>
@@ -119,11 +124,14 @@
                 <li><a routerLink="/home" routerLinkActive="select">Home</a></li>
                 <li><a routerLink="/inplay" routerLinkActive="select">In-Play</a></li>
                 <li><a routerLink="/multimarket" routerLinkActive="select">Multi Markets</a></li>
-                <li><a routerLink="/allsport-highlight/4" routerLinkActive="select"><span class="tag-live"><strong></strong>3</span> Cricket </a>
+                <li><a routerLink="/allsport-highlight/4" routerLinkActive="select"><span
+                            class="tag-live"><strong></strong>3</span> Cricket </a>
                 </li>
-                <li><a routerLink="/allsport-highlight/1" routerLinkActive="select"><span class="tag-live"><strong></strong>77</span> Soccer </a>
+                <li><a routerLink="/allsport-highlight/1" routerLinkActive="select"><span
+                            class="tag-live"><strong></strong>77</span> Soccer </a>
                 </li>
-                <li><a routerLink="/allsport-highlight/2" routerLinkActive="select"><span class="tag-live"><strong></strong>9</span> Tennis </a>
+                <li><a routerLink="/allsport-highlight/2" routerLinkActive="select"><span
+                            class="tag-live"><strong></strong>9</span> Tennis </a>
                 </li>
                 <li ui-use="sportradar_virtual_sports"> <a class=""
                         href="javascript:CommonTransferWalletHandler.openDepositPage('1', 'BetRadar', 'SPORTRADAR', '', 'SPORTRADAR_VIRTUAL_001', '', true)"

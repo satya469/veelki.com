@@ -41,6 +41,7 @@ import { SliderComponent } from './components/slider/slider.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatchOddComponent } from './components/fullmarket/match-odd/match-odd.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,8 @@ import { MatchOddComponent } from './components/fullmarket/match-odd/match-odd.c
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
     CarouselModule,

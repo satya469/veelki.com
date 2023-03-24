@@ -13,20 +13,20 @@
             <span class="game-low_liq" style="display: none;">Low Liquidity</span>
             <a [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.eventName.split("/")[0]}}</a>
             <span class="game-list-time" *ngIf="tableColumn.inPlay=='True'"><span class="in_play">In-Play</span></span>
-            <span class="game-live">Live</span>
+            <!-- <span class="game-live">Live</span>
             <span class="game-E"><i></i>Soccer</span>
             <span class="game-E"><i></i>e-Soccer</span>
             <span class="game-E"><i></i>Cricket</span>
-            <span class="game-E"><i></i>Tennis</span>
-            <span class="game-fancy in-play" *ngIf="tableColumn.f=='True'" style="cursor: pointer; display: inline-flex;">Fancy</span>
+            <span class="game-E"><i></i>Tennis</span> -->
+            <!-- <span class="game-fancy in-play" *ngIf="tableColumn.f=='True'" style="cursor: pointer; display: inline-flex;">Fancy</span>
             <span class="game-bookmaker in-play"
-                style="cursor: pointer; display: inline-flex;">BookMaker</span><!-- icon for fancy bet -->
+                style="cursor: pointer; display: inline-flex;">BookMaker</span>
             <span class="game-sportsbook">Sportsbook</span>
             <span class="game-sportsbook">Premium Tennis</span>
             <span class="game-sportsbook" style="display: inline-flex;">Premium
-                Cricket</span>
+                Cricket</span> -->
         </dt>
-        <dd class="col-matched">PTH338,892K</dd>
+        <dd class="col-matched"></dd>
         <dd class="col-visit">
             <div class="suspend" *ngIf="tableColumn.disableMatch=='True'"><span>Suspend</span></div>
             <a class="btn-back">{{tableColumn.back11}}</a>

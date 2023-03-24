@@ -1,6 +1,5 @@
 <div class="col-center markets">
     <div class="over-wrap live-match">
-        {{matchOddsData.length}}
         <ng-container *ngIf="matchOddsData && matchOddsData.length > 0">
             <app-match-odd [matchOddsData]="matchOddsData" [isUserLogin]="isUserLogin" [inPlay]="inPlay" [sportId]="sportId" [marketId]="marketId"></app-match-odd>
         </ng-container>
