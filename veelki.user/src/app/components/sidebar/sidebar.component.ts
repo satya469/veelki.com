@@ -17,17 +17,22 @@ export class SidebarComponent implements OnInit {
   sportTournamentsList : SportTournamentsList[] = [];
   tournamentEventsList : TournamentEventsList[] = [];    
   isSportTournamentsCollapsed : boolean[] = [];
+  sportId : number = 0;
+  tournamentId : number = 0;
 
   getSportList:any = () =>{
     this.isSportTournamentsCollapsed.length = 0;
   }
 
   resetSidebar(){
+    this.sportId = 0;
+    this.tournamentId = 0;
     this.sportTournamentsList = [];
     this.tournamentEventsList = [];
   }
 
   getSportTournamentsList:any = (sportId:string) =>{
+    this.sportId = Number(sportId);
     this.service.get(`exchange/GetSeries?SportId=${sportId}&type=1`)
     .subscribe((response:ResponseModel) => {
       if(response.data != null && response.isSuccess == true){
@@ -39,6 +44,8 @@ export class SidebarComponent implements OnInit {
   }
 
   getTournamentEventsList:any = (SportId:number, SeriesId:any, index : number) =>{
+    this.sportId = Number(SportId);
+    this.tournamentId = Number(SeriesId);
     this.service.get(`exchange/GetMatches?SportId=${SportId}&SeriesId=${SeriesId}&type=1`)
     .subscribe((response:ResponseModel) => {
       if(response.data != null){

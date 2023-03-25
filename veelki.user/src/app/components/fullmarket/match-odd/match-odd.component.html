@@ -1,265 +1,66 @@
-<div class="game-head">
-    <div class="match-odds">Match Odds<img src="assets/images/transparent.gif"></div>
-    <ul class="game-info" style="display: block;">
-        <li id="gameInfoDate" class="green"><img class="icon-irun" src="assets/images/transparent.gif"> In-Play</li>
-    </ul>
-    <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
-
-    <a id="lmtOpenStreaming" class="open-tv-wrap" style="display: none;">Live</a>
-
-    <dl class="game-matched" style="display: block;">
-        <dt>Matched
-        </dt>
-        <dd id="liveGameMatched">PTE 7,906,570</dd>
-    </dl>
-    <dl id="minMaxBox" class="fancy-info" style="">
-        <dt id="minMaxDt" style="display: none;">Min/Max</dt>
-        <dt id="maxDt" style="">Max</dt>
-        <dd id="minMaxInfo">4000</dd>
-    </dl>
-</div>
-<div id="fullMarketBetsWrap" class="bets-wrap asiahadicap" style="" eventtype="4" eventid="32194467"
-    marketid="1.211571957">
-
-    <h3 id="lineMarketName" class="line_market-name" style="display:none;">
+<ng-container *ngFor="let matchOdds of matchOddsData">
+    <div class="game-head">
+        <div class="match-odds">{{matchOdds?.marketName}}<img src="assets/images/transparent.gif"></div>
+        <ul class="game-info" *ngIf="inPlay==true">
+            <li class="green"><img class="icon-irun" src="assets/images/transparent.gif"> In-Play</li>
+        </ul>
+        <dl class="game-matched">
+            <dt>Matched</dt>
+            <dd>PTE 7,906,570</dd>
+        </dl>
+        <dl class="fancy-info">
+            <dt>Max</dt>
+            <dd>{{matchOdds?.max}}</dd>
+        </dl>
+    </div>
+    <div class="bets-wrap asiahadicap">
+        <!-- <h3 class="line_market-name">
         <span>1st Innings 10 Over Line</span>
-    </h3>
-
-    <span id="selectionCounts" class="refer_only">2 selections</span>
-
-    <table id="fullMarketBoard" class="bets">
-        <tbody>
-            <tr class="bet-all">
-                <td></td>
-                <td id="backPercent" class="refer-bet" colspan="2">101%</td>
-                <td><a id="backAll" class="back-all"><img
-                            src="assets/images/transparent.gif"><span>Back all</span></a>
-                </td>
-                <td><a id="layAll" class="lay-all"><img
-                            src="assets/images/transparent.gif"><span>Lay all</span></a>
-                </td>
-                <td id="layPercent" class="refer-book" colspan="2">99.3%</td>
-            </tr>
-
-            <tr id="fullSelectionTemplate" style="display: none;">
-                <th>
-
-                    <dl id="horseInfo" class="horse-info" style="display: none;">
-                        <dt>
-                            <a id="marketDepthBtn" href="#"><img class="icon-predict"
-                                    src="assets/images/transparent.gif"></a>
-                            <ul id="horseBox" class="horse-box">
-                                <li id="clothNumberAlpha"></li>
-                                <li id="stallDraw"></li>
-                            </ul>
-                            <div id="uniform" class="uniform"><img src=""></div>
-                        </dt>
-                        <dd>
-                            <ul id="horseName" class="horse-name">
-                                <li id="runnerName"></li>
-                                <li id="jockyName"></li>
-                            </ul>
-                            <dl id="horseInfoHover" class="horse_info-hover">
-                                <dt>Trainer:</dt>
-                                <dd id="trainerName"></dd>
-                                <dt>Age/Weight:</dt>
-                                <dd id="ageWeight"></dd>
-                                <dt>Form:</dt>
-                                <dd id="form"></dd>
-                                <dt>Days since last run:</dt>
-                                <dd id="daysSinceLastRun"></dd>
-                                <dt>Jockey claim:</dt>
-                                <dd id="jockeyClam"></dd>
-                                <dt>Wearning:</dt>
-                                <dd id="wearing"></dd>
-                            </dl>
-                        </dd>
-                    </dl>
-
-                    <p></p>
-                    <span id="withoutBet" class="win" style="display: none;"></span>
-                    <span id="lossWithoutBet" class="win" style="display: none;"></span>
-                    <span id="withBet" class="win" style="display: none;"></span>
-                    <span id="lossWithBet" class="win" style="display: none;"></span>
-                    <span id="zeroProfit" class="win" style="display: none;"></span>
-                    <span id="zeroLiability" class="win" style="display: none;"></span>
-                    <span id="zeroProfitWithBet" class="win" style="display: none;"></span>
-                    <span id="zeroLiabilityWithBet" class="win" style="display: none;"></span>
-                </th>
-                <td id="suspend" colspan="6" class="suspend" style="display: none;">
+    </h3> -->
+        <span class="refer_only">{{matchOdds?.oddsData?.runners?.length}} selections</span>
+        <table class="bets">
+            <tbody>
+                <tr class="bet-all">
+                    <td></td>
+                    <td class="refer-bet" colspan="2"></td>
+                    <td><a class="back-all"><img src="assets/images/transparent.gif"><span>Back all</span></a></td>
+                    <td><a class="lay-all"><img src="assets/images/transparent.gif"><span>Lay all</span></a></td>
+                    <td class="refer-book" colspan="2"></td>
+                </tr>
+                <tr *ngFor="let matchOddsPrice of matchOdds.oddsData.runners; let i = index">
+                    <th class="predict">
+                        <p><a><img class="icon-predict"
+                                    src="assets/images/transparent.gif"></a>{{matchOddsPrice.runnerName}}</p>
+                        <!-- <span class="lose">0.00</span>
+                        <span class="win">1</span> -->
+                        <span class="to-lose" [ngClass]="{'to-lose':setBetData?.type =='lay','to-win':setBetData?.type =='back'}" *ngIf="setBetData?.sportId && selectionId == matchOddsPrice.selectionId"> {{ stackValue * oddValue - stackValue |
+                            number : '1.2-2'}}</span>
+                        <span class="to-lose" [ngClass]="{'to-lose':setBetData?.type !='lay','to-win':setBetData?.type !='back'}" *ngIf="setBetData?.sportId && selectionId != matchOddsPrice.selectionId"> {{ stackValue |
+                            number : '1.2-2'}}</span>
+                        <!-- <span class="to-win"> 0.00</span> -->
+                    </th>
+                    <!-- <td colspan="6" class="suspend">
                     <span>Suspend</span>
                 </td>
-                <td id="closed" colspan="6" class="suspend" style="display: none;">
+                <td colspan="6" class="suspend">
                     <span>Closed</span>
                 </td>
-                <td id="nonRunner" colspan="6" class="suspend" style="display: none;">
+                <td colspan="6" class="suspend">
                     <span>Non Runner</span>
-                </td>
-                <td id="back_3" class="back-3" side="Back"><a><span></span></a></td>
-                <td id="back_2" class="back-2" side="Back"><a><span></span></a></td>
-                <td id="back_1" class="back-1" side="Back"><a><span></span></a></td>
-                <td id="lay_1" class="lay-1" side="Lay"><a><span></span></a></td>
-                <td id="lay_2" class="lay-2" side="Lay"><a><span></span></a></td>
-                <td id="lay_3" class="lay-3" side="Lay"><a><span></span></a></td>
-                <td id="horseGreyOut" colspan="3" class="suspend" style="display: none;"></td>
-            </tr>
-            <tr id="fullSelection_7659_0_00" style="display: table-row;" eventtype="4" eventid="32194467"
-                marketid="1_211571957" selectionid="7659" selectionkey="7659_0_00"
-                eventname="Bangladesh v Ireland" status="1" sortpriority="1" handicap="0">
-                <th class="predict">
-
-                    <dl id="horseInfo" class="horse-info" style="display: none;">
-                        <dt>
-                            <a id="marketDepthBtn" href="#"><img class="icon-predict"
-                                    src="assets/images/transparent.gif"></a>
-                            <ul id="horseBox" class="horse-box">
-                                <li id="clothNumberAlpha"></li>
-                                <li id="stallDraw"></li>
-                            </ul>
-                            <div id="uniform" class="uniform"><img src=""></div>
-                        </dt>
-                        <dd>
-                            <ul id="horseName" class="horse-name">
-                                <li id="runnerName"></li>
-                                <li id="jockyName"></li>
-                            </ul>
-                            <dl id="horseInfoHover" class="horse_info-hover">
-                                <dt>Trainer:</dt>
-                                <dd id="trainerName"></dd>
-                                <dt>Age/Weight:</dt>
-                                <dd id="ageWeight"></dd>
-                                <dt>Form:</dt>
-                                <dd id="form"></dd>
-                                <dt>Days since last run:</dt>
-                                <dd id="daysSinceLastRun"></dd>
-                                <dt>Jockey claim:</dt>
-                                <dd id="jockeyClam"></dd>
-                                <dt>Wearning:</dt>
-                                <dd id="wearing"></dd>
-                            </dl>
-                        </dd>
-                    </dl>
-
-                    <p><a
-                            onclick="window.open('market/marketDepth.jsp?eventId=32194467&amp;marketId=1.211571957&amp;selectionId=7659&amp;handicap=0','_blank','resizable=no,width=920,height=600')"><img
-                                class="icon-predict" src="assets/images/transparent.gif"></a>Bangladesh</p>
-                    <span id="withoutBet" class="lose" style="display: none;"> 0.00</span>
-                    <span id="lossWithoutBet" class="win" style="display: none;"></span>
-                    <span id="withBet" class="to-lose" style="display: inline-flex;"> 0.00</span>
-                    <span id="lossWithBet" class="win" style="display: none;"></span>
-                    <span id="zeroProfit" class="win" style="display: none;"></span>
-                    <span id="zeroLiability" class="win" style="display: none;"></span>
-                    <span id="zeroProfitWithBet" class="win" style="display: none;"></span>
-                    <span id="zeroLiabilityWithBet" class="win" style="display: none;"></span>
-                </th>
-                <td id="suspend" colspan="6" class="suspend" style="display: none;">
-                    <span>Suspend</span>
-                </td>
-                <td id="closed" colspan="6" class="suspend" style="display: none;">
-                    <span>Closed</span>
-                </td>
-                <td id="nonRunner" colspan="6" class="suspend" style="display: none;">
-                    <span>Non Runner</span>
-                </td>
-                <td id="back_3" class="back-3" side="Back" selectionid="7659" selectionkey="7659_0_00"
-                    runner="Bangladesh" marketname="Match Odds" markettype="MATCH_ODDS" handicap="0"
-                    fullmarketodds="1.11" inplay="1"><a>1.11<span>33,475</span></a></td>
-                <td id="back_2" class="back-2" side="Back" selectionid="7659" selectionkey="7659_0_00"
-                    runner="Bangladesh" marketname="Match Odds" markettype="MATCH_ODDS" handicap="0"
-                    fullmarketodds="1.12" inplay="1"><a>1.12<span>37,710</span></a></td>
-                <td id="back_1" class="back-1 select" side="Back" selectionid="7659" selectionkey="7659_0_00"
-                    runner="Bangladesh" marketname="Match Odds" markettype="MATCH_ODDS" handicap="0"
-                    fullmarketodds="1.13" inplay="1"><a>1.13<span>69,563</span></a></td>
-                <td id="lay_1" class="lay-1 select" side="Lay" selectionid="7659" selectionkey="7659_0_00"
-                    runner="Bangladesh" marketname="Match Odds" markettype="MATCH_ODDS" handicap="0"
-                    fullmarketodds="1.14" inplay="1"><a>1.14<span>10,491</span></a></td>
-                <td id="lay_2" class="lay-2" side="Lay" selectionid="7659" selectionkey="7659_0_00"
-                    runner="Bangladesh" marketname="Match Odds" markettype="MATCH_ODDS" handicap="0"
-                    fullmarketodds="1.15" inplay="1"><a>1.15<span>7,992</span></a></td>
-                <td id="lay_3" class="lay-3" side="Lay" selectionid="7659" selectionkey="7659_0_00"
-                    runner="Bangladesh" marketname="Match Odds" markettype="MATCH_ODDS" handicap="0"
-                    fullmarketodds="1.16" inplay="1"><a>1.16<span>13,369</span></a></td>
-                <td id="horseGreyOut" colspan="3" class="suspend" style="display: none;"></td>
-            </tr>
-            <tr id="fullSelection_152530_0_00" style="display: table-row;" eventtype="4" eventid="32194467"
-                marketid="1_211571957" selectionid="152530" selectionkey="152530_0_00"
-                eventname="Bangladesh v Ireland" status="1" sortpriority="2" handicap="0">
-                <th class="predict">
-
-                    <dl id="horseInfo" class="horse-info" style="display: none;">
-                        <dt>
-                            <a id="marketDepthBtn" href="#"><img class="icon-predict"
-                                    src="assets/images/transparent.gif"></a>
-                            <ul id="horseBox" class="horse-box">
-                                <li id="clothNumberAlpha"></li>
-                                <li id="stallDraw"></li>
-                            </ul>
-                            <div id="uniform" class="uniform"><img src=""></div>
-                        </dt>
-                        <dd>
-                            <ul id="horseName" class="horse-name">
-                                <li id="runnerName"></li>
-                                <li id="jockyName"></li>
-                            </ul>
-                            <dl id="horseInfoHover" class="horse_info-hover">
-                                <dt>Trainer:</dt>
-                                <dd id="trainerName"></dd>
-                                <dt>Age/Weight:</dt>
-                                <dd id="ageWeight"></dd>
-                                <dt>Form:</dt>
-                                <dd id="form"></dd>
-                                <dt>Days since last run:</dt>
-                                <dd id="daysSinceLastRun"></dd>
-                                <dt>Jockey claim:</dt>
-                                <dd id="jockeyClam"></dd>
-                                <dt>Wearning:</dt>
-                                <dd id="wearing"></dd>
-                            </dl>
-                        </dd>
-                    </dl>
-
-                    <p><a
-                            onclick="window.open('market/marketDepth.jsp?eventId=32194467&amp;marketId=1.211571957&amp;selectionId=152530&amp;handicap=0','_blank','resizable=no,width=920,height=600')"><img
-                                class="icon-predict" src="assets/images/transparent.gif"></a>Ireland</p>
-                    <span id="withoutBet" class="lose" style="display: none;"> 0.00</span>
-                    <span id="lossWithoutBet" class="win" style="display: none;"></span>
-                    <span id="withBet" class="to-lose" style="display: inline-flex;"> 0.00</span>
-                    <span id="lossWithBet" class="win" style="display: none;"></span>
-                    <span id="zeroProfit" class="win" style="display: none;"></span>
-                    <span id="zeroLiability" class="win" style="display: none;"></span>
-                    <span id="zeroProfitWithBet" class="win" style="display: none;"></span>
-                    <span id="zeroLiabilityWithBet" class="win" style="display: none;"></span>
-                </th>
-                <td id="suspend" colspan="6" class="suspend" style="display: none;">
-                    <span>Suspend</span>
-                </td>
-                <td id="closed" colspan="6" class="suspend" style="display: none;">
-                    <span>Closed</span>
-                </td>
-                <td id="nonRunner" colspan="6" class="suspend" style="display: none;">
-                    <span>Non Runner</span>
-                </td>
-                <td id="back_3" class="back-3" side="Back" selectionid="152530" selectionkey="152530_0_00"
-                    runner="Ireland" marketname="Match Odds" markettype="MATCH_ODDS" handicap="0"
-                    fullmarketodds="7.2" inplay="1"><a>7.2<span>2,154</span></a></td>
-                <td id="back_2" class="back-2" side="Back" selectionid="152530" selectionkey="152530_0_00"
-                    runner="Ireland" marketname="Match Odds" markettype="MATCH_ODDS" handicap="0"
-                    fullmarketodds="7.6" inplay="1"><a>7.6<span>1,209</span></a></td>
-                <td id="back_1" class="back-1" side="Back" selectionid="152530" selectionkey="152530_0_00"
-                    runner="Ireland" marketname="Match Odds" markettype="MATCH_ODDS" handicap="0"
-                    fullmarketodds="8" inplay="1"><a>8<span>1,495</span></a></td>
-                <td id="lay_1" class="lay-1" side="Lay" selectionid="152530" selectionkey="152530_0_00"
-                    runner="Ireland" marketname="Match Odds" markettype="MATCH_ODDS" handicap="0"
-                    fullmarketodds="8.6" inplay="1"><a>8.6<span>38</span></a></td>
-                <td id="lay_2" class="lay-2" side="Lay" selectionid="152530" selectionkey="152530_0_00"
-                    runner="Ireland" marketname="Match Odds" markettype="MATCH_ODDS" handicap="0"
-                    fullmarketodds="8.8" inplay="1"><a>8.8<span>8,912</span></a></td>
-                <td id="lay_3" class="lay-3" side="Lay" selectionid="152530" selectionkey="152530_0_00"
-                    runner="Ireland" marketname="Match Odds" markettype="MATCH_ODDS" handicap="0"
-                    fullmarketodds="9" inplay="1"><a>9<span>16</span></a></td>
-                <td id="horseGreyOut" colspan="3" class="suspend" style="display: none;"></td>
-            </tr>
-        </tbody>
-    </table>
-
-</div>
+                </td> -->
+                    <td *ngFor="let backPrice of matchOddsPrice.price.back; let i = index"
+                        class="back-{{matchOddsPrice.price.back.length - i}}"
+                        [ngClass]="{'select': selectionId == matchOddsPrice.selectionId && betType == 0 && i == 2}"><a
+                            (click)="setBetPrice(matchOdds.exEventId, matchOdds.eventName, matchOdds.marketId, matchOdds.marketName, matchOddsPrice.runnerName, matchOddsPrice.selectionId, 0, backPrice.price, 0, 0)">{{backPrice.price}}<span>{{
+                                backPrice.size |
+                                thousandSuffixes : 2}}</span></a></td>
+                    <td *ngFor="let layPrice of matchOddsPrice.price.lay;  let i = index" class="lay-{{i+1}}"
+                        [ngClass]="{'select': selectionId == matchOddsPrice.selectionId && betType == 1 && i == 0}"><a
+                            (click)="setBetPrice(matchOdds.exEventId, matchOdds.eventName, matchOdds.marketId, matchOdds.marketName, matchOddsPrice.runnerName, matchOddsPrice.selectionId, 1, layPrice.price, 0, 1);">{{layPrice.price}}<span>{{
+                                layPrice.size |
+                                thousandSuffixes : 2}}</span></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-container>

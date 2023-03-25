@@ -1,6 +1,6 @@
 <div class="col-center markets">
     <div class="over-wrap live-match">
-        <ng-container *ngIf="matchOddsData && matchOddsData.length > 0">
+        <ng-container *ngIf="matchOddsData && matchOddsData.length > 0 else noDataFound">
             <app-match-odd [matchOddsData]="matchOddsData" [isUserLogin]="isUserLogin" [inPlay]="inPlay" [sportId]="sportId" [marketId]="marketId"></app-match-odd>
         </ng-container>
         <ng-container *ngIf="bookmakerData && bookmakerData.length > 0">
@@ -9,5 +9,8 @@
         <ng-container *ngIf="fancyBetData && bookmakerData.length > 0">
             <!-- <app-fancy-bet [fancyBetData]="fancyBetData"></app-fancy-bet> -->
         </ng-container>
+        <ng-template #noDataFound>
+            <div style="text-align: center; padding: 10px;">No Data Found.</div>
+        </ng-template>
     </div>
 </div>

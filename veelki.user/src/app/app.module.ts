@@ -34,7 +34,7 @@ import { SportReducer } from './store/reducers/getSport.reducer';
 import { SportEffect } from './store/effects/getSport.effect';
 import { InplayEffect } from './store/effects/inplay.effect';
 import { StackEffects } from './store/effects/stack.effect';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { TableRowComponent } from './components/table-row/table-row.component';
 import { SliderComponent } from './components/slider/slider.component';
@@ -42,6 +42,15 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatchOddComponent } from './components/fullmarket/match-odd/match-odd.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { AuthService } from './services/auth.service';
+import { HttpService } from './services/http.service';
+import { SessionService } from './services/session.service';
+import { BetService } from './services/getBet.service';
+import { InterceptorService } from './http.interceptor';
+import { ThousandSuffixesPipe } from './helpers/thousand-suffixes.pipe';
+import { NotificationService } from './services/notification.service';
+import { NgxMarqueeModule } from 'ngx-marquee';
 
 @NgModule({
   declarations: [
@@ -69,7 +78,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NewsComponent,
     TableRowComponent,
     SliderComponent,
-    MatchOddComponent
+    MatchOddComponent,
+    ThousandSuffixesPipe
   ],
   imports: [
     BrowserModule,
@@ -79,7 +89,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     HttpClientModule,
     CarouselModule,
+    NgxSpinnerModule,
     BrowserAnimationsModule,
+    NgxMarqueeModule,
     ToastrModule.forRoot(),
     StoreModule.forRoot({StackData : StackReducer, InplayData : InplayReducer, SportData : SportReducer}),
     EffectsModule.forRoot([StackEffects,InplayEffect, SportEffect]),
@@ -89,7 +101,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       autoPause : true
     })
   ],
-  providers: [],
+  providers: [AuthService, NotificationService, HttpService, SessionService, BetService, InterceptorService,
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,14 +1,4 @@
 <div class="col-center inplay">
-    <div class="message-wrap success">
-        <a class="btn-close">Close</a>
-        <p></p>
-    </div>
-    <div class="loading-wrap">
-        <ul class="loading">
-            <li><img src="asstes/images/loading40.gif"></li>
-            <li id="oneClickTime">Place Bets</li>
-        </ul>
-    </div>
     <app-news></app-news>
     <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="tab col3">
         <li [ngbNavItem]="1">
@@ -72,85 +62,8 @@
             </ng-template>
         </li>
     </ul>
-    <div id="sportFilter" class="function-wrap">
-        <ul class="filter-list">
-            <li class="filter-head">Sport Filters:</li>
-            <li class="filter-content">
-                <span class="filter-first">Cricket</span>
-                <span>E-Soccer</span>
-                <span>Soccer</span>
-                <span>Tennis</span>
-            </li>
-            <li class="filter-btn"><a id="sportFilterPopup" class="btn">Filter</a></li>
-        </ul>
-        <div class="filter-pop">
-            <ul>
-                <li>
-                    <input name="sportsFilter" value="-1" type="checkbox" onclick="SportFilterHandler.checkAll();">
-                    <label for="filter-all">All</label>
-                </li>
-                <li>
-                    <input name="sportsFilter" value="1" type="checkbox">
-                    <label for="filter-1">Soccer</label>
-                </li>
-                <li>
-                    <input name="sportsFilter" value="2" type="checkbox">
-                    <label for="filter-2">Tennis</label>
-                </li>
-                <li>
-                    <input name="sportsFilter" value="4" type="checkbox">
-                    <label for="filter-4">Cricket</label>
-                </li>
-                <li>
-                    <input name="sportsFilter" value="137" type="checkbox">
-                    <label for="filter-137">E-Soccer</label>
-                </li>
-            </ul>
-            <div class="btn-wrap">
-                <a class="btn-send">Save</a>
-                <a class="btn">Cancel</a>
-            </div>
-        </div>
-    </div>
+
     <div class="over-wrap">
         <div [ngbNavOutlet]="nav"></div>
-    </div>
-    <div class="one_click-wrap" class="d-none">
-        <div class="overlay"></div>
-        <div id="oneClickBetDialog" class="dialog-wrap" name="oneClickBetDialog">
-            <h4>One Click Bet ON</h4>
-            <div class="dialog-content">
-                <p>Stake selected will be placed immediately once you click on the market odds. <br><span
-                        class="attention">
-                        Attention: Back/Lay at your own risk</span>
-                </p>
-            </div>
-            <ul class="btn-wrap break">
-                <li><a class="btn-send" style="cursor:pointer;">OK</a></li>
-            </ul>
-            <img class="arrow-dialog" src="asstes/images/transparent.gif">
-        </div>
-        <div class="one_click-setting">
-            <h4>One Click Bet Stake</h4>
-            <ul class="one_click-stake">
-                <li><a class="btn select" name="betStake" index="0" style="cursor:pointer;">10</a></li>
-                <li><a class="btn" name="betStake" index="1" style="cursor:pointer;">30</a></li>
-                <li><a class="btn" name="betStake" index="2" style="cursor:pointer;">50</a></li>
-                <li><a class="btn" name="betStake" index="3" style="cursor:pointer;">100</a></li>
-            </ul>
-            <a id="edit" class="a-edit" style="cursor:pointer;">Edit<img
-                    src="asstes/images/transparent.gif"></a>
-        </div>
-        <div class="one_click-setting">
-            <h4>Edit One Click Bet Stake</h4>
-            <ul class="one_click-stake">
-                <li><input type="text" name="editBetStake" index="0" value=""></li>
-                <li><input type="text" name="editBetStake" index="1" value=""></li>
-                <li><input type="text" name="editBetStake" index="2" value=""></li>
-                <li><input type="text" name="editBetStake" index="3" value=""></li>
-            </ul>
-            <a id="save" class="btn-send" style="cursor:pointer;">Save
-            </a>
-        </div>
     </div>
 </div>

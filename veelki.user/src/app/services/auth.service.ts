@@ -14,10 +14,12 @@ export class AuthService {
   _isLoginUser = new BehaviorSubject<boolean>(this.isLoggedIn());
 
 
-  public login(userData : UserData){
+  public login(userData : UserData, redirect:boolean = true){
     this.session.setSession('USER_DATA', userData);
     this._isLoginUser.next(true);
-    this.route.navigateByUrl("/home");
+    if(redirect){
+      this.route.navigateByUrl("/home");
+    }
   }
 
   public isLoggedIn(){

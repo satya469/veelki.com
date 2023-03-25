@@ -5,3 +5,17 @@
     <app-aside *ngIf="isAsideVisible"></app-aside>
 </div>
 <app-footer *ngIf="isFooterVisible"></app-footer>
+<ngx-spinner bdColor="rgba(51,51,51,0.5)"
+size="medium"
+color="#fff"
+type="ball-scale-multiple">
+    <div class="loading-wrap">
+        <ul class="loading">
+            <li><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></li>
+            <li>Loading...
+            </li>
+            <br>
+            <li><span id="progress"></span></li>
+        </ul>
+    </div>
+</ngx-spinner>

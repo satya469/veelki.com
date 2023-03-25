@@ -1,350 +1,137 @@
 <div class="col-right">
-    <div class="slip-wrap no-open-bet_slip">
-        <h3> <a class="to-expand" style="cursor:pointer;">Bet Slip </a> </h3>
-        <ul id="loadingMsg" class="loading" style="display: none">
-            <li><img src="asstes/images/loading40.gif"></li>
-            <li id="countDownTime">Place Bets </li>
-        </ul>
-        <div class="message-bet">
-            <h4 id="errorMsg" class="error" style="display: none"></h4>
-            <p id="betMsg" class="warning" style="display: none"></p>
-        </div>
-        <p id="noBetSlipInfo" style="display:">Click on the odds to add selections to the betslip. </p>
-        <div id="betSlipBoard" class="bet_slip" style="display: none">
-            <div id="betList" class="slip-list" style="max-height: calc(100% - 86px);">
-                <dd id="stakePopupList" class="col-stake_list" stakepopuplisttype="template" style="display: none;">
-                    <ul>
-                        <li><a class="btn" id="selectStake_1" stake="4" style="cursor:pointer;">4</a></li>
-                        <li><a class="btn" id="selectStake_2" stake="30" style="cursor:pointer;">30</a></li>
-                        <li><a class="btn" id="selectStake_3" stake="50" style="cursor:pointer;">50</a></li>
-                        <li><a class="btn" id="selectStake_4" stake="200" style="cursor:pointer;">200</a></li>
-                        <li><a class="btn" id="selectStake_5" stake="500" style="cursor:pointer;">500</a></li>
-                        <li><a class="btn" id="selectStake_6" stake="1000" style="cursor:pointer;">1000</a></li>
-                    </ul>
-                    <p id="totalStakeP" style="display: none;">Total Stake: <strong id="totalStake"></strong></p>
-                </dd>
-                <div id="oddsTipsPopup" class="tips-popup" style="display: none">min 1.01</div>
-                <div id="stakeTipsPopup" class="tips-popup" style="display: none">Min 4.00</div>
-                <ul id="backSlipHeader" class="slip-head" name="slipHeader" style="display: none">
-                    <li class="col-bet">Back (Bet For) </li>
-                    <li id="oddsHeader" class="col-odd">Odds </li>
-                    <li id="runsHeader" class="col-odd" style="display: none">Unit:Runs </li>
+    <div class="slip-wrap">
+        <h3><a class="to-expand">Bet Slip </a></h3>
+        <p *ngIf="!betData.sportId">Click on the odds to add selections to the betslip. </p>
+        <div class="bet_slip" *ngIf="betData.sportId">
+            <div class="slip-list">
+                <ul class="slip-head">
+                    <li class="col-bet" *ngIf="betData.type == 'back'">Back (Bet For)</li>
+                    <li class="col-bet" *ngIf="betData.type == 'lay'">Lay (Bet Against)</li>
+                    <li class="col-odd">Odds </li>
                     <li class="col-stake">Stake </li>
-                    <li class="col-profit">Profit </li>
+                    <li class="col-profit" *ngIf="betData.type == 'back'">Profit</li>
+                    <li class="col-profit" *ngIf="betData.type == 'lay'">Liability</li>
                 </ul>
-                <ul id="laySlipHeader" class="slip-head" name="slipHeader" style="display: none">
-                    <li class="col-bet">Lay (Bet Against) </li>
-                    <li id="oddsHeader" class="col-odd">Odds </li>
-                    <li id="runsHeader" class="col-odd" style="display: none">Unit:Runs </li>
-                    <li class="col-stake">Stake </li>
-                    <li class="col-profit">Liability </li>
-                </ul>
-                <div id="headerTemplate" style="display: none">
-                    <h4> <img class="icon-in_play" src="asstes/images/transparent.gif">Team a v
-                        Team b </h4>
+                <div>
+                    <h4><img class="icon-in_play" src="assets/images/transparent.gif">{{betData.event}}</h4>
+                    <dl class="slip-{{betData.type}}">
+                        <dt>
+                            <a class="delete" (click)="deleteBet()">delete</a>
+                            <span class="short-amount">{{betData.selection}}</span>
+                            <span>{{betData.market}}</span>
+                        </dt>
+                        <dd class="col-odd">
+                            <input type="number" step=".01" style="margin: 0;padding: 0;text-align: left;" maxlength="6"
+                                [(ngModel)]="oddsRequest" (change)="setOddsPrice(oddsRequest)">
+                        </dd>
+                        <dd class="col-stake">
+                            <input type="text" [(ngModel)]="amountStake" (change)="setStackPrice(amountStake)">
+                        </dd>
+                        <dd class="col-profit">{{ amountStake * oddsRequest - amountStake | number : '1.2-2'}}</dd>
+                        <dd class="col-stake_list" style="display: block;">
+                            <ul *ngIf="stackLimitList">
+                                <li *ngFor="let stackLimit of stackLimitList" style="margin-bottom: 3px;">
+                                    <a class="btn"
+                                        (click)="setStackPrice(stackLimit.stakeLimitPrice)">{{stackLimit.stakeLimitPrice}}</a>
+                                </li>
+                            </ul>
+                        </dd>
+                        <dd class="keep-option">
+                            <p class="dynamic-min-bet">Min Bet: <strong>10</strong></p>
+                        </dd>
+                    </dl>
                 </div>
-                <dl id="betTemplate" class="slip-back" style="display: none" marketid="" selectionid="">
-                    <dt> <a id="delete" class="delete" style="cursor:pointer;">delete</a> <span id="marketName">Match
-                            Odds</span> </dt>
-                    <dd class="col-odd"> <input id="odds" type="text" maxlength="6" autocomplete="off">
-                        <ul class="odd-add">
-                            <li><a id="oddsUp" class="up" style="cursor:pointer;">up</a></li>
-                            <li><a id="oddsDown" class="down" style="cursor:pointer;">down</a></li>
-                        </ul>
-                        <ul id="oddsTipsPoint"></ul>
-                    </dd>
-                    <dd class="col-stake"> <input id="inputStake" type="text" value="" maxlength="7">
-                        <ul id="listPoint"></ul>
-                    </dd>
-                    <dd id="profitLiability" class="col-profit"></dd>
-                    <dd id="asianHandicapForecast" class="bet-forecast" style="display: none;">
-                        <div class="bet-forecast-info"> <span id="forecastDesc_1"></span> <span id="winLoss_1"></span>
-                        </div>
-                        <div class="bet-forecast-info"> <span id="forecastDesc_2"></span> <span id="winLoss_2"></span>
-                        </div>
-                        <div class="bet-forecast-info"> <span id="forecastDesc_3"></span> <span id="winLoss_3"></span>
-                        </div>
-                    </dd> <!-- dynamic min bet for match odds -->
-                    <dd class="keep-option">
-                        <p class="dynamic-min-bet">Min Bet: <strong id="dynamicMinBet"></strong></p>
-                    </dd>
-                    <dd id="inningsRuns" class="inn_runs" style="display: none;">
-                        <dl>
-                            <dt id="ifRuns"></dt>
-                            <dd><span id="runsPL" class="green"></span></dd>
-                            <dt id="ifLess"></dt>
-                            <dd><span id="lessPL" class="green"></span></dd>
-                        </dl>
-                    </dd>
-                </dl>
             </div>
+
             <div id="betSlipFullBtn" class="full_btn">
                 <dl class="sum">
                     <dt>Liability </dt>
-                    <dd> <span id="total" class="red"></span> </dd>
+                    <dd>
+                        <span class="red" *ngIf="betData.type == 'back'">{{amountStake | number : '1.2-2'}}</span>
+                        <span class="red" *ngIf="betData.type == 'lay'">{{ amountStake * oddsRequest - amountStake |
+                            number : '1.2-2'}}</span>
+                    </dd>
                 </dl>
                 <ul class="btn-wrap">
-                    <li><a id="cancelAll" class="btn" style="cursor:pointer;" tabindex="0">Cancel All </a></li>
-                    <li><a id="placeBets" class="btn-send" style="cursor:pointer;" tabindex="0">Place Bets </a></li>
+                    <li><a class="btn" (click)="deleteBet()">Cancel</a></li>
+                    <li><a class="btn-send" [ngClass]="{'disable':amountStake<1}" (click)="saveMatchOdds()">Place Bets
+                        </a>
+                    </li>
                 </ul>
                 <ul class="slip-option">
                     <li><input id="comfirmBets" type="checkbox"><label for="comfirmBets">Please confirm your bets.
                         </label></li>
                 </ul>
             </div>
-        </div>
-        <div id="confirmBetList" class="slip-list" style="max-height: calc(100% - 96px); display: none">
-            <div class="message-bet">
-                <h4 class="warning">Please confirm your bets. </h4>
-                <p>A commission is charged on your net profit from each market. </p>
-            </div>
-            <ul id="backSlipHeader" class="slip-head" style="display: none">
-                <li class="col-bet">Back (Bet For) </li>
-                <li class="col-odd">Odds </li>
-                <li class="col-stake">Stake </li>
-                <li class="col-profit">Profit </li>
-            </ul>
-            <ul id="laySlipHeader" class="slip-head" style="display: none">
-                <li class="col-bet">Lay (Bet Against) </li>
-                <li class="col-odd">Odds </li>
-                <li class="col-stake">Stake </li>
-                <li class="col-profit">Liability </li>
-            </ul>
-            <div id="confirmHeader" style="display: none">
-                <h4> <img class="icon-in_play" src="asstes/images/transparent.gif"> </h4>
-            </div>
-            <dl id="confirmBetTemplate" class="slip-back" style="display: none">
-                <dt> <span id="slipType" class="slip-type">--</span> <span id="selectionName">--</span> <span
-                        id="marketName">--</span> </dt>
-                <dd id="price" class="col-odd">--</dd>
-                <dd id="size" class="col-stake">--</dd>
-                <dd id="profitLiability" class="col-profit">--</dd>
-            </dl>
-        </div>
-        <div id="confirmBetFullBtn" class="full_btn" style="display: none">
-            <dl class="sum">
-                <dt></dt>
-                <dd> <span></span> </dd>
-            </dl>
-            <ul class="btn-wrap">
-                <li><a id="editBets" class="btn" style="cursor:pointer;">Edit Bets </a></li>
-                <li><a id="submitBets" class="btn-send" style="cursor:pointer;">Confirm Bets </a></li>
-            </ul>
-            <ul class="slip-option">
-                <li><input id="comfirmBets" type="checkbox" checked="checked"><label>Confirm bets before placing
-                    </label></li>
-            </ul>
+
         </div>
     </div>
-    <div class="matched-wrap" style="display: none; height: calc(100% - 301px);">
-        <h3> <a id="openBetsRefresh" class="slip_refresh" style="cursor:pointer;">Refresh</a> <a class="to-expand"
-                style="cursor:pointer;">Open Bets </a> </h3>
-        <div class="message-bet">
-            <h4 id="oneClickMsg" class="" style="display: none"></h4>
-        </div>
-        <div id="oneClickLoadingWrap" class="one_click-loading" style="display: none">
-            <div id="loadPending" class="load-pending" style="display: none"> <strong id="pendingNum"></strong>
-                pending... </div>
-            <ul class="loading">
-                <li><img src="asstes/images/loading40.gif"></li>
-                <li id="oneClickTime">Place Bets </li>
-            </ul>
-        </div>
-        <div class="message-bet">
-            <h4 id="editErrorMsg" class="error" style="display: none"></h4>
-            <p id="editBetMsg" class="warning" style="display: none"></p>
-        </div>
-        <ul id="processingImg" class="loading" style="display: none">
-            <li><img src="asstes/images/loading40.gif"></li>
-            <li>Processing... </li>
-        </ul>
-        <div id="matchSection" style="height: calc(100% - 25px)">
-            <div id="openBetSelectionBox" class="slip-sort"> <select id="selectMenu" name=""> </select>
-                <option id="optionTemplate" value="" eventid="" marketid="" style="display: none;"></option>
+    <div class="matched-wrap" *ngIf="isUserLogin">
+        <h3>
+            <a class="slip_refresh" (click)="getMarketData()">Refresh</a>
+            <a class="to-expand">Open Bets</a>
+        </h3>
+        <div>
+            <div class="slip-sort">
+                <select class="desktop-bets" [(ngModel)]="selectBetId" (change)="getBetList()">
+                    <option value="0">Select Market</option>
+                    <option *ngFor="let market of marketList" [ngValue]="market.eventId">{{market.event}}</option>
+                </select>
             </div>
-            <div id="openBetSlip" class="bet_slip over-wrap" style="height: calc(100% - 35px);">
-                <ul id="unMatchTicketHead" class="slip-head" style="display: none;">
-                    <li class="col-bet"><strong id="headerInfo">Unmatched </strong></li>
-                </ul>
-                <div id="unMatchTicketList" class="slip-list" style="display: none;">
-                    <ul id="backSlipHeader" class="matched-head" style="display: none">
-                        <li class="col-bet">Back (Bet For) </li>
-                        <li class="col-odd">Odds </li>
-                        <li class="col-stake">Stake </li>
-                        <li class="col-profit">Profit </li>
-                    </ul>
-                    <ul id="laySlipHeader" class="matched-head" style="display: none">
-                        <li class="col-bet">Lay (Bet Against) </li>
-                        <li class="col-odd">Odds </li>
-                        <li class="col-stake">Stake </li>
-                        <li class="col-profit">Liability </li>
-                    </ul>
-                    <dl id="unMatchTicketTemplate" class="slip-lay" style="display: none;">
-                        <dd id="betInfo" class="refer" style="display: none;"> <span id="betId">Ref: --</span> <span
-                                id="placeDate">xx-xx-2016 --:--</span> </dd>
-                        <dt id="marketNameDt"> <a id="delete" class="delete" style="cursor:pointer;">delete</a> <span
-                                id="slipType" class="slip-type">--</span> <span id="marketName">--</span> </dt>
-                        <dd id="price" class="col-odd">--</dd>
-                        <dd id="size" class="col-stake">--</dd>
-                        <dd id="profitLiability" class="col-profit">--</dd>
-                        <dd id="inningsRuns" class="inn_runs" style="display: none;">
-                            <dl>
-                                <dt id="ifRuns"></dt>
-                                <dd><span id="runsPL" class="green">$0.00</span></dd>
-                                <dt id="ifLess"></dt>
-                                <dd><span id="lessPL" class="green">$0.00</span></dd>
-                            </dl>
-                        </dd>
-                        <dd id="keepOption" class="keep-option" style="display: none;"> At In-Play, this unmatched bet
-                            will be <span id="editKeepOption" class="edit"> </span> </dd>
-                    </dl>
-                </div>
-                <div id="unMatchFullBtn" class="full_btn">
-                    <dl class="sum"> </dl>
-                    <ul class="btn-wrap">
-                        <li><a id="cancelAllUnMatch" class="btn" style="cursor:pointer;" tabindex="0">Cancel All </a>
-                        </li>
-                        <li><a id="editAllBets" class="btn-send" style="cursor:pointer;" tabindex="0">Edit Bets </a>
-                        </li>
-                    </ul>
-                </div>
-                <ul id="stakePopupList" class="stake-popup" stakepopuplisttype="template" style="display: none;">
-                    <li><a id="selectStake_1" stake="4" style="cursor:pointer;">4</a></li>
-                    <li><a id="selectStake_2" stake="30" style="cursor:pointer;">30</a></li>
-                    <li><a id="selectStake_3" stake="50" style="cursor:pointer;">50</a></li>
-                    <li><a id="selectStake_4" stake="200" style="cursor:pointer;">200</a></li>
-                    <li><a id="selectStake_5" stake="500" style="cursor:pointer;">500</a></li>
-                    <li><a id="selectStake_6" stake="1000" style="cursor:pointer;">1000</a></li>
-                </ul>
-                <div id="oddsTipsPopup" class="tips-popup" style="display: none">min 1.01</div>
-                <div id="stakeTipsPopup" class="tips-popup" style="display: none">Min 4.00</div>
-                <div id="editUnMatchedList" class="slip-list" style="display: none;">
-                    <dd id="stakePopupList" class="col-stake_list" stakepopuplisttype="template" style="display: none;">
-                        <ul>
-                            <li><a class="btn" id="selectStake_1" stake="4" style="cursor:pointer;">4</a></li>
-                            <li><a class="btn" id="selectStake_2" stake="30" style="cursor:pointer;">30</a></li>
-                            <li><a class="btn" id="selectStake_3" stake="50" style="cursor:pointer;">50</a></li>
-                            <li><a class="btn" id="selectStake_4" stake="200" style="cursor:pointer;">200</a></li>
-                            <li><a class="btn" id="selectStake_5" stake="500" style="cursor:pointer;">500</a></li>
-                            <li><a class="btn" id="selectStake_6" stake="1000" style="cursor:pointer;">1000</a></li>
-                        </ul>
-                    </dd>
-                    <ul id="backSlipHeader" class="matched-head" style="display: none">
-                        <li class="col-bet">Back (Bet For) </li>
-                        <li class="col-odd">Odds </li>
-                        <li class="col-stake">Stake </li>
-                        <li class="col-profit">Profit </li>
-                    </ul>
-                    <ul id="laySlipHeader" class="matched-head" style="display: none">
-                        <li class="col-bet">Lay (Bet Against) </li>
-                        <li class="col-odd">Odds </li>
-                        <li class="col-stake">Stake </li>
-                        <li class="col-profit">Liability </li>
-                    </ul>
-                    <dl id="editUnMatchedTemplate" class="slip-lay" style="display: none;">
-                        <dd id="betInfo" class="refer" style="display: none;"> <span id="betId">Ref: --</span> <span
-                                id="placeDate">xx-xx-2016 --:--</span> </dd>
-                        <dt id="marketNameDt"> <a id="delete" class="delete" style="cursor:pointer;">delete</a> <span
-                                id="slipType" class="slip-type">--</span> <span id="marketName">--</span> </dt>
-                        <dd id="price" class="col-odd"> <input id="odds" type="text" maxlength="6" autocomplete="off">
-                            <ul class="odd-add">
-                                <li><a id="oddsUp" class="up" style="cursor:pointer;">up</a></li>
-                                <li><a id="oddsDown" class="down" style="cursor:pointer;">down</a></li>
-                            </ul>
-                            <ul id="oddsTipsPoint"></ul>
-                        </dd>
-                        <dd id="size" class="col-stake"> <input id="inputStake" type="text" value="" maxlength="10">
-                            <ul id="listPoint"></ul>
-                        </dd>
-                        <dd id="profitLiability" class="col-profit">--</dd>
-                        <dd id="inningsRuns" class="inn_runs" style="display: none;">
-                            <dl>
-                                <dt id="ifRuns"></dt>
-                                <dd><span id="runsPL" class="green">$0.00</span></dd>
-                                <dt id="ifLess"></dt>
-                                <dd><span id="lessPL" class="green">$0.00</span></dd>
-                            </dl>
-                        </dd>
-                        <dd id="keepOptionBox" class="keep-option" style="display: none;"> At In-Play <input
-                                name="keepOption" id="cancel" type="checkbox"><label for="cancel">cancel </label> <input
-                                name="keepOption" id="keep" type="checkbox"><label for="keep">keep </label>
-                            <p class="dynamic-min-bet">Min Bet: <strong id="dynamicMinBet"></strong></p>
-                        </dd>
-                    </dl>
-                </div>
-                <div id="editUnMatchFullBtn" class="full_btn" style="display: none;">
-                    <dl class="sum"> </dl>
-                    <ul class="btn-wrap">
-                        <li> <a id="cancelAllUnMatch" class="btn" style="cursor:pointer;" tabindex="0">Cancel All Bets
-                            </a> </li>
-                        <li class="edit-function"> <a id="okBtn" class="btn-send" style="cursor:pointer;"
-                                tabindex="0">OK </a> <a id="resetBtn" class="btn" style="cursor:pointer;"
-                                tabindex="0">Reset </a> </li>
-                    </ul>
-                </div>
-                <ul id="txnHead" class="slip-head" style="display: none;">
-                    <li class="col-bet"><strong>Matched </strong></li>
-                </ul>
-                <div id="txnList" class="slip-list" name="txn" style="display: none;">
-                    <ul id="backSlipHeader" class="matched-head" style="display: none">
-                        <li class="col-bet">Back (Bet For) </li>
-                        <li class="col-odd">Odds </li>
-                        <li class="col-stake">Stake </li>
-                        <li class="col-profit">Profit </li>
-                    </ul>
-                    <ul id="laySlipHeader" class="matched-head" style="display: none">
-                        <li class="col-bet">Lay (Bet Against) </li>
-                        <li class="col-odd">Odds </li>
-                        <li class="col-stake">Stake </li>
-                        <li class="col-profit">Liability </li>
-                    </ul>
-                    <ul id="backLaySlipHeader" class="matched-head" style="display: none">
-                        <li class="col-bet"> Back/Lay </li>
-                        <li class="col-odd"> Odds </li>
-                        <li class="col-stake"> Stake </li>
-                        <li class="col-profit"> Profit/Liability </li>
-                    </ul>
-                    <ul id="fancyYesHeader" class="matched-head" style="display: none">
-                        <li id="colBet" class="col-bet">Yes</li>
-                        <li id="runsOdds" class="col-odd">Runs/Odds </li>
-                        <li class="col-stake">Stake </li>
-                        <li class="col-profit">Profit </li>
-                    </ul>
-                    <ul id="fancyNoHeader" class="matched-head" style="display: none">
-                        <li class="col-bet">No</li>
-                        <li id="runsOdds" class="col-odd">Runs/Odds </li>
-                        <li class="col-stake">Stake </li>
-                        <li class="col-profit">Liability </li>
-                    </ul>
-                    <ul id="fancyYesNoHeader" class="matched-head" style="display: none">
-                        <li class="col-bet">Yes/No</li>
-                        <li id="runsOdds" class="col-odd">Runs/Odds</li>
+            <ul class="slip-head" *ngIf="betListData.length > 0">
+                <li class="col-bet"><strong>Matched</strong></li>
+            </ul>
+            <div class="slip-list" *ngIf="betListData.length > 0">
+                <ng-container *ngFor="let betData of betListData; let ind = index;">
+                    <ul class="matched-head" *ngIf="betData.type=='back'">
+                        <li class="col-bet">Back (Bet For)</li>
+                        <li class="col-odd">Odds</li>
                         <li class="col-stake">Stake</li>
-                        <li class="col-profit">Profit/Liability</li>
+                        <li class="col-profit">Profit</li>
                     </ul>
-                    <dl id="txnTemplate" class="slip-back" style="display: none;">
-                        <dd id="betInfo" class="refer" style="display: none;"> <span id="betId">Ref: --</span> <span
-                                id="placeDate">xx-xx-2016 --:--</span> </dd>
-                        <dt> <span id="slipType" class="slip-type">--</span>
-                            <p id="slipPredict" class="slip-predict"> <span id="marketName">--</span> </p>
+                    <ul class="matched-head" *ngIf="betData.type=='lay'">
+                        <li class="col-bet">Lay (Bet For)</li>
+                        <li class="col-odd">Odds</li>
+                        <li class="col-stake">Stake</li>
+                        <li class="col-profit">Profit</li>
+                    </ul>
+                    <dl [ngClass]="betData.type=='back' ? 'slip-back' : 'slip-lay'">
+                        <dd class="refer">
+                            <span>Ref:  {{betData.betId}}</span>
+                            <span>{{betData.placeTime | date : 'medium'}}</span>
+                        </dd>
+                        <dt>
+                            <span class="slip-type">{{betData.type == 'back' ? "Back" : "Lay" }}</span>
+                            <p class="slip-predict">
+                                <span class="short-amount">{{betData.selection}}</span>
+                                <span>{{betData.market}}</span>
+                            </p>
                         </dt>
-                        <dd id="price" class="col-odd">--</dd>
-                        <dd id="size" class="col-stake">--</dd>
-                        <dd id="profitLiability" class="col-profit">--</dd>
+                        <dd class="col-odd">{{betData.oddsRequest}}</dd>
+                        <dd class="col-stake"> {{betData.amountStake}}</dd>
+                        <dd class="col-profit"> {{betData.resultAmount}}</dd>
                     </dl>
-                </div>
-                <div class="full_btn">
-                    <ul class="slip-option">
-                        <li> <input id="showBetInfo" type="checkbox" name="openOption"> <label for="showBetInfo">Bet
-                                Info</label> </li>
-                        <li name="showTimeOption"> <input id="showTimeOrder" type="checkbox"> <label
-                                for="showTimeOrder">Time Order</label> </li>
-                        <li name="txnOption"> <input id="consolidate" type="checkbox" name="openOption"> <label
-                                for="consolidate">Consolidate</label> </li>
-                        <li name="txnOption"> <input id="averageOdds" type="checkbox" name="openOption"> <label
-                                for="averageOdds">Average Odds</label> </li>
-                    </ul>
-                </div>
+                </ng-container>
+            </div>
+            <div class="full_btn" *ngIf="betListData.length > 0">
+                <ul class="slip-option">
+                    <li>
+                        <input id="showBetInfo" type="checkbox" name="openOption">
+                        <label for="showBetInfo">Bet Info</label>
+                    </li>
+                    <li>
+                        <input id="showTimeOrder" type="checkbox">
+                        <label for="showTimeOrder">Time Order</label>
+                    </li>
+                    <li>
+                        <input id="consolidate" type="checkbox" name="openOption">
+                        <label for="consolidate">Consolidate</label>
+                    </li>
+                    <li>
+                        <input id="averageOdds" type="checkbox" name="openOption">
+                        <label for="averageOdds">Average Odds</label>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

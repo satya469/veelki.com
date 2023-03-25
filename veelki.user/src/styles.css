@@ -1310,9 +1310,7 @@ td .fancy-info dt,
 }
 
 .loading-wrap {
-    display: none;
-    top: 20%;
-    height: 90px;
+    top: -150px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
@@ -1345,7 +1343,7 @@ td .fancy-info dt,
 .loading img {
     width: 38px;
     height: 22px;
-    background: url(assets/images/right/loading60.png) repeat-x
+    /*background: url(assets/images/loading60.png) repeat-x;*/
 }
 
 .table01,
@@ -4402,6 +4400,9 @@ textarea:focus {
 .slip_set-pop:not(:target),
 .oneclick_set-pop:not(:target) {
     display: none
+}
+.slip_set-pop.show {
+    display: block!important
 }
 
 .slip_set-pop:target,

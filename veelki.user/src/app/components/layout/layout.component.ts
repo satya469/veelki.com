@@ -29,6 +29,10 @@ export class LayoutComponent implements OnInit {
         this.subjectService.setSideBarVisible(false);
         this.subjectService.setAsideVisible(true);  
         this.subjectService.setFooterVisible(false);      
+      }else if(data?.url == '/account/activity-log' || data?.url == '/account/account-statement'){
+        this.subjectService.setSideBarVisible(false);
+        this.subjectService.setAsideVisible(false);  
+        this.subjectService.setFooterVisible(false);      
       }else{
         this.subjectService.setSideBarVisible(true);
         this.subjectService.setAsideVisible(true);

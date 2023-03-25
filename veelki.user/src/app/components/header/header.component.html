@@ -1,11 +1,18 @@
-<div id="loading" class="loading-wrap" style="top: 100px; display: none;">
-    <ul class="loading">
-        <li><img src="asstes/images/loading40.gif"></li>
-        <li>Loading...
-        </li>
-        <br>
-        <li><span id="progress"></span></li>
-    </ul>
+<div class="overlay" style="display:block" *ngIf="showLoginPopup">
+    <form [formGroup]="loginForm" method="post" role="form" (ngSubmit)="loginFormSubmit()">
+        <div class="dialog-wrap-w login_to_go">
+            <div class="kv"></div>
+            <dl class="login-panel">
+                <dt>Please login to continue</dt>
+                <dd><input formControlName="email" type="text" placeholder="Username"></dd>
+                <dd><input formControlName="password" type="password" placeholder="Password"></dd>
+                <dd><button type="submit" class="btn-send">Login<img class="icon-login"
+                            src="assets/images/transparent.gif"></button></dd>
+                <dd class="error" *ngIf="isSubmitted && formSubmitError != null">{{formSubmitError}}</dd>
+            </dl>
+            <a style="cursor: pointer" class="close" (click)="setLoginPopup(false)"></a>
+        </div>
+    </form>
 </div>
 <div class="top">
     <div class="header full-wrap">
@@ -27,19 +34,21 @@
             <ul class="login-wrap">
                 <li><input formControlName="email" placeholder="Username" type="text" placeholder="Username">
                 </li>
-                <li><input formControlName="password" placeholder="Password" type="password" placeholder="Password"></li>
+                <li><input formControlName="password" placeholder="Password" type="password" placeholder="Password">
+                </li>
                 <!-- <li class="valid-code" style="display: block"> <input id="validCode" type="text"
                         placeholder="Validation" maxlength="4" fdprocessedid="nk3uz"> <img id="authenticateImage"
                         src="https://bxawscf.skyexch.bike/verifycode.gr?v=1678553277974"> </li> -->
                 <!-- <li><input id="valid" name="valid" type="hidden" value="4934786d-0ae4-4860-9843-d6fdca23b082"></li> -->
                 <li> <button type="submit" class="btn-login">Login
                         <img class="icon-login" src="assets/images/transparent.gif?v=1678553205059">
-                </button> </li>
+                    </button> </li>
                 <!-- <li><a class="btn-signup"
                         onclick="window.open('https://wa.link/skyexch', '_blank', config='height=850,width=1200,location=no');">Sign
                         up</a></li> -->
-                <li id="errorMsg" class="error" style="padding-left: 0px;"><span class="err-invalid" *ngIf="isSubmitted && formSubmitError != null">
-                    <span>{{formSubmitError}}</span></span></li>
+                <li id="errorMsg" class="error" style="padding-left: 0px;"><span class="err-invalid"
+                        *ngIf="isSubmitted && formSubmitError != null">
+                        <span>{{formSubmitError}}</span></span></li>
             </ul>
         </form>
         <ul class="account-wrap" *ngIf="isLoginUser">
@@ -103,17 +112,17 @@
                 <a id="accountPopup" style="cursor: pointer" ngbDropdownToggle>My Account</a>
                 <ul class="" aria-labelledby="accountPopup" ngbDropdownMenu>
                     <li>
-                        <h4>userdemoo <span class="gmt" title="Time Zone">GMT+5:30</span></h4>
+                        <h4>userdemoo <span class="gmt" title="Time Zone">{{gmtTimeZone}}</span></h4>
                     </li>
-                    <li><a href="/exchange/member/myAccount/detail.jsp" target="_blank">My Profile</a></li>
-                    <li><a href="/exchange/member/myAccount/summary.jsp" target="_blank">Balance Overview</a></li>
-                    <li><a href="/exchange/member/myAccount/accountCashStatement.jsp" target="_blank">Account
-                            Statement</a></li>
-                    <li><a href="/exchange/member/myAccount/current_bets.jsp" target="_blank">My Bets</a></li>
-                    <li><a href="/exchange/member/myAccount/bet_history.jsp" target="_blank">Bets History</a></li>
-                    <li><a href="/exchange/member/myAccount/profit_loss.jsp" target="_blank">Profit &amp; Loss</a></li>
-                    <li><a href="/exchange/member/myAccount/activityLog.jsp" target="_blank">Activity Log</a></li>
-                    <li class="logout"><a id="logout">LOGOUT<img src="asstes/images/transparent.gif"></a></li>
+                    <li><a ngbDropdownItem [routerLink]="['/account/my-profile']">My Profile</a></li>
+                    <li><a ngbDropdownItem [routerLink]="['/myprofile']">Balance Overview</a></li>
+                    <li><a ngbDropdownItem [routerLink]="['/account/account-statement']">Account Statement</a></li>
+                    <li><a ngbDropdownItem [routerLink]="['/myprofile']">My Bets</a></li>
+                    <li><a ngbDropdownItem [routerLink]="['/myprofile']">Bets History</a></li>
+                    <li><a ngbDropdownItem [routerLink]="['/account/profit-loss']">Profit &amp; Loss</a></li>
+                    <li><a ngbDropdownItem [routerLink]="['/account/activity-log']">Activity Log</a></li>
+                    <li class="logout"><a (click)="userLogout()">LOGOUT<img src="asstes/images/transparent.gif"></a>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -124,16 +133,10 @@
                 <li><a routerLink="/home" routerLinkActive="select">Home</a></li>
                 <li><a routerLink="/inplay" routerLinkActive="select">In-Play</a></li>
                 <li><a routerLink="/multimarket" routerLinkActive="select">Multi Markets</a></li>
-                <li><a routerLink="/allsport-highlight/4" routerLinkActive="select"><span
-                            class="tag-live"><strong></strong>3</span> Cricket </a>
-                </li>
-                <li><a routerLink="/allsport-highlight/1" routerLinkActive="select"><span
-                            class="tag-live"><strong></strong>77</span> Soccer </a>
-                </li>
-                <li><a routerLink="/allsport-highlight/2" routerLinkActive="select"><span
-                            class="tag-live"><strong></strong>9</span> Tennis </a>
-                </li>
-                <li ui-use="sportradar_virtual_sports"> <a class=""
+                <li><a routerLink="/allsport-highlight/4" routerLinkActive="select">Cricket</a></li>
+                <li><a routerLink="/allsport-highlight/1" routerLinkActive="select">Soccer</a></li>
+                <li><a routerLink="/allsport-highlight/2" routerLinkActive="select">Tennis</a></li>
+                <!-- <li ui-use="sportradar_virtual_sports"> <a class=""
                         href="javascript:CommonTransferWalletHandler.openDepositPage('1', 'BetRadar', 'SPORTRADAR', '', 'SPORTRADAR_VIRTUAL_001', '', true)"
                         neua="Virtual Cricket"> Virtual Cricket </a> </li>
                 <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>9</span> E-Soccer </a>
@@ -142,68 +145,55 @@
                 <li ui-use="mt5"><a class=""
                         href="javascript:CommonTransferWalletHandler.openDepositPage('4', 'Sky Trader', '', '', '', '', false)"
                         neua="MT5"> Sky Trader </a> </li>
-                <li><a routerLink="/horse-racing">Horse Racing</a></li>
+                <li><a routerLink="/horse-racing">Horse Racing</a></li> -->
             </ul>
             <ul class="setting-wrap">
-                <li class="time_zone"><span>Time Zone :</span> GMT+5:30 </li>
-                <li>&nbsp;&nbsp;&nbsp;</li>
+                <li class="time_zone"><span>Time Zone :</span> {{gmtTimeZone}} </li>
+                <!-- <li>&nbsp;&nbsp;&nbsp;</li>
                 <li><a id="oneClickSetting" class="one_click" style="cursor: pointer;"><img
-                            src="assets/images/transparent.gif">One Click Bet </a></li>
-                <li><a id="slipSet" class="setting" style="cursor: pointer">Setting <img
-                            src="assets/images/transparent.gif"></a></li>
+                            src="assets/images/transparent.gif">One Click Bet </a></li>-->
+                <li ngbDropdown>
+                    <a class="setting" (click)="setLoginPopup()" *ngIf="!isLoginUser">Setting <img
+                            src="assets/images/transparent.gif"></a>
+                    <a class="setting" *ngIf="isLoginUser" ngbDropdownToggle>Setting <img
+                            src="assets/images/transparent.gif"></a>
+                    <div class="slip_set-pop" ngbDropdownMenu>
+                        <div class="set-content">
+                            <form [formGroup]="stackForm" (ngSubmit)="stackSubmit()">
+                                <dl class="odds-set">
+                                    <dd class="col-defult">
+                                        <label for="defult_stake"><strong>Default stake </strong></label>
+                                        <input class="stake-input" type="text" maxlength="7" value="">
+                                    </dd>
+                                </dl>
+                                <dl class="stake-set" *ngIf="isStackEdit==false && stackLimitList && stackLimitList.length > 0">
+                                    <dt>Stake </dt>
+                                    <dd *ngFor="let stack of stackLimitList"><a class="btn select">{{stack.stakeLimitPrice}}</a></dd>
+                                    <dd class="col-edit">
+                                        <a class="btn-edit" (click)="isStackEdit=true">Edit <img src="assets/images/transparent.gif"></a>
+                                    </dd>
+                                </dl>
+                                <dl class="stake-set" formArrayName="stackList" *ngIf="isStackEdit==true">
+                                    <dt>Stake </dt>
+                                    <dd *ngFor="let stackGroup of stackList.controls; let i = index">
+                                        <ng-container [formGroupName]="i">
+                                            <input formControlName="id" type="hidden">
+                                            <input formControlName="stakeLimitPrice" class="stake_edit-input"
+                                                type="number" min="1" maxlength="7">
+                                        </ng-container>
+                                    </dd>
+                                    <dd class="col-edit"><button type="submit" style="padding: 0 10px;" class="btn-send">OK</button></dd>
+                                </dl>
+                                <ul class="btn-wrap"
+                                    style="position: relative; display: flex; border: none; background: none;">
+                                    <li style="border: none;" (click)="isStackEdit=false" ngbDropdownToggle><a class="btn">Cancel</a></li>
+                                    <!-- <li style="border: none;" class="col-send"><a class="btn-send">Save</a></li> -->
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+                </li>
             </ul>
-            <div id="set_pop" class="slip_set-pop" style="display: none;">
-                <div id="coinList" class="set-content">
-                    <dl class="odds-set">
-                        <dd class="col-defult"> <label for="defult_stake"><strong>Default stake </strong></label> <input
-                                id="userCoin" class="stake-input" type="text" maxlength="7" value=""> </dd>
-                    </dl>
-                    <dl id="stakeSet" class="stake-set">
-                        <dt>Stake </dt>
-                        <dd><a id="coin_1" style="cursor:pointer;" class="btn select">4</a></dd>
-                        <dd><a id="coin_2" style="cursor:pointer;" class="btn select">30</a></dd>
-                        <dd><a id="coin_3" style="cursor:pointer;" class="btn select">50</a></dd>
-                        <dd><a id="coin_4" style="cursor:pointer;" class="btn">100</a></dd>
-                        <dd><a id="coin_5" style="cursor:pointer;" class="btn select">200</a></dd>
-                        <dd><a id="coin_6" style="cursor:pointer;" class="btn">300</a></dd>
-                        <dd><a id="coin_7" style="cursor:pointer;" class="btn select">500</a></dd>
-                        <dd><a id="coin_8" style="cursor:pointer;" class="btn select">1000</a></dd>
-                        <dd class="col-edit"><a id="edit" class="btn-edit">Edit <img
-                                    src="assets/images/transparent.gif"></a></dd>
-                    </dl>
-                    <dl id="editCustomizeStakeList" class="stake-set" style="display: none;">
-                        <dt>Stake </dt>
-                        <dd><input id="stakeEdit_1" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
-                        <dd><input id="stakeEdit_2" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
-                        <dd><input id="stakeEdit_3" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
-                        <dd><input id="stakeEdit_4" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
-                        <dd><input id="stakeEdit_5" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
-                        <dd><input id="stakeEdit_6" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
-                        <dd><input id="stakeEdit_7" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
-                        <dd><input id="stakeEdit_8" class="stake_edit-input" type="text" value="" maxlength="7"></dd>
-                        <dd class="col-edit"><a id="ok" class="btn-send">OK</a></dd>
-                    </dl>
-                    <dl class="odds-set">
-                        <dt>Odds </dt>
-                        <dd> <input id="enableSparkCheck" type="checkbox"><label for="enableSparkCheck">Highlight when
-                                odds change </label> </dd>
-                    </dl>
-                    <dl class="odds-set">
-                        <dt>FancyBet </dt>
-                        <dd> <input id="fancyBetAcceptAnyOddsCheckBox" type="checkbox"><label for="fancy_odd">Accept Any
-                                Odds </label> </dd>
-                    </dl>
-                    <dl class="odds-set">
-                        <dt>Binary </dt>
-                        <dd> <input id="financialAcceptAnyOddsCheckBox" type="checkbox"><label>Accept Any Price </label>
-                        </dd>
-                    </dl>
-                    <ul class="btn-wrap">
-                        <li><a id="closeSet" class="btn" style="cursor:pointer;">Cancel </a></li>
-                        <li class="col-send"><a id="coinSave" class="btn-send" style="cursor:pointer;">Save </a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 </div>

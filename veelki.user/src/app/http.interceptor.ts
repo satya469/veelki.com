@@ -18,7 +18,9 @@ export class InterceptorService implements HttpInterceptor {
         return next.handle(httpRequest).pipe(
             finalize(() => {
                 if(httpRequest.url.includes("SaveBets")!=true && httpRequest.url.includes("GetMatchOdds")!=true){
-                    this.loaderService.isLoading.next(false);
+                    setTimeout(()=>{
+                        this.loaderService.isLoading.next(false);
+                    }, 1500)
                 }
             })
         );
