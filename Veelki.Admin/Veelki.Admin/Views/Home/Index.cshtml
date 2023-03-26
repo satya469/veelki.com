@@ -16,7 +16,7 @@
 
 <div id="createModal" class="pop_bg" style="display:none">
     <div class="pop_box ">
-        <a class="close_pop" href="#" onclick="CreateAccountHandler.hideDialog()">close_pop</a>
+        <a class="close_pop" href="#" onclick="CloseDialog()">close_pop</a>
         <!-- message -->
         <div id="message" class="message-wrap success" style="display:none">
             <a class="btn-close" href="#">Close</a>
@@ -1082,116 +1082,120 @@
 
 
 <!-- Change status pop start -->
-<div id="changeStatusModal" class="pop_bg" style="display: none;">
-    <div class="pop_box">
-        <a class="close_pop" href="javascript: void(0)" onclick="ChangeStatusHandler.hideDialog()">close_pop</a>
-        <h3>
-            Change Status
-        </h3>
-        <div class="status_id">
-            <p id="changeAccount"></p>
-            <p class="status-active" id="originalStatus"></p>
-        </div>
+<div id="changeStatusModal" style="display: none;" class="modal pop_bg" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="pop_box">
+                <a class="close_pop" href="javascript: void(0)" onclick="ChangeStatusHandler.hideDialog()">close_pop</a>
+                <h3>
+                    Change Status
+                </h3>
+                <div class="status_id">
+                    <p id="changeAccount"></p>
+                    <p class="status-active" id="originalStatus"></p>
+                </div>
 
-        <div class="white-wrap">
+                <div class="white-wrap">
 
-            <ul id="statusBtn" class="status_but">
-                <li>
-                    <a id="activeBtn" class="but_active" href="#active" data-status="active">
-                        <img class="" src="https://statics3.skyexch.bike/images/transparent.gif">
-                        Active
-                    </a>
-                </li>
-                <li>
-                    <a id="suspendBtn" class="but_suspend" href="#suspend" data-status="suspend">
-                        <img class="" src="https://statics3.skyexch.bike/images/transparent.gif">
-                        Suspend
-                    </a>
-                </li>
-                <li>
-                    <a id="lockedBtn" class="but_locked" href="#locked" data-status="locked">
-                        <img class="" src="https://statics3.skyexch.bike/images/transparent.gif">
-                        Locked
-                    </a>
-                </li>
-            </ul>
+                    <ul id="statusBtn" class="status_but">
+                        <li>
+                            <a id="activeBtn" class="but_active" href="#active" data-status="active">
+                                <img class="" src="https://statics3.skyexch.bike/images/transparent.gif">
+                                Active
+                            </a>
+                        </li>
+                        <li>
+                            <a id="suspendBtn" class="but_suspend" href="#suspend" data-status="suspend">
+                                <img class="" src="https://statics3.skyexch.bike/images/transparent.gif">
+                                Suspend
+                            </a>
+                        </li>
+                        <li>
+                            <a id="lockedBtn" class="but_locked" href="#locked" data-status="locked">
+                                <img class="" src="https://statics3.skyexch.bike/images/transparent.gif">
+                                Locked
+                            </a>
+                        </li>
+                    </ul>
 
-        </div>
+                </div>
 
-        <div class="suspend-wrap" id="maxWinLossSuspendDiv" style="display: none">
-            <div class="status_id" id="maxWinLossSuspendStatus"></div>
+                <div class="suspend-wrap" id="maxWinLossSuspendDiv" style="display: none">
+                    <div class="status_id" id="maxWinLossSuspendStatus"></div>
 
-            <div class="fix-content">
-                <p id="maxLossSuspendInfo" style="display: none">
-                    Please change downline Max Loss Limit over the
-                    total loss or executed on Transferable P/L, before you unsuspend.
-                </p>
-                <p id="maxWinSuspendInfo" style="display: none">
-                    Please change downline Max Win Limit over the total
-                    win or executed on Transferable P/L, before you unsuspend.
-                </p>
+                    <div class="fix-content">
+                        <p id="maxLossSuspendInfo" style="display: none">
+                            Please change downline Max Loss Limit over the
+                            total loss or executed on Transferable P/L, before you unsuspend.
+                        </p>
+                        <p id="maxWinSuspendInfo" style="display: none">
+                            Please change downline Max Win Limit over the total
+                            win or executed on Transferable P/L, before you unsuspend.
+                        </p>
 
-                <ul class="status_but">
-                    <li>
-                        <a class="but_suspend disable" id="maxLossUnSuspendBtn"
-                           href="javascript:void (0);">
-                            Unsuspend <strong>Loss</strong> Limit
+                        <ul class="status_but">
+                            <li>
+                                <a class="but_suspend disable" id="maxLossUnSuspendBtn"
+                                   href="javascript:void (0);">
+                                    Unsuspend <strong>Loss</strong> Limit
+                                </a>
+                            </li>
+                            <li>
+                                <a class="but_suspend disable" id="maxWinUnSuspendBtn" href="javascript:void (0);">
+                                    Unsuspend
+                                    <strong>Win</strong> Limit
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="suspend-wrap" id="passLockDiv" style="display: none">
+                    <div class="sys-lock status_id">
+                        <p class="status-lock">
+                            <img src="https://statics3.skyexch.bike/images/transparent.gif">Passlocked
+                        </p>
+                    </div>
+
+                    <div class="fix-content">
+                        <ul class="status_but">
+                            <li>
+                                <a class="but_locked" id="unPassLockBtn" href="javascript:void (0);">
+                                    Unlock
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sys-suspend status_id" id="systemSuspendMessage" style="display: none">
+                    <p class="status-suspend">
+                        <img src="https://statics3.skyexch.bike/images/transparent.gif">System Suspend
+                    </p>
+                </div>
+
+                <div class="sys-lock status_id" id="systemLockedMessage" style="display: none">
+                    <p class="status-lock">
+                        <img src="https://statics3.skyexch.bike/images/transparent.gif">System Locked
+                    </p>
+                </div>
+
+                <div class="btn_box inline-form">
+                    <dl class="form_list" style="display: inline">
+
+                        <dt>
+                            Password
+                        </dt>
+                        <dd>
+                            <input id="changeStatusPassword" type="password" placeholder="Enter" fdprocessedid="d6kei">
+                        </dd>
+                    </dl>
+                    <div class="btn_box">
+                        <a id="changeStatusBtn" class="btn-send" href="javascript: void(0)">
+                            Change
                         </a>
-                    </li>
-                    <li>
-                        <a class="but_suspend disable" id="maxWinUnSuspendBtn" href="javascript:void (0);">
-                            Unsuspend
-                            <strong>Win</strong> Limit
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="suspend-wrap" id="passLockDiv" style="display: none">
-            <div class="sys-lock status_id">
-                <p class="status-lock">
-                    <img src="https://statics3.skyexch.bike/images/transparent.gif">Passlocked
-                </p>
-            </div>
-
-            <div class="fix-content">
-                <ul class="status_but">
-                    <li>
-                        <a class="but_locked" id="unPassLockBtn" href="javascript:void (0);">
-                            Unlock
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="sys-suspend status_id" id="systemSuspendMessage" style="display: none">
-            <p class="status-suspend">
-                <img src="https://statics3.skyexch.bike/images/transparent.gif">System Suspend
-            </p>
-        </div>
-
-        <div class="sys-lock status_id" id="systemLockedMessage" style="display: none">
-            <p class="status-lock">
-                <img src="https://statics3.skyexch.bike/images/transparent.gif">System Locked
-            </p>
-        </div>
-
-        <div class="btn_box inline-form">
-            <dl class="form_list" style="display: inline">
-
-                <dt>
-                    Password
-                </dt>
-                <dd>
-                    <input id="changeStatusPassword" type="password" placeholder="Enter" fdprocessedid="d6kei">
-                </dd>
-            </dl>
-            <div class="btn_box">
-                <a id="changeStatusBtn" class="btn-send" href="javascript: void(0)">
-                    Change
-                </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1260,11 +1264,11 @@
 
 
 
-<script language="javascript" type="text/javascript">
+@*<script language="javascript" type="text/javascript">
     if (typeof (PageConfig) == 'undefined') {
         PageConfig = {};
     }
-    PageConfig.CurrencyTypeName = 'PTH';
+    PageConfig.CurrencyTypeName = 'PBU';
     PageConfig.currencySymbol = '';
     PageConfig.site = 1;
     PageConfig.balance = 0;
@@ -1282,7 +1286,7 @@
         MenuHandler.init();
     });
 
-</script>
+</script>*@
 
 
 <!-- Top end -->
@@ -1442,7 +1446,7 @@
                 </ul>
             </ul>
         </div>
-        
+
         <a id="refresh" class="btn_replay"><img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
 
         <a class="add_member" href="#" onclick="CreateAccountHandler.showDialog()">
@@ -1455,67 +1459,67 @@
             <dt>
                 Credit Limit
             </dt>
-            <dd id="myCreditLimit">PTH 0.00</dd>
+            <dd id="myCreditLimit">PBU 0.00</dd>
         </dl>
         <dl id="creditGivenOutDL" class="total_dl" style="display: none">
             <dt>
                 Total Credit Given Out
             </dt>
-            <dd id="totalCreditGivenOut">PTH 0.00</dd>
+            <dd id="totalCreditGivenOut">PBU 0.00</dd>
         </dl>
         <dl id="creditAvailBalDL" class="total_dl" style="display: none">
             <dt>
                 Credit Avail Bal
             </dt>
-            <dd id="myCreditAvailBal">PTH 0.00</dd>
+            <dd id="myCreditAvailBal">PBU 0.00</dd>
         </dl>
         <dl id="totalBalanceDL" class="total_dl" style="">
             <dt>
                 Total Balance
             </dt>
-            <dd id="totalBalance">PTH 0.00</dd>
+            <dd id="totalBalance">PBU 0.00</dd>
         </dl>
         <dl id="totalExposureDL" class="total_dl" style="">
             <dt>
                 Total Exposure
             </dt>
-            <dd id="totalExposure">PTH 0.00</dd>
+            <dd id="totalExposure">PBU 0.00</dd>
         </dl>
         <dl id="myCurrentPLDL" class="total_dl" style="display: none">
             <dt>
                 Today P/L with Upline
             </dt>
-            <dd id="myCurrentPL">PTH 0.00</dd>
+            <dd id="myCurrentPL">PBU 0.00</dd>
         </dl>
         <dl id="availableBalanceDL" class="total_dl" style="">
             <dt>
                 Total Avail. bal.
             </dt>
-            <dd id="totalAvailBal">PTH 0.00</dd>
+            <dd id="totalAvailBal">PBU 0.00</dd>
         </dl>
         <dl id="masterBalanceDL" class="total_dl" style="">
             <dt>
                 Balance
             </dt>
-            <dd id="mastersBalance">PTH 30.00</dd>
+            <dd id="mastersBalance">PBU 30.00</dd>
         </dl>
         <dl id="masterAvailableBalanceDL" class="total_dl" style="">
             <dt>
                 Available Balance
             </dt>
-            <dd id="mastersAvailBal">PTH 30.00</dd>
+            <dd id="mastersAvailBal">PBU 30.00</dd>
         </dl>
         <dl id="transferablePLWithUplineDL" class="total_dl" style="display: none">
             <dt>
                 Transferable P/L with Upline
             </dt>
-            <dd id="transferablePLWithUpline">PTH 0.00</dd>
+            <dd id="transferablePLWithUpline">PBU 0.00</dd>
         </dl>
         <dl id="totalUsersDL" class="total_dl" style="">
             <dt>
                 Total Users
             </dt>
-            <dd id="totalUsers">1</dd>
+            <dd id="totalUsers">@Model.Users.Count()</dd>
         </dl>
     </div>
 
@@ -1538,7 +1542,7 @@
             <a class="btn-close">Close</a>
             <p></p>
         </div>
-        
+
         <!-- Report Table -->
         <table id="tableTemplate" class="table01 margin-table" style="display: none">
             <tbody>
@@ -1749,71 +1753,80 @@
                     </td>
                 </tr>
 
-                <tr id="0" style="display: table-row;" main_userid="vermaarun1995">
-                    <td id="accountCol" style="" class="align-L">
-                        <span class="order" id="number">1.</span><span class="lv_4">PL</span><span class="account_name">vermaarun1995</span>
-                    </td>
-                    <td id="creditRef0" class="credit-amount-member" style="">
-                        <a id="creditRefBtn" class="favor-set"
-                           href="javascript:void(0);"
-                           onclick="CreditReferenceHandler.showDialog(0,'vermaarun1995',1)">0.00</a>
-                    </td>
-                    <td id="initialCreditLimit0" style="display: none">0.00</td>
-                    <td id="creditLimit0" style="display: none">0.00</td>
+                @if (Model.Users != null && Model.Users.Count() > 0)
+                {
+                    int i = 0;
+                    foreach (var user in Model.Users)
+                    {
+                        var status = user.Status == 1 ? "Active" : user.Status == 2 ? "InActive" : "Blocked";
+                        <tr id="0" style="display: table-row;" main_userid="@user.FullName">
+                            <td id="accountCol" style="" class="align-L">
+                                <span class="order" id="number">@(i+1).</span><span class="lv_4">@Model.RoleName</span><span class="account_name">@user.FullName</span>
+                            </td>
+                            <td id="creditRef0" class="credit-amount-member" style="">
+                                <a id="creditRefBtn" class="favor-set"
+                                   href="javascript:void(0);"
+                                   onclick="CreditReferenceHandler.showDialog(0,'@user.FullName',1)">0.00</a>
+                            </td>
+                            <td id="initialCreditLimit0" style="display: none">0.00</td>
+                            <td id="creditLimit0" style="display: none">0.00</td>
 
-                    <td id="currentPL0" style="display: none">0.00</td>
-                    <td id="transferablePL0" style="display: none">0.00</td>
-                    <td id="balance0" style="">
-                        <a href="#"
-                           onclick="VendorBalanceDetailHandler.balanceShowing('vermaarun1995','1', function () { IndexHandler.listMember(IndexHandler.pageNumber); }, $j(this))"
-                           class="link-open">0.00</a>
-                    </td>
-                    <td id="currentExposure0" style="">0.00</td>
-                    <td id="available0" style="">0.00</td>
-                    <td id="playerBalance" style="display: none"></td>
-                    <td id="exposureLimit0" style="display: table-cell;">100.00</td>
+                            <td id="currentPL0" style="display: none">0.00</td>
+                            <td id="transferablePL0" style="display: none">0.00</td>
+                            <td id="balance0" style="">
+                                @*<a href="#"
+                                   onclick="VendorBalanceDetailHandler.balanceShowing('@user.FullName','1', function () { IndexHandler.listMember(IndexHandler.pageNumber); }, $j(this))"
+                                   class="link-open">0.00</a>*@
+                            </td>
+                            <td id="currentExposure0" style="">0.00</td>
+                            <td id="available0" style="">@user.AvailableBalance</td>
+                            <td id="playerBalance" style="display: none"></td>
+                            <td id="exposureLimit0" style="display: table-cell;">@user.ExposureLimit</td>
 
-                    <td id="refPL0" style="">0.00</td>
-                    <td id="statusCol" style="">
-                        <ul id="tipsPopup" class="status-popup" style="display: none">
-                        </ul>
-                        <span id="status0" class="status-active"><img src="/images/transparent.gif">Active</span>
-                    </td>
-                    <td id="actionCol" style="">
-                        <ul class="action">
-                            <li>
-                                <a id="banking" class="bank" href="#bank" style="display: none;">
-                                    Bank
-                                </a>
-                            </li>
-                            <li>
-                                <a id="p_l0" class="p_l"
-                                   href="bating-profile.html">
-                                    Betting
-                                    Profit &amp; Loss
-                                </a>
-                            </li>
-                            <li>
-                                <a id="betting_history0" class="betting_history"
-                                   href="bating-history.html">
-                                    Betting
-                                    History
-                                </a>
-                            </li>
-                            <li>
-                                <a id="change0" class="status" href="#change" onclick="ChangeStatusHandler.showDialog(0,'vermaarun1995',1)">
-                                    Change Status
-                                </a>
-                            </li>
-                            <li>
-                                <a id="profile0" class="profile"
-                                   href="account-summry.html">
-                                    Profile
-                                </a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
+                            <td id="refPL0" style="">0.00</td>
+                            <td id="statusCol" style="">
+                                <ul id="tipsPopup" class="status-popup" style="display: none">
+                                </ul>
+                                <span id="status0" class="status-active"><img src="/images/transparent.gif">@status</span>
+                            </td>
+                            <td id="actionCol" style="">
+                                <ul class="action">
+                                    <li>
+                                        <a id="banking" class="bank" href="#bank" style="display: none;">
+                                            Bank
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="p_l0" class="p_l"
+                                           href="~/Account/BettingProfile">
+                                            Betting
+                                            Profit &amp; Loss
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="betting_history0" class="betting_history"
+                                           href="~/Account/BettingHistory">
+                                            Betting
+                                            History
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="change0" class="status usersettingstatus">
+                                            Change Status
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="profile0" class="profile"
+                                           href="~/Account/AccountSummary">
+                                            Profile
+                                        </a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                }
             </tbody>
         </table>
 
@@ -1933,24 +1946,54 @@
         </div>
         <ul class="announce-footer">
             <li>
-                <a href="#" class="btn-send" onclick="javascript:$j('#siteAnnouncement').hide();">Agree</a>
+                @*<a href="#" class="btn-send" onclick="javascript:$j('#siteAnnouncement').hide();">Agree</a>*@
+                <a href="#" class="btn-send">Agree</a>
             </li>
         </ul>
     </div>
 </div>
 
-<script language="JavaScript" type="text/javascript">
-    PageConfig.userName = "subhodip";
-    PageConfig.memberSite = "1";
-    PageConfig.isMemberModule = true;
-    PageConfig.pathObj = { "currencyName": "PTH", "site": 1, "nodeList": [{ "userType": 3, "userID": "subhodip" }] };
-    (function () {
-        PathHandler.init();
-    })();
+@*<script language="JavaScript" type="text/javascript">
+        //PageConfig.userName = "subhodip";
+        //PageConfig.memberSite = "1";
+        //PageConfig.isMemberModule = true;
+        //PageConfig.pathObj = { "currencyName": "PBU", "site": 1, "nodeList": [{ "userType": 3, "userID": "subhodip" }] };
+        //(function () {
+        //    PathHandler.init();
+        //})();
 
-    (function () {
-        $j('.btn-close').click(function () {
-            $j('#message').hide();
+        //(function () {
+        //    $j('.btn-close').click(function () {
+        //        $j('#message').hide();
+        //    });
+        //})();
+    </script>*@
+
+@section PageJs{
+    <script>
+
+        $(document).ready(function () {
+            $(".usersettingstatus").click(function () {
+                var modal = document.getElementById("changeStatusModal");
+                modal.style.display = "block";
+                /*$("#changeStatusModal").modal("show");*/
+            });
+            $(".close_pop").click(function () {
+                var modal = document.getElementById("changeStatusModal");
+                modal.style.display = "none";
+                /*$("#changeStatusModal").modal("show");*/
+            });
+            $(".add_member").click(function () {
+                var modal = document.getElementById("createModal");
+                modal.style.display = "block";
+                /*$("#changeStatusModal").modal("show");*/
+            }); 
+            $(".close_pop").click(function () {
+                var modal = document.getElementById("createModal");
+                modal.style.display = "none";
+                /*$("#changeStatusModal").modal("show");*/
+            });
         });
-    })();
-</script>
+
+    </script>
+}

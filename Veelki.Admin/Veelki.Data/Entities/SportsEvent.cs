@@ -11,6 +11,7 @@ namespace Veelki.Data.Entities
         public long tournamentId { get; set; }
         public DateTime eventDate { get; set; }
         public string inPlay { get; set; }
+        public double totalMatched { get; set; }
         public string tv { get; set; }
         public double back1 { get; set; }
         public double lay1 { get; set; }

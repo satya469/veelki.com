@@ -388,5 +388,115 @@ namespace Veelki.Admin.Controllers
             }
             return View(accountStatementVM);
         }
+
+        [HttpGet]
+        public async Task<ActionResult> AccountSummary()
+        {
+            var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
+
+            //CommonReturnResponse commonModel = null;
+            //List<AccountStatementVM> accountStatementVM = null;
+            //try
+            //{
+            //    commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Common/GetAccountStatementForSuperAdmin?AdminId={1}", _configuration["ApiKeyUrl"], user.Id));
+            //    if (commonModel.IsSuccess && commonModel.Data != null)
+            //    {
+            //        accountStatementVM = jsonParser.ParsJson<List<AccountStatementVM>>(Convert.ToString(commonModel.Data));
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw;
+            //}
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> BettingHistory()
+        {
+            var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
+
+            //CommonReturnResponse commonModel = null;
+            //List<AccountStatementVM> accountStatementVM = null;
+            //try
+            //{
+            //    commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Common/GetAccountStatementForSuperAdmin?AdminId={1}", _configuration["ApiKeyUrl"], user.Id));
+            //    if (commonModel.IsSuccess && commonModel.Data != null)
+            //    {
+            //        accountStatementVM = jsonParser.ParsJson<List<AccountStatementVM>>(Convert.ToString(commonModel.Data));
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw;
+            //}
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> BettingProfile()
+        {
+            var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
+
+            //CommonReturnResponse commonModel = null;
+            //List<AccountStatementVM> accountStatementVM = null;
+            //try
+            //{
+            //    commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Common/GetAccountStatementForSuperAdmin?AdminId={1}", _configuration["ApiKeyUrl"], user.Id));
+            //    if (commonModel.IsSuccess && commonModel.Data != null)
+            //    {
+            //        accountStatementVM = jsonParser.ParsJson<List<AccountStatementVM>>(Convert.ToString(commonModel.Data));
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw;
+            //}
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> MyAccount()
+        {
+            var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
+
+            //CommonReturnResponse commonModel = null;
+            //List<AccountStatementVM> accountStatementVM = null;
+            //try
+            //{
+            //    commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Common/GetAccountStatementForSuperAdmin?AdminId={1}", _configuration["ApiKeyUrl"], user.Id));
+            //    if (commonModel.IsSuccess && commonModel.Data != null)
+            //    {
+            //        accountStatementVM = jsonParser.ParsJson<List<AccountStatementVM>>(Convert.ToString(commonModel.Data));
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw;
+            //}
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Banking()
+        {
+            var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
+
+            //CommonReturnResponse commonModel = null;
+            //List<AccountStatementVM> accountStatementVM = null;
+            //try
+            //{
+            //    commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Common/GetAccountStatementForSuperAdmin?AdminId={1}", _configuration["ApiKeyUrl"], user.Id));
+            //    if (commonModel.IsSuccess && commonModel.Data != null)
+            //    {
+            //        accountStatementVM = jsonParser.ParsJson<List<AccountStatementVM>>(Convert.ToString(commonModel.Data));
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw;
+            //}
+            return View();
+        }
     }
 }

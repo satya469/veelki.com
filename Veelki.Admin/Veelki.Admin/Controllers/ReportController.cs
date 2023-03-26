@@ -139,5 +139,37 @@ namespace Veelki.Admin.Controllers
             }
             return PartialView("_BetList", userBetPagination);
         }
+
+        [HttpGet]
+        public async Task<ActionResult> ProfitReportByDownline()
+        {
+            var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
+
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> ProfitReportByMarket()
+        {
+            var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
+
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> BetList()
+        {
+            var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
+
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> RiskManagement()
+        {
+            var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
+
+            return View();
+        }
     }
 }

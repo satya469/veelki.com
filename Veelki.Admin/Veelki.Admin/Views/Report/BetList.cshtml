@@ -1,0 +1,433 @@
+﻿
+@{
+    ViewData["Title"] = "Bet List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--  -->
+
+<div class="full-wrap" style="height: calc(100% - 105px)">
+
+    <!-- Center Column -->
+    <div class="over-wrap">
+
+
+        <!-- Loading Wrap -->
+        <div id="loading" class="loading-wrap" style="display:none">
+            <ul class="loading">
+                <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+                <li>
+                    Loading...
+                </li>
+                <br>
+                <li><span id="progress"></span></li>
+            </ul>
+        </div>
+
+        <!-- Message -->
+        <div id="message" class="message-wrap success">
+            <a class="btn-close">Close</a>
+            <p></p>
+        </div>
+
+        <script language="JavaScript" type="text/javascript">
+            (function () {
+                $j('.btn-close').click(function () {
+                    $j('#message').hide();
+                });
+            })();
+        </script>
+
+        <h2>
+            Bet List
+        </h2>
+        <ul class="input-list">
+            <li id="eventRadioBtnList">
+
+                <input type="radio" name="events" id="events_1" data-eventtype="1" value="1">
+                Soccer
+
+                <input type="radio" name="SOCCER_sportsbook" id="SOCCER_sportsbook" data-eventtype="1" value="true">
+                S/R Soccer
+
+                <input type="radio" name="SOCCER_BOOK" id="SOCCER_BOOK" data-eventtype="1" data-categorytype="5">
+                BOOK Soccer
+
+                <input type="radio" name="events" id="events_2" data-eventtype="2" value="2">
+                Tennis
+
+                <input type="radio" name="TENNIS_sportsbook" id="TENNIS_sportsbook" data-eventtype="2" value="true">
+                S/R Tennis
+
+                <input type="radio" name="TENNIS_BOOK" id="TENNIS_BOOK" data-eventtype="2" data-categorytype="5">
+                BOOK Tennis
+
+                <input type="radio" name="events" id="events_4" data-eventtype="4" value="4">
+                Cricket
+
+                <input type="radio" name="CRICKET_fancy" id="CRICKET_fancy" data-eventtype="4" data-categorytype="2"
+                       value="true">
+                Cricket/Fancy Bet
+
+                <input type="radio" name="CRICKET_sportsbook" id="CRICKET_sportsbook" data-eventtype="4"
+                       value="true">
+                S/R Cricket
+
+                <input type="radio" name="CRICKET_BOOK" id="CRICKET_BOOK" data-eventtype="4" data-categorytype="5">
+                BOOK Cricket
+
+                <input type="radio" name="events" id="events_7" data-eventtype="7" value="7">
+                Horse Racing
+
+                <input type="radio" name="ELECTION_fancy" id="ELECTION_fancy" data-eventtype="2378962"
+                       data-categorytype="2" value="true">
+                Election/Fancy Bet
+
+                <input type="radio" name="FANCYBET_fancy" id="FANCYBET_fancy" data-eventtype="9999999"
+                       data-categorytype="2" value="9999999">
+                FancyBet
+
+
+                <input type="radio" name="E_SOCCER_sportsbook" id="E_SOCCER_sportsbook" data-eventtype="137"
+                       value="true">
+                S/R E-Soccer
+
+                <input type="radio" id="TS_BINARY" data-categorytype="6">BINARY
+
+            </li>
+        </ul>
+        <ul class="input-list">
+            <li class="filterSettingModel">
+                <a class="filter_setting" href="#" id="oddsDifferentialFilterBtn">
+                    <img class="icon-filter" src="https://statics3.skyexch.bike/images/transparent.gif">Odds
+                    Differential Filter (%)
+                </a>
+                <div class="filter_setting-wrap" id="oddsDifferentialFilterDialog" style="width: 280px">
+                    <a class="close_pop" href="javascript:void(0);"
+                       id="oddsDifferentialFilterCloseBtn">close_pop</a>
+                    <h3>Odds Differential Filter</h3>
+                    <div id="oddsDifferentialFilterContent" class="filter_selection-wrap" style="width: 280px">
+                        <div>
+                            <h4></h4>
+                            <dl id="populateDl0" class="flex-center space-x-1 py-1 p-2">
+                                <dd>
+                                    Back &gt;=<input type="text" id="oddsDifferentialFilterBackMore"
+                                                     name="oddsDifferentialFilterBackMoreVal" value=""> %
+                                </dd>
+                            </dl>
+                            <dl id="populateDl1" class="flex-center space-x-1 py-1 p-2">
+                                <dd>
+                                    Back &lt;= <input type="text" id="oddsDifferentialFilterBackLess"
+                                                      name="oddsDifferentialFilterBackLessVal" value=""> %
+                                </dd>
+                            </dl>
+                            <dl id="populateDl2" class="flex-center space-x-1 py-1 p-2">
+                                <dd>
+                                    Lay &gt;= <input type="text" id="oddsDifferentialFilterLayMore"
+                                                     name="oddsDifferentialFilterLayMoreVal" value=""> %
+                                </dd>
+                            </dl>
+                            <dl id="populateDl3" class="flex-center space-x-1 py-1 p-2">
+                                <dd>
+                                    Lay &lt;= <input type="text" id="oddsDifferentialFilterLayLess"
+                                                     name="oddsDifferentialFilterLayLessVal" value=""> %
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <ul class="btn-wrap">
+                        <li>
+                            <a class="btn" id="oddsDifferentialFilterRefreshBtn" href="javascript:void(0);">
+                                <img class="icon-refresh-s"
+                                     src="https://statics3.skyexch.bike/images/transparent.gif">Refresh
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn-send" id="oddsDifferentialFilterSubmit"
+                               href="javascript:void(0);">Confirm</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+
+            <li class="filter_setting-list" id="userFilterModel">
+                <a class="filter_setting" href="#userFilterDialog" id="userFilterBtn">
+                    <img class="icon-filter"
+                         src="https://statics3.skyexch.bike/images/transparent.gif">User Filter
+                </a>
+
+                <div id="userFilterDialog" class="filter_setting-stakes-wrap" style="display: none;">
+                    <a class="close_pop" href="javascript:void(0);" id="userFilterCloseBtn">close_pop</a>
+                    <h3>User Filter</h3>
+
+                    <div class="filter_selection-wrap">
+                        <dl class="filter_selection-id">
+                            <dd class="filter_selection-switch">
+                                <a href="javascript:void(0);" id="userFilterFlag" class="toggle_off">OFF</a>
+                            </dd>
+
+                            <dt>User Level:</dt>
+                            <dd>
+                                <select id="userType" name="userType">
+
+
+                                    <option value="0">
+                                        Player
+                                    </option>
+
+
+                                </select>
+                            </dd>
+
+                            <dt>UserId:</dt>
+                            <dd><input type="text" id="userId" size="20" maxlength="20"></dd>
+                        </dl>
+                    </div>
+                    <ul class="btn-wrap">
+                        <li><a class="btn-send" id="userFilterSubmitBtn" href="javascript:void(0);">Submit</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <!-- function -->
+
+        <div class="function-wrap">
+            <ul class="input-list">
+                <div id="statusCondition">
+                <li><label>Bet Status:</label></li>
+                <li>
+                    <select name="betStatus" id="betStatus" fdprocessedid="vfvh6h">
+                        <option value="0">Unmatched</option>
+                        <option value="1">Matched</option>
+                        <option value="2">Settled</option>
+                        <option value="3">Cancelled</option>
+                        <option value="4">Voided</option>
+                    </select>
+                </li>
+        </div>
+
+        <li>
+            <label>
+                Period
+            </label>
+        </li>
+        <li>
+            <input id="startDate" class="cal-input" type="text" placeholder="YYYY-MM-DD" min="2023-02-28"
+                   max="2023-03-15" onclick="calendarObj.show(event,'startDate');" fdprocessedid="smqxrn">
+            <input id="startTime" class="time-input " type="text" placeholder="09:00" maxlength="5"
+                   fdprocessedid="cjrkid">
+            to
+            <input id="endDate" class="cal-input" type="text" placeholder="YYYY-MM-DD" min="2023-02-28"
+                   max="2023-03-15" onclick="calendarObj.show(event,'endDate');" fdprocessedid="fhxcbd">
+            <input id="endTime" class="time-input" type="text" placeholder="08:59" maxlength="5"
+                   fdprocessedid="e24dkm">
+        </li>
+        <li style="display: none;">(TimeZone:IST)</li>
+        </ul>
+
+        <ul class="input-list">
+            <li>
+                <a id="today" href="#" class="btn">
+                    Just For Today
+                </a>
+            </li>
+            <li>
+                <a id="yesterday" href="#" class="btn">
+                    From Yesterday
+                </a>
+            </li>
+            <li style="display: none;">
+                <a id="last7days" href="#" class="btn">
+                    Last 7 days
+                </a>
+            </li>
+            <li style="display: none;">
+                <a id="last30days" href="#" class="btn">
+                    Last 30 days
+                </a>
+            </li>
+            <li style="display: none;">
+                <a id="last2months" href="#" class="btn">
+                    Last 2 Months
+                </a>
+            </li>
+            <li style="display: none;">
+                <a id="last3months" href="#" class="btn">
+                    Last 3 Months
+                </a>
+            </li>
+            <li><a id="getPL" href="#" class="btn-send">Get History</a></li>
+        </ul>
+    </div>
+    <!-- No Report Message -->
+    <div id="noReportMessage">
+        <p>
+            Bet List enables you to review the bets you have placed. <br>Specify the time period during which
+            your bets were placed, the type of markets on which the bets were placed, and the sport.
+        </p>
+        <p>Bet List is available online for the past 14 days.</p>
+    </div>
+
+
+    <!-- function end-->
+    <!-- Report Table -->
+    <!-- Report Table -->
+    <div id="report" style="display: none">
+
+        <a id="downloadFile" class="btn-send middle_with" href="javascript: void(0)"
+           style="display: none;">Download</a>
+        <div id="downloadDiv" style="display:none;">
+            <input type="hidden" id="tempFilter" name="filter[]">
+            <form id="downloadForm" method="post" target="_blank" action="">
+                <input type="hidden" id="startDate" name="startDate">
+                <input type="hidden" id="endDate" name="endDate">
+                <input type="hidden" id="isQueryFancyBet" name="isQueryFancyBet">
+                <input type="hidden" id="isQuerySbSportRadar" name="isQuerySbSportRadar">
+                <input type="hidden" id="isQuerySbOw" name="isQuerySbOw">
+                <input type="hidden" id="isQueryBinary" name="isQueryBinary">
+                <input type="hidden" id="eventType" name="eventType">
+                <input type="hidden" id="isQueryDetail" name="isQueryDetail">
+                <input type="hidden" id="isQueryOnePT" name="isQueryOnePT">
+                <input type="hidden" id="categoryType" name="categoryType">
+                <div id="filterDiv">
+                </div>
+            </form>
+        </div>
+
+        <table id="matchTableTemplate" class="table-s" style="display: none">
+            <tbody>
+                <tr>
+
+                    <th width="8%" class="align-L">PL ID</th>
+                    <th width="5%" class="align-L">
+                        Bet ID
+                    </th>
+                    <th id="betTime" width="6%" class="align-L">
+                        Bet placed
+                    </th>
+                    <th width="7%" class="align-L">
+                        IP Address
+                    </th>
+
+                    <th width="7%" class="align-L">
+                        ISP
+                    </th>
+
+                    <th width="" class="align-L">
+                        Market
+                    </th>
+                    <th width="7%" class="align-L">
+                        Selection
+                    </th>
+
+                    <th width="4%" class="align-C">
+                        Type
+                    </th>
+                    <th width="4%">
+                        Odds req.
+                    </th>
+                    <th width="8%">
+                        Stake
+                    </th>
+                    <th width="5%">
+                        Liability
+                    </th>
+
+                    <th width="5%" name="profitOrLossTh">
+                        Profit/Loss
+                    </th>
+
+                    <th width="3%" id="currencyType_title" style="display: none">
+                        Currency
+                    </th>
+                    <th width="5%" id="site_title" style="display: none">
+                        Site
+                    </th>
+
+                    <th width="5%" id="unMatchedLastPrice_title" class="text-right">UnMatchedLastPrice</th>
+                    <th width="5%" id="matchedLastPrice_title" class="text-right">MatchedLastPrice</th>
+
+                    <th width="5%" id="oddsDifferential_title" class="text-right">OddsDifferential</th>
+                    <th width="5%" id="onePT_title" style="display: none">Percentage PT</th>
+                    <th width="5%" id="afterPT_title" style="display: none">PSB After PT</th>
+                    <th width="5%" id="afterPTInEUR_title" style="display: none">H.PT in EURO</th>
+
+                </tr>
+
+                <tr id="matchRowTemplate" style="display: none">
+
+                    <td id="agentUserId1" class="align-L" style="display: none"></td>
+
+                    <td id="agentUserId2" class="align-L" style="display: none"></td>
+
+                    <td id="agentUserId3" class="align-L" style="display: none"></td>
+
+                    <td id="agentUserId4" class="align-L" style="display: none"></td>
+
+                    <td id="agentUserId5" class="align-L" style="display: none"></td>
+
+                    <td id="playerId" class="align-L"></td>
+                    <td class="align-L"><a id="betID" href="javascript: void(0);"></a></td>
+                    <td class="align-L"><span id="betPlaced" class="small-date"></span></td>
+                    <td id="ip" class="align-L"></td>
+
+                    <td id="isp" class="align-L"></td>
+
+                    <td id="matchTitle" class="align-L"></td>
+                    <td id="matchSelection" class="align-L"></td>
+
+                    <td class="align-C"><span id="matchType"></span></td>
+                    <td id="matchOddsReq"></td>
+                    <td id="matchStake"></td>
+                    <td id="liability"></td>
+
+                    <td><span id="pol" class="small-date"></span></td>
+
+                    <td id="currencyType" style="display: none"></td>
+                    <td id="site" style="display: none"></td>
+
+                    <td id="unMatchedLastPrice" class="text-right">--</td>
+                    <td id="matchedLastPrice" class="text-right">--</td>
+
+                    <td id="oddsDifferential" class="text-right">--</td>
+                    <td id="onePT" style="display: none"></td>
+                    <td id="afterPT" style="display: none"></td>
+                    <td id="afterPTInEUR" style="display: none"></td>
+                </tr>
+
+            </tbody>
+        </table>
+        <p class="table-other" style="margin-top: 5px">
+            Bet List is shown net of commission.
+        </p>
+
+
+        <script type="text/javascript" src="/js/util/PageUtil.js?v=20230306_1678068000000"></script>
+        <div>
+            <ul style="display: none">
+                <li id="prev">
+                    <a href="javascript:void(0);">
+                        Prev
+                    </a>
+                </li>
+                <li id="next">
+                    <a href="javascript:void(0);">
+                        Next
+                    </a>
+                </li>
+                <li id="pageNumber"><a href="javascript:void(0);"></a></li>
+                <li id="more"><a href="javascript:void(0);">...</a></li>
+                <input type="text" id="goToPageNumber" onkeyup="return PageHandler.validatePageNumber(this)"
+                       maxlength="6" size="4">
+                <li><a id="goPageBtn">GO</a></li>
+            </ul>
+
+            <ul id="pageNumberContent" class="pages">
+            </ul>
+        </div>
+
+    </div>
+</div>
+    </div>

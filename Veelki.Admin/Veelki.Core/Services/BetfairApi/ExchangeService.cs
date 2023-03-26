@@ -386,6 +386,7 @@ namespace Veelki.Core.Services.BetfairApi
                                 eventDate = GetISTDateTime(item.eventDate),
                                 marketId = item.marketId,
                                 inPlay = matchReturnResponseNew[0].inplay.ToString(),
+                                totalMatched = matchReturnResponseNew[0].totalMatched,
                                 back11 = matchReturnResponseNew[0].runners[0].ex.availableToBack[0].price,
                                 back1 = item.market_runner_count == 3 ? matchReturnResponseNew[0].runners[2].ex.availableToBack[0].price : 0,
                                 back12 = matchReturnResponseNew[0].runners[1].ex.availableToBack[0].price,

@@ -1,0 +1,618 @@
+﻿
+@{
+    ViewData["Title"] = "Profit Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--  -->
+<div class="main_wrap" style="height: calc(100% - 105px)">
+
+    <h2>
+        Profit/Loss Report by Market
+    </h2>
+
+    <!-- function -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="function-wrap">
+        <ul class="input-list">
+            <div id="statusCondition" style="display: none">
+            <li><label>Bet Status:</label></li>
+            <li>
+                <select name="betStatus" id="betStatus">
+                </select>
+            </li>
+    </div>
+
+
+    <li>
+        <label>
+            Sports
+        </label>
+    </li>
+    <li>
+        <select id="func_sports" fdprocessedid="x6xoga">
+            <option value="-1" selected="selected">
+                All
+            </option>
+
+
+
+
+
+            <option value="1">
+                SOCCER
+            </option>
+
+
+
+
+            <option value="1" data-eventreporttype="1">
+                SOCCER_BOOK
+            </option>
+
+
+
+
+
+
+
+            <option value="2">
+                TENNIS
+            </option>
+
+
+
+
+            <option value="2" data-eventreporttype="1">
+                TENNIS_BOOK
+            </option>
+
+
+
+
+
+
+
+            <option value="4">
+                CRICKET
+            </option>
+
+
+            <option value="4" data-eventreporttype="5">
+                CRICKET_FANCY
+            </option>
+
+
+
+            <option value="4" data-eventreporttype="1">
+                CRICKET_BOOK
+            </option>
+
+
+
+
+
+
+
+            <option value="5">
+                RUGBY_UNION
+            </option>
+
+
+
+
+
+
+
+            <option value="7">
+                HORSE_RACING
+            </option>
+
+
+
+
+
+
+
+            <option value="4339">
+                GREYHOUND_RACING
+            </option>
+
+
+
+
+
+
+
+            <option value="6423">
+                AMERICAN_FOOTBALL
+            </option>
+
+
+
+
+
+
+
+            <option value="7522">
+                BASKETBALL
+            </option>
+
+
+
+
+
+
+
+
+            <option value="2378962" data-eventreporttype="5">
+                ELECTION_FANCY
+            </option>
+
+
+
+
+
+
+
+            <option value="9999999" data-eventreporttype="5">
+                FANCYBET_FANCY
+            </option>
+
+
+
+
+
+
+            <option value="2378961">
+                POLITICS
+            </option>
+
+
+
+
+
+
+
+            <option value="137">
+                E_SOCCER
+            </option>
+
+
+
+
+
+
+
+            <option value="138">
+                KABADDI
+            </option>
+
+
+
+
+            <option value="138" data-eventreporttype="1">
+                KABADDI_BOOK
+            </option>
+
+
+
+
+
+
+
+
+
+            <option value="-99">
+                CASINO
+            </option>
+
+
+            <option value="-97">
+                BPOKER
+            </option>
+
+
+            <option value="-96">
+                SKY TRADER
+            </option>
+
+
+            <option value="-95">
+                SABA
+            </option>
+
+
+            <option value="-93">
+                ROYAL GAMING
+            </option>
+
+
+            <option value="-94">
+                LUCKCO7
+            </option>
+
+
+
+            <option value="-100" data-eventreporttype="4">
+                BINARY
+            </option>
+
+
+
+        </select>
+    </li>
+
+
+
+    <li>
+        <label>
+            Time Zone
+        </label>
+    </li>
+    <li>
+        <select name="timezone" id="timezone" fdprocessedid="3b14">
+
+            <option value="Pacific/Midway">
+                Pacific/Midway(GMT-11:00)
+            </option>
+
+            <option value="Pacific/Honolulu">
+                Pacific/Honolulu(GMT-10:00)
+            </option>
+
+            <option value="America/Juneau">
+                America/Juneau(GMT-9:00)
+            </option>
+
+            <option value="America/Los_Angeles">
+                America/Los_Angeles(GMT-8:00)
+            </option>
+
+            <option value="America/Phoenix">
+                America/Phoenix(GMT-7:00)
+            </option>
+
+            <option value="America/Chicago">
+                America/Chicago(GMT-6:00)
+            </option>
+
+            <option value="America/New_York">
+                America/New_York(GMT-5:00)
+            </option>
+
+            <option value="America/Santiago">
+                America/Santiago(GMT-4:00)
+            </option>
+
+            <option value="America/Sao_Paulo">
+                America/Sao_Paulo(GMT-3:00)
+            </option>
+
+            <option value="Atlantic/South_Georgia">
+                Atlantic/South_Georgia(GMT-2:00)
+            </option>
+
+            <option value="Atlantic/Azores">
+                Atlantic/Azores(GMT-1:00)
+            </option>
+
+            <option value="Europe/London">
+                Europe/London(GMT+0:00)
+            </option>
+
+            <option value="Europe/Paris">
+                Europe/Paris(GMT+1:00)
+            </option>
+
+            <option value="Africa/Cairo">
+                Africa/Cairo(GMT+2:00)
+            </option>
+
+            <option value="Asia/Qatar">
+                Asia/Qatar(GMT+3:00)
+            </option>
+
+            <option value="Asia/Dubai">
+                Asia/Dubai(GMT+4:00)
+            </option>
+
+            <option value="Asia/Karachi">
+                Asia/Karachi(GMT+5:00)
+            </option>
+
+            <option value="IST" selected="selected">
+                IST(Bangalore / Bombay / New Delhi) (GMT+5:30)
+            </option>
+
+            <option value="Asia/Kathmandu">
+                Asia/Kathmandu(GMT+5:45)
+            </option>
+
+            <option value="Asia/Dhaka">
+                Asia/Dhaka(GMT+6:00)
+            </option>
+
+            <option value="Asia/Bangkok">
+                Asia/Bangkok(GMT+7:00)
+            </option>
+
+            <option value="Asia/Hong_Kong">
+                Asia/Hong_Kong(GMT+8:00)
+            </option>
+
+            <option value="Asia/Tokyo">
+                Asia/Tokyo(GMT+9:00)
+            </option>
+
+            <option value="Australia/Adelaide">
+                Australia/Adelaide(GMT+9:30)
+            </option>
+
+            <option value="Australia/Melbourne">
+                Australia/Melbourne(GMT+10:00)
+            </option>
+
+            <option value="Asia/Magadan">
+                Asia/Magadan(GMT+11:00)
+            </option>
+
+            <option value="Pacific/Fiji">
+                Pacific/Fiji(GMT+12:00)
+            </option>
+
+        </select>
+    </li>
+    <li></li>
+
+    <li>
+        <label>
+            Period
+        </label>
+    </li>
+    <li>
+        <input id="startDate" class="cal-input" type="text" placeholder="YYYY-MM-DD" min="2023-01-09" max="2023-03-13" onclick="calendarObj.show(event,'startDate');" fdprocessedid="w0qvbv">
+        <input id="startTime" disabled="" class="time-input disable" type="text" placeholder="09:00" maxlength="5" fdprocessedid="glg4jj">
+        to
+        <input id="endDate" class="cal-input" type="text" placeholder="YYYY-MM-DD" min="2023-01-09" max="2023-03-13" onclick="calendarObj.show(event,'endDate');" fdprocessedid="4ykeg8">
+        <input id="endTime" disabled="" class="time-input disable" type="text" placeholder="08:59" maxlength="5" fdprocessedid="12wncjw">
+    </li>
+    <li style="display: none;">(TimeZone:IST)</li>
+    </ul>
+
+    <ul class="input-list">
+        <li>
+            <a id="today" href="#" class="btn">
+                Just For Today
+            </a>
+        </li>
+        <li>
+            <a id="yesterday" href="#" class="btn">
+                From Yesterday
+            </a>
+        </li>
+        <li style="display: none;">
+            <a id="last7days" href="#" class="btn">
+                Last 7 days
+            </a>
+        </li>
+        <li style="display: none;">
+            <a id="last30days" href="#" class="btn">
+                Last 30 days
+            </a>
+        </li>
+        <li style="display: none;">
+            <a id="last2months" href="#" class="btn">
+                Last 2 Months
+            </a>
+        </li>
+        <li style="display: none;">
+            <a id="last3months" href="#" class="btn">
+                Last 3 Months
+            </a>
+        </li>
+        <li>
+            <a id="getPL" href="#" class="btn-send">
+                Get P &amp; L
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- No Report Message -->
+<div id="noReportMessage"></div>
+
+<script language="JavaScript" type="text/javascript">
+    SearchConfig = {};
+    SearchConfig.maxDay = '2023-03-13';
+    SearchConfig.today = '2023-03-12';
+    SearchConfig.yesterday = '2023-03-11';
+    SearchConfig.last7day = '2023-03-05';
+    SearchConfig.last30day = '2023-02-10';
+    SearchConfig.last2months = '2023-01-12';
+    SearchConfig.last3months = '2022-12-12';
+    SearchConfig.minDay = '2023-01-09';
+    SearchConfig.enableTimeSetting = false;
+
+    $j(document).ready(function () {
+
+        PageConfig.timeZone = "IST";
+
+        FunctionHandler.today();
+
+        if (true) {
+            FunctionHandler.initStartDate("2023-03-12", "09:00");
+            FunctionHandler.initEndDate("2023-03-13", "08:59");
+        }
+
+        if (typeof (TaskExecuter) !== 'undefined') {
+            TaskExecuter.execute();
+        }
+    });
+</script>
+<!-- function end-->
+<!-- Loading Wrap -->
+<div id="loading" class="loading-wrap" style="display:none">
+    <ul class="loading">
+        <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+        <li>
+            Loading...
+        </li>
+        <br>
+        <li><span id="progress"></span></li>
+    </ul>
+</div>
+
+<!-- Message -->
+<div id="message" class="message-wrap success">
+    <a class="btn-close">Close</a>
+    <p></p>
+</div>
+
+<script language="JavaScript" type="text/javascript">
+    (function () {
+        $j('.btn-close').click(function () {
+            $j('#message').hide();
+        });
+    })();
+</script>
+
+<!-- Report Table -->
+<table style="display:none">
+
+    <tbody>
+        <tr id="tempTr">
+            <td class="align-L">
+                <a id="_byMarket" href="javascript:void(0);" class="expand-close"></a>
+                <span id="_eventType"></span>
+                <img class="fromto" src="https://statics3.skyexch.bike/images/transparent.gif">
+                <strong id="_eventName"></strong>
+            </td>
+            <td id="_stake"></td>
+            <td id="_profitLoss"></td>
+            <td id="_profitLossDownLine"></td>
+
+            <td id="_tax3"></td>
+            <td id="_rebate3"></td>
+            <td id="_tax2"></td>
+            <td id="_rebate2"></td>
+            <td id="_payout1"></td>
+            <td id="_tax1"></td>
+            <td id="_rebate1"></td>
+            <td id="_profitLoss1"></td>
+            <td id="_profitLossUpLine"></td>
+
+        </tr>
+
+        <tr id="subTempTr" class="expand">
+            <td id="market_type" class="expand-event"></td>
+            <td id="market_stake"></td>
+            <td id="market_profitLoss"></td>
+            <td id="market_profitLossDownLine"></td>
+
+            <td id="market_tax3"></td>
+            <td id="market_rebate3"></td>
+            <td id="market_tax2"></td>
+            <td id="market_rebate2"></td>
+            <td id="market_payout1"></td>
+            <td id="market_tax1"></td>
+            <td id="market_rebate1"></td>
+            <td id="market_profitLoss1"></td>
+            <td id="market_profitLossUpLine"></td>
+
+        </tr>
+
+        <tr id="tempTotalTr" class="total">
+            <td class="align-L">
+                Total
+            </td>
+            <td id="_totalStake"></td>
+            <td id="_totalProfitLoss"></td>
+            <td id="_totalProfitLossDownLine"></td>
+
+            <td id="_totalTax3"></td>
+            <td id="_totalRebate3"></td>
+            <td id="_totalTax2"></td>
+            <td id="_totalRebate2"></td>
+            <td id="_totalPayout1"></td>
+            <td id="_totalTax1"></td>
+            <td id="_totalRebate1"></td>
+            <td id="_totalProfitLoss1"></td>
+            <td id="_totalProfitLossUpLine"></td>
+
+        </tr>
+
+    </tbody>
+</table>
+
+<!-- Report Table -->
+<div id="reportDiv" class="over-wrap" style="max-height: calc(100% - 32px - 93px)">
+    <table id="table_DL" class="table01 table-pt" style="display: none;">
+        <tbody>
+            <tr id="head">
+                <th id="header_eventName" width="" class="align-L">
+                    UID
+                </th>
+                <th width="11%" class="">
+                    Stake
+                </th>
+                <th width="11%" class="">
+                    Player P/L
+                </th>
+                <th id="header_profitLoss_downLine" width="11%" class="">
+                    Downline P/L
+                </th>
+
+                <th id="header_tax_agent_3" width="11%" class="">
+                    Master Comm.
+                </th>
+                <th id="header_rebate_agent_3" width="11%" class="">
+                    Master Rebate
+                </th>
+                <th id="header_tax_agent_2" width="11%" class="">
+                    Super Comm.
+                </th>
+                <th id="header_rebate_agent_2" width="11%" class="">
+                    Super Rebate
+                </th>
+                <th id="header_payout_agent_1" width="11%" class="">
+                    SS PT
+                </th>
+                <th id="header_tax_agent_1" width="11%" class="">
+                    SS Comm.
+                </th>
+                <th id="header_rebate_agent_1" width="11%" class="">
+                    SS Rebate
+                </th>
+                <th id="header_profitLoss_agent_1" width="11%" class="">
+                    SS Total
+                </th>
+                <th width="11%" class="">
+                    Upline P/L
+                </th>
+
+            </tr>
+
+        </tbody>
+        <tbody id="content">
+        </tbody>
+    </table>
+
+</div>
+    </div>

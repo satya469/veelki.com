@@ -444,8 +444,7 @@ namespace Veelki.Core.Services
                 }
 
                 var model = new RegisterListVM();
-                //totalUser = totalUser != null && totalUser.Count() > 0 ? totalUser.Where(x => x.RoleId == RoleId).ToList() : totalUser;
-                totalUser = totalUser != null && totalUser.Count() > 0 ? totalUser.ToList() : totalUser;
+                totalUser = totalUser != null && totalUser.Count() > 0 ? totalUser.Where(x => x.RoleId == RoleId).ToList() : totalUser;
                 if (UserId > 0)
                 {
                     totalUser = totalUser.Where(x => x.Id == UserId).ToList();
@@ -454,16 +453,15 @@ namespace Veelki.Core.Services
                 foreach (var item in model.Users)
                 {
                     item.IsAbleToChange = model.Users.Where(x => x.ParentId == LoginUserId).FirstOrDefault() != null ? true : false;
-                    item.RoleName = userRoles.Where(y => y.Id == item.RoleId).Select(x => x.Name).FirstOrDefault();
                 }
-                //var roleName = userRoles.Where(y => y.Id == RoleId).Select(x => x.Name).FirstOrDefault();
+                var roleName = userRoles.Where(y => y.Id == RoleId).Select(x => x.Name).FirstOrDefault();
 
                 model = new RegisterListVM
                 {
                     LoginUserId = loginUser.Id,
                     LoginUserRole = loginUser.RoleId,
                     LoginUser = loginParentUser,
-                    RoleName = model.RoleName,
+                    RoleName = roleName,
                     Users = model.Users,
                     UserRoles = userRoles
                 };

@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Veelki.Admin</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="~/assets/css/style.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
 </head>
 <body>
     <div class="top">
@@ -23,7 +24,7 @@
                         <ul>
                             <li>
                                 <span>Main</span>
-                                <strong id="mainBalance">PTH 0.00</strong>
+                                <strong id="mainBalance">PBU 0.00</strong>
                             </li>
                         </ul>
                         <p class="loading-bar" id="menuRefreshLoading" style="display: none;">
@@ -49,12 +50,12 @@
                 <ul class="menu">
 
                     <li>
-                        <a id="menu_downline_list" class="select" href="/agent/index.jsp">
+                        <a id="menu_downline_list" class="select" href="~/Home/Index">
                             Downline List
                         </a>
                     </li>
                     <li>
-                        <a id="menu_my_account" class="" href="/agent/myAccount/accountSummary.jsp">
+                        <a id="menu_my_account" class="" href="~/Account/MyAccount">
                             My Account
                         </a>
                     </li>
@@ -65,34 +66,34 @@
                         <ul>
 
                             <li>
-                                <a href="/agent/myReport/downLineProfitLoss.jsp">
+                                <a href="~/Report/ProfitReportByDownline">
                                     Profit/Loss Report by Downline
                                 </a>
                             </li>
                             <li>
-                                <a href="/agent/myReport/marketProfitLoss.jsp">
+                                <a href="~/Report/ProfitReportByMarket">
                                     Profit/Loss Report by Market
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a id="menu_bet_list" class="" href="/agent/betList/betList.jsp">
+                        <a id="menu_bet_list" class="" href="~/Report/BetList">
                             BetList
                         </a>
                     </li>
                     <li>
-                        <a id="menu_risk_management" class="" href="/agent/riskManagement/riskManagement.jsp">
+                        <a id="menu_risk_management" class="" href="~/Report/RiskManagement">
                             Risk Management
                         </a>
                     </li>
                     <li>
-                        <a id="menu_banking" class="" href="/agent/banking/cashBanking.jsp">
+                        <a id="menu_banking" class="" href="~/Account/Banking">
                             Banking
                         </a>
                     </li>
                     <li class="logout">
-                        <a id="logout">Logout<img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
+                        <a id="logout" href="~/Account/Logout">Logout<img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
                     </li>
                     <li class="time_zone"><span>Time Zone :</span> GMT+5:30</li>
                 </ul>
@@ -106,13 +107,28 @@
     </div>
 
     @*<footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Veelki.Admin - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>*@
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <div class="container">
+                &copy; 2022 - Veelki.Admin - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/assets/vendors/js/vendors.min.js"></script>
+    <script src="~/assets/vendors/js/extensions/moment.min.js"></script>
+    <script src="~/assets/js/core/app-menu.js"></script>
+    <script src="~/assets/js/core/app.js"></script>
+    <script src="~/assets/js/scripts/pages/app-invoice-list.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+    @RenderSection("PageJs", false)
+
+    <script src="~/js/toastr.min.js"></script>
+    <script src="~/js/sweetalert.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
 </body>
 </html>

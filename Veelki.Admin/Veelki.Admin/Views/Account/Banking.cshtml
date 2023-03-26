@@ -1,0 +1,380 @@
+﻿
+@{
+    ViewData["Title"] = "Banking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--  -->
+
+<div class="full-wrap" style="height: calc(100% - 105px)">
+    <h2>
+        Banking
+    </h2>
+
+    <div class="total_all">
+
+
+        <!-- Loading Wrap -->
+        <div id="loading" class="loading-wrap" style="display: none;">
+            <ul class="loading">
+                <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+                <li>
+                    Loading...
+                </li>
+                <br>
+                <li><span id="progress"></span></li>
+            </ul>
+        </div>
+
+        <!-- Message -->
+        <div id="message" class="message-wrap success">
+            <a class="btn-close">Close</a>
+            <p></p>
+        </div>
+
+        <script language="JavaScript" type="text/javascript">
+            (function () {
+                $j('.btn-close').click(function () {
+                    $j('#message').hide();
+                });
+            })();
+        </script>
+
+        <div class="search-wrap" id="userSearchUl">
+            <div>
+                <input class="search-input" type="text" name="searchUserId" id="searchUserId" placeholder="Enter userId..." fdprocessedid="mo14s1">
+            </div>
+        </div>
+
+        <ul class="input-list" id="companySearchUl">
+            <li>
+                <a class="btn-send" href="#" id="search">Search</a>
+            </li>
+        </ul>
+
+        <ul class="input-list" id="accountStatusUl">
+            <li><strong>Status</strong></li>
+            <li>
+                <select class="" name="accountStatus" id="accountStatus" fdprocessedid="cnr8ac">
+
+                    <option value="0">
+                        ACTIVE
+                    </option>
+
+                    <option value="1">
+                        SUSPENDED
+                    </option>
+
+                    <option value="2">
+                        LOCKED
+                    </option>
+
+                    <option value="-1">ALL</option>
+                </select>
+            </li>
+        </ul>
+
+    </div>
+
+    <!-- Report Table -->
+    <div class="report_over-wrap" style="max-height: calc(100% - 208px)">
+
+        <div class="function-wrap clearfix">
+            <dl class="banking-head float-L">
+                <dt>
+                    Your Balance
+                </dt>
+                <dd id="yourBalance"><span>PTH</span>0.00</dd>
+            </dl>
+            <ul class="input-list float-R" style="display: none;">
+                <li>
+                    <label>
+                        Sort by
+                    </label>
+                </li>
+                <li>
+                    <select id="sort">
+                        <option value="userId">
+                            UID
+                        </option>
+                        <option value="site">
+                            Site
+                        </option>
+                        <option value="currencyType">
+                            Currency
+                        </option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+        <table style="display: none;">
+            <tbody>
+                <tr id="tempTr">
+                    <td class="td-uid" id="userId"></td>
+                    <td id="siteCol" style="display: none"></td>
+                    <td id="currencyTypeCol" style="display: none"></td>
+                    <td id="balance"></td>
+                    <td id="availableBalance"></td>
+                    <td id="userExposure"></td>
+
+                    <td id="bankingBalance" class="border-l check_date">
+                        <span id="bankingBalance_updateDate"></span>
+                    </td>
+
+                    <td class="DW-amount">
+                        <ul class="btn_list-DW">
+                            <li><a id="dBtn" class="btn" href="#">D</a></li>
+                            <li><a id="wBtn" class="btn" href="#">W</a></li>
+                        </ul>
+                        <input id="amount" name="amount" class="" type="text" placeholder="0" maxlength="18">
+                        <a id="fullBtn" href="javascript:void(0);" class="btn float-L disable">
+                            Full
+                        </a>
+                    </td>
+                    <td class="credit-amount">
+                        <a href="javascript:void(0);" id="userCreditReference"></a>
+                        <input id="editCreditReference" name="editCreditReference" class="" type="text" placeholder="0" maxlength="18" style="display: none;">
+                        <a id="editCreditReferenceBtn" href="javascript:void(0);" class="btn">
+                            Edit
+                        </a>
+                        <a id="cancelCreditReferenceBtn" href="javascript:void(0);" class="btn" style="display: none;">
+                            Cancel
+                        </a>
+                    </td>
+                    <td id="userReferencePL"></td>
+                    <td class="border-l"><input id="remark" class="" type="text" placeholder="Remark"></td>
+                    <td class="full-amount">
+                        <a id="log" class="btn">
+                            Log
+                        </a>
+                    </td>
+                </tr>
+                <tr id="tempBalanceTr" class="expand first expand-balance">
+                    <td></td>
+                    <td colspan="10">
+                        <img class="expand-arrow" src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <table>
+                            <tbody id="tempVendorContent">
+                                <tr>
+                                    <th width="9%" class="align-L">Game</th>
+                                    <th width="11%">Balance</th>
+                                    <th width="7%"><a id="recallAll" href="#" class="btn-recall">Recall All</a></th>
+                                    <th></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr id="tempVendorTr">
+                    <td id="vendorTitle" class="align-L">Houise</td>
+                    <td id="vendorBalance">200,000,000,000.00</td>
+                    <td><a id="recall" href="#" class="btn-recall">Recall</a></td>
+                    <td></td>
+                </tr>
+                <tr id="noDataTempTr">
+                    <td class="no-data" colspan="11">
+                        <p>
+                            No Data
+                        </p>
+                    </td>
+                </tr>
+
+                <tr id="totalTempTr" class="total">
+                    <td class="align-L">Total</td>
+                    <td id="totalSite" style="display: none"></td>
+                    <td id="totalCurrencyType" style="display: none"></td>
+                    <td id="totalBalance"></td>
+                    <td id="totalAvailableBalance"></td>
+                    <td id="totalExposure"></td>
+
+                    <td></td>
+
+                    <td id="totalCreditReference" class="" colspan="2"></td>
+                    <td id="totalReferencePL"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="table_transfer" class="table01 tab-transfer tab-banking">
+            <colgroup>
+                <col span="1" width="190">
+                <col span="1" width="120" style="display: none" id="siteColumn">
+                <col span="1" width="120" style="display: none" id="currencyTypeColumn">
+                <col span="1" width="120">
+                <col span="1" width="120">
+                <col span="1" width="120">
+
+                <col span="1" width="220">
+
+                <col span="1" width="280">
+                <col span="1" width="230">
+                <col span="1" width="200">
+                <col span="1" width="120">
+                <col span="1" width="80">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th id="userIdTH" class="align-L sort-this">
+                        UID
+                    </th>
+                    <th id="siteTH" style="display: none">
+                        Site
+                    </th>
+                    <th id="currencyTypeTH" style="display: none">
+                        Currency
+                    </th>
+                    <th>
+                        Balance
+                    </th>
+                    <th>
+                        Available D/W
+                    </th>
+                    <th>
+                        Exposure
+                    </th>
+
+                    <th width="" class="align-R border-l check_balance">
+                        <span>
+                            Check Balance
+                            <a id="checkBankingBalance" href="#" class="btn" onclick="VendorBalanceDetailHandler.getBankingBalance();">Check</a>
+                        </span>
+                    </th>
+
+                    <th class="align-C border-l">
+                        Deposit / Withdraw
+                    </th>
+                    <th class="border-l">
+                        Credit Reference
+                    </th>
+                    <th class="">
+                        Reference P/L
+                    </th>
+                    <th class="border-l">
+                        Remark
+                    </th>
+                    <th class="full-amount">
+                        <a id="allLog" href="javascript:void(0);" class="btn-send" style="display: block;">
+                            All Log
+                        </a>
+                    </th>
+                </tr>
+            </tbody>
+            <tbody id="content">
+                <tr id="userdemoo" main_userid="userdemoo" main_site="1">
+                    <td class="td-uid" id="userId"><span class="order">1.</span><span class="account_name">userdemoo</span></td>
+                    <td id="siteCol" style="display: none">Sky</td>
+                    <td id="currencyTypeCol" style="display: none">PTH</td>
+                    <td id="balance"><a href="#" class="link-open" onclick="VendorBalanceDetailHandler.balanceShowing('userdemoo','1', function () { CashBankingHandler.queryCashDirectMembers(CashBankingHandler.pageNumber); }, $j(this))"> 0.00</a></td>
+                    <td id="availableBalance"> 0.00</td>
+                    <td id="userExposure"> 0.00</td>
+
+                    <td id="bankingBalance_userdemoo" class="border-l check_date">
+                        <span id="bankingBalance_updateDate_userdemoo"></span>
+                    </td>
+
+                    <td class="DW-amount">
+                        <ul class="btn_list-DW">
+                            <li><a id="dBtn" class="btn" href="#">D</a></li>
+                            <li><a id="wBtn" class="btn" href="#">W</a></li>
+                        </ul>
+                        <input id="amount" name="amount" class="" type="text" placeholder="0" maxlength="18" fdprocessedid="0f2aye">
+                        <a id="fullBtn" href="javascript:void(0);" class="btn float-L disable">
+                            Full
+                        </a>
+                    </td>
+                    <td class="credit-amount">
+                        <a href="javascript:void(0);" id="userCreditReference"> 0.00</a>
+                        <input id="editCreditReference" name="editCreditReference" class="" type="text" placeholder="0" maxlength="18" style="display: none;">
+                        <a id="editCreditReferenceBtn" href="javascript:void(0);" class="btn">
+                            Edit
+                        </a>
+                        <a id="cancelCreditReferenceBtn" href="javascript:void(0);" class="btn" style="display: none;">
+                            Cancel
+                        </a>
+                    </td>
+                    <td id="userReferencePL"> 0.00</td>
+                    <td class="border-l"><input id="remark" class="" type="text" placeholder="Remark"></td>
+                    <td class="full-amount">
+                        <a id="log" class="btn">
+                            Log
+                        </a>
+                    </td>
+                </tr>
+                <tr id="totalTempTr" class="total">
+                    <td class="align-L">Total</td>
+                    <td id="totalSite" style="display: none"></td>
+                    <td id="totalCurrencyType" style="display: none"></td>
+                    <td id="totalBalance"> 0.00</td>
+                    <td id="totalAvailableBalance"> 0.00</td>
+                    <td id="totalExposure"> 0.00</td>
+
+                    <td></td>
+
+                    <td id="totalCreditReference" class="" colspan="2"> 0.00</td>
+                    <td id="totalReferencePL"> 0.00</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <script type="text/javascript" src="/js/util/PageUtil.js?v=20230306_1678068000000"></script>
+        <div>
+            <ul style="display: none">
+                <li id="prev">
+                    <a href="javascript:void(0);">
+                        Prev
+                    </a>
+                </li>
+                <li id="next">
+                    <a href="javascript:void(0);">
+                        Next
+                    </a>
+                </li>
+                <li id="pageNumber"><a href="javascript:void(0);"></a></li>
+                <li id="more"><a href="javascript:void(0);">...</a></li>
+                <input type="text" id="goToPageNumber" onkeyup="return PageHandler.validatePageNumber(this)" maxlength="6" size="4">
+                <li><a id="goPageBtn">GO</a></li>
+            </ul>
+
+            <ul id="pageNumberContent" class="pages">
+                <li id="prev">
+                    <a href="javascript:void(0);" class="disable" style="pointer-events: none;">
+                        Prev
+                    </a>
+                </li>
+                <li id="pageNumber"><a href="javascript:void(0);" class="select" style="pointer-events: none;">1</a></li>
+                <li id="next">
+                    <a href="javascript:void(0);" class="disable" style="pointer-events: none;">
+                        Next
+                    </a>
+                </li>
+                <input type="text" id="goToPageNumber_1" onkeyup="return PageHandler.validatePageNumber(this)" maxlength="6" size="4" fdprocessedid="stam1m">
+                <a id="goPageBtn_1">GO</a>
+            </ul>
+        </div>
+
+
+    </div>
+
+    <div class="submit-wrap" id="settlementBar">
+        <ul>
+            <li>
+                <a id="clearAllBtn" href="javascript:void(0);" class="btn">
+                    Clear All
+                </a>
+            </li>
+            <li class="submit-payment">
+                <input id="paymentPassword" type="password" placeholder="Password" style="display: inline" fdprocessedid="96hq3q">
+                <a id="submit" href="javascript:void(0);" class="btn-send">
+                    Submit <span id="submitCount">0</span> Payment
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>

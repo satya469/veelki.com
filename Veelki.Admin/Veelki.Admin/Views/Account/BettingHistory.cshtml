@@ -1,0 +1,756 @@
+﻿
+@{
+    ViewData["Title"] = "Betting History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="display: none"><input type="password" autocomplete="new-password"></div>
+<div id="ContainerPanel" style="display:none">
+    <div id="calendarPanel" class="calendarPanel">
+        <div id="calendarForm" name="calendarForm" style="margin: 0px;">
+            <table class="calendarTable_1">
+                <tbody>
+                    <tr>
+                        <th><input class="prevMonth" name="prevMonth" type="button" id="prevMonth" value=""></th>
+                        <th class="nowrap" nowrap="nowrap">
+                            <select class="calendarYear" name="calendarYear"
+                                    id="calendarYear">
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                            </select><select calss="calendarMonth" name="calendarMonth" id="calendarMonth">
+                                <option value="0">Jan </option>
+                                <option value="1">Feb </option>
+                                <option value="2">Mar </option>
+                                <option value="3">Apr </option>
+                                <option value="4">May </option>
+                                <option value="5">Jun </option>
+                                <option value="6">Jul </option>
+                                <option value="7">Aug </option>
+                                <option value="8">Sep </option>
+                                <option value="9">Oct </option>
+                                <option value="10">Nov </option>
+                                <option value="11">Dec </option>
+                            </select>
+                        </th>
+                        <th><input class="nextMonth" name="nextMonth" type="button" id="nextMonth"></th>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="calendarTable" class="calendarTable_2" cellpadding="2" cellspacing="1">
+                <tbody>
+                    <tr class="calendarTable_title">
+                        <th>wk #</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                        <th>Sun</th>
+                    </tr>
+                    <tr>
+                        <td week="x" style="font-weight:bold; color:#7E97A7;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;color:#0657B9;"></td>
+                        <td style="cursor:pointer;color:#D91717;"></td>
+                    </tr>
+                    <tr>
+                        <td week="x" style="font-weight:bold; color:#7E97A7;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;color:#0657B9;"></td>
+                        <td style="cursor:pointer;color:#D91717;"></td>
+                    </tr>
+                    <tr>
+                        <td week="x" style="font-weight:bold; color:#7E97A7;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;color:#0657B9;"></td>
+                        <td style="cursor:pointer;color:#D91717;"></td>
+                    </tr>
+                    <tr>
+                        <td week="x" style="font-weight:bold; color:#7E97A7;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;color:#0657B9;"></td>
+                        <td style="cursor:pointer;color:#D91717;"></td>
+                    </tr>
+                    <tr>
+                        <td week="x" style="font-weight:bold; color:#7E97A7;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;color:#0657B9;"></td>
+                        <td style="cursor:pointer;color:#D91717;"></td>
+                    </tr>
+                    <tr>
+                        <td week="x" style="font-weight:bold; color:#7E97A7;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;"></td>
+                        <td style="cursor:pointer;color:#0657B9;"></td>
+                        <td style="cursor:pointer;color:#D91717;"></td>
+                    </tr>
+                    <tr class="calendarTable_inputBox">
+                        <th colspan="2">
+                            <input class="calendarInput1_ie7" name="calendarClear" type="button"
+                                   id="calendarClear" value="Clear">
+                        </th>
+                        <th colspan="4">
+                            <input class="calendarInput2_ie7" name="calendarToday" type="button"
+                                   id="calendarToday" value="Today">
+                        </th>
+                        <th colspan="2">
+                            <input class="calendarInput1_ie7" name="calendarClose" type="button"
+                                   id="calendarClose" value="Close">
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script language="JavaScript" type="text/javascript">
+        var $j = jQuery.noConflict();
+        //USE JsonUtil instead(in JSUtil)
+        if (typeof (JSON) == 'undefined') { //Fix IE6, 7 json bug.
+            $j.getScript('/js/json/json2.js');
+        }
+        PageConfig = {};
+        PageConfig.defaultMinDay = '2023-01-19';
+        PageConfig.agentSearchMinDay = '2022-03-22';
+        PageConfig.isShowSiteColumn = false;
+
+        I18N.setResource({
+            'msg.agent.account.applicationSuccess': 'Account application is successful',
+            'msg.agent.account.applicationUnsuccess': 'Account application is unsuccessful',
+            'msg.agent.account.commission': '* Given commission from upline is',
+            'msg.agent.success': 'success',
+            "msg.error.account.passwordEmpty": 'password is empty',
+            "msg.error.account.password.fail": 'Login name or password is invalid! Please try again.',
+            'msg.error.info.betsNoData': "You have no bets in this time period.",
+            'msg.error.validation.fieldEmpty': 'The field is empty : {0}',
+            'msg.error.validation.fieldNotValid': 'The field is not valid: {0}',
+            'msg.error.validation.notExistedField': 'The field is not existed : {0}',
+            'msg.error.validation.passwordFormatError': 'Password must have 8 to 15 alphanumeric without white space; cannot be the same as username/nickname; must contain at least 1 capital letter, small letter and numbers; and must not contain any special characters (!,,,etc..): {0}',
+            'msg.error.validation.passwordFormat': 'Password must have 8 to 15 alphanumeric without white space; cannot be the same as username/nickname; must contain at least 1 capital letter, small letter and numbers; and must not contain any special characters (!,,,etc..)',
+            'msg.error.validation.passwordNotMatch': 'New Password and Confirm Password Fields do not match',
+            'msg.error.validation.mustBeNumber': 'The field must be number : {0}',
+            'msg.error.validation.positive': 'The field must be Positive number : {0}',
+            'msg.executeSuccessful.executeSuccessfully': 'Executed Successfully!',
+            'msg.error.validation.errorFormat': 'The field is error format: {0}',
+            'msg.error.validation.startDateIsEmpty': 'Start date is empty',
+            'msg.error.validation.endDateIsEmpty': 'End date is empty',
+            'msg.error.account.isSuspended': 'Account is suspended! Please contact your upline.',
+            'form.text.bettingHistory.noReportMessage': "<p>Betting History enables you to review the bets you have placed. <br/>Specify the time period during which your bets were placed, the type of markets on which the bets were placed, and the sport.</p><p>Betting History is available online for the past 62 days.</p><p>User can search up to 14 days records per query only .</p>",
+            'form.text.function.getHistory': 'Get History',
+            'form.text.function.cancelled': 'Cancelled',
+            'form.text.function.settled': 'Settled',
+            'form.text.function.voided': 'Voided',
+            'form.text.matched': 'Matched',
+            'form.text.unmatched': 'Unmatched',
+            'form.text.function.active': 'Active'
+        });
+
+        $j(document).ready(function () {
+            $j('#bettingHistory').addClass('select').attr('href', '#');
+            BettingHistoryHandler.init();
+        });
+</script>
+<script language="javascript" type="text/javascript">
+    calendarProperties.dateFormatStyle = "yyyy-MM-dd";
+    calendarProperties.setI18n({ "form.text.transfer.weekly.weekNumber": "wk #", "calendar.text.month.1": "Jan", "calendar.text.month.2": "Feb", "calendar.text.month.3": "Mar", "calendar.text.month.4": "Apr", "calendar.text.month.5": "May", "calendar.text.month.6": "Jun", "calendar.text.month.7": "Jul", "calendar.text.month.8": "Aug", "calendar.text.month.9": "Sep", "calendar.text.month.10": "Oct", "calendar.text.month.11": "Nov", "calendar.text.month.12": "Dec", "form.text.transfer.weekly.0": "Sun", "form.text.transfer.weekly.1": "Mon", "form.text.transfer.weekly.2": "Tue", "form.text.transfer.weekly.3": "Wed", "form.text.transfer.weekly.4": "Thu", "form.text.transfer.weekly.5": "Fri", "form.text.transfer.weekly.6": "Sat", "calendar.form.text.Today": "Today", "calendar.form.text.Clear": "Clear", "calendar.form.text.Close": "Close" });
+    var calendarObj = new Calendar();
+</script>
+
+
+<!-- Top start -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script language="javascript" type="text/javascript">
+    if (typeof (PageConfig) == 'undefined') {
+        PageConfig = {};
+    }
+    PageConfig.CurrencyTypeName = 'PTH';
+    PageConfig.currencySymbol = '';
+    PageConfig.site = 1;
+    PageConfig.balance = 0;
+    PageConfig.agentLevel = 3;
+    PageConfig.isSubAccount = false;
+    PageConfig.ENABLE_SEPARATE_AGENT_PLAYER_LOGIN = true;
+    PageConfig.userId = 'subhodip';
+
+    $j(document).ready(function () {
+        I18N.addResource({
+            'msg.error.account.isSuspended': 'Account is suspended! Please contact your upline.'
+        });
+
+        AgentTopHandler.init();
+        MenuHandler.init();
+    });
+
+</script>
+
+
+<!-- Top end -->
+
+<div class="main_wrap">
+    <!-- agent path -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="agent_path">
+        <ul id="agentPath" class="agent_path-L">
+
+            <li id="path6" class="" style="display: none;">
+                <a href="javascript: void(0);">
+                    <span class="lv_0">
+                        COM
+                    </span>
+                    <strong></strong>
+                </a>
+            </li>
+
+            <li id="pathCurrency" class="currency_tag" style="display: none;">
+                <a href="javascript: void(0);">
+                    <span class=""></span>
+                    <strong></strong>
+                </a>
+            </li>
+
+            <li id="path5" class="" style="display: none;">
+                <a href="javascript: void(0);">
+                    <span class="lv_1">
+                        SS
+                    </span>
+                    <strong></strong>
+                </a>
+            </li>
+
+            <li id="path4" class="" style="display: none;">
+                <a href="javascript: void(0);">
+                    <span class="lv_2">
+                        SUP
+                    </span>
+                    <strong></strong>
+                </a>
+            </li>
+
+            <li id="path3" class="" style="">
+                <a href="javascript: void(0);">
+                    <span class="lv_3">
+                        MA
+                    </span>
+                    <strong>subhodip</strong>
+                </a>
+            </li>
+
+            <li id="path0" class="last_li" style="">
+                <a href="javascript: void(0);">
+                    <span class="lv_4">
+                        PL
+                    </span>
+                    <strong>vermaarun1995</strong>
+                </a>
+            </li>
+
+            <ul class="account_pop" id="accountPop" style="">
+                <li id="popTmp" style="display: none;">
+                    <a href=""></a>
+                </li>
+            </ul>
+        </ul>
+    </div>
+    <script language="JavaScript" type="text/javascript">
+        PageConfig.userName = "vermaarun1995";
+        PageConfig.memberSite = "1";
+        PageConfig.isMemberModule = true;
+        PageConfig.pathObj = { "currencyName": "PTH", "site": 1, "nodeList": [{ "userType": 3, "userID": "subhodip" }, { "userType": 0, "userID": "vermaarun1995" }], "popList": [] };
+        (function () {
+            PathHandler.init();
+        })();
+    </script>
+
+
+    <!--Agent Left Column -->
+
+
+
+
+
+
+
+    <div class="col-left">
+
+        <!-- Sub Menu and Path -->
+        <div class="sub_path">
+
+            <!-- Sub Menu -->
+            <ul class="menu-list">
+
+                <li class="class">
+                    Position
+                </li>
+                <li>
+                    <a id="accountSummary"
+                       href="account-summry.html">
+                        Account Summary
+                    </a>
+                </li>
+
+                <li class="class">
+                    Performance
+                </li>
+
+                <li>
+                    <a id="bettingHistory" href="#" class="select">
+                        Betting History
+                    </a>
+                </li>
+                <li>
+                    <a id="profitLoss"
+                       href="bating-profile.html">
+                        Betting Profit &amp;
+                        Loss
+                    </a>
+                </li>
+
+
+                <li>
+                    <a id="transactionHistory"
+                       href="tranjaction-histroy.html">
+                        Transaction&nbsp;History
+                    </a>
+                </li>
+
+                <li>
+                    <a id="_activityLog"
+                       href="active-log.html">
+                        Activity Log
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+
+    <!--Agent Left Column end-->
+    <!-- Center Column -->
+    <div class="col-center report">
+
+
+        <!-- Loading Wrap -->
+        <div id="loading" class="loading-wrap" style="display:none">
+            <ul class="loading">
+                <li><img src="https://statics3.skyexch.bike/images/loading40.gif"></li>
+                <li>
+                    Loading...
+                </li>
+                <br>
+                <li><span id="progress"></span></li>
+            </ul>
+        </div>
+
+        <!-- Message -->
+        <div id="message" class="message-wrap success">
+            <a class="btn-close">Close</a>
+            <p></p>
+        </div>
+
+        <script language="JavaScript" type="text/javascript">
+            (function () {
+                $j('.btn-close').click(function () {
+                    $j('#message').hide();
+                });
+            })();
+        </script>
+
+        <h2>
+            Betting History
+        </h2>
+
+        <!-- Tab -->
+
+
+
+
+
+
+
+        <ul class="report-tab-wrap" style="display:block">
+
+
+
+            <li class="report-tab select" id="reportType_exchange" data-reporttabtype="0">
+                Exchange
+            </li>
+
+
+
+            <li class="report-tab" id="reportType_fancyBet" data-reporttabtype="7">
+                FancyBet
+            </li>
+
+
+
+            <li class="report-tab" id="reportType_sportsBook" data-reporttabtype="2">
+                Sportsbook
+            </li>
+
+
+
+            <li class="report-tab" id="reportType_bookMaker" data-reporttabtype="3">
+                BookMaker
+            </li>
+
+
+
+            <li class="report-tab" id="reportType_binary" data-reporttabtype="5">
+                Binary
+            </li>
+
+
+
+
+
+        </ul>
+
+        <!-- function -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="function-wrap">
+            <ul class="input-list">
+                <div id="statusCondition" style="">
+                <li><label>Bet Status:</label></li>
+                <li>
+                    <select name="betStatus" id="betStatus" fdprocessedid="pf99ti">
+                        <option value="0">Unmatched</option>
+                        <option value="1">Matched</option>
+                        <option value="2">Settled</option>
+                        <option value="3">Cancelled</option>
+                        <option value="4">Voided</option>
+                    </select>
+                </li>
+        </div>
+
+
+
+
+        <li>
+            <label>
+                Period
+            </label>
+        </li>
+        <li>
+            <input id="startDate" class="cal-input" type="text" placeholder="YYYY-MM-DD" min="2023-01-19"
+                   max="2023-03-23" onclick="calendarObj.show(event,'startDate');" fdprocessedid="6s6co9">
+            <input id="startTime" class="time-input " type="text" placeholder="09:00" maxlength="5"
+                   fdprocessedid="gbcdj5">
+            to
+            <input id="endDate" class="cal-input" type="text" placeholder="YYYY-MM-DD" min="2023-01-19"
+                   max="2023-03-23" onclick="calendarObj.show(event,'endDate');" fdprocessedid="z0le94">
+            <input id="endTime" class="time-input " type="text" placeholder="08:59" maxlength="5"
+                   fdprocessedid="6031y9">
+        </li>
+        <li style="display: none;">(TimeZone:IST)</li>
+        </ul>
+
+        <ul class="input-list">
+            <li>
+                <a id="today" href="#" class="btn">
+                    Just For Today
+                </a>
+            </li>
+            <li style="display: ;">
+                <a id="yesterday" href="#" class="btn">
+                    From Yesterday
+                </a>
+            </li>
+            <li style="display: none;">
+                <a id="last7days" href="#" class="btn">
+                    Last 7 days
+                </a>
+            </li>
+            <li style="display: none;">
+                <a id="last30days" href="#" class="btn">
+                    Last 30 days
+                </a>
+            </li>
+            <li style="display: none;">
+                <a id="last2months" href="#" class="btn">
+                    Last 2 Months
+                </a>
+            </li>
+            <li style="display: none;">
+                <a id="last3months" href="#" class="btn">
+                    Last 3 Months
+                </a>
+            </li>
+            <li><a id="getPL" href="#" class="btn-send">Get History</a></li>
+        </ul>
+    </div>
+    <!-- No Report Message -->
+    <div id="noReportMessage">
+        <p>
+            Betting History enables you to review the bets you have placed. <br>Specify the time period during
+            which your bets were placed, the type of markets on which the bets were placed, and the sport.
+        </p>
+        <p>Betting History is available online for the past 62 days.</p>
+        <p>User can search up to 14 days records per query only .</p>
+    </div>
+
+    <script language="JavaScript" type="text/javascript">
+        SearchConfig = {};
+        SearchConfig.maxDay = '2023-03-23';
+        SearchConfig.today = '2023-03-22';
+        SearchConfig.yesterday = '2023-03-21';
+        SearchConfig.last7day = '2023-03-15';
+        SearchConfig.last30day = '2023-02-20';
+        SearchConfig.last2months = '2023-01-22';
+        SearchConfig.last3months = '2022-12-22';
+        SearchConfig.minDay = '2023-01-19';
+        SearchConfig.enableTimeSetting = true;
+
+        $j(document).ready(function () {
+
+            PageConfig.timeZone = "IST";
+
+            FunctionHandler.today();
+
+            if (false) {
+                FunctionHandler.initStartDate("", "");
+                FunctionHandler.initEndDate("", "");
+            }
+
+            if (typeof (TaskExecuter) !== 'undefined') {
+                TaskExecuter.execute();
+            }
+        });
+    </script>
+    <!-- function end-->
+    <!-- Report Table -->
+    <!-- Report Table -->
+    <div id="report" style="display: none">
+        <table id="matchTableTemplate" class="table-s" style="display: none">
+            <tbody>
+                <tr>
+                    <th width="9%" class="align-L">
+                        Bet ID
+                    </th>
+                    <th width="9%" class="align-L">
+                        PL ID
+                    </th>
+                    <th width="7%" class="align-L" id="siteTitle">
+                        Site
+                    </th>
+                    <th width="" class="align-L">
+                        Market
+                    </th>
+                    <th width="12%">
+                        Selection
+                    </th>
+                    <th width="4%">
+                        Type
+                    </th>
+                    <th width="8%">
+                        Bet placed
+                    </th>
+                    <th width="7%">
+                        Odds req.
+                    </th>
+                    <th width="8%">
+                        Stake
+                    </th>
+                    <th width="8%">
+                        Avg. odds matched
+                    </th>
+                    <th width="10%">
+                        Profit/Loss
+                    </th>
+                    <th width="10%" id="userCancelTitle">
+                        User Cancel
+                    </th>
+                </tr>
+
+                <tr id="matchRowTemplate" style="display: none">
+                    <td class="align-L"><a id="betID" href="javascript: void(0);"></a></td>
+                    <td class="align-L" id="playerID"></td>
+                    <td class="align-L" id="siteName"></td>
+                    <td id="matchTitle" class="align-L"></td>
+                    <td id="matchSelection"></td>
+                    <td><span id="matchType"></span></td>
+                    <td><span id="betPlaced" class="small-date"></span></td>
+                    <td id="matchOddsReq"></td>
+                    <td id="matchStake"></td>
+                    <td id="matchAvgOdds"></td>
+                    <td><span id="pol" class="small-date"></span></td>
+                    <td id="userCancel"></td>
+                </tr>
+
+                <tr id="expandReductionRowTemplate" class="expand" style="display: none">
+                    <td colspan="11">
+                        <img class="expand-arrow" src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <table id="txTableTemplate">
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        Bet taken
+                                    </th>
+                                    <th width="14%">
+                                        Odds req.
+                                    </th>
+                                    <th width="14%">
+                                        Stake
+                                    </th>
+                                    <th width="14%">
+                                        Liability
+                                    </th>
+                                    <th width="14%">
+                                        Odds matched
+                                    </th>
+                                    <th width="14%">
+                                        Reduction
+                                    </th>
+                                    <th width="14%">
+                                        Actual Odds.
+                                    </th>
+                                </tr>
+
+                                <tr id="txRowTemplate" style="display: none">
+                                    <td><span id="betTaken" class="small-date"></span></td>
+                                    <td id="txOddsReq"></td>
+                                    <td id="txStake"></td>
+                                    <td id="txLiability"></td>
+                                    <td id="txOddsMatched"></td>
+                                    <td id="reduction"></td>
+                                    <td id="actualOdds"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr id="expandRowTemplate" class="expand" style="display: none">
+                    <td colspan="2"></td>
+                    <td colspan="9">
+                        <img class="expand-arrow" src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <table id="txTableTemplate">
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        Bet taken
+                                    </th>
+                                    <th width="16%">
+                                        Odds req.
+                                    </th>
+                                    <th width="17%">
+                                        Stake
+                                    </th>
+                                    <th width="24%">
+                                        Liability
+                                    </th>
+                                    <th width="24%">
+                                        Odds matched
+                                    </th>
+                                </tr>
+
+                                <tr id="txRowTemplate" style="display: none">
+                                    <td><span id="betTaken" class="small-date"></span></td>
+                                    <td id="txOddsReq"></td>
+                                    <td id="txStake"></td>
+                                    <td id="txLiability"></td>
+                                    <td id="txOddsMatched"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="table-other">
+
+        </p>
+
+
+        <script type="text/javascript" src="/js/util/PageUtil.js?v=20230320_1679280600000"></script>
+        <div>
+            <ul style="display: none">
+                <li id="prev">
+                    <a href="javascript:void(0);">
+                        Prev
+                    </a>
+                </li>
+                <li id="next">
+                    <a href="javascript:void(0);">
+                        Next
+                    </a>
+                </li>
+                <li id="pageNumber"><a href="javascript:void(0);"></a></li>
+                <li id="more"><a href="javascript:void(0);">...</a></li>
+                <input type="text" id="goToPageNumber" onkeyup="return PageHandler.validatePageNumber(this)"
+                       maxlength="6" size="4">
+                <li><a id="goPageBtn">GO</a></li>
+            </ul>
+
+            <ul id="pageNumberContent" class="pages">
+            </ul>
+        </div>
+
+    </div>
+</div>
+    </div>
