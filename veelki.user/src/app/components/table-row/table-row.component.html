@@ -29,18 +29,18 @@
         <dd class="col-matched"></dd>
         <dd class="col-visit">
             <div class="suspend" *ngIf="tableColumn.disableMatch=='True'"><span>Suspend</span></div>
-            <a class="btn-back">{{tableColumn.back11}}</a>
-            <a class="btn-lay">{{tableColumn.lay11}}</a>
+            <a class="btn-back" [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.back11}}</a>
+            <a class="btn-lay" [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.lay11}}</a>
         </dd>
         <dd class="col-draw">
             <div class="suspend" *ngIf="tableColumn.disableMatch=='True'"><span>Suspend</span></div>
-            <a class="btn-back">{{tableColumn.back1}}</a>
-            <a class="btn-lay">{{tableColumn.lay1}}</a>
+            <a class="btn-back" [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.back1}}</a>
+            <a class="btn-lay" [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.lay1}}</a>
         </dd>
         <dd class="col-home">
             <div class="suspend" *ngIf="tableColumn.disableMatch=='True'"><span>Suspend</span></div>
-            <a class="btn-back">{{tableColumn.back12}}</a>
-            <a class="btn-lay">{{tableColumn.lay12}}</a>
+            <a class="btn-back" [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.back12}}</a>
+            <a class="btn-lay" [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.lay12}}</a>
         </dd>
         <dd class="col-info">
             <a class="add-pin" style="cursor: pointer" title="Add to Multi Markets">Pin</a>

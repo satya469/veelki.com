@@ -1,6 +1,6 @@
 <div class="col-right">
-    <div class="slip-wrap">
-        <h3><a class="to-expand">Bet Slip </a></h3>
+    <div class="slip-wrap" [ngClass]="{'close':visibleBetSlip==false}">
+        <h3><a class="to-expand" (click)="visibleBetSlip = !visibleBetSlip">Bet Slip </a></h3>
         <p *ngIf="!betData.sportId">Click on the odds to add selections to the betslip. </p>
         <div class="bet_slip" *ngIf="betData.sportId">
             <div class="slip-list">
@@ -66,10 +66,10 @@
 
         </div>
     </div>
-    <div class="matched-wrap" *ngIf="isUserLogin">
+    <div class="matched-wrap" [ngClass]="{'close':visibleOpenBet==false}" *ngIf="isUserLogin">
         <h3>
             <a class="slip_refresh" (click)="getMarketData()">Refresh</a>
-            <a class="to-expand">Open Bets</a>
+            <a class="to-expand" (click)="visibleOpenBet = !visibleOpenBet">Open Bets</a>
         </h3>
         <div>
             <div class="slip-sort">

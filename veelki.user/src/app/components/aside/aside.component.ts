@@ -1,6 +1,6 @@
 import { SubjectService } from 'src/app/services/subject.service';
 import { betData } from './../fullmarket/match-odd/match-odd.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { StackLimit } from 'src/app/models/stackLimit';
 import { Observable, mergeMap } from 'rxjs';
@@ -11,6 +11,7 @@ import { LoaderService } from 'src/app/services/loader.service';
 import { SessionService } from 'src/app/services/session.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { BetService } from 'src/app/services/getBet.service';
+import { NgbAccordion } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-aside',
@@ -29,12 +30,21 @@ export class AsideComponent implements OnInit {
   betData !: betData;
   isUserLogin: boolean = false;
   userId: number = this.sessionService.getLoggedInUser() ? this.sessionService.getLoggedInUser().id : 0;
+  visibleBetSlip : boolean = true;
+  visibleOpenBet : boolean = true;
 
   marketList: MarketList[] = [];
+  @ViewChild('acc') getNgbAccordion?: NgbAccordion;
 
   constructor(private subjectService : SubjectService, private betService : BetService, public notification: NotificationService, private sessionService: SessionService, private service: HttpService, private loaderService : LoaderService, private authService: AuthService, private store: Store<{ StackData: StackLimit[] }> ) { 
     this.stackData = this.store.select(data => data.StackData);
     this.authService._isLoginUser.subscribe((res) => this.isUserLogin = res);
+  }
+
+  toggleAccordian($event:boolean){
+    if($event === true){
+      this.getNgbAccordion?.toggle("toggle-1");
+    }
   }
 
 

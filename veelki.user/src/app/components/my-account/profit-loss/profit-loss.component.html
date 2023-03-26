@@ -1,341 +1,70 @@
 <app-profile-sidebar></app-profile-sidebar>
 <div class="col-center report">
-    <div id="message" class="message-wrap success">
-        <a class="btn-close" href="javascript:history.back()">Close</a>
-        <p>Your cash out was successful !</p>
-    </div>
-    <h2>My Bets
-    </h2>
+    <h2>My Bets</h2>
     <ul class="tab col3">
-        <li><a href="current_bets.jsp">Current Bets
-            </a></li>
-        <li><a href="bet_history.jsp">Bets History
-            </a></li>
-        <li><a class="select" href="profit_loss.jsp">Profit &amp; Loss
-            </a></li>
+        <li><a>Current Bets</a></li>
+        <li><a>Bets History</a></li>
+        <li><a>Profit &amp; Loss</a></li>
     </ul>
-    <!-- Account Info -->
     <div class="white-wrap">
-        <h3>Profit &amp; Loss - Main wallet
-        </h3>
+        <!-- <h3>Profit &amp; Loss - Main wallet</h3>
         <ul class="acc-info">
-            <li class="user">userdemoo
-            </li>
-            <li class="time">2023-03-13 13:52
-            </li>
+            <li class="user">userdemoo</li>
+            <li class="time">2023-03-13 13:52</li>
+        </ul> -->
+        <ul class="report-tab-wrap">
+            <li class="report-tab select">Exchange</li>
+            <!-- <li class="report-tab">FancyBet</li> -->
         </ul>
-        <!-- Tab -->
-
-
-
-        <ul class="report-tab-wrap" style="display:block">
-            <li class="report-tab  select" id="reportType_exchange" data-reporttabtype="0">
-                Exchange
-            </li>
-            <li class="report-tab " id="reportType_fancyBet" data-reporttabtype="7">
-                FancyBet
-            </li>
-            <li class="report-tab " id="reportType_casino" data-reporttabtype="1">
-                Casino
-            </li>
-            <li class="report-tab " id="reportType_sportsBook" data-reporttabtype="2">
-                Sportsbook
-            </li>
-            <li class="report-tab " id="reportType_bookMaker" data-reporttabtype="3">
-                BookMaker
-            </li>
-            <li class="report-tab " id="reportType_bPoker" data-reporttabtype="4">
-                BPoker
-            </li>
-            <li class="report-tab " id="reportType_binary" data-reporttabtype="5">
-                Binary
-            </li>
-            <li class="report-tab " id="reportType_sabaSportsBook" data-reporttabtype="6">
-                SABA
-            </li>
-            <li class="report-tab " id="reportType_mt5" data-reporttabtype="8">
-                SkyTrader
-            </li>
-            <li class="report-tab" id="more-selection">
-                <span id="more-selection-title">More</span>
-                <p id="selection-content" class="report-tab_content" style="display: none">
-                    <a href="#" id="reportType_luckco7" data-reporttabtype="9">
-                        MiniGame
-                    </a>
-                    <a href="#" id="reportType_royal" data-reporttabtype="10">
-                        Royal
-                    </a>
-                </p>
-            </li>
-
-        </ul>
-        <!-- function -->
-
-
-
-
-
-
-
-
-
         <div class="function-wrap">
             <ul class="input-list">
-                <div id="statusCondition" style="display: none">
-                    <li><label>Bet Status:</label></li>
-                    <li>
-                        <select name="betStatus" id="betStatus">
-                        </select>
-                    </li>
-                </div>
-                <li><label>Period
-                    </label></li>
-                <li>
-                    <input id="startDate" class="cal-input" type="text" placeholder="YYYY-MM-DD" min="2023-01-10"
-                        max="2023-03-14" onclick="calendarObj.show(event,'startDate');" fdprocessedid="7vhxh7">
-                    <input id="startTime" disabled="" class="time-input disable" type="text" placeholder="09:00"
-                        maxlength="5" fdprocessedid="kndkpr">
+                <li><label>Period </label></li>
+                <li><input class="cal-input" type="text" placeholder="YYYY-MM-DD" ngbDatepicker
+                        #dateTime="ngbDatepicker" [maxDate]="maxDate">
+                    <input disabled="" class="time-input disable" type="text" placeholder="09:00">
                     to
-                    <input id="endDate" class="cal-input" type="text" placeholder="YYYY-MM-DD" min="2023-01-10"
-                        max="2023-03-14" onclick="calendarObj.show(event,'endDate');" fdprocessedid="jejylc">
-                    <input id="endTime" disabled="" class="time-input disable" type="text" placeholder="08:59"
-                        maxlength="5" fdprocessedid="cb1eq">
+                    <input class="cal-input" type="text" placeholder="YYYY-MM-DD" ngbDatepicker
+                        #dateTime="ngbDatepicker" [maxDate]="maxDate">
+                    <input disabled="" class="time-input disable" type="text" placeholder="08:59">
                 </li>
-                <li style="display: none;">(TimeZone:IST)</li>
             </ul>
             <ul class="input-list">
-                <li><a id="today" href="#" class="btn">Just For Today
-                    </a></li>
-                <li style="display: ;"><a id="yesterday" href="#" class="btn">From Yesterday
-                    </a></li>
-                <li style="display: none;"><a id="last7days" href="#" class="btn">Last 7 days
-                    </a></li>
-                <li style="display: none;"><a id="last30days" href="#" class="btn">Last 30 days
-                    </a></li>
-                <li style="display: none;"><a id="last2months" href="#" class="btn">Last 2 Months
-                    </a></li>
-                <li style="display: none;"><a id="last3months" href="#" class="btn">Last 3 Months
-                    </a></li>
-                <li><a id="getPL" href="#" class="btn-send">Get P &amp; L
-                    </a></li>
+                <li><a class="btn">Just For Today </a></li>
+                <li><a class="btn">From Yesterday </a></li>
+                <li><a class="btn-send">Get P &amp; L </a></li>
             </ul>
         </div>
-        <!-- No Report Message -->
-        <div id="noReportMessage">
-            <p>Betting Profit &amp; Loss enables you to review the bets you have placed. <br>Specify the time period
-                during which your bets were placed, the type of markets on which the bets were placed, and the sport.
-            </p>
+        <div *ngIf="!profitLossData">
+            <p>Betting Profit &amp; Loss enables you to review the bets you have placed. <br>Specify the time
+                periodduring which your bets were placed, the type of markets on which the bets were placed, and the
+                sport.</p>
             <p>Betting Profit &amp; Loss is available online for the past 62 days.</p>
             <p>User can search up to 14 days records per query only .</p>
         </div>
-        <script language="JavaScript" type="text/javascript">
-            SearchConfig = {};
-            SearchConfig.maxDay = '2023-03-14';
-            SearchConfig.today = '2023-03-13';
-            SearchConfig.yesterday = '2023-03-12';
-            SearchConfig.last7day = '2023-03-06';
-            SearchConfig.last30day = '2023-02-11';
-            SearchConfig.last2months = '2023-01-13';
-            SearchConfig.last3months = '2022-12-13';
-            SearchConfig.minDay = '2023-01-10';
-            SearchConfig.enableTimeSetting = false;
-            $j(document).ready(function () {
-                PageConfig.timeZone = "IST";
-                FunctionHandler.today();
-                if (true) {
-                    FunctionHandler.initStartDate("2023-03-13", "09:00");
-                    FunctionHandler.initEndDate("2023-03-14", "08:59");
-                }
-                if (typeof (TaskExecuter) !== 'undefined') {
-                    TaskExecuter.execute();
-                }
-            });
-        </script>
-        <!-- function end-->
     </div>
-    <!-- Report Table -->
-    <script language="JavaScript" type="text/javascript">
-        I18N.addResource({
-            'form.text.profileAndLoss.yesSubtotal': "Yes subtotal",
-            'form.text.profileAndLoss.noSubtotal': "No subtotal",
-            'form.text.rebate': 'Rebate'
-        });
-    </script>
-    <!-- Casino Report -->
-    <div id="casinoReport" style="display: none;">
+    <div *ngIf="profitLossData">
         <ul class="total-show">
-            <li id="casinoTotalPL"></li>
+            <li>Total P/L</li>
+            <!-- <li class="sports-switch">PTH 7.25</li> -->
         </ul>
-        <table id="casinoTableTemplate" class="table01 table-pnl" style="display: none">
+        <table class="table01 table-pnl">
             <tbody>
                 <tr>
-                    <th width="" class="align-L">Market
-                    </th>
-                    <th width="15%"></th>
-                    <th width="15%"></th>
-                    <th width="18%">Profit/Loss
-                    </th>
+                    <th class="align-L">Market</th>
+                    <th width="15%">Start Time</th>
+                    <th width="15%">Settled date</th>
+                    <th width="18%">Profit/Loss</th>
                 </tr>
-                <tr id="casinoSummaryTemplate" style="display: none">
-                    <td id="title" class="align-L"></td>
-                    <td></td>
-                    <td></td>
+                <tr *ngFor="let profitLoss of profitLossData">
+                    <td class="align-L">{{profitLoss.sportName}}<img class="fromto" src="assets/images/transparent.gif"><strong>{{profitLoss.event}}</strong><img class="fromto" src="assets/images/transparent.gif">{{profitLoss.market}}</td>
+                    <td>2023-03-25 06:30:00</td>
+                    <td>2023-03-25 12:45:14</td>
                     <td>
-                        <a id="casinoPl" class="expand-close" href="javascript: void(0);"></a>
-                    </td>
-                </tr>
-                <tr id="casinoDetailTemplate" class="expand" style="display: none">
-                    <td colspan="4">
-                        <img class="expand-arrow-R" src="asstes/images/transparent.gif">
-                        <table class="table-commission">
-                            <tbody>
-                                <tr>
-                                    <th>Platform
-                                    </th>
-                                    <th>Valid Turnover
-                                    </th>
-                                    <th>Win / Loss
-                                    </th>
-                                    <th>PT/Comm.
-                                    </th>
-                                    <th>Profit/Loss
-                                    </th>
-                                </tr>
-                                <tr id="casinoTxTemplate" style="display: none">
-                                    <td id="vendorPlatform"></td>
-                                    <td id="turnover"></td>
-                                    <td id="payout"></td>
-                                    <td id="taxRebate"></td>
-                                    <td id="balance"></td>
-                                </tr>
-                                <tr class="casino-grand-total">
-                                    <td>Grand Total
-                                    </td>
-                                    <td id="totalTurnover"></td>
-                                    <td id="totalPayout"></td>
-                                    <td id="totalTaxRebate"></td>
-                                    <td id="totalBalance"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <a>{{profitLoss.resultAmount}}</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-    </div>
-    <!-- Exchange Report -->
-    <div id="report" data-report="profitAndLossReport" style="display: none">
-        <ul id="spotsUl" class="total-show">
-            <li id="totalPL"></li>
-            <li id="sumOfQuery" class="sports-switch"></li>
-            <li class="sports-switch">
-                <select name="sports" id="sports">
-                    <option value="0">All
-                    </option>
-                </select>
-            </li>
-        </ul>
-        <ul id="binaryPL" class="total-show" style="display: none">
-            <li id="binaryTotalPL"></li>
-        </ul>
-        <table id="tableTemplate" class="table01 table-pnl" style="display: none">
-            <tbody>
-                <tr>
-                    <th width="" class="align-L">Market
-                    </th>
-                    <th width="15%">Start Time
-                    </th>
-                    <th width="15%">Settled date
-                    </th>
-                    <th width="18%">Profit/Loss
-                    </th>
-                </tr>
-                <tr id="summaryTemplate" style="display: none">
-                    <td id="title" class="align-L"></td>
-                    <td id="startTime"></td>
-                    <td id="settledDate"></td>
-                    <td>
-                        <a id="pl" class="expand-close" href="javascript: void(0);"></a>
-                    </td>
-                </tr>
-                <tr id="detailTemplate" class="expand" style="display: none">
-                    <td colspan="4">
-                        <img class="expand-arrow-R" src="asstes/images/transparent.gif">
-                        <table class="table-commission">
-                            <tbody>
-                                <tr>
-                                    <th width="9%">Bet ID
-                                    </th>
-                                    <th width="">Selection
-                                    </th>
-                                    <th width="9%">Odds
-                                    </th>
-                                    <th width="13%">Stake
-                                    </th>
-                                    <th width="8%">Type
-                                    </th>
-                                    <th width="16%">Placed
-                                    </th>
-                                    <th width="23%">Profit/Loss
-                                    </th>
-                                </tr>
-                                <tr id="txTemplate" style="display: none">
-                                    <td id="betID"></td>
-                                    <td id="matchSelection"></td>
-                                    <td id="txOddsMatched"></td>
-                                    <td id="txStake"></td>
-                                    <td><span id="matchType"></span></td>
-                                    <td id="placed"></td>
-                                    <td id="txLiability"></td>
-                                </tr>
-                                <tr class="sum-pl">
-                                    <td colspan="7">
-                                        <dl>
-                                            <dt>Total Stakes
-                                            </dt>
-                                            <dd id="totalStakes"></dd>
-                                            <dt id="backSubTotalTitle">Back subtotal
-                                            </dt>
-                                            <dd id="backSubTotal"></dd>
-                                            <dt id="laySubTotalTitle">Lay subtotal
-                                            </dt>
-                                            <dd id="laySubTotal"></dd>
-                                            <dt>Market subtotal
-                                            </dt>
-                                            <dd id="marketTotal"></dd>
-                                            <dt id="commissionTitle">Commission
-                                            </dt>
-                                            <dd id="commission"></dd>
-                                            <dt class="net_total">Net Market Total
-                                            </dt>
-                                            <dd id="netTotal" class="net_total"></dd>
-                                        </dl>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <p class="table-other">Profit and Loss is shown net of commission.
-        </p>
-    </div>
-
-    <script type="text/javascript" src="/js/util/PageUtil.js?v=20230310_1678444800000"></script>
-    <div>
-        <ul style="display: none">
-            <li id="prev"><a href="javascript:void(0);">Prev
-                </a></li>
-            <li id="next"><a href="javascript:void(0);">Next
-                </a></li>
-            <li id="pageNumber"><a href="javascript:void(0);"></a></li>
-            <li id="more"><a href="javascript:void(0);">...</a></li>
-            <input type="text" id="goToPageNumber" onkeyup="return PageHandler.validatePageNumber(this)" maxlength="6"
-                size="4">
-            <li><a id="goPageBtn">GO</a></li>
-        </ul>
-        <ul id="pageNumberContent" class="pages">
-        </ul>
+        <p class="table-other">Profit and Loss is shown net of commission.</p>
     </div>
 </div>
