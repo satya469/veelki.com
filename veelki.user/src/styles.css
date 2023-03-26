@@ -4411,8 +4411,6 @@ textarea:focus {
 }
 
 .set-content {
-    *height: auto !important;
-    *height: 100px;
     min-height: 100px;
     background-color: #e0e6e6;
     font-size: 11px;
@@ -8295,8 +8293,6 @@ img.support-ig {
 }
 
 .player .bets-wrap {
-    *height: auto !important;
-    *height: 650px;
     min-height: 650px;
     margin-bottom: 10px
 }
