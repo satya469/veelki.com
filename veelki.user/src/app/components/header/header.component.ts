@@ -34,32 +34,43 @@ export class HeaderComponent implements OnInit {
   stackLimitList: StackLimit[] = [];
   stackData?: Observable<StackLimit[]>;
   isStackEdit : boolean = false;
+  randomNumber : number = 1234;
 
   constructor(private formBuilder: FormBuilder, private subjectService : SubjectService, private service: HttpService, private router: Router, private authService: AuthService, private sessionService: SessionService, private modalService: NgbModal,
     private confirmService: ConfirmService, public notification: NotificationService, private store: Store<{ StackData: StackLimit[] }>) {
 
-    this.gmtTimeZone = this.gmtTimeZone.substring(this.gmtTimeZone.indexOf("GMT"),this.gmtTimeZone.length);
+    this.gmtTimeZone = this.gmtTimeZone.substring(this.gmtTimeZone.indexOf("GMT"),this.gmtTimeZone.indexOf("("));
 
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      codeValidator: ['']      
     });
 
     this.stackForm = this.formBuilder.group({
       stackList: this.formBuilder.array([])
     });
     this.stackData = this.store.select(data => data.StackData);
-
+    this.generateRandomNumber();
   }
 
   isLoginUser: boolean = false;
 
   get f() { return this.loginForm.controls; }
 
+  generateRandomNumber(){
+    this.randomNumber = Math.floor(1000 + Math.random() * 9000);
+  }
+
   loginFormSubmit() {
     this.isSubmitted = true;
     if (this.loginForm.invalid) {
       this.formSubmitError = "Enter username and password.";
+      return;
+    }
+
+    if (this.loginForm.value.codeValidator != this.randomNumber) {
+      this.formSubmitError = "Validation code is empty";
       return;
     }
 
@@ -79,11 +90,13 @@ export class HeaderComponent implements OnInit {
         }
         if (response.data == null) {
           this.formSubmitError = response.message;
+          this.loginForm.reset();
+          this.generateRandomNumber();
         }
+        setTimeout(()=>{
+          this.formSubmitError = '';
+        },3000);
       });
-
-
-
   }
 
   userLogout() {

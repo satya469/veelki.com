@@ -6,6 +6,7 @@
                 <dt>Please login to continue</dt>
                 <dd><input formControlName="email" type="text" placeholder="Username"></dd>
                 <dd><input formControlName="password" type="password" placeholder="Password"></dd>
+                <dd class="valid-code"><input formControlName="codeValidator" type="text" placeholder="Validation Code" maxlength="4"><span style="position: absolute; right: 5px; top: 20%; font-size: 16px;font-weight: bold;">{{randomNumber}}</span></dd>
                 <dd><button type="submit" class="btn-send">Login<img class="icon-login"
                             src="assets/images/transparent.gif"></button></dd>
                 <dd class="error" *ngIf="isSubmitted && formSubmitError != null">{{formSubmitError}}</dd>
@@ -16,7 +17,7 @@
 </div>
 <div class="top">
     <div class="header full-wrap">
-        <h1><a href="/">SKYEXCHANGE </a></h1>
+        <h1><a [routerLink]="['/']">SKYEXCHANGE </a></h1>
         <div id="searchWrap" class="search-wrap" style="">
             <div> <input id="searchInput" class="search-input" type="text" placeholder="Search Events"
                     fdprocessedid="lh2j8"> <button id="searchClear" class="search-clear"
@@ -36,6 +37,10 @@
                 </li>
                 <li><input formControlName="password" placeholder="Password" type="password" placeholder="Password">
                 </li>
+                <li class="valid-code">
+                    <input formControlName="codeValidator" type="text" placeholder="Validation" maxlength="4">
+                    <span style="position: absolute; right: 5px; top: 20%; font-size: 16px;font-weight: bold;">{{randomNumber}}</span>
+                </li>
                 <!-- <li class="valid-code" style="display: block"> <input id="validCode" type="text"
                         placeholder="Validation" maxlength="4" fdprocessedid="nk3uz"> <img id="authenticateImage"
                         src="https://bxawscf.skyexch.bike/verifycode.gr?v=1678553277974"> </li> -->
@@ -52,67 +57,14 @@
             </ul>
         </form>
         <ul class="account-wrap" *ngIf="isLoginUser">
-            <li class="main-wallet">
-                <a id="multiWallet" href="#multiBalancePop" class="a-wallet">
-                    <ul id="accountCredit">
-                        <li><span>Main Balance</span> <span id="betCredit">PTH 0.00</span></li>
-                        <li><span>Exposure</span> <span id="totalExposure">0.00</span></li>
-                        <li class="nums">+<span id="vendorQuantity">5</span></li>
-                    </ul>
-                    <!-- show wallet-->
-                    <div class="wallet-detail" id="multiBalancePop">
-                        <div class="wallet-detail-group">
-                            <dl class="wallet-detail-content">
-                                <dt>Main Balance</dt>
-                                <dd class="wallet-balance-num"><span class="badge-currency"
-                                        id="currency">USD</span><span id="mainBalance">0.00</span></dd>
-                                <dd class="wallet-exposure">Exposure <span id="mainExposure">0.00</span></dd>
-                            </dl>
-                        </div>
-                        <div id="walletContent" class="wallet-detail-group">
-                        </div>
-                        <div id="walletTemp" class="wallet-detail-group" style="display: none;">
-                            <dl id="tempDl" class="wallet-detail-content">
-                                <dt id="vendorTitle">Housie Balance</dt>
-                                <dd class="wallet-balance-num"><span class="badge-currency"
-                                        id="vendorCurrency">USD</span><span id="vendorBalance">$ 0.00</span>
-                                </dd>
-                                <dd class="wallet-recall">
-                                    <button class="btn-recall" id="recall">Recall</button>
-                                </dd>
-                            </dl>
-                            <dl id="recallAllDl" class="wallet-detail-content">
-                                <dd class="align-R">
-                                    <button class="btn-recall" id="recallAll">Recall All</button>
-                                </dd>
-                            </dl>
-                        </div>
-                        <div class="btn-box">
-                            <button class="btn" onclick="location.href='javascript:history.back();'">Close</button>
-                        </div>
-                    </div>
 
-                    <p class="loading-bar" id="menuRefreshLoading" style="display: none;">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </p>
-                </a>
-                <a id="menuRefresh" class="a-refresh" href="#" title="Refresh Main Wallet"><img
-                        src="asstes/images/transparent.gif"></a>
-            </li>
-
+            <app-balance></app-balance>
 
             <li class="account" ngbDropdown>
                 <a id="accountPopup" style="cursor: pointer" ngbDropdownToggle>My Account</a>
                 <ul class="" aria-labelledby="accountPopup" ngbDropdownMenu>
                     <li>
-                        <h4>userdemoo <span class="gmt" title="Time Zone">{{gmtTimeZone}}</span></h4>
+                        <h4>{{loginUserName}} <span class="gmt" title="Time Zone">{{gmtTimeZone}}</span></h4>
                     </li>
                     <li><a ngbDropdownItem [routerLink]="['/account/my-profile']">My Profile</a></li>
                     <li><a ngbDropdownItem [routerLink]="['/myprofile']">Balance Overview</a></li>
@@ -166,11 +118,14 @@
                                         <input class="stake-input" type="text" maxlength="7" value="">
                                     </dd>
                                 </dl>
-                                <dl class="stake-set" *ngIf="isStackEdit==false && stackLimitList && stackLimitList.length > 0">
+                                <dl class="stake-set"
+                                    *ngIf="isStackEdit==false && stackLimitList && stackLimitList.length > 0">
                                     <dt>Stake </dt>
-                                    <dd *ngFor="let stack of stackLimitList"><a class="btn select">{{stack.stakeLimitPrice}}</a></dd>
+                                    <dd *ngFor="let stack of stackLimitList"><a
+                                            class="btn select">{{stack.stakeLimitPrice}}</a></dd>
                                     <dd class="col-edit">
-                                        <a class="btn-edit" (click)="isStackEdit=true">Edit <img src="assets/images/transparent.gif"></a>
+                                        <a class="btn-edit" (click)="isStackEdit=true">Edit <img
+                                                src="assets/images/transparent.gif"></a>
                                     </dd>
                                 </dl>
                                 <dl class="stake-set" formArrayName="stackList" *ngIf="isStackEdit==true">
@@ -182,11 +137,13 @@
                                                 type="number" min="1" maxlength="7">
                                         </ng-container>
                                     </dd>
-                                    <dd class="col-edit"><button type="submit" style="padding: 0 10px;" class="btn-send">OK</button></dd>
+                                    <dd class="col-edit"><button type="submit" style="padding: 0 10px;"
+                                            class="btn-send">OK</button></dd>
                                 </dl>
                                 <ul class="btn-wrap"
                                     style="position: relative; display: flex; border: none; background: none;">
-                                    <li style="border: none;" (click)="isStackEdit=false" ngbDropdownToggle><a class="btn">Cancel</a></li>
+                                    <li style="border: none;" (click)="isStackEdit=false" ngbDropdownToggle><a
+                                            class="btn">Cancel</a></li>
                                     <!-- <li style="border: none;" class="col-send"><a class="btn-send">Save</a></li> -->
                                 </ul>
                             </form>

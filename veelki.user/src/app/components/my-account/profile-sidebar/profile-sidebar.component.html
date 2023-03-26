@@ -1,40 +1,17 @@
 <div class="col-left">
-
-    <!-- Sub Menu and Path -->
     <div class="sub_path">
-        <!-- Path -->
         <div class="path">
             <a href="#path-pop" class="path-back">...</a>
-
             <ul>
-                <li class="path-last"><a href="#">My Account
-                    </a></li>
+                <li class="path-last"><a href="#">My Account</a></li>
             </ul>
         </div>
-        <!-- Path Pop Up-->
-        <ul id="path-pop" class="path-pop">
-
-        </ul>
-
-        <!-- Sub Menu -->
         <ul class="menu-list">
-
-            <li><a id="sub_menu_detail" href="detail.jsp" class="select">My Profile
-                </a></li>
-
-            <li><a id="sub_menu_summary" href="summary.jsp">Balance Overview
-                </a></li>
-
-            <li><a id="sub_menu_accountCashStatement_log" href="accountCashStatement.jsp">Account Statement
-                </a></li>
-
-            <li><a id="sub_menu_my_bets" href="current_bets.jsp">My Bets
-                </a></li>
-
-            <li><a id="sub_menu_activity_log" href="activityLog.jsp">Activity Log
-                </a></li>
-
-
+            <li><a [routerLink]="['/account/my-profile']" routerLinkActive="select">My Profile</a></li>
+            <li><a [routerLink]="['/account/summary']" routerLinkActive="select">Balance Overview</a></li>
+            <li><a [routerLink]="['/account/account-statement']" routerLinkActive="select">Account Statement</a></li>
+            <li><a [routerLink]="['/account/current-bets']" routerLinkActive="select">My Bets</a></li>
+            <li><a [routerLink]="['/account/activity-log']" routerLinkActive="select">Activity Log</a></li>
         </ul>
     </div>
 </div>

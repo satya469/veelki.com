@@ -1,114 +1,103 @@
 <app-profile-sidebar></app-profile-sidebar>
 <div class="col-center report">
-   
-    <h2>Account Details
-    </h2>
+    <h2>Account Details</h2>
 
     <div class="event-left">
         <div class="profile-wrap">
-            <h3>About You
-            </h3>
+            <h3>About You</h3>
             <dl>
-                <dt>First Name
-                </dt>
-                <dd>null
-                </dd>
-
-                <dt>Last Name
-                </dt>
-                <dd>
-                </dd>
-
-                <dt>Birthday
-                </dt>
-                <dd>
-
-                    --
-                </dd>
-
-                <dt>E-mail
-                </dt>
-                <dd>Abcd@gmail.com
-                </dd>
-                <dt>Password
-                </dt>
+                <dt>Full Name</dt>
+                <dd>{{userData?.fullName}}</dd>
+                <dt>Mobile Number</dt>
+                <dd>{{userData?.phoneNumber}}</dd>
+                <dt>E-mail</dt>
+                <dd>{{userData?.email}}</dd>
+                <dt>Password</dt>
                 <dd>********************************
-
-                    <a href="#" class="favor-set" onclick="ChangePasswordHandler.showDialog()">Edit
-                    </a>
-
+                    <a class="favor-set" (click)="openChangePasswordModal(changePasswordModal)">Edit </a>
                 </dd>
             </dl>
         </div>
-
         <div class="profile-wrap">
-            <h3>Address
-            </h3>
+            <h3>Address</h3>
             <dl>
-                <dt>Address
-                </dt>
-                <dd>--</dd>
-
-                <dt>Town/City
-                </dt>
-                <dd>--</dd>
-
-                <dt>Country
-                </dt>
-                <dd>--</dd>
-
-                <dt>Country/State
-                </dt>
-                <dd>--</dd>
-
-                <dt>Postcode
-                </dt>
-                <dd>--</dd>
-
-                <dt>Timezone
-                </dt>
-                <dd>IST
-                </dd>
+                <dt>Country</dt>
+                <dd>India</dd>
+                <dt>Town/City</dt>
+                <dd>{{userData?.city}}</dd>
+                <dt>Country/State</dt>
+                <dd>{{userData?.state}}</dd>
+                <dt>Timezone</dt>
+                <dd>IST</dd>
             </dl>
         </div>
     </div>
 
     <div class="event-right">
         <div class="profile-wrap">
-            <h3>Contact Details
-            </h3>
+            <h3>Contact Details</h3>
             <dl>
-                <dt>Primary number
-                </dt>
-                <dd>--
-                </dd>
+                <dt>Primary number</dt>
+                <dd>{{userData?.phoneNumber}}</dd>
             </dl>
         </div>
 
         <div class="profile-wrap">
-            <h3>Setting
-            </h3>
+            <h3>Setting</h3>
             <dl>
-                <dt>Currency
-                </dt>
-                <dd>PTH
-                </dd>
-
-                <dt>Odds Format
-                </dt>
+                <dt>Currency</dt>
+                <dd>PTH</dd>
+                <dt>Odds Format</dt>
                 <dd>--</dd>
             </dl>
         </div>
-
         <div class="profile-wrap">
-            <h3>Commission
-            </h3>
+            <h3>Commission</h3>
             <dl>
-                <dt>Comm charged
-                </dt>
-                <dd>2.0 %
-                </dd>
+                <dt>Comm charged</dt>
+                <dd>2.0 %</dd>
             </dl>
         </div>
     </div>
 </div>
+<ng-template #changePasswordModal let-modal>
+    <div class="pop_bg" style="display: block;">
+        <form [formGroup]="changePasswordForm" method="post" role="form" (ngSubmit)="formSubmit()" novalidate>
+            <div class="pop_box">
+                <a class="close_pop" (click)="modal.dismiss()">close_pop</a>
+                <h3>Change Password</h3>
+                <dl class="form_list">
+                    <dt>New Password</dt>
+                    <dd>
+                        <input type="password" formControlName="newPassword" placeholder="Enter"
+                            (change)="onPasswordChange()">
+                        <span class="must">＊</span>
+                        <span class="error-text" *ngIf="isFormSubmit">
+                            <span *ngIf="changePasswordForm.controls['newPassword']?.errors?.['required']">New Password Is Required.</span>
+                            <span *ngIf="changePasswordForm.controls['newPassword']?.errors?.['pattern']">Password should be minimum 6 character.</span>
+                        </span>
+                    </dd>
+                    <dt>New Password Confirm</dt>
+                    <dd>
+                        <input type="password" formControlName="confirmPass" placeholder="Enter"
+                            (change)="onPasswordChange()">
+                        <span class="must">＊</span>
+                        <span class="error-text" *ngIf="isFormSubmit">
+                            <span *ngIf="changePasswordForm.controls['confirmPass']?.errors?.['required']">Confirm Password Is Required.</span>
+                            <span *ngIf="changePasswordForm.controls['confirmPass']?.errors?.['mismatch']">Confirm Password Not Same as Password.</span>
+                        </span>
+                    </dd>
+                    <dt>Your Password</dt>
+                    <dd>
+                        <input type="password" formControlName="oldPassword" placeholder="Enter">
+                        <span class="must">＊</span>
+                        <span class="error-text" *ngIf="isFormSubmit">
+                            <span *ngIf="changePasswordForm.controls['oldPassword']?.errors?.['required']">Please Enter Current Password.</span>
+                        </span>
+                    </dd>
+                    <dd><button type="submit" class="btn-send">Change</button></dd>
+                </dl>
+            </div>
+        </form>
+    </div>
+</ng-template>

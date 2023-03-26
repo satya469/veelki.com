@@ -51,6 +51,8 @@ import { InterceptorService } from './http.interceptor';
 import { ThousandSuffixesPipe } from './helpers/thousand-suffixes.pipe';
 import { NotificationService } from './services/notification.service';
 import { NgxMarqueeModule } from 'ngx-marquee';
+import { BalanceComponent } from './components/balance/balance.component';
+import { NgbAccordion, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -79,7 +81,8 @@ import { NgxMarqueeModule } from 'ngx-marquee';
     TableRowComponent,
     SliderComponent,
     MatchOddComponent,
-    ThousandSuffixesPipe
+    ThousandSuffixesPipe,
+    BalanceComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +95,7 @@ import { NgxMarqueeModule } from 'ngx-marquee';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     NgxMarqueeModule,
+    NgbAccordionModule,
     ToastrModule.forRoot(),
     StoreModule.forRoot({StackData : StackReducer, InplayData : InplayReducer, SportData : SportReducer}),
     EffectsModule.forRoot([StackEffects,InplayEffect, SportEffect]),
