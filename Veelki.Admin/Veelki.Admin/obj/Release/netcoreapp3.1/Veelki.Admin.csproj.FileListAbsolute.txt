@@ -510,3 +510,12 @@ D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Veelk
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Veelki.Admin.Views.pdb
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Veelki.Admin.csproj.CopyComplete
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Veelki.Admin.genruntimeconfig.cache
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor\Views\Account\AccountSummary.cshtml.g.cs
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor\Views\Account\Banking.cshtml.g.cs
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor\Views\Account\BettingHistory.cshtml.g.cs
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor\Views\Account\BettingProfile.cshtml.g.cs
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor\Views\Account\MyAccount.cshtml.g.cs
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor\Views\Report\BetList.cshtml.g.cs
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor\Views\Report\ProfitReportByDownline.cshtml.g.cs
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor\Views\Report\ProfitReportByMarket.cshtml.g.cs
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor\Views\Report\RiskManagement.cshtml.g.cs

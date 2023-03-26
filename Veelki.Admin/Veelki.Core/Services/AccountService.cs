@@ -38,28 +38,19 @@ namespace Veelki.Core.Services
                 string query = string.Format(@"select top 1 *  from AccountStatement where ToUserId = {0} order by id desc", UserId);
                 var balance = (await _baseRepository.QueryAsync<AccountStatement>(query)).Select(x => x.Balance).FirstOrDefault();
 
-                query = "select distinct marketid,SportId from Bets where IsSettlement = 2 and UserId = " + UserId;
+                query = "select * from Bets where IsSettlement = 2 and UserId = " + UserId;
                 var betMarketList = (await _baseRepository.QueryAsync<Bets>(query)).ToList();
-                for (int i = 0; i < betMarketList.Count; i++)
+                foreach (var item in betMarketList)
                 {
-                    unsettleBetOpening = unsettleBetOpening + await GetBackAndLayOpeningAndExposureAmountAsync(UserId, betMarketList[i].MarketId, betMarketList[i].SportId);
+                    if (item.Type.Equals("back"))
+                    {
+                        unsettleBetOpening = unsettleBetOpening + ((item.AmountStake * item.OddsRequest) - item.AmountStake);
+                    }
+                    else
+                    {
+                        unsettleBetOpening = unsettleBetOpening - ((item.AmountStake * item.OddsRequest) - item.AmountStake);
+                    }
                 }
-                //query = string.Format(@"select * from Bets where IsSettlement <> 1 and UserId = {0}", UserId);
-                //var betBackAmountList = (await _baseRepository.QueryAsync<Bets>(query)).Select(x => x.AmountStake).FirstOrDefault();
-
-                //query = string.Format(@"select sum(AmountStake) as AmountStake from Bets where IsSettlement <> 1 and UserId = {0} and Type='back'", UserId);
-                //var betBackAmountList = (await _baseRepository.QueryAsync<Bets>(query)).Select(x => x.AmountStake).FirstOrDefault();
-                ////totalBetAmount = totalBetAmount + betAmountList;
-                ////openingBalance = balance - betBackAmountList;
-
-                //query = string.Format(@"select sum((OddsRequest * AmountStake)-AmountStake) as AmountStake from Bets where IsSettlement <> 1 and UserId = {0} and Type='lay'", UserId);
-                //var betlayAmountList = (await _baseRepository.QueryAsync<Bets>(query)).Select(x => x.AmountStake).FirstOrDefault();
-
-                //query = "select distinct marketid,AmountStake,selectionid, ((AmountStake * OddsRequest) - AmountStake) as AmountStake from Bets where Type = 'back' and IsSettlement = 2 and UserId = 12 order by SelectionId";
-                //var betBackAmountList = (await _baseRepository.QueryAsync<Bets>(query)).ToList();
-
-                //query = "select distinct marketid,AmountStake,selectionid, ((AmountStake * OddsRequest) - AmountStake) as AmountStake from Bets where Type = 'lay' and IsSettlement = 2 and UserId = 12 order by SelectionId";
-                //var betlayAmountList = (await _baseRepository.QueryAsync<Bets>(query)).ToList();
 
                 openingBalance = balance - Math.Abs(unsettleBetOpening);
 
@@ -842,7 +833,7 @@ namespace Veelki.Core.Services
                     });
                 }
 
-                if(responseStr.Length > 0)
+                if (responseStr.Length > 0)
                     responseStr = responseStr.Substring(0, responseStr.Length - 1);
                 //if (UserId > 0)
                 //{

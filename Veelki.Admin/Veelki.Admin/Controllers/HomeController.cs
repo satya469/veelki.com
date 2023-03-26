@@ -48,6 +48,28 @@ namespace Veelki.Admin.Controllers
             return View();
         }
 
+        public async Task<JsonResult> DeleteUser(int UserId, string Status)
+        {
+            CommonReturnResponse commonModel = null;
+            try
+            {
+                int statusId = Status.ToLower() == "active" ? 1 : Status.ToLower() == "suspend" ? 2 : 3;
+                commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/UpdateUserStatus?Status={1}&UserId={2}", _configuration["ApiKeyUrl"], statusId, UserId));
+                return Json(commonModel);
+            }
+            catch (Exception ex)
+            {
+                commonModel = new CommonReturnResponse()
+                {
+                    Data = null,
+                    IsSuccess = false,
+                    Message = ex.Message,
+                    Status = ResponseStatusCode.NOTACCEPTABLE
+                };
+                return Json(JsonConvert.SerializeObject(commonModel));
+            }
+        }
+
         public IActionResult Privacy()
         {
             return View();
