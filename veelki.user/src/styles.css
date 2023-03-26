@@ -4402,7 +4402,7 @@ textarea:focus {
     display: none
 }
 .slip_set-pop.show {
-    display: block!important
+    display: block!important;
 }
 
 .slip_set-pop:target,
@@ -9601,7 +9601,7 @@ td .suspend {
 .col-info .add-pin,
 .col-info .delete-pin {
     padding: 0;
-    /*background: url(assets/images/main/add-pin-s.png) no-repeat;*/
+    background: url(assets/images/main/add-pin-s.png) no-repeat;
     background-position: right;
     width: 16px;
     height: 21px
@@ -9609,7 +9609,7 @@ td .suspend {
 
 .col-info .add-pin:hover,
 .col-info .delete-pin:hover {
-    /*background: url(assets/images/main/add-pin-s-hover.png) no-repeat*/
+    background: url(assets/images/main/add-pin-s-hover.png) no-repeat
 }
 
 .game-head .add-pin,
@@ -11803,7 +11803,7 @@ p.dynamic-min-bet {
 
 .urgent-notice .announce-header {
     padding: 0;
-    background: #121212 url(assets/images/skyexchange/bg-send-skyEX.png) repeat-x;
+    background: #121212 url(assets/images/veelki/bg-send-skyEX.png) repeat-x;
     border-radius: 8px 8px 0 0
 }
 
@@ -12533,7 +12533,8 @@ p.dynamic-min-bet {
     top: 10%;
     left: 50%;
     background-color: #eee;
-    width: 400px;
+    max-width: 400px;
+    width: 90%;
     border-radius: 5px;
     padding: 15px;
     -webkit-transform: translate(-50%, 0);
@@ -16062,7 +16063,7 @@ table .expand-open {
 }
 
 .header h1 {
-    background-image: url(assets/images/skyexchange/logo.png)
+    background-image: url(assets/images/veelki/logo.png)
 }
 
 .top {
@@ -16363,11 +16364,11 @@ table .expand-open {
 }
 
 .login_to_go .kv {
-    background-image: url(assets/images/skyexchange/bg-login_wrap.png)
+    background-image: url(assets/images/veelki/bg-login_wrap.png)
 }
 
 .login_to_go .kv:before {
-    background-image: url(assets/images/skyexchange/logo.png);
+    background-image: url(assets/images/veelki/logo.png);
     top: 75%
 }
 
@@ -16406,13 +16407,13 @@ table .expand-open {
 }
 
 .maintain-footer h1 {
-    background-image: url(assets/images/skyexchange/logo.png)
+    background-image: url(assets/images/veelki/logo.png)
 }
 
 .header h1 {
-    margin: -8px 15px 0 0;
-    width: 56px;
-    height: 54px
+    margin: -10px 15px 0 0;
+    width: 120px;
+    height: 54px;
 }
 
 .login_to_go .kv:before {
@@ -16556,8 +16557,12 @@ table .expand-open {
     }
     .header.full-wrap {
         height: auto;
-        overflow: hidden;
         padding-bottom: 8px;
+    }
+    .header.full-wrap:after{
+        clear: both;
+        display: block;
+        content: "";
     }
     .support-wrap.extend-support, .power-wrap{
         width: 100%;
@@ -16584,6 +16589,23 @@ table .expand-open {
     .menu-wrap {
         min-width: auto;
         max-width: 1350px;
+    }
+    .bets th p, .bets-HS th p, .bets-GH th p {
+        width: 180px;
+    }
+}
+.mob-display{
+    display: none!important;
+}
+@media(max-width:1024px){
+    .web-display{
+        display: none!important;
+    }
+    .mob-display{
+        display: block!important;
+    }
+    .col-visit, .col-matched, .col-draw, .col-home {
+        width: 25%;
     }
 }
 @media(max-width:767px){
@@ -16623,7 +16645,47 @@ table .expand-open {
         position: relative;
         width: 100%;
     }
+    .full-wrap .col-left{
+        height: auto;
+    }
+    .account-wrap{
+        width: 100%;
+    }
+    .web-display{
+        display: none!important;
+    }
+    .mob-display{
+        display: block!important;
+    }
+    .col-visit, .col-matched, .col-draw, .col-home {
+        width: 25%;
+    }
+    .over-wrap{
+        max-height: none;
+    }
+    .col-center.inplay {
+        height: auto;
+    }
+    .full-wrap .col-right {
+        height: auto;
+    }
+    .sub_path {
+        margin-top: 15px;
+    }
+    .game-head {
+        margin-top: 15px;
+    }
+    .full-wrap .col-center {
+        height: auto;
+    }
+    .promo-banner-wrap {
+        min-height: 100px;
+    }
+    .account-wrap ul {
+        left: auto!important;
+    }
 }
+
 @media(max-width:480px){
     .gamehall-wrap-simple .entrance-half {
         grid-column: span 2;
@@ -16631,5 +16693,116 @@ table .expand-open {
     .login-wrap input, .login-wrap textarea {
         width: 80px;
     }
-    
+    .header h1 {
+        width: 100px;
+    }
+    .web-display{
+        display: none!important;
+    }
+    .mob-display{
+        display: block!important;
+    }
+    .login_to_go .kv{
+        display: none;
+    }
+    .login_to_go {
+        top: 18%;
+        left: 5%;
+        width: 90%;
+        margin-left: 0;
+    }
+    .login-panel dd {
+        width: 86%;
+    }
+    .login-panel .btn-send {
+        width: 100%;
+    }
+    .login_to_go .close {
+        right: 10px;
+    }
+    .full-wrap{
+        height: auto;
+    }
+    .extend-btn img {
+        width: 18px;
+        height: 18px;
+    }
+    .support-wrap.extend-support a {
+        font-size: 12px;
+        display: block;
+        line-height: normal;
+        padding: 0;
+        margin: 0;
+        border: none!important;
+    }
+    .extend-wrap {
+        flex-wrap: wrap;
+    }
+    .support-social {
+        flex-basis: 48%;
+    }
+    .power-wrap {
+        display: block;
+        width: 95%;
+    }
+    .power-wrap h3{
+        border: none;
+        margin-bottom: 10px;
+    }
+    .licence_embed{
+        margin-bottom: 10px;
+    }
+    .over-wrap{
+        max-height: 100%;
+    }
+    .tab {
+        min-width: 250px;
+    }
+    .col-visit, .col-matched, .col-draw, .col-home {
+        width: 25%;
+    }
+    .col-center.markets {
+        padding: 0;
+        margin-top: 15px;
+    }
+    .promo-banner-wrap{
+        min-height: 80px;
+    }
+    .bets th p, .bets-HS th p, .bets-GH th p{
+        width: auto;
+    }
+    .login-panel {
+        width: 100%;
+    }
+    .full-wrap .slip-wrap{
+        height: auto;
+    }
+    .slip-head .col-profit, .matched-head .col-profit {
+        width: 24%;
+    }
+    .account-wrap {
+        display: block;
+    }
+    .account-wrap li {
+        margin-left: 0;
+        margin-bottom: 5px;
+    }
+    .account-wrap .main-wallet, .account-wrap .account{
+        float: right;
+    }
+    .account-wrap ul {
+        left: auto!important;
+    }
+    .sub_path {
+        margin-top: 10px;
+    }
+    .event-left, .event-right {
+        width: 100%;
+    }
+    .table01 td, .table-s td {
+        text-align: left;
+    }
+    .slip-book .col-profit, .slip-lay .col-profit, .slip-back .col-profit {
+        width: 15%;
+    }
 }

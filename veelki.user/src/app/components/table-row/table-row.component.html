@@ -1,9 +1,9 @@
 <ul class="slip-head">
     <li class="col-game"></li>
     <li class="col-matched">Matched</li>
-    <li class="col-visit">1</li>
+    <li class="col-visit web-display">1</li>
     <li class="col-draw">x</li>
-    <li class="col-home">2</li>
+    <li class="col-home web-display">2</li>
     <li class="col-info"></li>
 </ul>
 <div class="game-list">
@@ -27,7 +27,7 @@
                 Cricket</span> -->
         </dt>
         <dd class="col-matched"></dd>
-        <dd class="col-visit">
+        <dd class="col-visit web-display">
             <div class="suspend" *ngIf="tableColumn.disableMatch=='True'"><span>Suspend</span></div>
             <a class="btn-back" [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.back11}}</a>
             <a class="btn-lay" [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.lay11}}</a>
@@ -37,7 +37,7 @@
             <a class="btn-back" [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.back1}}</a>
             <a class="btn-lay" [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.lay1}}</a>
         </dd>
-        <dd class="col-home">
+        <dd class="col-home web-display">
             <div class="suspend" *ngIf="tableColumn.disableMatch=='True'"><span>Suspend</span></div>
             <a class="btn-back" [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.back12}}</a>
             <a class="btn-lay" [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.lay12}}</a>

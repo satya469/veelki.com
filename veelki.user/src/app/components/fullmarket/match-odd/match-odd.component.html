@@ -4,7 +4,7 @@
         <ul class="game-info" *ngIf="inPlay==true">
             <li class="green"><img class="icon-irun" src="assets/images/transparent.gif"> In-Play</li>
         </ul>
-        <dl class="game-matched">
+        <dl class="game-matched web-display">
             <dt>Matched</dt>
             <dd>PTE 7,906,570</dd>
         </dl>
@@ -22,10 +22,10 @@
             <tbody>
                 <tr class="bet-all">
                     <td></td>
-                    <td class="refer-bet" colspan="2"></td>
+                    <td class="refer-bet web-display" colspan="2"></td>
                     <td><a class="back-all"><img src="assets/images/transparent.gif"><span>Back all</span></a></td>
                     <td><a class="lay-all"><img src="assets/images/transparent.gif"><span>Lay all</span></a></td>
-                    <td class="refer-book" colspan="2"></td>
+                    <td class="refer-book web-display" colspan="2"></td>
                 </tr>
                 <tr *ngFor="let matchOddsPrice of matchOdds.oddsData.runners; let i = index">
                     <th class="predict">
@@ -50,12 +50,12 @@
                 </td> -->
                     <td *ngFor="let backPrice of matchOddsPrice.price.back; let i = index"
                         class="back-{{matchOddsPrice.price.back.length - i}}"
-                        [ngClass]="{'select': selectionId == matchOddsPrice.selectionId && betType == 0 && i == 2}"><a
+                        [ngClass]="{'select': selectionId == matchOddsPrice.selectionId && betType == 0 && i == 2, 'web-display': i == 0 || i == 1}"><a
                             (click)="setBetPrice(matchOdds.exEventId, matchOdds.eventName, matchOdds.marketId, matchOdds.marketName, matchOddsPrice.runnerName, matchOddsPrice.selectionId, 0, backPrice.price, 0, 0)">{{backPrice.price}}<span>{{
                                 backPrice.size |
                                 thousandSuffixes : 2}}</span></a></td>
                     <td *ngFor="let layPrice of matchOddsPrice.price.lay;  let i = index" class="lay-{{i+1}}"
-                        [ngClass]="{'select': selectionId == matchOddsPrice.selectionId && betType == 1 && i == 0}"><a
+                        [ngClass]="{'select': selectionId == matchOddsPrice.selectionId && betType == 1 && i == 0, 'web-display': i == 1 || i == 2}"><a
                             (click)="setBetPrice(matchOdds.exEventId, matchOdds.eventName, matchOdds.marketId, matchOdds.marketName, matchOddsPrice.runnerName, matchOddsPrice.selectionId, 1, layPrice.price, 0, 1);">{{layPrice.price}}<span>{{
                                 layPrice.size |
                                 thousandSuffixes : 2}}</span></a></td>

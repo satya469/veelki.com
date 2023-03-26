@@ -31,7 +31,11 @@
                 </ul>
             </div>
         </div>
-        <form [formGroup]="loginForm" *ngIf="!isLoginUser" method="post" role="form" (ngSubmit)="loginFormSubmit()">
+        <ul class="login-wrap mob-display" style="padding-top: 0px;" *ngIf="!isLoginUser">
+            <li style="float:right;"><button type="button" class="btn-login" (click)="setLoginPopup(true)">Login
+            <img class="icon-login" src="assets/images/transparent.gif?v=1678553205059">
+        </button></li></ul>
+        <form [formGroup]="loginForm" *ngIf="!isLoginUser" method="post" role="form" (ngSubmit)="loginFormSubmit()" class="web-display">
             <ul class="login-wrap">
                 <li><input formControlName="email" placeholder="Username" type="text" placeholder="Username">
                 </li>

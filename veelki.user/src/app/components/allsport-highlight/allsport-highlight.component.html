@@ -7,16 +7,16 @@
 
         <div class="game-highlight-wrap col3">
             <h3>Sports Highlights
-                <div class="highlight-sorting">
+                <!-- <div class="highlight-sorting">
                     <label for="lang">View by</label>
                     <div class="select">
                         <select>
-                            <option value="competitionName" orderby="asc" priority="asc">Competition</option>
-                            <option value="openDateTime" orderby="asc" inplay="desc" selected="">Time</option>
-                            <option value="totalMatched" orderby="desc">Matched</option>
+                            <option value="competitionName">Competition</option>
+                            <option value="openDateTime" selected="">Time</option>
+                            <option value="totalMatched">Matched</option>
                         </select>
                     </div>
-                </div>
+                </div> -->
             </h3>
             <app-table-row [tableRowList]="eventList" [multiMarketPin]="true"></app-table-row>
         </div>
