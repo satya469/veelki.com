@@ -16787,8 +16787,12 @@ table .expand-open {
         margin-left: 0;
         margin-bottom: 5px;
     }
-    .account-wrap .main-wallet, .account-wrap .account{
+    .account-wrap .main-wallet{
         float: right;
+    }
+    .account-wrap .account{
+        float: right;
+        clear: both;
     }
     .account-wrap ul {
         left: auto!important;

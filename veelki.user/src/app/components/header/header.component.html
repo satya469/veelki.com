@@ -83,7 +83,7 @@
             </li>
         </ul>
     </div> <!-- Menu Wrap -->
-    <div class="menu-wrap">
+    <div class="menu-wrap" [ngClass]="{'web-display':isLoginUser==false}">
         <div class="full-wrap">
             <ul id="tabMenu" class="menu">
                 <li><a routerLink="/home" routerLinkActive="select">Home</a></li>
