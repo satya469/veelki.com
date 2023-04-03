@@ -13,236 +13,220 @@
 
 
 
-
-<div id="createModal" class="pop_bg" style="display:none">
-    <div class="pop_box ">
-        <a class="close_pop" href="#" onclick="CloseDialog()">close_pop</a>
-        <!-- message -->
-        <div id="message" class="message-wrap success" style="display:none">
-            <a class="btn-close" href="#">Close</a>
-            <p></p>
-        </div>
-        <h3>
-            Add Player
-        </h3>
-        <ul class="half_box add-member-box">
-            <li class="add_account_box">
-                <dl class="border_b">
-                    <dt>
-                        E-mail
-                    </dt>
-                    <dd>
-                        <input id="email" type="text" onclick="location.href='#stake'" placeholder="Enter"
-                               maxlength="50">
-                        <span class="must">＊</span>
-                    </dd>
-                    <dt>
-                        Username
-                    </dt>
-                    <dd>
-                        <input id="userName" type="text" onclick="location.href='#stake'" placeholder="Enter"
-                               maxlength="16">
-                        <span class="must">＊</span>
-                        <span id="userNameErrorText" class="error-text" style="display:none"></span>
-                    </dd>
-                    <dt>
-                        Password
-                    </dt>
-                    <dd>
-                        <input id="userPassword" type="password" onclick="location.href='#stake'"
-                               placeholder="Enter">
-                        <span class="must">＊</span>
-                        <span id="passwordErrorText" class="error-text" style="display:none"></span>
-                    </dd>
-                    <dt>
-                        Confirm Password
-                    </dt>
-                    <dd>
-                        <input id="repeatPassword" type="password" onclick="location.href='#stake'"
-                               placeholder="Enter">
-                        <span class="must">＊</span>
-                        <span id="repeatPasswordErrorText" class="error-text" style="display:none"></span>
-                    </dd>
-                </dl>
-                <dl class="">
-                    <dt>
-                        First Name
-                    </dt>
-                    <dd>
-                        <input id="firstName" type="text" onclick="location.href='#stake'" placeholder="Enter"
-                               maxlength="16">
-                    </dd>
-                    <dt>
-                        Last Name
-                    </dt>
-                    <dd>
-                        <input id="lastName" type="text" onclick="location.href='#stake'" placeholder="Enter"
-                               maxlength="16">
-                    </dd>
-                    <dt>Phone</dt>
-                    <dd>
-                        <input id="phone" type="text" onclick="location.href='#stake'" placeholder="Enter"
-                               maxlength="16">
-                    </dd>
-
-                    <dt>
-                        Exposure
-                    </dt>
-                    <dd>
-                        <input id="exposure" type="text" onclick="location.href='#stake'" placeholder="Enter"
-                               maxlength="12">
-                        <span class="must">＊</span>
-                    </dd>
-
-                    <dt>Commission(%)</dt>
-                    <dd>
-                        <input id="commission" type="text" onclick="location.href='#tax'" placeholder="Enter"
-                               value="">
-                        <span class="must">＊</span>
-                    </dd>
-
-
-
-
-                    <dt>
-                        Time Zone
-                    </dt>
-                    <dd>
-                        <select name="timezone" id="timezone">
-
-                            <option value="Pacific/Midway">
-                                Pacific/Midway(GMT-11:00)
-                            </option>
-
-                            <option value="Pacific/Honolulu">
-                                Pacific/Honolulu(GMT-10:00)
-                            </option>
-
-                            <option value="America/Juneau">
-                                America/Juneau(GMT-9:00)
-                            </option>
-
-                            <option value="America/Los_Angeles">
-                                America/Los_Angeles(GMT-8:00)
-                            </option>
-
-                            <option value="America/Phoenix">
-                                America/Phoenix(GMT-7:00)
-                            </option>
-
-                            <option value="America/Chicago">
-                                America/Chicago(GMT-6:00)
-                            </option>
-
-                            <option value="America/New_York">
-                                America/New_York(GMT-5:00)
-                            </option>
-
-                            <option value="America/Santiago">
-                                America/Santiago(GMT-4:00)
-                            </option>
-
-                            <option value="America/Sao_Paulo">
-                                America/Sao_Paulo(GMT-3:00)
-                            </option>
-
-                            <option value="Atlantic/South_Georgia">
-                                Atlantic/South_Georgia(GMT-2:00)
-                            </option>
-
-                            <option value="Atlantic/Azores">
-                                Atlantic/Azores(GMT-1:00)
-                            </option>
-
-                            <option value="Europe/London">
-                                Europe/London(GMT+0:00)
-                            </option>
-
-                            <option value="Europe/Paris">
-                                Europe/Paris(GMT+1:00)
-                            </option>
-
-                            <option value="Africa/Cairo">
-                                Africa/Cairo(GMT+2:00)
-                            </option>
-
-                            <option value="Asia/Qatar">
-                                Asia/Qatar(GMT+3:00)
-                            </option>
-
-                            <option value="Asia/Dubai">
-                                Asia/Dubai(GMT+4:00)
-                            </option>
-
-                            <option value="Asia/Karachi">
-                                Asia/Karachi(GMT+5:00)
-                            </option>
-
-                            <option value="IST" selected="selected">
-                                IST(Bangalore / Bombay / New Delhi) (GMT+5:30)
-                            </option>
-
-                            <option value="Asia/Kathmandu">
-                                Asia/Kathmandu(GMT+5:45)
-                            </option>
-
-                            <option value="Asia/Dhaka">
-                                Asia/Dhaka(GMT+6:00)
-                            </option>
-
-                            <option value="Asia/Bangkok">
-                                Asia/Bangkok(GMT+7:00)
-                            </option>
-
-                            <option value="Asia/Hong_Kong">
-                                Asia/Hong_Kong(GMT+8:00)
-                            </option>
-
-                            <option value="Asia/Tokyo">
-                                Asia/Tokyo(GMT+9:00)
-                            </option>
-
-                            <option value="Australia/Adelaide">
-                                Australia/Adelaide(GMT+9:30)
-                            </option>
-
-                            <option value="Australia/Melbourne">
-                                Australia/Melbourne(GMT+10:00)
-                            </option>
-
-                            <option value="Asia/Magadan">
-                                Asia/Magadan(GMT+11:00)
-                            </option>
-
-                            <option value="Pacific/Fiji">
-                                Pacific/Fiji(GMT+12:00)
-                            </option>
-
-                        </select>
-                        <span class="must">＊</span>
-                    </dd>
-
-                </dl>
-            </li>
-            <li class="pt_allowed_box" style="display: none;">
-
-
-
-
-
-
-
-                <div class="pt_allowed" style="display: none;">
-                    <dl>
-                        <dt class="dt_w50">
-                            PT Allowed To Player
-                            (%)
+<form id="request-form" autocomplete="off" class="" method="post">
+    <div id="createModal" class="pop_bg" style="display:none">
+        <div class="pop_box ">
+            <a class="close_pop" href="#" onclick="CloseDialog()">close_pop</a>
+            <!-- message -->
+            <div id="message" class="message-wrap success" style="display:none">
+                <a class="btn-close" href="#">Close</a>
+                <p></p>
+            </div>
+            <h3>
+                Add Player
+            </h3>
+            <ul class="half_box add-member-box">
+                <li class="add_account_box">
+                    <dl class="border_b">
+                        <dt>
+                            E-mail
                         </dt>
                         <dd>
-                            <input id="memberMaxPT" type="text" onclick="location.href='#stake'" placeholder="Enter"
-                                   value="0">
+                            <input type="hidden" class="form-control" id="idModel">
+                            <input type="hidden" asp-for="RoleId" value="">
+                            <input id="email" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                                   maxlength="50">
+                            <span class="must">＊</span>
+                        </dd>
+                        <dt>
+                            Username
+                        </dt>
+                        <dd>
+                            <input id="userName" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                                   maxlength="16">
+                            <span class="must">＊</span>
+                            <span id="userNameErrorText" class="error-text" style="display:none"></span>
+                        </dd>
+                        <dt>
+                            Password
+                        </dt>
+                        <dd>
+                            <input id="userPassword" type="password" onclick="location.href='#stake'"
+                                   placeholder="Enter">
+                            <span class="must">＊</span>
+                            <span id="passwordErrorText" class="error-text" style="display:none"></span>
+                        </dd>
+                        <dt>
+                            Confirm Password
+                        </dt>
+                        <dd>
+                            <input id="repeatPassword" type="password" onclick="location.href='#stake'"
+                                   placeholder="Enter">
+                            <span class="must">＊</span>
+                            <span id="repeatPasswordErrorText" class="error-text" style="display:none"></span>
                         </dd>
                     </dl>
+                    <dl class="">
+                        <dt>
+                            First Name
+                        </dt>
+                        <dd>
+                            <input id="firstName" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                                   maxlength="16">
+                        </dd>
+                        <dt>
+                            Last Name
+                        </dt>
+                        <dd>
+                            <input id="lastName" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                                   maxlength="16">
+                        </dd>
+                        <dt>Phone</dt>
+                        <dd>
+                            <input id="phone" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                                   maxlength="16">
+                        </dd>
+
+                        <dt>
+                            Exposure
+                        </dt>
+                        <dd>
+                            <input id="exposure" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                                   maxlength="12">
+                            <span class="must">＊</span>
+                        </dd>
+
+                        <dt>Commission(%)</dt>
+                        <dd>
+                            <input id="commission" type="text" onclick="location.href='#tax'" placeholder="Enter"
+                                   value="">
+                            <span class="must">＊</span>
+                        </dd>
+
+
+
+
+                        <dt>
+                            Time Zone
+                        </dt>
+                        <dd>
+                            <select name="timezone" id="timezone">
+
+                                <option value="Pacific/Midway">
+                                    Pacific/Midway(GMT-11:00)
+                                </option>
+
+                                <option value="Pacific/Honolulu">
+                                    Pacific/Honolulu(GMT-10:00)
+                                </option>
+
+                                <option value="America/Juneau">
+                                    America/Juneau(GMT-9:00)
+                                </option>
+
+                                <option value="America/Los_Angeles">
+                                    America/Los_Angeles(GMT-8:00)
+                                </option>
+
+                                <option value="America/Phoenix">
+                                    America/Phoenix(GMT-7:00)
+                                </option>
+
+                                <option value="America/Chicago">
+                                    America/Chicago(GMT-6:00)
+                                </option>
+
+                                <option value="America/New_York">
+                                    America/New_York(GMT-5:00)
+                                </option>
+
+                                <option value="America/Santiago">
+                                    America/Santiago(GMT-4:00)
+                                </option>
+
+                                <option value="America/Sao_Paulo">
+                                    America/Sao_Paulo(GMT-3:00)
+                                </option>
+
+                                <option value="Atlantic/South_Georgia">
+                                    Atlantic/South_Georgia(GMT-2:00)
+                                </option>
+
+                                <option value="Atlantic/Azores">
+                                    Atlantic/Azores(GMT-1:00)
+                                </option>
+
+                                <option value="Europe/London">
+                                    Europe/London(GMT+0:00)
+                                </option>
+
+                                <option value="Europe/Paris">
+                                    Europe/Paris(GMT+1:00)
+                                </option>
+
+                                <option value="Africa/Cairo">
+                                    Africa/Cairo(GMT+2:00)
+                                </option>
+
+                                <option value="Asia/Qatar">
+                                    Asia/Qatar(GMT+3:00)
+                                </option>
+
+                                <option value="Asia/Dubai">
+                                    Asia/Dubai(GMT+4:00)
+                                </option>
+
+                                <option value="Asia/Karachi">
+                                    Asia/Karachi(GMT+5:00)
+                                </option>
+
+                                <option value="IST" selected="selected">
+                                    IST(Bangalore / Bombay / New Delhi) (GMT+5:30)
+                                </option>
+
+                                <option value="Asia/Kathmandu">
+                                    Asia/Kathmandu(GMT+5:45)
+                                </option>
+
+                                <option value="Asia/Dhaka">
+                                    Asia/Dhaka(GMT+6:00)
+                                </option>
+
+                                <option value="Asia/Bangkok">
+                                    Asia/Bangkok(GMT+7:00)
+                                </option>
+
+                                <option value="Asia/Hong_Kong">
+                                    Asia/Hong_Kong(GMT+8:00)
+                                </option>
+
+                                <option value="Asia/Tokyo">
+                                    Asia/Tokyo(GMT+9:00)
+                                </option>
+
+                                <option value="Australia/Adelaide">
+                                    Australia/Adelaide(GMT+9:30)
+                                </option>
+
+                                <option value="Australia/Melbourne">
+                                    Australia/Melbourne(GMT+10:00)
+                                </option>
+
+                                <option value="Asia/Magadan">
+                                    Asia/Magadan(GMT+11:00)
+                                </option>
+
+                                <option value="Pacific/Fiji">
+                                    Pacific/Fiji(GMT+12:00)
+                                </option>
+
+                            </select>
+                            <span class="must">＊</span>
+                        </dd>
+
+                    </dl>
+                </li>
+                <li class="pt_allowed_box" style="display: none;">
 
 
 
@@ -250,731 +234,750 @@
 
 
 
-                </div>
-                <div class="sports_box" style="height: 350px;overflow: hidden;overflow-y: auto;">
-                    <p>
-                        My Sports PT Setting
-                        <span id="settingNote" class="note" style="display: none;">
-                            PT setting % value must be
-                            multiplier of 5 :
-                        </span>
-                    </p>
+                    <div class="pt_allowed" style="display: none;">
+                        <dl>
+                            <dt class="dt_w50">
+                                PT Allowed To Player
+                                (%)
+                            </dt>
+                            <dd>
+                                <input id="memberMaxPT" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                                       value="0">
+                            </dd>
+                        </dl>
 
-                    <ul class="half_box">
-                        <li>
-                            <div id="sportsSet" class="sports_set">
-                                <dl class="bg_head">
-                                    <dt>
-                                        All Sports Set
-                                    </dt>
-                                    <dd>
-                                        <input id="allowOneMaxPT" type="text" onclick="location.href='#stake'"
-                                               placeholder="Enter" value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#" name="copy_one_up">up</a></li>
-                                            <li><a class="down" href="#" name="copy_one_down">down</a></li>
-                                        </ul>
+
+
+
+
+
+
+                    </div>
+                    <div class="sports_box" style="height: 350px;overflow: hidden;overflow-y: auto;">
+                        <p>
+                            My Sports PT Setting
+                            <span id="settingNote" class="note" style="display: none;">
+                                PT setting % value must be
+                                multiplier of 5 :
+                            </span>
+                        </p>
+
+                        <ul class="half_box">
+                            <li>
+                                <div id="sportsSet" class="sports_set">
+                                    <dl class="bg_head">
+                                        <dt>
+                                            All Sports Set
+                                        </dt>
+                                        <dd>
+                                            <input id="allowOneMaxPT" type="text" onclick="location.href='#stake'"
+                                                   placeholder="Enter" value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#" name="copy_one_up">up</a></li>
+                                                <li><a class="down" href="#" name="copy_one_down">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+
+
+
+
+                                    </dl>
+
+                                    <dl class="">
+                                        <dt>
+                                            Soccer
+                                        </dt>
+
+                                        <dd class="">
+                                            <input id="soccer_PT" type="text" name="normal" data-type="1" value="0">
+                                        </dd>
                                         <div class="tips-popup" style="display: none">
                                             multiplier of 5
                                         </div>
-                                    </dd>
 
 
 
+                                    </dl>
 
-                                </dl>
+                                    <dl class="bg_dark">
+                                        <dt>
+                                            Tennis
+                                        </dt>
 
-                                <dl class="">
-                                    <dt>
-                                        Soccer
-                                    </dt>
-
-                                    <dd class="">
-                                        <input id="soccer_PT" type="text" name="normal" data-type="1" value="0">
-                                    </dd>
-                                    <div class="tips-popup" style="display: none">
-                                        multiplier of 5
-                                    </div>
-
-
-
-                                </dl>
-
-                                <dl class="bg_dark">
-                                    <dt>
-                                        Tennis
-                                    </dt>
-
-                                    <dd class="">
-                                        <input id="tennis_PT" type="text" name="normal" data-type="2" value="0">
-                                    </dd>
-                                    <div class="tips-popup" style="display: none">
-                                        multiplier of 5
-                                    </div>
-
-
-
-                                </dl>
-
-                                <dl class="">
-                                    <dt>
-                                        Cricket
-                                    </dt>
-
-                                    <dd class="">
-                                        <input id="cricket_PT" type="text" name="normal" data-type="4" value="0">
-                                    </dd>
-                                    <div class="tips-popup" style="display: none">
-                                        multiplier of 5
-                                    </div>
-
-
-
-                                </dl>
-
-                                <dl class="bg_dark">
-                                    <dt>
-                                        Rugby Union
-                                    </dt>
-
-                                    <dd class="">
-                                        <input id="rugby_union_PT" type="text" name="normal" data-type="5"
-                                               value="0">
-                                    </dd>
-                                    <div class="tips-popup" style="display: none">
-                                        multiplier of 5
-                                    </div>
-
-
-
-                                </dl>
-
-                                <dl class="">
-                                    <dt>
-                                        Horse Racing
-                                    </dt>
-
-                                    <dd class="">
-                                        <input id="horse_racing_PT" type="text" name="normal" data-type="7"
-                                               value="0">
-                                    </dd>
-                                    <div class="tips-popup" style="display: none">
-                                        multiplier of 5
-                                    </div>
-
-
-
-                                </dl>
-
-                                <dl class="bg_dark">
-                                    <dt>
-                                        Greyhound Racing
-                                    </dt>
-
-                                    <dd class="">
-                                        <input id="greyhound_racing_PT" type="text" name="normal" data-type="4339"
-                                               value="0">
-                                    </dd>
-                                    <div class="tips-popup" style="display: none">
-                                        multiplier of 5
-                                    </div>
-
-
-
-                                </dl>
-
-                                <dl class="">
-                                    <dt>
-                                        American Football
-                                    </dt>
-
-                                    <dd class="">
-                                        <input id="american_football_PT" type="text" name="normal" data-type="6423"
-                                               value="0">
-                                    </dd>
-                                    <div class="tips-popup" style="display: none">
-                                        multiplier of 5
-                                    </div>
-
-
-
-                                </dl>
-
-                                <dl class="bg_dark">
-                                    <dt>
-                                        Basketball
-                                    </dt>
-
-                                    <dd class="">
-                                        <input id="basketball_PT" type="text" name="normal" data-type="7522"
-                                               value="0">
-                                    </dd>
-                                    <div class="tips-popup" style="display: none">
-                                        multiplier of 5
-                                    </div>
-
-
-
-                                </dl>
-
-                                <dl class="">
-                                    <dt>
-                                        Politics
-                                    </dt>
-
-                                    <dd class="">
-                                        <input id="politics_PT" type="text" name="normal" data-type="2378961"
-                                               value="0">
-                                    </dd>
-                                    <div class="tips-popup" style="display: none">
-                                        multiplier of 5
-                                    </div>
-
-
-
-                                </dl>
-
-                                <dl class="bg_dark">
-                                    <dt>
-                                        E-Soccer
-                                    </dt>
-
-                                    <dd class="">
-                                        <input id="e_soccer_PT" type="text" name="normal" data-type="137" value="0">
-                                    </dd>
-                                    <div class="tips-popup" style="display: none">
-                                        multiplier of 5
-                                    </div>
-
-
-
-                                </dl>
-
-                                <dl class="">
-                                    <dt>
-                                        Kabaddi
-                                    </dt>
-
-                                    <dd class="">
-                                        <input id="kabaddi_PT" type="text" name="normal" data-type="138" value="0">
-                                    </dd>
-                                    <div class="tips-popup" style="display: none">
-                                        multiplier of 5
-                                    </div>
-
-
-
-                                </dl>
-
-                            </div>
-                            <p style="display: ">My PT Allowed <strong id="yourPT">0</strong>%</p>
-                        </li>
-
-                        <li>
-
-                            <div id="fancyBetSet" class="sports_set" style="display: none;height: 150px;">
-                                <dl class="bg_head">
-                                    <dt>FancyBet Setting</dt>
-                                </dl>
-
-                                <dl class="">
-                                    <dt>
-                                        Master Agent
-                                    </dt>
-                                    <dd>
-                                        <input id="company_fancy_bet_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter" data-type="company"
-                                               value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
+                                        <dd class="">
+                                            <input id="tennis_PT" type="text" name="normal" data-type="2" value="0">
+                                        </dd>
                                         <div class="tips-popup" style="display: none">
                                             multiplier of 5
                                         </div>
-                                    </dd>
-                                </dl>
 
-                                <dl class="bg_dark" id="fancyBetSSSPt">
-                                    <dt>SSS</dt>
-                                    <dd>
-                                        <input id="sss_fancy_bet_PT" type="text" onclick="location.href='#stake'"
-                                               placeholder="Enter" data-type="sss" value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
+
+
+                                    </dl>
+
+                                    <dl class="">
+                                        <dt>
+                                            Cricket
+                                        </dt>
+
+                                        <dd class="">
+                                            <input id="cricket_PT" type="text" name="normal" data-type="4" value="0">
+                                        </dd>
                                         <div class="tips-popup" style="display: none">
                                             multiplier of 5
                                         </div>
-                                    </dd>
-                                </dl>
 
-                                <dl class="" id="fancyBetDirectLevelPt">
-                                    <dt>
-                                        Player
-                                    </dt>
-                                    <dd>
-                                        <input id="shareHolder_fancy_bet_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter"
-                                               data-type="shareHolder" value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
+
+
+                                    </dl>
+
+                                    <dl class="bg_dark">
+                                        <dt>
+                                            Rugby Union
+                                        </dt>
+
+                                        <dd class="">
+                                            <input id="rugby_union_PT" type="text" name="normal" data-type="5"
+                                                   value="0">
+                                        </dd>
                                         <div class="tips-popup" style="display: none">
                                             multiplier of 5
                                         </div>
-                                    </dd>
-                                </dl>
-                            </div>
-                            <p id="fancyBetTotalPTCol" style="display: none">
-                                FancyBet total PT allowed <strong id="fancyBetTotalPT">0</strong>%
-                            </p>
-                        </li>
 
-                        <li>
-                            <div id="bookMakerSet" class="sports_set" style="display: none;height: 115px;">
-                                <dl class="bg_head">
-                                    <dt>BookMaker Setting</dt>
-                                </dl>
 
-                                <dl class="">
-                                    <dt>
-                                        Master Agent
-                                    </dt>
-                                    <dd>
-                                        <input id="company_book_maker_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter" data-type="company"
-                                               value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
+
+                                    </dl>
+
+                                    <dl class="">
+                                        <dt>
+                                            Horse Racing
+                                        </dt>
+
+                                        <dd class="">
+                                            <input id="horse_racing_PT" type="text" name="normal" data-type="7"
+                                                   value="0">
+                                        </dd>
                                         <div class="tips-popup" style="display: none">
                                             multiplier of 5
                                         </div>
-                                    </dd>
-                                </dl>
 
-                                <dl class="bg_dark" id="bookMakerDirectLevelPt">
-                                    <dt>
-                                        Player
-                                    </dt>
-                                    <dd>
-                                        <input id="shareHolder_book_maker_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter"
-                                               data-type="shareHolder" value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
+
+
+                                    </dl>
+
+                                    <dl class="bg_dark">
+                                        <dt>
+                                            Greyhound Racing
+                                        </dt>
+
+                                        <dd class="">
+                                            <input id="greyhound_racing_PT" type="text" name="normal" data-type="4339"
+                                                   value="0">
+                                        </dd>
                                         <div class="tips-popup" style="display: none">
                                             multiplier of 5
                                         </div>
-                                    </dd>
-                                </dl>
-                            </div>
-                            <p id="bookMakerTotalPTCol" style="display: none">
-                                BookMaker total PT allowed <strong id="bookMakerTotalPT">0</strong>%
-                            </p>
-                        </li>
 
-                        <li>
-                            <div id="sportsbookTennisSet" class="sports_set" style="display: none;height: 115px;">
-                                <dl class="bg_head">
-                                    <dt>SportsBook</dt>
-                                    <dd><a class="toggle_on" href="#" id="edit_allow_sportsbookTennis">ON</a></dd>
-                                </dl>
 
-                                <dl class="">
-                                    <dt>
-                                        Master Agent
-                                    </dt>
-                                    <dd>
-                                        <input id="company_sportsbook_tennis_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter" data-type="company"
-                                               value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
+
+                                    </dl>
+
+                                    <dl class="">
+                                        <dt>
+                                            American Football
+                                        </dt>
+
+                                        <dd class="">
+                                            <input id="american_football_PT" type="text" name="normal" data-type="6423"
+                                                   value="0">
+                                        </dd>
                                         <div class="tips-popup" style="display: none">
                                             multiplier of 5
                                         </div>
-                                    </dd>
-                                </dl>
 
-                                <dl class="bg_dark">
-                                    <dt>
-                                        Player
-                                    </dt>
-                                    <dd>
-                                        <input id="shareHolder_sportsbook_tennis_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter"
-                                               data-type="shareHolder" value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
+
+
+                                    </dl>
+
+                                    <dl class="bg_dark">
+                                        <dt>
+                                            Basketball
+                                        </dt>
+
+                                        <dd class="">
+                                            <input id="basketball_PT" type="text" name="normal" data-type="7522"
+                                                   value="0">
+                                        </dd>
                                         <div class="tips-popup" style="display: none">
                                             multiplier of 5
                                         </div>
-                                    </dd>
-                                </dl>
-                            </div>
-                            <p style="display: none">
-                                Sportsbook total PT allowed <strong id="sportsbookTennisTotalPT">0</strong>%
-                            </p>
-                        </li>
 
-                        <li>
-                            <div id="sportsbookPremiumCricketSet" class="sports_set" style="display: none;">
-                                <dl class="bg_head">
-                                    <dt>SportsBook - Premium</dt>
-                                    <dd>
-                                        <a class="toggle_on" href="#"
-                                           id="edit_allow_sportsbookPremiumCricket">ON</a>
-                                    </dd>
-                                </dl>
 
-                                <dl class="">
-                                    <dt>
-                                        Master Agent
-                                    </dt>
-                                    <dd>
-                                        <input id="company_sportsbookPremiumCricket_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter" data-type="company"
-                                               value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
+
+                                    </dl>
+
+                                    <dl class="">
+                                        <dt>
+                                            Politics
+                                        </dt>
+
+                                        <dd class="">
+                                            <input id="politics_PT" type="text" name="normal" data-type="2378961"
+                                                   value="0">
+                                        </dd>
                                         <div class="tips-popup" style="display: none">
                                             multiplier of 5
                                         </div>
-                                    </dd>
 
-                                </dl>
 
-                                <dl class="bg_dark">
-                                    <dt>
-                                        Player
-                                    </dt>
-                                    <dd>
-                                        <input id="shareHolder_sportsbookPremiumCricket_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter"
-                                               data-type="shareHolder" value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
+
+                                    </dl>
+
+                                    <dl class="bg_dark">
+                                        <dt>
+                                            E-Soccer
+                                        </dt>
+
+                                        <dd class="">
+                                            <input id="e_soccer_PT" type="text" name="normal" data-type="137" value="0">
+                                        </dd>
                                         <div class="tips-popup" style="display: none">
                                             multiplier of 5
                                         </div>
-                                    </dd>
-                                </dl>
-                            </div>
-                            <p style="display: none">
-                                Premium total PT allowed <strong id="sportsbookPremiumCricketTotalPT">0</strong>%
-                            </p>
-                        </li>
 
 
-                        <li>
-                            <div id="financialBinarySet" class="sports_set" style="display: none;">
-                                <dl class="bg_head">
-                                    <dt>Binary Setting</dt>
-                                </dl>
 
-                                <dl class="">
-                                    <dt>
-                                        Master Agent
-                                    </dt>
-                                    <dd>
-                                        <input id="company_financialBinary_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter" data-type="company"
-                                               value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
+                                    </dl>
+
+                                    <dl class="">
+                                        <dt>
+                                            Kabaddi
+                                        </dt>
+
+                                        <dd class="">
+                                            <input id="kabaddi_PT" type="text" name="normal" data-type="138" value="0">
+                                        </dd>
                                         <div class="tips-popup" style="display: none">
                                             multiplier of 5
                                         </div>
-                                    </dd>
-
-                                </dl>
-
-                                <dl class="bg_dark">
-                                    <dt>
-                                        Player
-                                    </dt>
-                                    <dd>
-                                        <input id="shareHolder_financialBinary_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter"
-                                               data-type="shareHolder" value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
-                                        <div class="tips-popup" style="display: none">
-                                            multiplier of 5
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </div>
-                            <p style="display: none">
-                                Binary total PT allowed <strong id="financialBinaryTotalPT">0</strong>%
-                            </p>
-                        </li>
 
 
-                        <li>
-                            <div id="LUCKCO7Set" class="sports_set" style="display: none;">
-                                <dl class="bg_head">
-                                    <dt>Mini Game Setting</dt>
-                                    <dd style="display: none">
-                                        <a class="toggle_on" href="#" id="new_allow_LUCKCO7">ON</a>
-                                    </dd>
-                                </dl>
 
-                                <dl class="bg_dark">
-                                    <dt>
-                                        R&amp;G
-                                    </dt>
-                                    <br>
-                                    <dt>
-                                        Master Agent
-                                    </dt>
+                                    </dl>
 
-                                    <dd>
-                                        <input id="rng_agent_LUCKCO7_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter" data-type="agent"
-                                               data-categorytype="rng" value="100">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
-                                        <div class="tips-popup" style="display: none">
-                                            multiplier of 5
-                                        </div>
-                                    </dd>
+                                </div>
+                                <p style="display: ">My PT Allowed <strong id="yourPT">0</strong>%</p>
+                            </li>
 
-                                    <dt>
-                                        Player
-                                    </dt>
-                                    <dd>
-                                        <input id="rng_downline_LUCKCO7_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter"
-                                               data-type="downline" data-categorytype="rng" value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
-                                        <div class="tips-popup" style="display: none">
-                                            multiplier of 5
-                                        </div>
-                                    </dd>
-                                </dl>
-                                <p style="display: none">
-                                    RNG total PT allowed <strong id="LUCKCO7_rng_TotalPT"></strong>%
+                            <li>
+
+                                <div id="fancyBetSet" class="sports_set" style="display: none;height: 150px;">
+                                    <dl class="bg_head">
+                                        <dt>FancyBet Setting</dt>
+                                    </dl>
+
+                                    <dl class="">
+                                        <dt>
+                                            Master Agent
+                                        </dt>
+                                        <dd>
+                                            <input id="company_fancy_bet_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter" data-type="company"
+                                                   value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
+
+                                    <dl class="bg_dark" id="fancyBetSSSPt">
+                                        <dt>SSS</dt>
+                                        <dd>
+                                            <input id="sss_fancy_bet_PT" type="text" onclick="location.href='#stake'"
+                                                   placeholder="Enter" data-type="sss" value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
+
+                                    <dl class="" id="fancyBetDirectLevelPt">
+                                        <dt>
+                                            Player
+                                        </dt>
+                                        <dd>
+                                            <input id="shareHolder_fancy_bet_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter"
+                                                   data-type="shareHolder" value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <p id="fancyBetTotalPTCol" style="display: none">
+                                    FancyBet total PT allowed <strong id="fancyBetTotalPT">0</strong>%
                                 </p>
+                            </li>
 
-                            </div>
-                        </li>
+                            <li>
+                                <div id="bookMakerSet" class="sports_set" style="display: none;height: 115px;">
+                                    <dl class="bg_head">
+                                        <dt>BookMaker Setting</dt>
+                                    </dl>
 
+                                    <dl class="">
+                                        <dt>
+                                            Master Agent
+                                        </dt>
+                                        <dd>
+                                            <input id="company_book_maker_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter" data-type="company"
+                                                   value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
 
-                        <li>
-                            <div id="casinoSet" class="sports_set" style="display: none;">
-                                <dl class="bg_head">
-                                    <dt>Casino Setting</dt>
-                                    <dd style="display: none">
-                                        <a class="toggle_on" href="#" id="new_allow_casino">ON</a>
-                                    </dd>
-                                </dl>
-
-                                <dl class="bg_dark">
-                                    <dt>
-                                        Live
-                                    </dt>
-                                    <br>
-                                    <dt>
-                                        Master Agent
-                                    </dt>
-
-                                    <dd>
-                                        <input id="live_agent_casino_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter" data-type="agent"
-                                               data-categorytype="live" value="100">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
-                                        <div class="tips-popup" style="display: none">
-                                            multiplier of 5
-                                        </div>
-                                    </dd>
-
-                                    <dt>
-                                        Player
-                                    </dt>
-                                    <dd>
-                                        <input id="live_downline_casino_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter"
-                                               data-type="downline" data-categorytype="live" value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
-                                        <div class="tips-popup" style="display: none">
-                                            multiplier of 5
-                                        </div>
-                                    </dd>
-                                </dl>
-                                <p style="display: none">
-                                    LIVE total PT allowed <strong id="casino_live_TotalPT">100</strong>%
+                                    <dl class="bg_dark" id="bookMakerDirectLevelPt">
+                                        <dt>
+                                            Player
+                                        </dt>
+                                        <dd>
+                                            <input id="shareHolder_book_maker_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter"
+                                                   data-type="shareHolder" value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <p id="bookMakerTotalPTCol" style="display: none">
+                                    BookMaker total PT allowed <strong id="bookMakerTotalPT">0</strong>%
                                 </p>
+                            </li>
 
-                                <dl class="">
-                                    <dt>
-                                        R&amp;G
-                                    </dt>
-                                    <br>
-                                    <dt>
-                                        Master Agent
-                                    </dt>
+                            <li>
+                                <div id="sportsbookTennisSet" class="sports_set" style="display: none;height: 115px;">
+                                    <dl class="bg_head">
+                                        <dt>SportsBook</dt>
+                                        <dd><a class="toggle_on" href="#" id="edit_allow_sportsbookTennis">ON</a></dd>
+                                    </dl>
 
-                                    <dd>
-                                        <input id="rng_agent_casino_PT" type="text" onclick="location.href='#stake'"
-                                               placeholder="Enter" data-type="agent" data-categorytype="rng"
-                                               value="100">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
-                                        <div class="tips-popup" style="display: none">
-                                            multiplier of 5
-                                        </div>
-                                    </dd>
+                                    <dl class="">
+                                        <dt>
+                                            Master Agent
+                                        </dt>
+                                        <dd>
+                                            <input id="company_sportsbook_tennis_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter" data-type="company"
+                                                   value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
 
-                                    <dt>
-                                        Player
-                                    </dt>
-                                    <dd>
-                                        <input id="rng_downline_casino_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter"
-                                               data-type="downline" data-categorytype="rng" value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
-                                        <div class="tips-popup" style="display: none">
-                                            multiplier of 5
-                                        </div>
-                                    </dd>
-                                </dl>
+                                    <dl class="bg_dark">
+                                        <dt>
+                                            Player
+                                        </dt>
+                                        <dd>
+                                            <input id="shareHolder_sportsbook_tennis_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter"
+                                                   data-type="shareHolder" value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
                                 <p style="display: none">
-                                    RNG total PT allowed <strong id="casino_rng_TotalPT">100</strong>%
+                                    Sportsbook total PT allowed <strong id="sportsbookTennisTotalPT">0</strong>%
                                 </p>
+                            </li>
 
-                                <dl class="bg_dark">
-                                    <dt>
-                                        SLOT
-                                    </dt>
-                                    <br>
-                                    <dt>
-                                        Master Agent
-                                    </dt>
+                            <li>
+                                <div id="sportsbookPremiumCricketSet" class="sports_set" style="display: none;">
+                                    <dl class="bg_head">
+                                        <dt>SportsBook - Premium</dt>
+                                        <dd>
+                                            <a class="toggle_on" href="#"
+                                               id="edit_allow_sportsbookPremiumCricket">ON</a>
+                                        </dd>
+                                    </dl>
 
-                                    <dd>
-                                        <input id="slot_agent_casino_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter" data-type="agent"
-                                               data-categorytype="slot" value="100">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
-                                        <div class="tips-popup" style="display: none">
-                                            multiplier of 5
-                                        </div>
-                                    </dd>
+                                    <dl class="">
+                                        <dt>
+                                            Master Agent
+                                        </dt>
+                                        <dd>
+                                            <input id="company_sportsbookPremiumCricket_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter" data-type="company"
+                                                   value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
 
-                                    <dt>
-                                        Player
-                                    </dt>
-                                    <dd>
-                                        <input id="slot_downline_casino_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter"
-                                               data-type="downline" data-categorytype="slot" value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
-                                        <div class="tips-popup" style="display: none">
-                                            multiplier of 5
-                                        </div>
-                                    </dd>
-                                </dl>
+                                    </dl>
+
+                                    <dl class="bg_dark">
+                                        <dt>
+                                            Player
+                                        </dt>
+                                        <dd>
+                                            <input id="shareHolder_sportsbookPremiumCricket_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter"
+                                                   data-type="shareHolder" value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
                                 <p style="display: none">
-                                    SLOT total PT allowed <strong id="casino_slot_TotalPT">100</strong>%
+                                    Premium total PT allowed <strong id="sportsbookPremiumCricketTotalPT">0</strong>%
                                 </p>
+                            </li>
 
-                                <dl class="">
-                                    <dt>
-                                        Virtual Sports
-                                    </dt>
-                                    <br>
-                                    <dt>
-                                        Master Agent
-                                    </dt>
 
-                                    <dd>
-                                        <input id="virtual_agent_casino_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter" data-type="agent"
-                                               data-categorytype="virtual" value="100">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
-                                        <div class="tips-popup" style="display: none">
-                                            multiplier of 5
-                                        </div>
-                                    </dd>
+                            <li>
+                                <div id="financialBinarySet" class="sports_set" style="display: none;">
+                                    <dl class="bg_head">
+                                        <dt>Binary Setting</dt>
+                                    </dl>
 
-                                    <dt>
-                                        Player
-                                    </dt>
-                                    <dd>
-                                        <input id="virtual_downline_casino_PT" type="text"
-                                               onclick="location.href='#stake'" placeholder="Enter"
-                                               data-type="downline" data-categorytype="virtual" value="0">
-                                        <ul class="odd-add">
-                                            <li><a class="up" href="#">up</a></li>
-                                            <li><a class="down" href="#">down</a></li>
-                                        </ul>
-                                        <div class="tips-popup" style="display: none">
-                                            multiplier of 5
-                                        </div>
-                                    </dd>
-                                </dl>
+                                    <dl class="">
+                                        <dt>
+                                            Master Agent
+                                        </dt>
+                                        <dd>
+                                            <input id="company_financialBinary_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter" data-type="company"
+                                                   value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+
+                                    </dl>
+
+                                    <dl class="bg_dark">
+                                        <dt>
+                                            Player
+                                        </dt>
+                                        <dd>
+                                            <input id="shareHolder_financialBinary_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter"
+                                                   data-type="shareHolder" value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
                                 <p style="display: none">
-                                    VIRTUAL total PT allowed <strong id="casino_virtual_TotalPT">100</strong>%
+                                    Binary total PT allowed <strong id="financialBinaryTotalPT">0</strong>%
                                 </p>
+                            </li>
 
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-        <div class="btn_box">
-            <a href="#" id="createBtn" class="btn-send">
-                Create
-            </a>
+
+                            <li>
+                                <div id="LUCKCO7Set" class="sports_set" style="display: none;">
+                                    <dl class="bg_head">
+                                        <dt>Mini Game Setting</dt>
+                                        <dd style="display: none">
+                                            <a class="toggle_on" href="#" id="new_allow_LUCKCO7">ON</a>
+                                        </dd>
+                                    </dl>
+
+                                    <dl class="bg_dark">
+                                        <dt>
+                                            R&amp;G
+                                        </dt>
+                                        <br>
+                                        <dt>
+                                            Master Agent
+                                        </dt>
+
+                                        <dd>
+                                            <input id="rng_agent_LUCKCO7_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter" data-type="agent"
+                                                   data-categorytype="rng" value="100">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+
+                                        <dt>
+                                            Player
+                                        </dt>
+                                        <dd>
+                                            <input id="rng_downline_LUCKCO7_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter"
+                                                   data-type="downline" data-categorytype="rng" value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <p style="display: none">
+                                        RNG total PT allowed <strong id="LUCKCO7_rng_TotalPT"></strong>%
+                                    </p>
+
+                                </div>
+                            </li>
+
+
+                            <li>
+                                <div id="casinoSet" class="sports_set" style="display: none;">
+                                    <dl class="bg_head">
+                                        <dt>Casino Setting</dt>
+                                        <dd style="display: none">
+                                            <a class="toggle_on" href="#" id="new_allow_casino">ON</a>
+                                        </dd>
+                                    </dl>
+
+                                    <dl class="bg_dark">
+                                        <dt>
+                                            Live
+                                        </dt>
+                                        <br>
+                                        <dt>
+                                            Master Agent
+                                        </dt>
+
+                                        <dd>
+                                            <input id="live_agent_casino_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter" data-type="agent"
+                                                   data-categorytype="live" value="100">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+
+                                        <dt>
+                                            Player
+                                        </dt>
+                                        <dd>
+                                            <input id="live_downline_casino_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter"
+                                                   data-type="downline" data-categorytype="live" value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <p style="display: none">
+                                        LIVE total PT allowed <strong id="casino_live_TotalPT">100</strong>%
+                                    </p>
+
+                                    <dl class="">
+                                        <dt>
+                                            R&amp;G
+                                        </dt>
+                                        <br>
+                                        <dt>
+                                            Master Agent
+                                        </dt>
+
+                                        <dd>
+                                            <input id="rng_agent_casino_PT" type="text" onclick="location.href='#stake'"
+                                                   placeholder="Enter" data-type="agent" data-categorytype="rng"
+                                                   value="100">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+
+                                        <dt>
+                                            Player
+                                        </dt>
+                                        <dd>
+                                            <input id="rng_downline_casino_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter"
+                                                   data-type="downline" data-categorytype="rng" value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <p style="display: none">
+                                        RNG total PT allowed <strong id="casino_rng_TotalPT">100</strong>%
+                                    </p>
+
+                                    <dl class="bg_dark">
+                                        <dt>
+                                            SLOT
+                                        </dt>
+                                        <br>
+                                        <dt>
+                                            Master Agent
+                                        </dt>
+
+                                        <dd>
+                                            <input id="slot_agent_casino_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter" data-type="agent"
+                                                   data-categorytype="slot" value="100">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+
+                                        <dt>
+                                            Player
+                                        </dt>
+                                        <dd>
+                                            <input id="slot_downline_casino_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter"
+                                                   data-type="downline" data-categorytype="slot" value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <p style="display: none">
+                                        SLOT total PT allowed <strong id="casino_slot_TotalPT">100</strong>%
+                                    </p>
+
+                                    <dl class="">
+                                        <dt>
+                                            Virtual Sports
+                                        </dt>
+                                        <br>
+                                        <dt>
+                                            Master Agent
+                                        </dt>
+
+                                        <dd>
+                                            <input id="virtual_agent_casino_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter" data-type="agent"
+                                                   data-categorytype="virtual" value="100">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+
+                                        <dt>
+                                            Player
+                                        </dt>
+                                        <dd>
+                                            <input id="virtual_downline_casino_PT" type="text"
+                                                   onclick="location.href='#stake'" placeholder="Enter"
+                                                   data-type="downline" data-categorytype="virtual" value="0">
+                                            <ul class="odd-add">
+                                                <li><a class="up" href="#">up</a></li>
+                                                <li><a class="down" href="#">down</a></li>
+                                            </ul>
+                                            <div class="tips-popup" style="display: none">
+                                                multiplier of 5
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <p style="display: none">
+                                        VIRTUAL total PT allowed <strong id="casino_virtual_TotalPT">100</strong>%
+                                    </p>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="btn_box">
+                <a href="#" id="createBtn" class="btn-send">
+                    Create
+                </a>
+            </div>
         </div>
     </div>
-</div>
+</form>
 
 
 
@@ -1182,24 +1185,24 @@
                         </p>
                     </div>
                 </form>
-                    <div class="btn_box inline-form">
-                        <dl class="form_list" style="display: inline">
+                <div class="btn_box inline-form">
+                    <dl class="form_list" style="display: inline">
 
-                            <dt>
-                                Password
-                            </dt>
-                            <dd>
-                                <input id="changeStatusPassword" type="password" placeholder="Enter" fdprocessedid="d6kei">
-                            </dd>
-                        </dl>
-                        <div class="btn_box">
-                            @*<a id="changeStatusBtn" class="btn-send" href="javascript: void(0)">
+                        <dt>
+                            Password
+                        </dt>
+                        <dd>
+                            <input id="changeStatusPassword" type="password" placeholder="Enter" fdprocessedid="d6kei">
+                        </dd>
+                    </dl>
+                    <div class="btn_box">
+                        @*<a id="changeStatusBtn" class="btn-send" href="javascript: void(0)">
                                 Change
                             </a>*@
-                            <button id="changeStatusBtn" type="submit" class="btn-send">Change</button>
-                        </div>
+                        <button id="changeStatusBtn" type="submit" class="btn-send">Change</button>
                     </div>
-                
+                </div>
+
             </div>
         </div>
     </div>
@@ -1286,61 +1289,21 @@
 
     <div class="marquee-box">
         <h4>News</h4>
-        <div class="marquee">
-            <div style="width: 100000px; transform: translateX(1278px); animation: 197.822s linear 0s infinite normal none running marqueeAnimation-4878180;"
-                 class="js-marquee-wrapper">
-                <div class="js-marquee" style="margin-right: 0px; float: left;">
-                    <a>
-                        <span>22 Mar 2023</span>Event :-
-                        India v Australia .. Market :- D Warner Runs , D Warner Run Bhav , D Warner Boundaries ,
-                        H.M.B Face By D Warner , D Warner Odd Run 1 ,&amp; D Warner Even Run 1 .. Whole Market
-                        Voided Because He didn't came for Opening , So we have created a new Market by adding (N)
-                        after the Market Name .. Sorry for the Inconvenience Caused
-                    </a><a>
-                        <span>
-                            22 Mar
-                            2023
-                        </span>Event :- India v Australia .. Market .. 15 Over AUS '87 - 88' (IST 14:30:39 -
-                        14:31:03) , 20 Over AUS '113.90.110' (IST 14:30:59 - 14:31:25) &amp; 2nd Wkt AUS Run Bhav
-                        '73.6.9' (IST 14:30:30 - 14:30:50) Bets Voided Because Of Wrong Commentary .. Sorry for the
-                        Inconvenience Caused
-                    </a><a>
-                        <span>22 Mar 2023</span>Event :- India v Australia .. Market :-
-                        11.6 Ball Run AUS .. Whole Market Voided Because Of Wrong Commentary .. Sorry for the
-                        Inconvenience Caused
-                    </a><a>
-                        <span>22 Mar 2023</span>Event : India v Australia .. Market :-
-                        1.3 Over IND '6 - 7' (IST 18:10:28 - 18:10:46) , 2 Over IND '9 - 10' (18:10:27 - 18:12:49) ,
-                        3 Over IND '14 - 15' (IST 18:10:31 - 18:12:49) , 5 Over IND '25 - 26' (IST 18:10:32 -
-                        18:10:55) , 8 Over IND '42 - 44' (IST 18:09:11 - 18:10:46) , 10 Over IND '55 - 56' ,
-                        "56.90.110" (IST 18:10:28 - 18:10:45) Bets Voided &amp; " 1.2 Ball Run IND " Whole Market
-                        Voided Because 1.1st Ball ( NO BALL Shown Late In TV ) .. Sorry for the Inconvenience
-                        Caused
-                    </a><a>
-                        <span>22 Mar 2023</span>Event : India v Australia .. Market :- " 4th WKT Caught
-                        Out IND 1 " Whole Market Voided Because Wrong Market Offered By Mistake , So we have
-                        created a new Market by adding (N) after the Market Name .. Sorry for the Inconvenience
-                        Caused
-                    </a><a>
-                        <span>22 Mar 2023</span>Event : India v Australia .. Market :- " 20.4 Ball Run
-                        IND " Whole Market Voided Because Wrong Rate Offered By Mistake .. Sorry for the
-                        Inconvenience Caused
-                    </a><a>
-                        <span>22 Mar 2023</span>Event : India v Australia .. Market :-
-                        Kohli Boundaries " 3 - 4 " (IST 20:20:20 - 02:21:36) Bets Voided Because Wrong Rate Offered
-                        By Mistake .. Sorry for the Inconvenience Caused
-                    </a><a>
-                        <span>21 Jan 2022</span>Match :-
-                        Minister Group Dhaka vs Khulna Tigers .. Market .. Bookmaker .. Selection :- Khulna Tigers '
-                        2 - 6 ' ( IST 21:18:35 - 21:18:38 ) Bets Voided Because Wrong Odds Offered Bymistake ...
-                        Sorry for the Inconveniences Caused
-                    </a><a>
-                        <span>04 Sep 2021</span>WHITE LABEL OF SKYEXCHANGE
-                        IS AVAILABLE NOW - CONTACT YOUR UPLINE.
-                    </a>
-                </div>
+        <div class="marquee marquee-sec">
+            <div class="marquee-inner">
+                <marquee attribute_name="attribute_value" ....more attributes>
+                    <div class="js-marquee" style="margin-right: 0px; float: left;">
+                        <a><span>12 Mar 2023</span>Event : New Zealand v Sri Lanka.... Market : 80 Over SL (2) '192-193' (IST 06:58:54 - 06:59:05) Bets Voided Because of Wrong Commentary.... Sorry for the Inconvenience&nbsp;Caused</a>
+                        <a><span>21 Jan 2022</span>Match :- Minister Group Dhaka vs Khulna Tigers .. Market .. Bookmaker .. Selection :- Khulna Tigers ' 2 - 6 ' ( IST 21:18:35 - 21:18:38 ) Bets Voided Because Wrong Odds Offered Bymistake ... Sorry for the Inconveniences Caused</a>
+                        <a><span>04 Sep 2021</span>WHITE LABEL OF SKYEXCHANGE IS AVAILABLE NOW - CONTACT YOUR UPLINE.</a>
+
+
+                    </div>
+                </marquee>
             </div>
         </div>
+
+
     </div>
 
     <div class="total_all">
@@ -1982,7 +1945,7 @@
                 else {
                     $(".but_locked").addClass("disable");
                 }
-                
+
                 $("#changeStatusModal input[name='UserId']").val(userId);
                 $("#changeStatusModal input[name='Status']").val(rCell1);
             });
@@ -2004,8 +1967,8 @@
 
             $("#changeStatusBtn").click(function () {
                 debugger;
-                var form = $("#changeStatusModal form");                
-                var url = "/Home/DeleteUser";                
+                var form = $("#changeStatusModal form");
+                var url = "/Home/DeleteUser";
                 var postData = form.serialize();
                 //$(".loader").show();
                 $.post(url, postData, function (data) {
@@ -2052,7 +2015,159 @@
                 var modal = document.getElementById("createModal");
                 modal.style.display = "none";
             });
+            $("#createBtn").click(function () {
+                saveRequest();
+            });
         });
+
+
+        function validationCheck() {
+            var Error = false;
+
+            //$('#EmailError').text('');
+            //$('#FullNameError').text('');
+            //$('#PasswordRegError').text('');
+            //$('#ConfirmPasswordRegError').text('');
+            //$('#PhoneNumberError').text('');
+            //$('#CityError').text('');
+            //$('#StateError').text('');
+            //$('#AssignCoinError').text('');
+            //$('#CommisionError').text('');
+            //$('#ExposureLimitError').text('');
+
+
+            if ($("#email").val() == null || $("#email").val() == '' || $("#email").val().trim() == '') {
+                /* $('#EmailError').text('Please enter Email');*/
+                alert("Please Enter Email");
+                Error = true;
+                return;
+            }
+            if ($("#userName").val() == null || $("#userName").val() == '' || $("#userName").val().trim() == '') {
+                /*$('#FullNameError').text('Please enter Full Name');*/
+                alert("Please Enter UserName");
+                Error = true;
+                return;
+            }
+            if ($("#userPassword").val() == null || $("#userPassword").val() == '' || $("#userPassword").val().trim() == '') {
+               /* $('#PasswordRegError').text('Please enter Password');*/
+                alert("Please Enter Password");
+                Error = true;
+                return;
+            }
+            if ($("#repeatPassword").val() == null || $("#repeatPassword").val() == '' || $("#repeatPassword").val().trim() == '') {
+                /*$('#ConfirmPasswordRegError').text('Please enter Confirm Password');*/
+                alert("Please Enter Confirm Password");
+                Error = true;
+                return;
+            }
+            if ($("#repeatPassword").val() != $("#userPassword").val() ) {
+                /*$('#ConfirmPasswordRegError').text('Please enter Confirm Password');*/
+                alert("Password and Confirm Password should be Same");
+                Error = true;
+                return;
+            }
+            if ($("#firstName").val() == null || $("#firstName").val() == '' || $("#firstName").val().trim() == '') {
+                /*$('#FullNameError').text('Please enter Full Name');*/
+                alert("Please Enter FirstName");
+                Error = true;
+                return;
+            }
+            if ($("#lastName").val() == null || $("#lastName").val() == '' || $("#lastName").val().trim() == '') {
+                /*$('#FullNameError').text('Please enter Full Name');*/
+                alert("Please Enter LastName");
+                Error = true;
+                return;
+            }
+            if ($("#phone").val() == null || $("#phone").val() == '' || $("#phone").val().trim() == '') {
+                /*$('#PhoneNumberError').text('Please enter PhoneNumber');*/
+                alert("Please Enter Phone Number");
+                Error = true;
+                return;
+            }
+            //if ($("#City").val() == null || $("#City").val() == '' || $("#City").val().trim() == '') {
+            //    $('#CityError').text('Please enter City');
+            //    Error = true;
+            //}
+            //if ($("#State").val() == null || $("#State").val() == '' || $("#State").val().trim() == '') {
+            //    $('#StateError').text('Please enter State');
+            //    Error = true;
+            //}
+            //if ($("#AssignCoin").val() == null || $("#AssignCoin").val() == '' || $("#AssignCoin").val().trim() == '') {
+            //    $('#AssignCoinError').text('Please enter Assign Coin');
+            //    Error = true;
+            //}
+            if ($("#commission").val() == null || $("#commission").val() == '' || $("#commission").val().trim() == '') {
+                /*$('#CommisionError').text('Please enter Commision');*/
+                alert("Please Enter Commision");
+                Error = true;
+                return;
+            }
+            if ($("#exposure").val() == null || $("#exposure").val() == '' || $("#exposure").val().trim() == '') {
+               /* $('#ExposureLimitError').text('Please enter Exposure Limit');*/
+                alert("Please Enter Exposer Limit");
+                Error = true;
+                return;
+            }
+            return Error;
+        }
+
+                function saveRequest() {
+
+            var validation = validationCheck();
+
+            if (validation == true) {
+                return false;
+            }
+
+                    var FullName = $("#firstName").val() + " " + $("#lastName").val()
+
+            const formData = new FormData();
+            formData.append("RoleId", '@roleId');
+            formData.append("Email", $("#email").val());
+                    formData.append("UserName", $("#userName").val());
+                    formData.append("FullName", FullName);
+                    formData.append("Password", $("#userPassword").val());
+                    formData.append("ConfirmPassword", $("#repeatPassword").val());
+                    formData.append("PhoneNumber", $("#phone").val());
+            //formData.append("City", $("#City").val());
+            //formData.append("State", $("#State").val());
+            //formData.append("AssignCoin", $("#AssignCoin").val());
+                    formData.append("Commision", $("#commission").val());
+                    formData.append("ExposureLimit", $("#exposure").val());
+             //formData.append("RollingCommission", $("#RollingCommission").prop("checked"));
+             //if ($("#RollingCommission").prop("checked")) {
+             //    formData.append(`RollingCommisionVm.Fancy`, $("#RollingCommision_Fancy").val());
+             //    formData.append(`RollingCommisionVm.Matka`, $("#RollingCommision_Matka").val());
+             //    formData.append(`RollingCommisionVm.Casino`, $("#RollingCommision_Casino").val());
+             //    formData.append(`RollingCommisionVm.Binary`, $("#RollingCommision_Binary").val());
+             //    formData.append(`RollingCommisionVm.SportBook`, $("#RollingCommision_SportBook").val());
+             //    formData.append(`RollingCommisionVm.Bookmaker`, $("#RollingCommision_Bookmaker").val());
+             //}
+            let addRequestJson = {
+                apiUrl: "@Url.Action("Register", "Account")",
+                postData: formData
+            }
+            $(".loader").show();
+            promiseAjaxPost.call(addRequestJson, false).then(
+                (res) => {
+                    $(".loader").hide();
+                    if (res.IsSuccess && res.Status == 200) {
+                        messagePopup.responseSuccess(res.Message).then(
+                            (r) => { if (r == true) { location.reload(); } }
+                        )
+                    } else if (res.IsSuccess && res.Status == 208) {
+                        mess
+                        agePopup.responseWarning(res.Message);
+                    } else {
+                        messagePopup.responseError(res.Message);
+                    }
+                },
+                (err) => {
+                    messagePopup.error(err.statusText);
+                }
+            )
+            return false;
+        }
 
     </script>
 }

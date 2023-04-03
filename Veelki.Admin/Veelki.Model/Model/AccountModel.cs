@@ -111,7 +111,7 @@ namespace Veelki.Models.Model
         public DateTime CreatedDate { get; set; }
         public bool RollingCommission { get; set; }
 
-        [Required]
+        
         public long AssignCoin { get; set; }
 
         [Required]
@@ -122,10 +122,10 @@ namespace Veelki.Models.Model
         public int ParentId { get; set; }
         public int Status { get; set; }
 
-        [Required]
+        
         public string City { get; set; }
 
-        [Required]
+        
         public string State { get; set; }
         public RollingCommision RollingCommisionVm { get; set; }
     }
