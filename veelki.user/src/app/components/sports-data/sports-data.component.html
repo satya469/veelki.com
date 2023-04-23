@@ -1,0 +1,19 @@
+<ul class="highlight-list">
+    <li class="inplay-off" *ngFor="let tableColumn of tableRowList">
+        <a [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">
+            <dl>
+                <dt>
+                    <span class="game-live" style="display: flex;">game-live</span>
+                    <span class="game-fancy in-play" style="display: flex;">
+                        <pre>in-play</pre>Fancy
+                    </span>
+                    <span class="game-bookmaker" style="display: flex;">BookMaker</span>
+                    <span class="game-sportsbook" style="display: flex;">Premium Cricket</span>
+                    <span *ngIf="tableColumn.inPlay=='True'" class="time">In-Play</span>
+                </dt>
+                <dd>{{tableColumn.eventName.split("/")[0]}}</dd>
+            </dl>
+        </a>
+        <a class="pin-off" href="#"></a>
+    </li>
+</ul>

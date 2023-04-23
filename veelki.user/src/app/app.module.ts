@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -53,6 +53,16 @@ import { NotificationService } from './services/notification.service';
 import { NgxMarqueeModule } from 'ngx-marquee';
 import { BalanceComponent } from './components/balance/balance.component';
 import { NgbAccordion, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './components/login/login.component';
+import { NavComponent } from './components/nav/nav.component';
+import { SportsDataComponent } from './components/sports-data/sports-data.component';
+import { PerfectScrollbarModule, PerfectScrollbarConfigInterface,
+  PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { AccountComponent } from './components/account/account.component';
+
+  const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+    wheelPropagation: true
+  };
 
 @NgModule({
   declarations: [
@@ -82,7 +92,11 @@ import { NgbAccordion, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
     SliderComponent,
     MatchOddComponent,
     ThousandSuffixesPipe,
-    BalanceComponent
+    BalanceComponent,
+    LoginComponent,
+    NavComponent,
+    SportsDataComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -96,6 +110,7 @@ import { NgbAccordion, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     NgxMarqueeModule,
     NgbAccordionModule,
+    PerfectScrollbarModule,
     ToastrModule.forRoot(),
     StoreModule.forRoot({StackData : StackReducer, InplayData : InplayReducer, SportData : SportReducer}),
     EffectsModule.forRoot([StackEffects,InplayEffect, SportEffect]),
@@ -106,8 +121,13 @@ import { NgbAccordion, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
     })
   ],
   providers: [AuthService, NotificationService, HttpService, SessionService, BetService, InterceptorService,
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ],
-  bootstrap: [AppComponent]
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

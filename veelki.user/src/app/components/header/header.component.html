@@ -1,160 +1,142 @@
-<div class="overlay" style="display:block" *ngIf="showLoginPopup">
-    <form [formGroup]="loginForm" method="post" role="form" (ngSubmit)="loginFormSubmit()">
-        <div class="dialog-wrap-w login_to_go">
-            <div class="kv"></div>
-            <dl class="login-panel">
-                <dt>Please login to continue</dt>
-                <dd><input formControlName="email" type="text" placeholder="Username"></dd>
-                <dd><input formControlName="password" type="password" placeholder="Password"></dd>
-                <dd class="valid-code"><input formControlName="codeValidator" type="text" placeholder="Validation Code" maxlength="4"><span style="position: absolute; right: 5px; top: 20%; font-size: 16px;font-weight: bold;">{{randomNumber}}</span></dd>
-                <dd><button type="submit" class="btn-send">Login<img class="icon-login"
-                            src="assets/images/transparent.gif"></button></dd>
-                <dd class="error" *ngIf="isSubmitted && formSubmitError != null">{{formSubmitError}}</dd>
-            </dl>
-            <a style="cursor: pointer" class="close" (click)="setLoginPopup(false)"></a>
-        </div>
-    </form>
-</div>
-<div class="top">
-    <div class="header full-wrap">
-        <h1><a [routerLink]="['/']">SKYEXCHANGE </a></h1>
-        <div id="searchWrap" class="search-wrap" style="">
-            <div> <input id="searchInput" class="search-input" type="text" placeholder="Search Events"
-                    fdprocessedid="lh2j8"> <button id="searchClear" class="search-clear"
-                    style="display: none;"></button> </div>
-            <div id="searchResult" class="suggestion-wrap" style="display: none;">
-                <ul id="searchList">
-                    <li id="noMatching" style="display: none;">
-                        <p class="no-matching">No events found matching ...</p>
-                    </li>
-                    <li id="resultTemplate" style="display: none;"><a></a></li>
-                </ul>
-            </div>
-        </div>
-        <ul class="login-wrap mob-display" style="padding-top: 0px;" *ngIf="!isLoginUser">
-            <li style="float:right;"><button type="button" class="btn-login" (click)="setLoginPopup(true)">Login
-            <img class="icon-login" src="assets/images/transparent.gif?v=1678553205059">
-        </button></li></ul>
-        <form [formGroup]="loginForm" *ngIf="!isLoginUser" method="post" role="form" (ngSubmit)="loginFormSubmit()" class="web-display">
-            <ul class="login-wrap">
-                <li><input formControlName="email" placeholder="Username" type="text" placeholder="Username">
-                </li>
-                <li><input formControlName="password" placeholder="Password" type="password" placeholder="Password">
-                </li>
-                <li class="valid-code">
-                    <input formControlName="codeValidator" type="text" placeholder="Validation" maxlength="4">
-                    <span style="position: absolute; right: 5px; top: 20%; font-size: 16px;font-weight: bold;">{{randomNumber}}</span>
-                </li>
-                <!-- <li class="valid-code" style="display: block"> <input id="validCode" type="text"
-                        placeholder="Validation" maxlength="4" fdprocessedid="nk3uz"> <img id="authenticateImage"
-                        src="https://bxawscf.skyexch.bike/verifycode.gr?v=1678553277974"> </li> -->
-                <!-- <li><input id="valid" name="valid" type="hidden" value="4934786d-0ae4-4860-9843-d6fdca23b082"></li> -->
-                <li> <button type="submit" class="btn-login">Login
-                        <img class="icon-login" src="assets/images/transparent.gif?v=1678553205059">
-                    </button> </li>
-                <!-- <li><a class="btn-signup"
-                        onclick="window.open('https://wa.link/skyexch', '_blank', config='height=850,width=1200,location=no');">Sign
-                        up</a></li> -->
-                <li id="errorMsg" class="error" style="padding-left: 0px;"><span class="err-invalid"
-                        *ngIf="isSubmitted && formSubmitError != null">
-                        <span>{{formSubmitError}}</span></span></li>
-            </ul>
-        </form>
-        <ul class="account-wrap" *ngIf="isLoginUser">
+<header style="visibility: hidden; position: relative;">
+    <h1 class="top-logo"></h1>
+    <div class="btn-wrap">
+        <a class="btn-signup ui-link">Sign up</a>
+        <a class="login-index ui-link" routerLink="/login">Login</a>
+    </div>
+</header>
+<header *ngIf="!isLoginUser">
+    <h1 class="top-logo"></h1>
+    <div class="btn-wrap">
+        <a class="btn-signup ui-link">Sign up</a>
+        <a class="login-index ui-link" routerLink="/login">Login</a>
+    </div>
+</header>
+<header *ngIf="isLoginUser">
+    <ul>
+        <li class="li-tv_bet">
+            <a class="a-open_bets ui-link" (click)="getMarketData();isShowBet=true"><img
+                    src="assets/images/mobile/transparent.gif">Bets</a>
+        </li>
 
-            <app-balance></app-balance>
+        <app-balance></app-balance>
+        <li>
+            <a class="a-setting ui-link" (click)="isShowSetting=true" title="Setting"><img
+                    src="assets/images/mobile/transparent.gif"></a>
+        </li>
+    </ul>
+</header>
 
-            <li class="account" ngbDropdown>
-                <a id="accountPopup" style="cursor: pointer" ngbDropdownToggle>My Account</a>
-                <ul class="" aria-labelledby="accountPopup" ngbDropdownMenu>
+<div class="overlay right-side" [ngClass]="{'hiddenStackSetting':!isShowSetting}" style="display: flex;">
+    <div class="side-wrap setting-wrap">
+        <div class="side-head">
+            <h3 class="a-setting"><img src="assets/images/mobile/transparent.gif">Setting</h3>
+            <a class="close ui-link" (click)="isShowSetting=false"></a>
+        </div>
+        <div class="side-content">
+            <form [formGroup]="stackForm" (ngSubmit)="stackSubmit()">
+                <h3>Stake</h3>
+                <dl class="setting-block stake-setting"
+                    *ngIf="isStackEdit==false && stackLimitList && stackLimitList.length > 0">
+                    <dt>Quick Stakes</dt>
+                    <dd *ngFor="let stack of stackLimitList"><a class="btn ui-link select">{{stack.stakeLimitPrice}}</a>
+                    </dd>
+                    <dd class="col-stake_edit"><a class="btn-edit ui-link" (click)="isStackEdit=true">Edit Stakes</a>
+                    </dd>
+                </dl>
+                <dl class="setting-block stake-setting" *ngIf="isStackEdit==true">
+                    <dt>Quick Stakes</dt>
+                    <ng-container formArrayName="stackList">
+                        <dd *ngFor="let stackGroup of stackList.controls; let i = index">
+                            <ng-container [formGroupName]="i">
+                                <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
+                                    <input formControlName="id" type="hidden">
+                                    <input formControlName="stakeLimitPrice" class="stake_edit-input" type="number"
+                                        min="1" maxlength="7">
+                                </div>
+                            </ng-container>
+                        </dd>
+                    </ng-container>
+                    <dd class="col-stake_edit"><button type="submit" class="btn-send ui-link">OK</button></dd>
+                </dl>
+                <ul class="btn-list">
                     <li>
-                        <h4>{{loginUserName}} <span class="gmt" title="Time Zone">{{gmtTimeZone}}</span></h4>
+                        <a class="btn ui-link" (click)="isStackEdit=false">Cancel</a>
                     </li>
-                    <li><a ngbDropdownItem [routerLink]="['/account/my-profile']">My Profile</a></li>
-                    <li><a ngbDropdownItem [routerLink]="['/myprofile']">Balance Overview</a></li>
-                    <li><a ngbDropdownItem [routerLink]="['/account/account-statement']">Account Statement</a></li>
-                    <li><a ngbDropdownItem [routerLink]="['/myprofile']">My Bets</a></li>
-                    <li><a ngbDropdownItem [routerLink]="['/myprofile']">Bets History</a></li>
-                    <li><a ngbDropdownItem [routerLink]="['/account/profit-loss']">Profit &amp; Loss</a></li>
-                    <li><a ngbDropdownItem [routerLink]="['/account/activity-log']">Activity Log</a></li>
-                    <li class="logout"><a (click)="userLogout()">LOGOUT<img src="asstes/images/transparent.gif"></a>
-                    </li>
+                    <!-- <li>
+                        <a class="btn-send ui-link">Save</a>
+                    </li> -->
                 </ul>
-            </li>
-        </ul>
-    </div> <!-- Menu Wrap -->
-    <div class="menu-wrap" [ngClass]="{'web-display':isLoginUser==false}">
-        <div class="full-wrap">
-            <ul id="tabMenu" class="menu">
-                <li><a routerLink="/home" routerLinkActive="select">Home</a></li>
-                <li><a routerLink="/inplay" routerLinkActive="select">In-Play</a></li>
-                <li><a routerLink="/multimarket" routerLinkActive="select">Multi Markets</a></li>
-                <li><a routerLink="/allsport-highlight/4" routerLinkActive="select">Cricket</a></li>
-                <li><a routerLink="/allsport-highlight/1" routerLinkActive="select">Soccer</a></li>
-                <li><a routerLink="/allsport-highlight/2" routerLinkActive="select">Tennis</a></li>
-                <!-- <li ui-use="sportradar_virtual_sports"> <a class=""
-                        href="javascript:CommonTransferWalletHandler.openDepositPage('1', 'BetRadar', 'SPORTRADAR', '', 'SPORTRADAR_VIRTUAL_001', '', true)"
-                        neua="Virtual Cricket"> Virtual Cricket </a> </li>
-                <li><a routerLink="/allsport-highlight"><span class="tag-live"><strong></strong>9</span> E-Soccer </a>
-                </li>
-                <li><a routerLink="/allsport-highlight">Binary</a></li>
-                <li ui-use="mt5"><a class=""
-                        href="javascript:CommonTransferWalletHandler.openDepositPage('4', 'Sky Trader', '', '', '', '', false)"
-                        neua="MT5"> Sky Trader </a> </li>
-                <li><a routerLink="/horse-racing">Horse Racing</a></li> -->
-            </ul>
-            <ul class="setting-wrap">
-                <li class="time_zone"><span>Time Zone :</span> {{gmtTimeZone}} </li>
-                <!-- <li>&nbsp;&nbsp;&nbsp;</li>
-                <li><a id="oneClickSetting" class="one_click" style="cursor: pointer;"><img
-                            src="assets/images/transparent.gif">One Click Bet </a></li>-->
-                <li ngbDropdown>
-                    <a class="setting" (click)="setLoginPopup()" *ngIf="!isLoginUser">Setting <img
-                            src="assets/images/transparent.gif"></a>
-                    <a class="setting" *ngIf="isLoginUser" ngbDropdownToggle>Setting <img
-                            src="assets/images/transparent.gif"></a>
-                    <div class="slip_set-pop" ngbDropdownMenu>
-                        <div class="set-content">
-                            <form [formGroup]="stackForm" (ngSubmit)="stackSubmit()">
-                                <dl class="odds-set">
-                                    <dd class="col-defult">
-                                        <label for="defult_stake"><strong>Default stake </strong></label>
-                                        <input class="stake-input" type="text" maxlength="7" value="">
-                                    </dd>
-                                </dl>
-                                <dl class="stake-set"
-                                    *ngIf="isStackEdit==false && stackLimitList && stackLimitList.length > 0">
-                                    <dt>Stake </dt>
-                                    <dd *ngFor="let stack of stackLimitList"><a
-                                            class="btn select">{{stack.stakeLimitPrice}}</a></dd>
-                                    <dd class="col-edit">
-                                        <a class="btn-edit" (click)="isStackEdit=true">Edit <img
-                                                src="assets/images/transparent.gif"></a>
-                                    </dd>
-                                </dl>
-                                <dl class="stake-set" formArrayName="stackList" *ngIf="isStackEdit==true">
-                                    <dt>Stake </dt>
-                                    <dd *ngFor="let stackGroup of stackList.controls; let i = index">
-                                        <ng-container [formGroupName]="i">
-                                            <input formControlName="id" type="hidden">
-                                            <input formControlName="stakeLimitPrice" class="stake_edit-input"
-                                                type="number" min="1" maxlength="7">
-                                        </ng-container>
-                                    </dd>
-                                    <dd class="col-edit"><button type="submit" style="padding: 0 10px;"
-                                            class="btn-send">OK</button></dd>
-                                </dl>
-                                <ul class="btn-wrap"
-                                    style="position: relative; display: flex; border: none; background: none;">
-                                    <li style="border: none;" (click)="isStackEdit=false" ngbDropdownToggle><a
-                                            class="btn">Cancel</a></li>
-                                    <!-- <li style="border: none;" class="col-send"><a class="btn-send">Save</a></li> -->
-                                </ul>
-                            </form>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+            </form>
         </div>
+    </div>
+</div>
+
+<div class="overlay left-side" style="display: block;" *ngIf="isShowBet">
+    <div class="side-wrap" style="display: flex;">
+        <div class="side-head">
+            <h3 class="a-open_bets"><img src="assets/images/mobile/transparent.gif">Open Bets</h3>
+            <a class="close" (click)="isShowBet=false"></a>
+        </div>
+        <div class="side-content">
+            <div class="slip-sort" style="padding: 10px;">
+                <select class="desktop-bets form-control" [(ngModel)]="selectBetId" (change)="getBetList()">
+                    <option value="0">Select Market</option>
+                    <option *ngFor="let market of marketList" [ngValue]="market.eventId">{{market.event}}</option>
+                </select>
+            </div>
+            <h3 *ngIf="betListData.length > 0">Matched</h3>
+            <div class="slip-list" *ngIf="betListData.length > 0">
+                <ng-container *ngFor="let betData of betListData; let ind = index;">
+                    <dl class="bets-head" *ngIf="betData.type=='back'">
+                        <dt>
+                            <h4>Back</h4>
+                        </dt>
+                        <dd class="col-odds"><span>Odds</span></dd>
+                        <dd class="col-stake"><span>Stake</span></dd>
+                        <dd class="col-profit"><span>Profit</span></dd>
+                    </dl>
+
+                    <dl class="bets-head" *ngIf="betData.type=='lay'">
+                        <dt>
+                            <h4>Lay</h4>
+                        </dt>
+                        <dd class="col-odds"><span>Odds</span></dd>
+                        <dd class="col-stake"><span>Stake</span></dd>
+                        <dd class="col-profit"><span>Liability</span></dd>
+                    </dl>
+                    <dl [ngClass]="betData.type=='back' ? 'bets-back' : 'bets-lay'">
+                        <dt>
+                            <span [ngClass]="betData.type=='back' ? 'back' : 'lay'">{{betData.type == 'back' ? "Back" : "Lay" }}</span>
+                            <h4>{{betData.selection}}</h4>
+                        </dt>
+                        <dd class="col-odds"><span>{{betData.oddsRequest}}</span></dd>
+                        <dd class="col-stake"><span>{{betData.amountStake}}</span></dd>
+                        <dd class="col-profit"><span>{{betData.resultAmount}}</span></dd>
+                        <dd class="col-ref">
+                            <ul>
+                                <li>Ref: {{betData.betId}}</li>
+                                <li>{{betData.placeTime | date : 'medium'}}</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </ng-container>
+            </div>
+
+            <ul class="check-list" *ngIf="betListData.length > 0">
+                <li>
+                    <a>Bet Info</a>
+                </li>
+                <li>
+                    <a>Time Order</a>
+                </li>
+                <li>
+                    <a>Average Odds</a>
+                </li>
+            </ul>
+
+        </div>
+
+
     </div>
 </div>

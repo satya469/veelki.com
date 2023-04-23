@@ -1,21 +1,19 @@
 <app-header></app-header>
-<div class="full-wrap">
-    <app-sidebar [sidebarList]="sidebarList" *ngIf="isSideBarVisible"></app-sidebar>
+<app-news></app-news>
+<app-slider></app-slider>
+<div class="mian-wrap">
     <router-outlet></router-outlet>
-    <app-aside *ngIf="isAsideVisible"></app-aside>
 </div>
 <app-footer *ngIf="isFooterVisible"></app-footer>
-<ngx-spinner bdColor="rgba(51,51,51,0.5)"
-size="medium"
-color="#fff"
-type="ball-scale-multiple">
-    <div class="loading-wrap">
-        <ul class="loading">
-            <li><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></li>
-            <li>Loading...
-            </li>
-            <br>
-            <li><span id="progress"></span></li>
-        </ul>
+<app-nav></app-nav>
+<ngx-spinner size="medium" type="ball-scale-multiple">
+    <div class="loading-overlay">
+        <div class="loading-wrap" style="display: flex;">
+            <div class="loading">
+                <div></div>
+                <div></div>
+            </div>
+            <p>Loading...</p>
+        </div>
     </div>
 </ngx-spinner>

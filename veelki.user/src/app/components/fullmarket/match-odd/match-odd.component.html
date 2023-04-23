@@ -1,66 +1,74 @@
 <ng-container *ngFor="let matchOdds of matchOddsData">
-    <div class="game-head">
-        <div class="match-odds">{{matchOdds?.marketName}}<img src="assets/images/transparent.gif"></div>
-        <ul class="game-info" *ngIf="inPlay==true">
-            <li class="green"><img class="icon-irun" src="assets/images/transparent.gif"> In-Play</li>
+    <div class="market-type ps ps--theme_default">
+        <ul id="naviMarketList">
+            <li style="display: list-item;" class="select"><a>{{matchOdds?.marketName}}</a></li>
         </ul>
-        <dl class="game-matched web-display">
-            <dt>Matched</dt>
-            <dd>PTE 7,906,570</dd>
-        </dl>
-        <dl class="fancy-info">
-            <dt>Max</dt>
-            <dd>{{matchOdds?.max}}</dd>
-        </dl>
     </div>
     <div class="bets-wrap asiahadicap">
-        <!-- <h3 class="line_market-name">
-        <span>1st Innings 10 Over Line</span>
-    </h3> -->
-        <span class="refer_only">{{matchOdds?.oddsData?.runners?.length}} selections</span>
-        <table class="bets">
-            <tbody>
-                <tr class="bet-all">
-                    <td></td>
-                    <td class="refer-bet web-display" colspan="2"></td>
-                    <td><a class="back-all"><img src="assets/images/transparent.gif"><span>Back all</span></a></td>
-                    <td><a class="lay-all"><img src="assets/images/transparent.gif"><span>Lay all</span></a></td>
-                    <td class="refer-book web-display" colspan="2"></td>
-                </tr>
-                <tr *ngFor="let matchOddsPrice of matchOdds.oddsData.runners; let i = index">
-                    <th class="predict">
-                        <p><a><img class="icon-predict"
-                                    src="assets/images/transparent.gif"></a>{{matchOddsPrice.runnerName}}</p>
-                        <!-- <span class="lose">0.00</span>
-                        <span class="win">1</span> -->
-                        <span class="to-lose" [ngClass]="{'to-lose':setBetData?.type =='lay','to-win':setBetData?.type =='back'}" *ngIf="setBetData?.sportId && selectionId == matchOddsPrice.selectionId"> {{ stackValue * oddValue - stackValue |
-                            number : '1.2-2'}}</span>
-                        <span class="to-lose" [ngClass]="{'to-lose':setBetData?.type !='lay','to-win':setBetData?.type !='back'}" *ngIf="setBetData?.sportId && selectionId != matchOddsPrice.selectionId"> {{ stackValue |
-                            number : '1.2-2'}}</span>
-                        <!-- <span class="to-win"> 0.00</span> -->
-                    </th>
-                    <!-- <td colspan="6" class="suspend">
-                    <span>Suspend</span>
-                </td>
-                <td colspan="6" class="suspend">
-                    <span>Closed</span>
-                </td>
-                <td colspan="6" class="suspend">
-                    <span>Non Runner</span>
-                </td> -->
-                    <td *ngFor="let backPrice of matchOddsPrice.price.back; let i = index"
-                        class="back-{{matchOddsPrice.price.back.length - i}}"
-                        [ngClass]="{'select': selectionId == matchOddsPrice.selectionId && betType == 0 && i == 2, 'web-display': i == 0 || i == 1}"><a
-                            (click)="setBetPrice(matchOdds.exEventId, matchOdds.eventName, matchOdds.marketId, matchOdds.marketName, matchOddsPrice.runnerName, matchOddsPrice.selectionId, 0, backPrice.price, 0, 0)">{{backPrice.price}}<span>{{
-                                backPrice.size |
-                                thousandSuffixes : 2}}</span></a></td>
-                    <td *ngFor="let layPrice of matchOddsPrice.price.lay;  let i = index" class="lay-{{i+1}}"
-                        [ngClass]="{'select': selectionId == matchOddsPrice.selectionId && betType == 1 && i == 0, 'web-display': i == 1 || i == 2}"><a
-                            (click)="setBetPrice(matchOdds.exEventId, matchOdds.eventName, matchOdds.marketId, matchOdds.marketName, matchOddsPrice.runnerName, matchOddsPrice.selectionId, 1, layPrice.price, 0, 1);">{{layPrice.price}}<span>{{
-                                layPrice.size |
-                                thousandSuffixes : 2}}</span></a></td>
-                </tr>
-            </tbody>
-        </table>
+        <a class="bet-limit"></a>
+        <dl class="bets-selections-head">
+            <dt>
+                <a class="a-depth" href="#">Markets Depth</a>
+                <p>
+                    <span>Matched</span>
+                    <strong id="totalMatched">PTH 0</strong>
+                </p>
+            </dt>
+            <dd class="mode-land"></dd>
+            <dd class="mode-land"></dd>
+            <dd>Back</dd>
+            <dd>Lay</dd>
+            <dd class="mode-land"></dd>
+            <dd class="mode-land"></dd>
+        </dl>
+    </div>
+    <div id="bookMakerWrap">
+
+        <div class="bets-wrap bets-bookmaker" style="background-color: #ffffff;">
+            <ng-container *ngFor="let matchOddsPrice of matchOdds.oddsData.runners; let i = index">
+                <dl class="bets-selections" style="display: flex;">
+                    <dt>
+                        <h4>{{matchOddsPrice.runnerName}}</h4>
+                        <ul>
+                            <li class="to-lose"
+                                [ngClass]="{'to-lose':setBetData?.type =='lay','to-win':setBetData?.type =='back'}"
+                                *ngIf="setBetData?.sportId && selectionId == matchOddsPrice.selectionId"> {{ stackValue
+                                *
+                                oddValue - stackValue |
+                                number : '1.2-2'}}</li>
+                            <li class="to-lose"
+                                [ngClass]="{'to-lose':setBetData?.type !='lay','to-win':setBetData?.type !='back'}"
+                                *ngIf="setBetData?.sportId && selectionId != matchOddsPrice.selectionId"> {{ stackValue
+                                |
+                                number : '1.2-2'}}</li>
+                        </ul>
+                    </dt>
+                    <!-- <dd class="">
+                    <p id="info">Suspend</p>
+                </dd> -->
+                    <dd class="backlay_box">
+                        <dl class="back-gradient">
+                            <dd *ngFor="let backPrice of matchOddsPrice.price.back; let i = index"
+                                [ngClass]="{'mode-land':i!=1, 'select': selectionId == matchOddsPrice.selectionId && betType == 0}">
+                                <a *ngIf="i == 1"
+                                    (click)="setBetPrice(matchOdds.exEventId, matchOdds.eventName, matchOdds.marketId, matchOdds.marketName, matchOddsPrice.runnerName, matchOddsPrice.selectionId, 0, backPrice.price, 0, 0)">{{
+                                    backPrice.price |
+                                    thousandSuffixes : 2}}</a>
+                            </dd>
+                        </dl>
+                        <dl class="lay-gradient">
+                            <dd *ngFor="let layPrice of matchOddsPrice.price.lay;  let i = index"
+                                [ngClass]="{'mode-land':i!=1, 'select': selectionId == matchOddsPrice.selectionId && betType == 1}">
+                                <a *ngIf="i == 1"
+                                    (click)="setBetPrice(matchOdds.exEventId, matchOdds.eventName, matchOdds.marketId, matchOdds.marketName, matchOddsPrice.runnerName, matchOddsPrice.selectionId, 1, layPrice.price, 0, 1);">{{
+                                    layPrice.price |
+                                    thousandSuffixes : 2}}</a>
+                            </dd>
+                        </dl>
+                    </dd>
+                </dl>
+                <app-aside *ngIf="selectionId == matchOddsPrice.selectionId && setBetData?.sportId"></app-aside>
+            </ng-container>
+        </div>
     </div>
 </ng-container>

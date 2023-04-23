@@ -1,24 +1,18 @@
-<div class="col-center">
-    <app-news></app-news>
-    <div class="over-wrap" >
-        <div class="promo-banner-wrap">
-            <app-slider></app-slider>
-        </div>
-
-        <div class="game-highlight-wrap col3">
-            <h3>Sports Highlights
-                <!-- <div class="highlight-sorting">
-                    <label for="lang">View by</label>
-                    <div class="select">
-                        <select>
-                            <option value="competitionName">Competition</option>
-                            <option value="openDateTime" selected="">Time</option>
-                            <option value="totalMatched">Matched</option>
-                        </select>
-                    </div>
-                </div> -->
-            </h3>
-            <app-table-row [tableRowList]="eventList" [multiMarketPin]="true"></app-table-row>
-        </div>
+<div class="highlight-fix">
+    <div class="wrap-highlight">
+        <perfect-scrollbar class="scroll-container" [config]="{useBothWheelAxes: true, suppressScrollX: false, suppressScrollY: false}">
+        <ul>
+            <li *ngFor="let sidebar of sidebarList" [ngClass]="{'select':sidebar.id==activatedId}">
+                <span i class="tag-live"><strong></strong>4</span>
+                <a [routerLink]="['/allsport-highlight',sidebar.id]" title="Cricket"><img class="icon-{{sidebar.sportName.toLowerCase()}}"
+                        src="assets/images/mobile/transparent.gif">{{sidebar.sportName}}
+                </a>
+            </li>
+        </ul>
+    </perfect-scrollbar>
     </div>
+</div>
+<div class="wrap-highlight_list">
+    <h3>Highlights</h3>
+    <app-sports-data [tableRowList]="eventList" [multiMarketPin]="true"></app-sports-data>
 </div>

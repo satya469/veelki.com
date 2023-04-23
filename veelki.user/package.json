@@ -24,6 +24,7 @@
     "@ngrx/store-devtools": "^13.2.0",
     "ngx-marquee": "^13.2.1",
     "ngx-owl-carousel-o": "^7.0.1",
+    "ngx-perfect-scrollbar": "^10.1.1",
     "ngx-spinner": "^13.1.1",
     "ngx-toastr": "^14.3.0",
     "rxjs": "~7.5.0",

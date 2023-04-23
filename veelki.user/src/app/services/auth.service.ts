@@ -27,10 +27,13 @@ export class AuthService {
     if(userData !== null && userData.userName !== null && userData.id > 0 && userData.roleId > 0){
       return true;
     }
+    this.route.navigateByUrl("/login");
     return false;
   }
   public logout(){
     this.session.removeSession('USER_DATA');
+    this._isLoginUser.next(false);
+    this.route.navigateByUrl("/home");
   }
   
 

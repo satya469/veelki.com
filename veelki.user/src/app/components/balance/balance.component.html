@@ -1,11 +1,21 @@
 <li class="main-wallet">
-    <a class="a-wallet">
+    <a href="#" class="a-wallet ui-link">
         <ul>
-            <li><span>Main Balance</span> <span>PBU {{openingBalance}}</span></li>
-            <li><span>Exposure </span> <span>{{exposureBalance}}</span></li>
-            <!-- <li class="nums">+<span>5</span></li> -->
+            <li><span>Main</span><span>PBU {{openingBalance}}</span></li>
+            <li><span>Exposure</span><span>{{exposureBalance}}</span></li>
+            <li class="nums">+<span>5</span></li>
         </ul>
+        <p class="loading-bar" style="display: none;">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </p>
     </a>
-    <a class="a-refresh" title="Refresh Main Wallet" (click)="refreshBalance()"><img
-            src="assets/images/transparent.gif"></a>
+    <a class="a-refresh ui-link" (click)="refreshBalance()" title="Refresh Main Wallet"><img
+            src="assets/images/mobile/transparent.gif"></a>
 </li>

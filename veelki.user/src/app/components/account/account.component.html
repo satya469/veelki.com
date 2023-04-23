@@ -1,0 +1,15 @@
+<div class="path-wrap">
+    <p class="account-id">
+        <span>{{loginUserName}}</span>
+        <span class="time-zone">GMT+5:{{gmtTimeZone}}</span>
+    </p>
+</div>
+<ul class="menu-list">
+    <li><a [routerLink]="['/account/my-profile']">My Profile</a></li>
+    <li><a>Balance Overview</a></li>
+    <li><a>My Bets</a></li>
+    <li><a>Bets History</a></li>
+    <li><a [routerLink]="['/account/profit-loss']">Profit &amp; Loss</a></li>
+    <li><a [routerLink]="['/account/activity-log']">Activity Log</a></li>
+</ul>
+<a class="logout" (click)="logout()">LOGOUT</a>

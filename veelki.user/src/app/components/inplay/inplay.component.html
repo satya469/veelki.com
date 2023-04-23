@@ -1,16 +1,14 @@
-<div class="col-center inplay">
-    <app-news></app-news>
-    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="tab col3">
+<div class="tab-wrap">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active">
         <li [ngbNavItem]="1">
             <a ngbNavLink>In-Play</a>
             <ng-template ngbNavContent>
                 <ng-container *ngIf="inplayData">
-                    <div class="game-wrap col3" *ngFor="let inplayList of inplayData">
+                    <div *ngFor="let inplayList of inplayData">
                         <ng-container *ngIf="inplayList.oddsData.length > 0">
-                            <h3>
-                                <a class="to-expand">{{inplayList.sportName}}</a>
-                            </h3>
-                            <app-table-row [tableRowList]="inplayList.oddsData" [multiMarketPin]="false"></app-table-row>
+                            <h3>{{inplayList.sportName}}</h3>
+                            <app-sports-data [tableRowList]="inplayList.oddsData"
+                                [multiMarketPin]="false"></app-sports-data>
                         </ng-container>
                     </div>
                     <div class="sport_list-wrap" *ngIf="inplayData.length === 0">
@@ -25,12 +23,10 @@
             <a ngbNavLink>Today</a>
             <ng-template ngbNavContent>
                 <ng-container *ngIf="todayData">
-                    <div class="game-wrap col3" *ngFor="let todayList of todayData">
+                    <div *ngFor="let todayList of todayData">
                         <ng-container *ngIf="todayList.oddsData.length > 0">
-                            <h3>
-                                <a class="to-expand">{{todayList.sportName}}</a>
-                            </h3>
-                            <app-table-row [tableRowList]="todayList.oddsData" [multiMarketPin]="false"></app-table-row>
+                            <h3>{{todayList.sportName}}</h3>
+                            <app-sports-data [tableRowList]="todayList.oddsData" [multiMarketPin]="false"></app-sports-data>
                         </ng-container>
                     </div>
                     <div class="sport_list-wrap" *ngIf="todayData.length === 0">
@@ -43,14 +39,13 @@
         </li>
         <li [ngbNavItem]="3">
             <a ngbNavLink>Tomorrow</a>
-            <ng-template ngbNavContent>                
+            <ng-template ngbNavContent>
                 <ng-container *ngIf="tomorrowData">
-                    <div class="game-wrap col3" *ngFor="let tomorrowList of tomorrowData">
+                    <div *ngFor="let tomorrowList of tomorrowData">
                         <ng-container *ngIf="tomorrowList.oddsData.length > 0">
-                            <h3>
-                                <a class="to-expand">{{tomorrowList.sportName}}</a>
-                            </h3>
-                            <app-table-row [tableRowList]="tomorrowList.oddsData" [multiMarketPin]="false"></app-table-row>
+                            <h3>{{tomorrowList.sportName}}</h3>
+                            <app-sports-data [tableRowList]="tomorrowList.oddsData"
+                                [multiMarketPin]="false"></app-sports-data>
                         </ng-container>
                     </div>
                     <div class="sport_list-wrap" *ngIf="tomorrowData.length === 0">
@@ -62,8 +57,8 @@
             </ng-template>
         </li>
     </ul>
+</div>
 
-    <div class="over-wrap">
-        <div [ngbNavOutlet]="nav"></div>
-    </div>
+<div class="wrap-highlight_list">
+    <div [ngbNavOutlet]="nav"></div>
 </div>

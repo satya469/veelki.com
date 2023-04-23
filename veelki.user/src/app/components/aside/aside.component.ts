@@ -11,7 +11,7 @@ import { LoaderService } from 'src/app/services/loader.service';
 import { SessionService } from 'src/app/services/session.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { BetService } from 'src/app/services/getBet.service';
-import { NgbAccordion } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordion, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-aside',
@@ -36,10 +36,15 @@ export class AsideComponent implements OnInit {
   marketList: MarketList[] = [];
   @ViewChild('acc') getNgbAccordion?: NgbAccordion;
 
-  constructor(private subjectService : SubjectService, private betService : BetService, public notification: NotificationService, private sessionService: SessionService, private service: HttpService, private loaderService : LoaderService, private authService: AuthService, private store: Store<{ StackData: StackLimit[] }> ) { 
+  constructor(private modalService: NgbModal, private subjectService : SubjectService, private betService : BetService, public notification: NotificationService, private sessionService: SessionService, private service: HttpService, private loaderService : LoaderService, private authService: AuthService, private store: Store<{ StackData: StackLimit[] }> ) { 
     this.stackData = this.store.select(data => data.StackData);
     this.authService._isLoginUser.subscribe((res) => this.isUserLogin = res);
   }
+
+  openPlaceBet(content:any) {
+		this.modalService.open(content);
+	}
+
 
   toggleAccordian($event:boolean){
     if($event === true){
@@ -47,6 +52,30 @@ export class AsideComponent implements OnInit {
     }
   }
 
+  addStackPrice(num:any){
+    this.betData.amountStake = Number(this.betData.amountStake + `${num}`);
+    this.amountStake = Number(this.amountStake + `${num}`);
+    this.subjectService.setBetData(this.betData);
+  }
+
+  removeStackPrice(){
+    this.betData.amountStake = Number(this.betData.amountStake?.toString().substring(0, this.betData.amountStake?.toString().length-1));
+    this.amountStake = Number(this.amountStake?.toString().substring(0, this.amountStake?.toString().length-1));
+    this.subjectService.setBetData(this.betData);
+  }
+
+  incDecStack(type:string){
+    if(type=='plus'){
+      this.betData.amountStake = this.betData.amountStake ? this.betData.amountStake+1 : this.betData.amountStake;
+      this.amountStake += 1;
+      this.subjectService.setBetData(this.betData);      
+    }
+    if(type=='minus'){
+      this.betData.amountStake = this.betData.amountStake ? this.betData.amountStake-1 : this.betData.amountStake;
+      this.amountStake -= 1;
+      this.subjectService.setBetData(this.betData);      
+    }
+  }
 
   ngOnInit(): void {
     this.subjectService.betDataSubject.subscribe((data:betData) =>{
@@ -61,11 +90,11 @@ export class AsideComponent implements OnInit {
       }
     });
     if(this.isUserLogin){
-      this.getMarketData().subscribe(response => {
-        if (response.isSuccess == true && response.data !== null) {
-          this.marketList = response.data;
-        }
-      })
+      // this.getMarketData().subscribe(response => {
+      //   if (response.isSuccess == true && response.data !== null) {
+      //     this.marketList = response.data;
+      //   }
+      // })
     }
   }
 
@@ -116,10 +145,11 @@ export class AsideComponent implements OnInit {
       .subscribe((response: ResponseModel) => {
         if (response.isSuccess == true) {
           this.notification.showSuccess(response.message);
-          this.betService._getBetData.next(this.betService.getMarketList());
+          //this.betService._getBetData.next(this.betService.getMarketList());
         } else {
           this.notification.showError(response.message);
         }
+        this.modalService.dismissAll();
         this.loaderService.isLoading.next(false);
       });
   }

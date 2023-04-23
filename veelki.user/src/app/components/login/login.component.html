@@ -1,0 +1,69 @@
+<div class="main-bg">
+    <header class="login-head">
+        <a routerLink="/home" class="close ui-link"></a>
+        <h1>SKYEXCHANGE</h1>
+        <div class="betfair-wrap">
+            <p>Powered by</p>
+        </div>
+    </header>
+    <form [formGroup]="loginForm" method="post" role="form" (ngSubmit)="loginFormSubmit()">
+        <dl class="form-login">
+            <dd [ngClass]="{'error':isSubmitted && loginForm.controls['email'].errors?.['required']}">
+                <input type="email" placeholder="Username" formControlName="email">
+            </dd>
+            <dd [ngClass]="{'error':isSubmitted && loginForm.controls['password'].errors?.['required']}">
+                <input type="password" placeholder="Password" formControlName="password">
+            </dd>
+            <dd id="validCodeErrorClass" style="display: block">
+                <input formControlName="codeValidator" type="text" placeholder="Validation" maxlength="4">
+                <span
+                    style="position: absolute; right: 5px; top: 20%; font-size: 16px;font-weight: bold; color:#000000">{{randomNumber}}</span>
+            </dd>
+            <dd>
+                <button type="submit" class="btn-send ui-link">Login</button>
+            </dd>
+            <dd id="errorMsg" class="state" *ngIf="isSubmitted && formSubmitError != null">{{formSubmitError}}</dd>
+        </dl>
+    </form>
+    <ul class="policy-link">
+        <li><a class="ui-link">Privacy Policy</a></li>
+        <li><a class="ui-link">Terms and Conditions</a></li>
+        <li><a class="ui-link">Rules and Regulations</a></li>
+        <li><a class="ui-link">KYC</a></li>
+        <li><a class="ui-link">Responsible Gaming</a></li>
+        <li><a class="ui-link">About Us</a></li>
+        <li><a class="ui-link">Self-Exclusion Policy</a></li>
+        <li><a class="ui-link">Underage Policy</a></li>
+    </ul>
+    <div class="support-wrap extend-support">
+        <div class="extend-btn">
+            <img src="assets/images/mobile/transparent.gif" title="customer" class="support-customer">
+            <a target="_blank" class="ui-link">Customer support1</a>
+            <a target="_blank" class="split-line ui-link">support2</a>
+        </div>
+        <div class="extend-btn">
+            <img src="assets/images/mobile/transparent.gif" title="WhatsApp" class="support-whatsapp">
+            <a target="_blank" class="ui-link">what's app 3</a>
+            <a target="_blank" class="split-line ui-link">what's app 4</a>
+        </div>
+        <div class="extend-btn">
+        </div>
+        <div class="support-social">
+            <div class="social-btn">
+                <img src="assets/images/mobile/transparent.gif" title="Skype"
+                    class="support-skype">
+                <a target="_blank" class="ui-link">Skype</a>
+            </div>
+            <div class="social-btn">
+                <img src="assets/images/mobile/transparent.gif" title="Email"
+                    class="support-mail">
+                <a target="_blank" class="ui-link">Email</a>
+            </div>
+            <div class="social-btn">
+                <img src="assets/images/mobile/transparent.gif" title="Instagram"
+                    class="support-ig">
+                <a target="_blank" class="ui-link">Instagram</a>
+            </div>
+        </div>
+    </div>
+</div>

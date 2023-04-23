@@ -3,11 +3,12 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, mergeMap } from 'rxjs';
 import { ResponseModel } from 'src/app/models/responseModel';
 import { StackLimit } from 'src/app/models/stackLimit';
 import { AuthService } from 'src/app/services/auth.service';
 import { ConfirmService } from 'src/app/services/confirm.service';
+import { BetService } from 'src/app/services/getBet.service';
 import { HttpService } from 'src/app/services/http.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { SessionService } from 'src/app/services/session.service';
@@ -35,9 +36,12 @@ export class HeaderComponent implements OnInit {
   stackData?: Observable<StackLimit[]>;
   isStackEdit : boolean = false;
   randomNumber : number = 1234;
+  isShowSetting : boolean = false;
+  isShowBet : boolean = false;
+  marketList: MarketList[] = [];
 
   constructor(private formBuilder: FormBuilder, private subjectService : SubjectService, private service: HttpService, private router: Router, private authService: AuthService, private sessionService: SessionService, private modalService: NgbModal,
-    private confirmService: ConfirmService, public notification: NotificationService, private store: Store<{ StackData: StackLimit[] }>) {
+    private confirmService: ConfirmService, public notification: NotificationService, private store: Store<{ StackData: StackLimit[] }>, private betService : BetService) {
 
     this.gmtTimeZone = this.gmtTimeZone.substring(this.gmtTimeZone.indexOf("GMT"),this.gmtTimeZone.indexOf("("));
 
@@ -161,4 +165,70 @@ export class HeaderComponent implements OnInit {
     this.store.dispatch(UPDATE_STACK({ state : this.stackLimitList , stack: this.stackForm.value.stackList }));
   }
 
+  getMarketData(){
+    if(this.isLoginUser){
+      this.marketData().subscribe((response:any) => {
+        if (response.isSuccess == true && response.data !== null) {
+          this.marketList = response.data;
+        }
+      })
+    }
+  }
+
+  marketData(){
+    return this.betService._getBetData.pipe(
+      mergeMap(data => data)
+    );
+  }
+
+  selectBetId: number = 0;
+  betListData: BetData[] = [];
+
+  getBetList(): void {
+    if (this.selectBetId == 0) {
+      this.betListData = [];
+      return;
+    }
+    let userId = this.sessionService.getLoggedInUser().id;
+    this.service.get(`Common/GetOpenBetList?UserId=${userId}&EventId=${this.selectBetId}`)
+      .subscribe((response: ResponseModel) => {
+        if (response.isSuccess == true && response.data !== null) {
+          this.betListData.length = 0;
+          this.betListData.push(...response.data);
+        }
+      });
+  }
+
+}
+
+interface MarketList {
+  eventId: number;
+  event: string;
+}
+
+interface BetData {
+  id: number,
+  betId: string,
+  sportId: number,
+  eventId: number,
+  event: string,
+  marketId: number,
+  market: string,
+  selectionId: number,
+  selection: string,
+  oddsType: number,
+  type: string,
+  oddsRequest: number,
+  amountStake: number,
+  betType: number,
+  placeTime: Date,
+  matchedTime: Date,
+  settleTime: Date,
+  isSettlement: number,
+  status: boolean,
+  userId: number,
+  updatedBy: any,
+  updatedDate: any,
+  resultType: any,
+  resultAmount: number
 }

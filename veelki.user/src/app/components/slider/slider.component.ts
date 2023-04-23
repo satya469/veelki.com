@@ -19,11 +19,11 @@ export class SliderComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
-    dots: true,
+    dots: false,
     navSpeed: 700,
     navText: ['', ''],
     items: 1,
-    nav: false,
+    nav: true,
     autoHeight:true,
     autoplay:true
   }
