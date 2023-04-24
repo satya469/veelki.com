@@ -1,0 +1,19 @@
+.table01, .table-s {
+    width: 100%;
+    background-color: #fff;
+    border-collapse: collapse;
+    border-bottom: 1px solid #7e97a7;
+    margin-bottom: 15px;
+}
+.table01 th, .table-s th {
+    color: #243a48;
+    background-color: #e4e4e4;
+    border: 1px solid #7e97a7;
+    border-width: 1px 0 1px 0;
+    padding: 8px 10px;
+}
+.table01 td, .table-s td {
+    border-top: 1px solid #eee;
+    padding: 8px 10px;
+    vertical-align: middle;
+}
