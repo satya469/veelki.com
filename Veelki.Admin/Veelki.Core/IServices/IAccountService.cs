@@ -88,8 +88,9 @@ namespace Veelki.Core.IServices
         /// <param name="LoginUserId"></param>
         /// <param name="RoleId"></param>
         /// <param name="UserId"></param>
+        /// <param name="UserStatus"></param>
         /// <returns></returns>
-        Task<CommonReturnResponse> GetUsersByParentIdAsync(int LoginUserId, int RoleId, int UserId);
+        Task<CommonReturnResponse> GetUsersByParentIdAsync(int LoginUserId, int RoleId, int UserId, int UserStatus);
 
         /// <summary>
         /// Get User Detail.

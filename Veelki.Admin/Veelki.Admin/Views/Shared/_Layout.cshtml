@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using static Veelki.Core.ServiceHelper.CommonFun;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -16,7 +17,42 @@
             <!-- <img src="images/download-page-logo.png" alt=""> -->
 
             <ul class="account-wrap">
-                <li><span>MA</span><strong>sskydemo0</strong></li>
+                <li>
+                    @{
+                        if (ViewBag.LoginUser.RoleId == 2)
+                        {
+                        <span>
+                            SA
+                        </span>
+                        }
+                        else if (ViewBag.LoginUser.RoleId == 3)
+                        {
+                        <span>
+                            AD
+                        </span>
+                        }
+                        else if (ViewBag.LoginUser.RoleId == 4)
+                        {
+                        <span>
+                            SUA
+                        </span>
+                        }
+                        else if (ViewBag.LoginUser.RoleId == 5)
+                        {
+                        <span>
+                            SUM
+                        </span>
+                        }
+                        else if (ViewBag.LoginUser.RoleId == 6)
+                        {
+                        <span>
+                            MA
+                        </span>
+                        }
+                    }
+
+                    <strong>@ViewBag.LoginUser.FullName</strong>
+                </li>
                 <!-- single balance 加 no-multi -->
                 <li class="main-wallet no-multi">
                     <!-- 加open打開-->
@@ -48,23 +84,49 @@
         <div class="menu-wrap">
             <div class="main_wrap">
                 <ul class="menu">
-
                     <li>
+                        @if (ViewBag.HeaderItem == HeaderItem.DownlineList)
+                        {
                         <a id="menu_downline_list" class="select" href="~/Home/Index">
                             Downline List
                         </a>
+                        }
+                        else
+                        {
+                        <a id="menu_downline_list" class="" href="~/Home/Index">
+                            Downline List
+                        </a>
+                        }
+
                     </li>
                     <li>
+                        @if (ViewBag.HeaderItem == HeaderItem.MyAccount)
+                        {
+                        <a id="menu_my_account" class="select" href="~/Account/MyAccount">
+                            My Account
+                        </a>
+                        }
+                        else
+                        {
                         <a id="menu_my_account" class="" href="~/Account/MyAccount">
                             My Account
                         </a>
+                        }
                     </li>
+                    @if (ViewBag.LoginUser.RoleId == 2)
+                    {
+                    <li>
+                        <a id="menu_market_watch" class="" href="~/Account/MyAccount">
+                            Market Watch
+                        </a>
+                    </li>
+                    }
+
                     <li>
                         <a id="menu_my_report" class="menu-drop" href="#">
                             My Report
                         </a>
                         <ul>
-
                             <li>
                                 <a href="~/Report/ProfitReportByDownline">
                                     Profit/Loss Report by Downline
@@ -92,8 +154,60 @@
                             Banking
                         </a>
                     </li>
+                    @if (ViewBag.LoginUser.RoleId == 2)
+                    {
+                    <li>
+                        <a id="menu_settings" class="menu-drop" href="#">
+                            Settings
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="~/Report/ProfitReportByDownline">
+                                    Sport Setting
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Report/ProfitReportByMarket">
+                                    Series Setting
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Report/ProfitReportByMarket">
+                                    Match Setting
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a id="menu_other_settings" class="menu-drop" href="#">
+                            Masters
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="~/Report/ProfitReportByDownline">
+                                    Logo Master
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Report/ProfitReportByMarket">
+                                    News Master
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Report/ProfitReportByMarket">
+                                    Banner Master
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Report/ProfitReportByMarket">
+                                    Slider Master
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    }
                     <li class="logout">
-                        <a id="logout" href="~/Account/Logout">Logout<img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
+                        <a id="logout" href="~/Account/Logout" style=" align-items: center; display: inline-flex;">Logout<img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
                     </li>
                     <li class="time_zone"><span>Time Zone :</span> GMT+5:30</li>
                 </ul>

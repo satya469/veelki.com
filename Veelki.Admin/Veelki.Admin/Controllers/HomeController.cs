@@ -12,6 +12,7 @@ using Veelki.Core.IServices;
 using Microsoft.Extensions.Configuration;
 using Veelki.Core.ServiceHelper;
 using System;
+using static Veelki.Core.ServiceHelper.CommonFun;
 
 namespace Veelki.Admin.Controllers
 {
@@ -36,9 +37,10 @@ namespace Veelki.Admin.Controllers
             var model = new RegisterListVM();
             try
             {
-                commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/GetUsersByParentId?ParentId={1}&RoleId={2}&UserId={3}", _configuration["ApiKeyUrl"], user.Id, 3, 0));
+                commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/GetUsersByParentId?ParentId={1}&RoleId={2}&UserId={3}&userStatus={4}", _configuration["ApiKeyUrl"], user.ParentId, user.RoleId + 1, 0, 0));
                 model = jsonParser.ParsJson<RegisterListVM>(Convert.ToString(commonModel.Data));
                 ViewBag.roleIdBass = 3;
+                ViewBag.HeaderItem = HeaderItem.DownlineList;
                 return View(model);
             }
             catch (Exception)
@@ -48,12 +50,33 @@ namespace Veelki.Admin.Controllers
             return View();
         }
 
-        public async Task<JsonResult> DeleteUser(int UserId, string Status)
+        [HttpPost]
+        public async Task<ActionResult> GetUsersList(int UserStatus)
+        {
+            var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
+            CommonReturnResponse commonModel = null;
+            var model = new RegisterListVM();
+            try
+            {
+                commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/GetUsersByParentId?ParentId={1}&RoleId={2}&UserId={3}&userStatus={4}", _configuration["ApiKeyUrl"], user.ParentId, user.RoleId + 1, 0, UserStatus));
+                if (commonModel.IsSuccess && commonModel.Data != null)
+                {
+                    model = jsonParser.ParsJson<RegisterListVM>(Convert.ToString(commonModel.Data));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return PartialView("_DownlineList", model);
+        }
+
+        public async Task<JsonResult> DeleteUser(int UserId, int Status)
         {
             CommonReturnResponse commonModel = null;
             try
             {
-                int statusId = Status.ToLower() == "active" ? 1 : Status.ToLower() == "suspend" ? 2 : 3;
+                int statusId = Status; // Status.ToLower() == "active" ? 1 : Status.ToLower() == "suspend" ? 2 : 3;
                 commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/UpdateUserStatus?Status={1}&UserId={2}", _configuration["ApiKeyUrl"], statusId, UserId));
                 return Json(commonModel);
             }

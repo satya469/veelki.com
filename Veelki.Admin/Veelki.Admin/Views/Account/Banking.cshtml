@@ -1,4 +1,4 @@
-﻿
+﻿@model Veelki.Models.Model.RegisterListVM;
 @{
     ViewData["Title"] = "Banking";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -34,10 +34,14 @@
 
         <script language="JavaScript" type="text/javascript">
             (function () {
-                $j('.btn-close').click(function () {
-                    $j('#message').hide();
+                $('.btn-close').click(function () {
+                    $('#message').hide();
                 });
             })();
+
+            //function DepositClick() {
+            //    alert("a");
+            //}
         </script>
 
         <div class="search-wrap" id="userSearchUl">
@@ -84,7 +88,7 @@
                 <dt>
                     Your Balance
                 </dt>
-                <dd id="yourBalance"><span>PTH</span>0.00</dd>
+                <dd id="yourBalance"><span>PBU</span>0.00</dd>
             </dl>
             <ul class="input-list float-R" style="display: none;">
                 <li>
@@ -107,95 +111,95 @@
                 </li>
             </ul>
         </div>
-        <table style="display: none;">
-            <tbody>
-                <tr id="tempTr">
-                    <td class="td-uid" id="userId"></td>
-                    <td id="siteCol" style="display: none"></td>
-                    <td id="currencyTypeCol" style="display: none"></td>
-                    <td id="balance"></td>
-                    <td id="availableBalance"></td>
-                    <td id="userExposure"></td>
+        @*<table style="display: none;">
+                <tbody>
+                    <tr id="tempTr">
+                        <td class="td-uid" id="userId"></td>
+                        <td id="siteCol" style="display: none"></td>
+                        <td id="currencyTypeCol" style="display: none"></td>
+                        <td id="balance"></td>
+                        <td id="availableBalance"></td>
+                        <td id="userExposure"></td>
 
-                    <td id="bankingBalance" class="border-l check_date">
-                        <span id="bankingBalance_updateDate"></span>
-                    </td>
+                        <td id="bankingBalance" class="border-l check_date">
+                            <span id="bankingBalance_updateDate"></span>
+                        </td>
 
-                    <td class="DW-amount">
-                        <ul class="btn_list-DW">
-                            <li><a id="dBtn" class="btn" href="#">D</a></li>
-                            <li><a id="wBtn" class="btn" href="#">W</a></li>
-                        </ul>
-                        <input id="amount" name="amount" class="" type="text" placeholder="0" maxlength="18">
-                        <a id="fullBtn" href="javascript:void(0);" class="btn float-L disable">
-                            Full
-                        </a>
-                    </td>
-                    <td class="credit-amount">
-                        <a href="javascript:void(0);" id="userCreditReference"></a>
-                        <input id="editCreditReference" name="editCreditReference" class="" type="text" placeholder="0" maxlength="18" style="display: none;">
-                        <a id="editCreditReferenceBtn" href="javascript:void(0);" class="btn">
-                            Edit
-                        </a>
-                        <a id="cancelCreditReferenceBtn" href="javascript:void(0);" class="btn" style="display: none;">
-                            Cancel
-                        </a>
-                    </td>
-                    <td id="userReferencePL"></td>
-                    <td class="border-l"><input id="remark" class="" type="text" placeholder="Remark"></td>
-                    <td class="full-amount">
-                        <a id="log" class="btn">
-                            Log
-                        </a>
-                    </td>
-                </tr>
-                <tr id="tempBalanceTr" class="expand first expand-balance">
-                    <td></td>
-                    <td colspan="10">
-                        <img class="expand-arrow" src="https://statics3.skyexch.bike/images/transparent.gif">
-                        <table>
-                            <tbody id="tempVendorContent">
-                                <tr>
-                                    <th width="9%" class="align-L">Game</th>
-                                    <th width="11%">Balance</th>
-                                    <th width="7%"><a id="recallAll" href="#" class="btn-recall">Recall All</a></th>
-                                    <th></th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                <tr id="tempVendorTr">
-                    <td id="vendorTitle" class="align-L">Houise</td>
-                    <td id="vendorBalance">200,000,000,000.00</td>
-                    <td><a id="recall" href="#" class="btn-recall">Recall</a></td>
-                    <td></td>
-                </tr>
-                <tr id="noDataTempTr">
-                    <td class="no-data" colspan="11">
-                        <p>
-                            No Data
-                        </p>
-                    </td>
-                </tr>
+                        <td class="DW-amount">
+                            <ul class="btn_list-DW">
+                                <li><a id="dBtn" class="btn">D</a></li>
+                                <li><a id="wBtn" class="btn" href="#" >W</a></li>
+                            </ul>
+                            <input id="amount" name="amount" class="" type="text" placeholder="0" maxlength="18">
+                            <a id="fullBtn" href="javascript:void(0);" class="btn float-L disable">
+                                Full
+                            </a>
+                        </td>
+                        <td class="credit-amount">
+                            <a href="javascript:void(0);" id="userCreditReference"></a>
+                            <input id="editCreditReference" name="editCreditReference" class="" type="text" placeholder="0" maxlength="18" style="display: none;">
+                            <a id="editCreditReferenceBtn" href="javascript:void(0);" class="btn">
+                                Edit
+                            </a>
+                            <a id="cancelCreditReferenceBtn" href="javascript:void(0);" class="btn" style="display: none;">
+                                Cancel
+                            </a>
+                        </td>
+                        <td id="userReferencePL"></td>
+                        <td class="border-l"><input id="remark" class="" type="text" placeholder="Remark"></td>
+                        <td class="full-amount">
+                            <a id="log" class="btn">
+                                Log
+                            </a>
+                        </td>
+                    </tr>
+                    <tr id="tempBalanceTr" class="expand first expand-balance">
+                        <td></td>
+                        <td colspan="10">
+                            <img class="expand-arrow" src="https://statics3.skyexch.bike/images/transparent.gif">
+                            <table>
+                                <tbody id="tempVendorContent">
+                                    <tr>
+                                        <th width="9%" class="align-L">Game</th>
+                                        <th width="11%">Balance</th>
+                                        <th width="7%"><a id="recallAll" href="#" class="btn-recall">Recall All</a></th>
+                                        <th></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr id="tempVendorTr">
+                        <td id="vendorTitle" class="align-L">Houise</td>
+                        <td id="vendorBalance">200,000,000,000.00</td>
+                        <td><a id="recall" href="#" class="btn-recall">Recall</a></td>
+                        <td></td>
+                    </tr>
+                    <tr id="noDataTempTr">
+                        <td class="no-data" colspan="11">
+                            <p>
+                                No Data
+                            </p>
+                        </td>
+                    </tr>
 
-                <tr id="totalTempTr" class="total">
-                    <td class="align-L">Total</td>
-                    <td id="totalSite" style="display: none"></td>
-                    <td id="totalCurrencyType" style="display: none"></td>
-                    <td id="totalBalance"></td>
-                    <td id="totalAvailableBalance"></td>
-                    <td id="totalExposure"></td>
+                    <tr id="totalTempTr" class="total">
+                        <td class="align-L">Total</td>
+                        <td id="totalSite" style="display: none"></td>
+                        <td id="totalCurrencyType" style="display: none"></td>
+                        <td id="totalBalance"></td>
+                        <td id="totalAvailableBalance"></td>
+                        <td id="totalExposure"></td>
 
-                    <td></td>
+                        <td></td>
 
-                    <td id="totalCreditReference" class="" colspan="2"></td>
-                    <td id="totalReferencePL"></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+                        <td id="totalCreditReference" class="" colspan="2"></td>
+                        <td id="totalReferencePL"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>*@
 
         <table id="table_transfer" class="table01 tab-transfer tab-banking">
             <colgroup>
@@ -262,61 +266,75 @@
                 </tr>
             </tbody>
             <tbody id="content">
-                <tr id="userdemoo" main_userid="userdemoo" main_site="1">
-                    <td class="td-uid" id="userId"><span class="order">1.</span><span class="account_name">userdemoo</span></td>
-                    <td id="siteCol" style="display: none">Sky</td>
-                    <td id="currencyTypeCol" style="display: none">PTH</td>
-                    <td id="balance"><a href="#" class="link-open" onclick="VendorBalanceDetailHandler.balanceShowing('userdemoo','1', function () { CashBankingHandler.queryCashDirectMembers(CashBankingHandler.pageNumber); }, $j(this))"> 0.00</a></td>
-                    <td id="availableBalance"> 0.00</td>
-                    <td id="userExposure"> 0.00</td>
+                @if (Model.Users != null && Model.Users.Count() > 0)
+                {
+                    int i = 0;
+                    foreach (var user in Model.Users)
+                    {
+                        <tr id="userdemoo_@i" main_userid="userdemoo" main_site="1">
+                            <td class="td-uid" id="userId_@i" style="display: none">@user.Id</td>
+                            <td class="td-uid" id="userFullName_@i"><span class="order">@(i + 1)</span><span class="account_name">@user.FullName</span></td>
+                            <td id="siteCol_@i" style="display: none">Sky</td>
+                            <td id="currencyTypeCol_@i" style="display: none">PTH</td>
+                            <td id="balance_@i">
+                                <a href="#" class="link-open" onclick="VendorBalanceDetailHandler.balanceShowing('userdemoo','1', function () { CashBankingHandler.queryCashDirectMembers(CashBankingHandler.pageNumber); }, $j(this))">
+                                    0.00
+                                </a>
+                            </td>
+                            <td id="availableBalance_@i"> @user.AvailableBalance</td>
+                            <td id="userExposure_@i"> @user.ExposureLimit</td>
 
-                    <td id="bankingBalance_userdemoo" class="border-l check_date">
-                        <span id="bankingBalance_updateDate_userdemoo"></span>
-                    </td>
+                            <td id="bankingBalance_userdemoo_@i" class="border-l check_date">
+                                <span id="bankingBalance_updateDate_userdemoo"></span>
+                            </td>
 
-                    <td class="DW-amount">
-                        <ul class="btn_list-DW">
-                            <li><a id="dBtn" class="btn" href="#">D</a></li>
-                            <li><a id="wBtn" class="btn" href="#">W</a></li>
-                        </ul>
-                        <input id="amount" name="amount" class="" type="text" placeholder="0" maxlength="18" fdprocessedid="0f2aye">
-                        <a id="fullBtn" href="javascript:void(0);" class="btn float-L disable">
-                            Full
-                        </a>
-                    </td>
-                    <td class="credit-amount">
-                        <a href="javascript:void(0);" id="userCreditReference"> 0.00</a>
-                        <input id="editCreditReference" name="editCreditReference" class="" type="text" placeholder="0" maxlength="18" style="display: none;">
-                        <a id="editCreditReferenceBtn" href="javascript:void(0);" class="btn">
-                            Edit
-                        </a>
-                        <a id="cancelCreditReferenceBtn" href="javascript:void(0);" class="btn" style="display: none;">
-                            Cancel
-                        </a>
-                    </td>
-                    <td id="userReferencePL"> 0.00</td>
-                    <td class="border-l"><input id="remark" class="" type="text" placeholder="Remark"></td>
-                    <td class="full-amount">
-                        <a id="log" class="btn">
-                            Log
-                        </a>
-                    </td>
-                </tr>
-                <tr id="totalTempTr" class="total">
-                    <td class="align-L">Total</td>
-                    <td id="totalSite" style="display: none"></td>
-                    <td id="totalCurrencyType" style="display: none"></td>
-                    <td id="totalBalance"> 0.00</td>
-                    <td id="totalAvailableBalance"> 0.00</td>
-                    <td id="totalExposure"> 0.00</td>
+                            <td class="DW-amount" id="DW-amount_@i">
+                                <ul id="pay_@i" class="btn_list-DW">
+                                    <li><a id="dBtn_@i" class="btn" onclick="DepositClick(@i)">D</a></li>
+                                    <li><a id="wBtn_@i" class="btn" onclick="WithdrawClick(@i)">W</a></li>
+                                </ul>
+                                <input id="amount_@i" name="amount" readonly value="0" class="" type="text" placeholder="0" maxlength="18" fdprocessedid="0f2aye">
+                                <a id="fullBtn_@i" href="javascript:void(0);" class="btn float-L disable">
+                                    Full
+                                </a>
+                            </td>
+                            <td class="credit-amount">
+                                <a href="javascript:void(0);" id="userCreditReference_@i"> 0.00</a>
+                                <input id="editCreditReference_@i" name="editCreditReference" class="" type="text" placeholder="0" maxlength="18" style="display: none;">
+                                <a id="editCreditReferenceBtn_@i" href="javascript:void(0);" class="btn">
+                                    Edit
+                                </a>
+                                <a id="cancelCreditReferenceBtn_@i" href="javascript:void(0);" class="btn" style="display: none;">
+                                    Cancel
+                                </a>
+                            </td>
+                            <td id="userReferencePL_@i"> 0.00</td>
+                            <td class="border-l"><input id="remark_@i" class="" type="text" placeholder="Remark" value=""></td>
+                            <td class="full-amount">
+                                <a id="log_@i" class="btn">
+                                    Log
+                                </a>
+                            </td>
+                        </tr>
 
-                    <td></td>
+                        i++;
+                    }
+                    <tr id="totalTempTr" class="total">
+                        <td class="align-L">Total</td>
+                        <td id="totalSite" style="display: none"></td>
+                        <td id="totalCurrencyType" style="display: none"></td>
+                        <td id="totalBalance"> 0.00</td>
+                        <td id="totalAvailableBalance"> 0.00</td>
+                        <td id="totalExposure"> 0.00</td>
 
-                    <td id="totalCreditReference" class="" colspan="2"> 0.00</td>
-                    <td id="totalReferencePL"> 0.00</td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                        <td></td>
+
+                        <td id="totalCreditReference" class="" colspan="2"> 0.00</td>
+                        <td id="totalReferencePL"> 0.00</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
             </tbody>
         </table>
 
@@ -369,8 +387,8 @@
                 </a>
             </li>
             <li class="submit-payment">
-                <input id="paymentPassword" type="password" placeholder="Password" style="display: inline" fdprocessedid="96hq3q">
-                <a id="submit" href="javascript:void(0);" class="btn-send">
+                <input id="paymentPassword" type="password" placeholder="Password" value="" style="display: inline" fdprocessedid="96hq3q">
+                <a id="submit" href="javascript:void(0);" class="btn-send" onclick="SubmitDW()">
                     Submit <span id="submitCount">0</span> Payment
                 </a>
             </li>
@@ -378,3 +396,127 @@
     </div>
 
 </div>
+
+@section Scripts{
+    <script>
+
+        function DepositClick(rowNum) {
+            var element = document.getElementById('pay_' + rowNum);
+            var inputElem = document.getElementById('amount_' + rowNum);
+            var fullBtnElem = document.getElementById('fullBtn_' + rowNum);
+            fullBtnElem.classList.add("disable");
+
+            if (element.classList.contains("select-D") || element.classList.contains("select-W")) {
+                if (element.classList.contains("select-W")) {
+                    element.classList.remove("select-W");
+                    element.classList.add("select-D");
+                    inputElem.removeAttribute('readonly');
+                }
+                else if (element.classList.contains("select-D")) {
+                    element.classList.remove("select-D");
+                    inputElem.setAttribute('readonly', true);
+                }
+            }
+            else {
+                element.classList.add("select-D");
+                inputElem.removeAttribute('readonly');
+            }
+        }
+
+        function WithdrawClick(rowNum) {
+            var inputElem = document.getElementById('amount_' + rowNum);
+            var element = document.getElementById('pay_' + rowNum);
+            var fullBtnElem = document.getElementById('fullBtn_' + rowNum);
+
+            if (element.classList.contains("select-D") || element.classList.contains("select-W")) {
+                if (element.classList.contains("select-D")) {
+                    element.classList.remove("select-D");
+                    element.classList.add("select-W");
+                    inputElem.removeAttribute('readonly');
+                    fullBtnElem.classList.remove("disable");
+                }
+                else if (element.classList.contains("select-W")) {
+                    element.classList.remove("select-W");
+                    inputElem.setAttribute('readonly', true);
+                    fullBtnElem.classList.add("disable");
+                }
+            }
+            else {
+                element.classList.add("select-W");
+                inputElem.removeAttribute('readonly');
+                fullBtnElem.classList.remove("disable");
+            }
+        }
+
+        function SubmitDW() {
+            var allAmountZero = false;
+            var oDepositWithdrawVM = new Array();
+            var table = document.getElementById("table_transfer");
+            for (var i = 0; i < table.rows.length - 2; i++) {
+                if (i > 0) {
+                    if ($("#amount_" + (i - 1)).val() > 0) {
+                        allAmountZero = true;
+                        var element = document.getElementById('pay_' + (i - 1));
+                        var isDW = true;
+                        if (element.classList.contains("select-D")) {
+                            isDW = true;
+                        }
+                        else {
+                            isDW = false;
+                        }
+
+                        var data = {
+                            UserId: table.rows[i].cells[0].innerHTML,
+                            IsDeposit: isDW,
+                            Balance: $("#amount_" + (i - 1)).val(),
+                            Remark: $("#remark_" + (i - 1)).val(),
+                            Password: $("#paymentPassword").val()
+                        };
+                        oDepositWithdrawVM.push(data);
+                    }
+                }
+            }
+
+            if (allAmountZero == false) {
+                alert("Please fill amount of any user to proceed");
+                return;
+            }
+
+            $.ajax({
+                url: "/Account/DepositWithdrawCoin",
+                type: "POST",
+                data: { oDepositWithdrawVM: oDepositWithdrawVM },
+                dataType: 'json',
+                success: function (data) {
+                    window.location.reload();
+                },
+                error: function (err) {
+                    alert(err);
+                }
+            });
+        }
+
+                                                                //$("#depositWithdrawModalLong button[type=submit]").click(function () {
+                                                                //    const isDeposit = $(this).hasClass("deposit-btn");
+                                                                //    $("#IsDeposit").val(isDeposit);
+                                                                //    var form = $("#depositWithdrawModalLong form");
+                                                                //    var url = "/user/DepositWithdrawCoin";
+                                                                //    var postData = form.serialize();
+                                                                //    $(".loader").show();
+
+                                                                //    $.post(url, postData, function (data) {
+                                                                //        $(".loader").hide();
+                                                                //        if (data.isSuccess) {
+                                                                //            toastr.success(data.message);
+                                                                //            $("#depositWithdrawModalLong").modal("hide");
+                                                                //            window.location.reload();
+                                                                //        }
+                                                                //        else {
+                                                                //            toastr.error(data.message);
+                                                                //            //$("#depositWithdrawModalLong .validation-summary-valid").html(data).show();
+                                                                //        }
+                                                                //    });
+                                                                //});
+
+    </script>
+}

@@ -56,6 +56,19 @@ namespace Veelki.Core.ServiceHelper
             Request = 6
         }        
 
+        public enum HeaderItem
+        {
+            DownlineList = 0,
+            MyAccount = 1,
+            MarketWatch = 2,
+            MyReport = 3,
+            BetList = 4,
+            RiskManagement = 5,
+            Banking = 6,
+            Settings = 7,
+            Masters = 8
+        }
+
         public static string CalculateFileSize(long bytes)
         {
             string _retrunSize = string.Empty;

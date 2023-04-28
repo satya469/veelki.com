@@ -399,7 +399,7 @@ namespace Veelki.Core.Services
             }
         }
 
-        public async Task<CommonReturnResponse> GetUsersByParentIdAsync(int LoginUserId, int RoleId, int UserId)
+        public async Task<CommonReturnResponse> GetUsersByParentIdAsync(int LoginUserId, int RoleId, int UserId, int userStatus)
         {
             IDictionary<string, object> _keyValues = null;
             List<UsersVM> usersVM = new List<UsersVM>();
@@ -435,10 +435,15 @@ namespace Veelki.Core.Services
                 }
 
                 var model = new RegisterListVM();
-                totalUser = totalUser != null && totalUser.Count() > 0 ? totalUser.Where(x => x.RoleId == RoleId).ToList() : totalUser;
+                //totalUser = totalUser != null && totalUser.Count() > 0 ? totalUser.Where(x => x.RoleId == RoleId).ToList() : totalUser;
                 if (UserId > 0)
                 {
                     totalUser = totalUser.Where(x => x.Id == UserId).ToList();
+                }
+                
+                if (userStatus != 0)
+                {
+                    totalUser = totalUser.Where(x => x.Status == userStatus).ToList();
                 }
                 model.Users = totalUser;
                 foreach (var item in model.Users)

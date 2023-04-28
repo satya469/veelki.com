@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Veelki.Model.ViewModel;
 
 namespace Veelki.Admin.Controllers
 {
@@ -460,6 +461,7 @@ namespace Veelki.Admin.Controllers
         {
             var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
 
+            ViewBag.HeaderItem = CommonFun.HeaderItem.MyAccount;
             //CommonReturnResponse commonModel = null;
             //List<AccountStatementVM> accountStatementVM = null;
             //try
@@ -481,7 +483,19 @@ namespace Veelki.Admin.Controllers
         public async Task<ActionResult> Banking()
         {
             var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
-
+            CommonReturnResponse commonModel = null;
+            var model = new RegisterListVM();
+            try
+            {
+                commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/GetUsersByParentId?ParentId={1}&RoleId={2}&UserId={3}", _configuration["ApiKeyUrl"], user.ParentId, (user.RoleId + 1), 0));
+                model = jsonParser.ParsJson<RegisterListVM>(Convert.ToString(commonModel.Data));
+                ViewBag.roleIdBass = 3;
+                return View(model);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
             //CommonReturnResponse commonModel = null;
             //List<AccountStatementVM> accountStatementVM = null;
             //try
@@ -497,6 +511,38 @@ namespace Veelki.Admin.Controllers
             //    throw;
             //}
             return View();
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> DepositWithdrawCoin(DepositWithdrawVM[] oDepositWithdrawVM)
+        {
+            CommonReturnResponse commonModel = null;
+            bool allBalanceZero = false;
+            try
+            {
+                var loginUser = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null;
+                foreach (var item in oDepositWithdrawVM)
+                {
+                    if (item.Balance > 0)
+                    {
+                        allBalanceZero = true;
+                        commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/DepositWithdrawCoin?Amount={1}&ParentId={2}&UserId={3}&UserRoleId={4}&&Remark={5}&Type={6}&Password={7}", _configuration["ApiKeyUrl"], item.Balance, loginUser.Id, item.UserId, loginUser.RoleId + 1, item.Remark, item.IsDeposit, item.Password));
+                    }
+                }
+
+                return Json(commonModel);
+            }
+            catch (Exception ex)
+            {
+                commonModel = new CommonReturnResponse()
+                {
+                    Data = null,
+                    IsSuccess = false,
+                    Message = ex.Message,
+                    Status = ResponseStatusCode.NOTACCEPTABLE
+                };
+                return Json(JsonConvert.SerializeObject(commonModel));
+            }
         }
     }
 }

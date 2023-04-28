@@ -519,3 +519,4 @@ D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor\Views\Report\ProfitReportByDownline.cshtml.g.cs
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor\Views\Report\ProfitReportByMarket.cshtml.g.cs
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor\Views\Report\RiskManagement.cshtml.g.cs
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\Razor\Views\Home\_DownlineList.cshtml.g.cs

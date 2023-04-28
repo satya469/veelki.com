@@ -57,3 +57,7 @@ Veelki.Admin/Veelki.Model/obj/Veelki.Model.csproj.nuget.g.props
 Veelki.Admin/Veelki.Model/obj/Veelki.Model.csproj.nuget.g.targets
 Veelki.Admin/.vs/Veelki.Admin/v16/.suo
 Veelki.Admin/Veelki.Model/obj/Debug/netcoreapp3.1/Veelki.Model.csproj.AssemblyReference.cache
+Veelki.Admin/.vs/Veelki/DesignTimeBuild/.dtbcache.v2
+*.v2
+Veelki.Admin/.vs/Veelki/DesignTimeBuild/.dtbcache.v2
+Veelki.Admin/.vs/Veelki/v16/.suo

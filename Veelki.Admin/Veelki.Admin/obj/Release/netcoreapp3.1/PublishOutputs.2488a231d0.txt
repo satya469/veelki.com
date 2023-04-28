@@ -22,6 +22,8 @@ D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTm
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\icon-filter.png
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\icon-news.png
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\icon-status-active.png
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\icon-status-lock.png
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\icon-status-suspend.png
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\insta-icon.svg
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\KV-pic.png
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\login-icon.svg

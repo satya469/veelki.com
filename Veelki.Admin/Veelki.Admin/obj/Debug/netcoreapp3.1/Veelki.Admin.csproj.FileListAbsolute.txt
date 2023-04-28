@@ -519,3 +519,4 @@ D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Debug\netcoreapp3.1\Razor\V
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Debug\netcoreapp3.1\Razor\Views\Report\BetList.cshtml.g.cs
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Debug\netcoreapp3.1\Razor\Views\Account\Banking.cshtml.g.cs
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Debug\netcoreapp3.1\Razor\Views\Report\RiskManagement.cshtml.g.cs
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Debug\netcoreapp3.1\Razor\Views\Home\_DownlineList.cshtml.g.cs

@@ -1,0 +1,337 @@
+﻿@model Veelki.Models.Model.RegisterListVM;
+
+<table id="tableTemplate" class="table01 margin-table" style="display: none">
+    <tbody>
+        <tr>
+            <th id="accountTh" width="" class="align-L" style="">
+                Account
+            </th>
+            <th id="creditRefTh" width="10%" style="">
+                Credit Ref.
+            </th>
+            <th id="initialCreditLimitTh" width="10%" style="display: none">
+                Initial Credit Limit
+            </th>
+            <th id="creditLimitTh" width="9%" style="display: none">
+                Credit Limit
+            </th>
+
+            <th id="todayPLTh" width="9%" style="display: none">
+                Today P/L
+            </th>
+            <th id="transferablePLTh" width="9%" style="display: none">
+                Transferable P/L
+            </th>
+            <th id="balanceTh" width="10%" style="">
+                Balance
+            </th>
+            <th id="exposureTh" width="10%" style="">
+                Exposure
+            </th>
+            <th id="availableBalanceTh" width="10%" style="">
+                Avail. bal.
+            </th>
+            <th id="playerBalanceTh" width="10%" style="display: none">
+                Player Balance
+            </th>
+            <th id="exposureLimitTh" width="10%" style="display: none">
+                Exposure Limit
+            </th>
+            <th id="refPLTh" width="10%" style="">
+                Ref. P/L
+            </th>
+            <th id="statusTh" width="10%" style="">
+                Status
+            </th>
+            <th id="actionTh" width="13%" style="">
+                Action
+            </th>
+        </tr>
+        <tr id="dataTemplate" style="display: none">
+            <td id="accountCol" style="" class="align-L">
+                <a id="account" class="ico_account" href="#" style="float: none"></a>
+            </td>
+            <td id="creditRef" class="credit-amount-member" style="">
+                <a id="creditRefBtn" class="favor-set"
+                   href="javascript:void(0);"></a>
+            </td>
+            <td id="initialCreditLimit" style="display: none"></td>
+            <td id="creditLimit" style="display: none"></td>
+
+            <td id="currentPL" style="display: none"></td>
+            <td id="transferablePL" style="display: none"></td>
+            <td id="balance" style=""></td>
+            <td id="currentExposure" style=""></td>
+            <td id="available" style=""></td>
+            <td id="playerBalance" style="display: none"></td>
+            <td id="exposureLimit" style="display: none"></td>
+
+            <td id="refPL" style=""></td>
+            <td id="statusCol" style="">
+                <ul id="tipsPopup" class="status-popup" style="display: none">
+                </ul>
+                <span id="status"></span>
+            </td>
+            <td id="actionCol" style="">
+                <ul class="action">
+                    <li>
+                        <a id="banking" class="bank" href="#bank">
+                            Bank
+                        </a>
+                    </li>
+                    <li>
+                        <a id="p_l" class="p_l" href="#">
+                            Betting Profit &amp; Loss
+                        </a>
+                    </li>
+                    <li>
+                        <a id="betting_history" class="betting_history" href="#">
+                            Betting History
+                        </a>
+                    </li>
+                    <li>
+                        <a id="change" class="status" href="#change">
+                            Change Status
+                        </a>
+                    </li>
+                    <li>
+                        <a id="profile" class="profile" href="#">
+                            Profile
+                        </a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<table id="resultTable" class="table01 margin-table" style="display: table;">
+    <tbody>
+        <tr>
+            <th id="accountTh" width="" class="align-L" style="">
+                Account
+            </th>
+            <th id="creditRefTh" width="10%" style="">
+                Credit Ref.
+            </th>
+            <th id="initialCreditLimitTh" width="10%" style="display: none">
+                Initial Credit Limit
+            </th>
+            <th id="creditLimitTh" width="9%" style="display: none">
+                Credit Limit
+            </th>
+
+            <th id="todayPLTh" width="9%" style="display: none">
+                Today P/L
+            </th>
+            <th id="transferablePLTh" width="9%" style="display: none">
+                Transferable P/L
+            </th>
+            <th id="balanceTh" width="10%" style="">
+                Balance
+            </th>
+            <th id="exposureTh" width="10%" style="">
+                Exposure
+            </th>
+            <th id="availableBalanceTh" width="10%" style="">
+                Avail. bal.
+            </th>
+            <th id="playerBalanceTh" width="10%" style="display: none">
+                Player Balance
+            </th>
+            <th id="exposureLimitTh" width="10%" style="">
+                Exposure Limit
+            </th>
+
+            <th id="refPLTh" width="10%" style="">
+                Ref. P/L
+            </th>
+            <th id="statusTh" width="10%" style="">
+                Status
+            </th>
+            <th id="actionTh" width="13%" style="">
+                Action
+            </th>
+        </tr>
+        <tr id="dataTemplate" style="display: none">
+            <td id="accountCol" style="" class="align-L">
+                <a id="account" class="ico_account" href="#" style="float: none"></a>
+            </td>
+            <td id="creditRef" class="credit-amount-member" style="">
+                <a id="creditRefBtn" class="favor-set"
+                   href="javascript:void(0);"></a>
+            </td>
+            <td id="initialCreditLimit" style="display: none"></td>
+            <td id="creditLimit" style="display: none"></td>
+
+            <td id="currentPL" style="display: none"></td>
+            <td id="transferablePL" style="display: none"></td>
+            <td id="balance" style=""></td>
+            <td id="currentExposure" style=""></td>
+            <td id="available" style=""></td>
+            <td id="playerBalance" style="display: none"></td>
+            <td id="exposureLimit" style="display: none"></td>
+
+            <td id="refPL" style=""></td>
+            <td id="statusCol" style="">
+                <ul id="tipsPopup" class="status-popup" style="display: none">
+                </ul>
+                <span id="status"></span>
+            </td>
+            <td id="actionCol" style="">
+                <ul class="action">
+                    <li>
+                        <a id="banking" class="bank" href="#bank">
+                            Bank
+                        </a>
+                    </li>
+                    <li>
+                        <a id="p_l" class="p_l" href="#">
+                            Betting Profit &amp; Loss
+                        </a>
+                    </li>
+                    <li>
+                        <a id="betting_history" class="betting_history" href="#">
+                            Betting History
+                        </a>
+                    </li>
+                    <li>
+                        <a id="change" class="status" href="#change">
+                            Change Status
+                        </a>
+                    </li>
+                    <li>
+                        <a id="profile" class="profile" href="#">
+                            Profile
+                        </a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+
+        @if (Model.Users != null && Model.Users.Count() > 0)
+        {
+            int i = 0;
+            int userRoleId = 0;
+            int userRoleIdBack = 0;
+            string color = "";
+            foreach (var user in Model.Users.Where(x => x.RoleId != ViewBag.LoginUser.RoleId && x.RoleId > ViewBag.LoginUser.RoleId).OrderBy(y => y.RoleId))
+            {
+                var status = user.Status == 1 ? "Active" : user.Status == 2 ? "InActive" : "Blocked";
+                var roleName = "Admin";
+                if (user.RoleId == 2)
+                {
+                    roleName = "Super Admin";
+                    color = "#568bc8";
+                }
+                else if (user.RoleId == 3)
+                {
+                    roleName = "Admin";
+                    color = "#568bc8";
+                }
+                else if (user.RoleId == 4)
+                {
+                    roleName = "Sub Admin";
+                    color = "#bf7e58";
+                }
+                else if (user.RoleId == 5)
+                {
+                    roleName = "Super Master";
+                    color = "#bfbd58";
+                }
+                else if (user.RoleId == 6)
+                {
+                    roleName = "Master";
+                    color = "#7cbf58";
+                }
+                else if (user.RoleId == 7)
+                {
+                    roleName = "User";
+                    color = "#b358bf";
+                }
+
+                <tr id="0" style="display: table-row;" main_userid="@user.FullName">
+                    <td hidden>@i</td>
+                    <td hidden>@user.Id</td>
+                    <td id="accountCol" style="" class="align-L">
+                        <span class="order" id="number">@(i+1).</span><span class="lv_4" style="background:@color">@roleName</span><span class="account_name">@user.FullName</span>
+                    </td>
+                    <td id="creditRef0" class="credit-amount-member" style="">
+                        <a id="creditRefBtn" class="favor-set"
+                           href="javascript:void(0);"
+                           onclick="CreditReferenceHandler.showDialog(0,'@user.FullName',1)">0.00</a>
+                    </td>
+                    <td id="initialCreditLimit0" style="display: none">0.00</td>
+                    <td id="creditLimit0" style="display: none">0.00</td>
+
+                    <td id="currentPL0" style="display: none">0.00</td>
+                    <td id="transferablePL0" style="display: none">0.00</td>
+                    <td id="balance0" style="">
+                        @*<a href="#"
+                            onclick="VendorBalanceDetailHandler.balanceShowing('@user.FullName','1', function () { IndexHandler.listMember(IndexHandler.pageNumber); }, $j(this))"
+                            class="link-open">0.00</a>*@
+                    </td>
+                    <td id="currentExposure0" style="">0.00</td>
+                    <td id="available0" style="">@user.AvailableBalance</td>
+                    <td id="playerBalance" style="display: none"></td>
+                    <td id="exposureLimit0" style="display: table-cell;">@user.ExposureLimit</td>
+
+                    <td id="refPL0" style="">0.00</td>
+                    <td hidden>@status</td>
+                    <td id="statusCol" style="">
+                        <ul id="tipsPopup" class="status-popup" style="display: none">
+                        </ul>
+                        @if(user.Status == 1)
+                        {
+                        <span id="status0" class="status-active" style="display:inline-flex;align-items:center;"><img src="/images/transparent.gif">@status</span>
+                        }
+                        else if(user.Status == 2)
+                        {
+                        <span id="status0" class="status-suspend" style="display:inline-flex;align-items:center;"><img src="/images/transparent.gif">@status</span>
+                        }
+                        else
+                        {
+                        <span id="status0" class="status-lock" style="display:inline-flex;align-items:center;"><img src="/images/transparent.gif">@status</span>
+                        }
+                    </td>
+                    <td id="actionCol" style="">
+                        <ul class="action">
+                            <li>
+                                <a id="banking" class="bank" href="#bank" style="display: none;">
+                                    Bank
+                                </a>
+                            </li>
+                            <li>
+                                <a id="p_l0" class="p_l"
+                                   href="~/Account/BettingProfile">
+                                    Betting
+                                    Profit &amp; Loss
+                                </a>
+                            </li>
+                            <li>
+                                <a id="betting_history0" class="betting_history"
+                                   href="~/Account/BettingHistory">
+                                    Betting
+                                    History
+                                </a>
+                            </li>
+                            <li>
+                                <a id="change0" class="status usersettingstatus">
+                                    Change Status
+                                </a>
+                            </li>
+                            <li>
+                                <a id="profile0" class="profile"
+                                   href="~/Account/AccountSummary">
+                                    Profile
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>

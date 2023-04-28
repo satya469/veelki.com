@@ -298,9 +298,9 @@ namespace Veelki.Api.Controllers
         }
 
         [HttpGet, Route("GetUsersByParentId")]
-        public async Task<CommonReturnResponse> GetUsersByParentId(int ParentId, int RoleId, int UserId)
+        public async Task<CommonReturnResponse> GetUsersByParentId(int ParentId, int RoleId, int UserId, int userStatus)
         {
-            return await _accountService.GetUsersByParentIdAsync(ParentId, RoleId, UserId);
+            return await _accountService.GetUsersByParentIdAsync(ParentId, RoleId, UserId, userStatus);
         }
 
         [HttpGet, Route("GetUserDetail")]
