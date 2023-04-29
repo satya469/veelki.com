@@ -152,7 +152,7 @@ namespace Veelki.Admin.Controllers
                         FullName = model.FullName,
                         Email = model.Email,
                         PhoneNumber = model.PhoneNumber,
-                        RoleId = model.RoleId,
+                        RoleId = (loginUser.RoleId + 1),
                         CreatedDate = DateTime.Now,
                         RollingCommission = model.RollingCommission,
                         AssignCoin = model.AssignCoin,
