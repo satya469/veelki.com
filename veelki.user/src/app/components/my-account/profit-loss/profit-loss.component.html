@@ -1,24 +1,9 @@
-<app-profile-sidebar></app-profile-sidebar>
 <div class="col-center report">
-    <h2>My Bets</h2>
-    <ul class="tab col3">
-        <li><a>Current Bets</a></li>
-        <li><a>Bets History</a></li>
-        <li><a>Profit &amp; Loss</a></li>
-    </ul>
+    <div class="path-wrap"><h2 [align]="'center'" style="width: 100%;">Profit &amp; Loss</h2></div>
     <div class="white-wrap">
-        <!-- <h3>Profit &amp; Loss - Main wallet</h3>
-        <ul class="acc-info">
-            <li class="user">userdemoo</li>
-            <li class="time">2023-03-13 13:52</li>
-        </ul> -->
-        <ul class="report-tab-wrap">
-            <li class="report-tab select">Exchange</li>
-            <!-- <li class="report-tab">FancyBet</li> -->
-        </ul>
         <div class="function-wrap">
             <ul class="input-list">
-                <li><label>Period </label></li>
+                <li><h2>Period </h2></li>
                 <li><input class="cal-input" type="text" placeholder="YYYY-MM-DD" ngbDatepicker
                         #dateTime="ngbDatepicker" [maxDate]="maxDate">
                     <input disabled="" class="time-input disable" type="text" placeholder="09:00">
@@ -43,10 +28,6 @@
         </div>
     </div>
     <div *ngIf="profitLossData">
-        <ul class="total-show">
-            <li>Total P/L</li>
-            <!-- <li class="sports-switch">PBU 7.25</li> -->
-        </ul>
         <table class="table01 table-pnl">
             <tbody>
                 <tr>
@@ -65,6 +46,5 @@
                 </tr>
             </tbody>
         </table>
-        <p class="table-other">Profit and Loss is shown net of commission.</p>
     </div>
 </div>

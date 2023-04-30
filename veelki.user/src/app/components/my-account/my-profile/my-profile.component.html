@@ -1,6 +1,5 @@
-<app-profile-sidebar></app-profile-sidebar>
 <div class="col-center report">
-    <h2>Account Details</h2>
+    <div class="path-wrap"><h2 [align]="'center'" style="width: 100%;">Account Details</h2></div>
 
     <div class="event-left">
         <div class="profile-wrap">
@@ -64,7 +63,7 @@
     <div class="pop_bg" style="display: block;">
         <form [formGroup]="changePasswordForm" method="post" role="form" (ngSubmit)="formSubmit()" novalidate>
             <div class="pop_box">
-                <a class="close_pop" (click)="modal.dismiss()">close_pop</a>
+                <a class="close_pop" (click)="modal.dismiss()"></a>
                 <h3>Change Password</h3>
                 <dl class="form_list">
                     <dt>New Password</dt>
@@ -77,7 +76,7 @@
                             <span *ngIf="changePasswordForm.controls['newPassword']?.errors?.['pattern']">Password should be minimum 6 character.</span>
                         </span>
                     </dd>
-                    <dt>New Password Confirm</dt>
+                    <dt>Password Confirm</dt>
                     <dd>
                         <input type="password" formControlName="confirmPass" placeholder="Enter"
                             (change)="onPasswordChange()">

@@ -1,0 +1,80 @@
+.table01, .table-s {
+    width: 100%;
+    background-color: #fff;
+    border-collapse: collapse;
+    border-bottom: 1px solid #7e97a7;
+    margin-bottom: 15px;
+}
+.table01 th, .table-s th {
+    color: #243a48;
+    background-color: #e4e4e4;
+    border: 1px solid #7e97a7;
+    border-width: 1px 0 1px 0;
+    padding: 8px 10px;
+}
+.table01 td, .table-s td {
+    border-top: 1px solid #eee;
+    padding: 8px 10px;
+    vertical-align: middle;
+}
+
+.input-list,.filter-list {
+    margin-bottom: 5px;
+    margin-right: 5px
+}
+
+.input-list li,.filter-list li {
+    list-style: none;
+    line-height: 25px;
+    margin: 0 5px 5px 0;
+    display: inline-block;
+}
+
+.input-list label,.filter-list label {
+    margin-right: 5px
+}
+
+.input-list input,.filter-list input,.input-list textarea,.filter-list textarea,.input-list select,.filter-list select {
+    margin: 0 5px
+}
+
+.input-list .time-input,.filter-list .time-input {
+    margin-left: -3px
+}
+
+.input-list .btn,.input-list .calendarTable_inputBox input,.calendarTable_inputBox .input-list input,.input-list .calendarTable_inputBox textarea,.calendarTable_inputBox .input-list textarea,.input-list .pages a,.pages .input-list a,.filter-list .btn,.filter-list .calendarTable_inputBox input,.calendarTable_inputBox .filter-list input,.filter-list .calendarTable_inputBox textarea,.calendarTable_inputBox .filter-list textarea,.filter-list .pages a,.pages .filter-list a,.input-list .btn-send,.filter-list .btn-send {
+    white-space: nowrap;
+    margin: 0;
+    font-weight: 400
+}
+
+.input-list .btn-send,.filter-list .btn-send {
+    font-weight: 700
+}
+
+.btn, .calendarTable_inputBox input, .calendarTable_inputBox textarea, .pages a, .marquee-pop .pages a, .btn-send {
+    background-image: linear-gradient(180deg,#ffffff 0%,#eeeeee 89%);
+    box-shadow: inset 0 2px #ffffff80;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    color: #1e1e1e;
+    font-weight: 700;
+    line-height: 23px;
+    margin: 0 5px 10px 0;
+}
+.input-list .btn, .input-list .calendarTable_inputBox input, .calendarTable_inputBox .input-list input, .input-list .calendarTable_inputBox textarea, .calendarTable_inputBox .input-list textarea, .input-list .pages a, .pages .input-list a, .filter-list .btn, .filter-list .calendarTable_inputBox input, .calendarTable_inputBox .filter-list input, .filter-list .calendarTable_inputBox textarea, .calendarTable_inputBox .filter-list textarea, .filter-list .pages a, .pages .filter-list a, .input-list .btn-send, .filter-list .btn-send {
+    margin: 0;
+    font-weight: 400;
+    padding: 0 5px;
+}
+.cal-input {
+    width: 110px;
+    cursor: pointer;
+    background-position: right;
+}
+input.disable, textarea.disable {
+    background-color: #dcdcdc;
+    color: #666;
+    box-shadow: none;
+    border: 1px solid #bbb;
+}
