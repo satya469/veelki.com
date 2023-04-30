@@ -1,4 +1,1417 @@
-<div class="no-data">
-    <h3>There are currently no followed multi markets.</h3>
-    <p>Please add some markets from events.</p>
+<div id="centerColumn" class="col-center">
+
+
+    <div id="oneClickLoading" class="loading-wrap" style="display:none">
+        <ul class="loading">
+            <li><img src="asstes/images/loading40.gif"></li>
+            <li id="oneClickTime">Place Bets
+            </li>
+        </ul>
+    </div>
+
+    <!-- Game Head -->
+    <div id="gameHead" class="game-head" style="display: none;">
+
+        <!-- Team Table -->
+        <!-- <a class="favor select">Add Favorite</a> -->
+
+        <a id="refreshButton" class="refresh" style="cursor:pointer">Refresh</a>
+        <a id="multiMarketPin" class="add-pin" name="gameHeadPin" style="cursor: pointer; display: none;"
+            title="Add to Multi Markets"></a>
+        <table id="gameTeam" class="game-team" style="display: none;">
+            <tbody>
+                <tr id="noTeam" style="display:none;">
+                    <td class="game-name">-event name-<span>All Markets</span></td>
+                </tr>
+                <tr id="twoTeam" style="display:none;">
+                    <td id="gameVisit" class="game-visit">-visit-<span></span></td>
+                    <td id="gameVs" class="game-vs">
+                        <div>All Markets<span>VS</span></div>
+                    </td>
+                    <td id="gameHome" class="game-home">-home-<span></span></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="lineMarketRulesBtn" class="btn-rules" style="cursor:pointer; display: none;"><img
+                src="asstes/images/transparent.gif">Rules</a>
+        <div id="lineMarketRulesWrap" class="rules-wrap" style="display: none;">
+            <h3>Line Market Rules and Information</h3>
+            <div class="rules-content">
+                <p>How many runs would be scored in mentioned overs, If <strong> 'Back/Yes' </strong> bet is made then
+                    it will be win bet if the runs
+                    scored in the mentioned overs are <strong> equal or more </strong> then the Backed Runs otherwise it
+                    will be a Lost bets. If <strong>
+                        'Lay/No' </strong> bet is made then it will be a win bet if Runs scored in the mentioned overs
+                    are <strong> less </strong> than
+                    the lay runs otherwise it will be lost bet. All the line markets will be settled only if the
+                    mentioned stipulated overs are completed
+                    or if the Batting team is bowled out (All out) or the runs are chased, given the inning's
+                    stipulated(or reduced) overs are more than
+                    or equal to the stipulated over of that particular line Market.</p>
+                <p><strong> "Matched Tied" </strong> and <strong> "Completed Match" </strong> doesn't affect the
+                    settling of Line markets.</p>
+            </div>
+            <ul class="btn-wrap break">
+                <li><a id="lineMarketRulesOk" class="btn" style="cursor:pointer">OK</a></li>
+            </ul>
+        </div>
+
+
+        <table id="cricketScoreBoard" class="game-scores" style="display: none;">
+            <tbody>
+                <tr>
+
+                    <td id="gameHeadPinSpace" class="scores-space"></td>
+                    <td class="scores-team">
+                        <h4 id="teamHome">HOME</h4>
+                        <h4 id="teamAway">AWAY</h4>
+                        <ul class="scores-time">
+                            <li id="description" class="filter-first"></li>
+                            <li id="currentDay"></li>
+                        </ul>
+                    </td>
+                    <td id="inningsBox1" class="scores-box" style="display: none;">
+                        <h4 id="runsHome"><span></span></h4>
+                        <h4 id="runsAway"><span></span></h4>
+                        <span id="inningsIndex" class="scores-inns">Innings 1</span>
+                    </td>
+
+
+                    <td id="inningsBoxTemplate" class="scores-box" style="display: none;">
+                        <h4 id="runsHome"><span></span></h4>
+                        <h4 id="runsAway"><span></span></h4>
+                        <span id="inningsIndex" class="scores-inns"></span>
+                    </td>
+
+                    <td class="scores-space"></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+
+        <table id="tennisScoreBoard" class="game-scores tennis" style="display: none;">
+            <tbody>
+                <tr>
+
+                    <td id="gameHeadPinSpace" class="scores-space"></td>
+
+                    <td class="scores-team">
+                        <h4 id="teamHome"> Home </h4>
+                        <h4 id="teamAway">Away </h4>
+                        <ul class="scores-time">
+                            <li id="currentSet" class="filter-first"></li>
+                            <li id="fullTimeElapsed"></li>
+                            <li><span id="court"></span></li>
+                        </ul>
+                    </td>
+
+                    <td id="setBox1" class="scores-box">
+                        <h4 id="setHome"></h4>
+                        <h4 id="setAway"></h4>
+                        <span class="scores-inns">1</span>
+                    </td>
+                    <td id="setBox2" class="scores-box">
+                        <h4 id="setHome"></h4>
+                        <h4 id="setAway"></h4>
+                        <span class="scores-inns">2</span>
+                    </td>
+                    <td id="setBox3" class="scores-box last-box">
+                        <h4 id="setHome"></h4>
+                        <h4 id="setAway"></h4>
+                        <span class="scores-inns">3</span>
+                    </td>
+
+                    <td id="points" class="scores-box last-box">
+                        <h4 id="pointsHome" class="scores-now">0</h4>
+                        <h4 id="pointsAway" class="scores-now">0</h4>
+                        <span class="scores-inns">Points</span>
+                    </td>
+
+                    <td id="aces" class="scores-box scores-other">
+                        <h4 id="acesHome">0</h4>
+                        <h4 id="acesAway">0</h4>
+                        <span class="scores-inns">Aces</span>
+                    </td>
+                    <td id="faults" class="scores-box scores-other">
+                        <h4 id="faultsHome">0</h4>
+                        <h4 id="faultsAway">0</h4>
+                        <span class="scores-inns">Faults</span>
+                    </td>
+                    <td id="breaks" class="scores-box scores-other last-box">
+                        <h4 id="breaksHome">0</h4>
+                        <h4 id="breaksAway">0</h4>
+                        <span class="scores-inns">Breaks</span>
+                    </td>
+                    <td class="scores-space"></td>
+
+                    <td id="setBoxTemplate" class="scores-box last-box" style="display: none;">
+                        <h4 id="setHome"></h4>
+                        <h4 id="setAway"></h4>
+                        <span id="setIndex" class="scores-inns"></span>
+                    </td>
+
+                    <td class="scores-space"></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div id="soccerScoreBoard" class="game-scores" style="display: none;">
+            <ul>
+                <li class="game-visit">
+                    <h4 id="teamHome"></h4>
+                </li>
+                <li class="scores-box">
+                    <p id="vsScores" class="scores-now"></p>
+                    <span id="timeElapsed" class="scores-now"></span>
+                </li>
+                <li class="game-home">
+                    <h4 id="teamAway"></h4>
+                </li>
+            </ul>
+
+            <div class="game-progress">
+                <div class="progress-bar">
+
+                    <div id="progressPercent" class="progress-now" style="width: 0%;"></div>
+
+
+
+                    <img id="soccerEventTemplate" class="" style="left: 0%; display: none;"
+                        src="asstes/images/transparent.gif">
+
+                    <div id="popupTemplate" class="score-pop" style="left: 0%; display: none;">
+                        <ul>
+                            <li id="matchTime" class="scores-now"></li>
+                            <li><img class="" src="asstes/images/transparent.gif"></li>
+                        </ul>
+                    </div>
+
+                    <span id="sumTemplate" class="sum-status" style="left: 0%; display: none;"></span>
+
+                    <div id="sumPopupTemplate" class="score-pop-last" style="left: 0%; display: none;">
+                        <ul id="list">
+                            <li id="matchTimeTemplate" class="scores-now" style="display: none;"></li>
+                            <li id="iconTemplate" style="display: none;"><img class=""
+                                    src="asstes/images/transparent.gif"></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <table id="basketballScoreBoard" class="game-scores tennis" style="display: none;">
+            <tbody>
+                <tr>
+                    <td class="scores-space"></td>
+                    <td class="scores-team">
+                        <h4 id="teamHome">HOME</h4>
+                        <h4 id="teamAway">AWAY</h4>
+                        <ul class="scores-time">
+                            <li class="filter-first" id="matchStatus"></li>
+                            <li id="timeElapsed"></li>
+                        </ul>
+                    </td>
+                    <td id="period1" class="scores-box">
+                        <h4 id="homeScore">-</h4>
+                        <h4 id="awayScore">-</h4>
+                        <span class="scores-inns">1</span>
+                    </td>
+                    <td id="period2" class="scores-box">
+                        <h4 id="homeScore">-</h4>
+                        <h4 id="awayScore">-</h4>
+                        <span class="scores-inns">2</span>
+                    </td>
+                    <td id="period3" class="scores-box">
+                        <h4 id="homeScore">-</h4>
+                        <h4 id="awayScore">-</h4>
+                        <span class="scores-inns">3</span>
+                    </td>
+                    <td id="period4" class="scores-box last-box">
+                        <h4 class="scores-now" id="homeScore">-</h4>
+                        <h4 class="scores-now" id="awayScore">-</h4>
+                        <span class="scores-inns">4</span>
+                    </td>
+                    <td id="totalScore" class="scores-box last-box">
+                        <h4 class="scores-now" id="homeScore">-</h4>
+                        <h4 class="scores-now" id="awayScore">-</h4><span class="scores-inns">Points</span>
+                    </td>
+                    <td class="scores-space"></td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Scores Table finished -->
+
+        <div id="scoresEvent" class="scores-event" style="display: none;"><img
+                src="asstes/images/transparent.gif"></div>
+
+        <!-- Tab Market -->
+        <ul id="tabMarketList" class="tab-HS" style="display: none;"></ul>
+
+        <li id="tabMarketTemplate" style="display: none;"><a id="tabName" class="" style="cursor:pointer;">Win</a></li>
+
+        <div class="game-info-wrap">
+            <!-- Game Information -->
+            <ul class="game-info" style="display: none;">
+                <li id="infoLive" class="info-live" style="display: none;"><a class="btn-live"><img class="icon-live"
+                            src="asstes/images/transparent.gif">Live</a></li>
+                <li id="gameInfoDate"><img class="icon-time"
+                        src="asstes/images/transparent.gif">Thu 9 Jun, --:--</li>
+                <!-- <li><img class="icon-live" src="/images/transparent.gif" />Live</li> -->
+                <!-- <li><img class="icon-irun" src="/images/transparent.gif" />In-Play</li> -->
+                <!-- <li><img class="icon-cashout" src="/images/transparent.gif" />Cash Out</li> -->
+                <!-- Low Liquidity Tag -->
+            </ul>
+
+            <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+
+            <dl id="minMaxBox" class="fancy-info" style="display: none;">
+                <dt id="minMaxDt" style="display: none;">Min/Max</dt>
+                <dt id="maxDt" style="display: none;">Max</dt>
+                <dd id="minMaxInfo">0 / 0</dd>
+            </dl>
+
+
+            <div id="fancyBetRulesWrap" class="rules-wrap" style="display: none;">
+                <h3 id="fancyBetHeader">Rules of Fancy Bets</h3>
+                <h3 id="electionHeader" style="display: none;">Rules of Election Fancy Bets</h3>
+                <div class="rules-content">
+                    <ol id="fancyBetRules" name="fancyBetRules">
+                    </ol>
+                    <ol id="electionRules" style="display: none;">
+                        <li>Election result declared by Election Commission of India will be valid in our Exchange.</li>
+                        <li>Accidental issues in Election will Not Be counted in our Exchange.</li>
+                    </ol>
+                </div>
+                <ul class="btn-wrap break">
+                    <li><a class="btn">OK</a></li>
+                </ul>
+            </div>
+
+            <div id="sportsBookRulesWrap_1" class="rules-wrap" style="display: none;">
+
+                <h3 id="sportsbookRulesTitle">Rules of Premium Tennis</h3>
+                <div class="rules-content">
+                    <ol id="owTennisRulesContent" style="display: none;">
+                        <li>Handicap
+                            <ul>
+                                <li>Set Handicap betting are settle based on the Sets</li>
+                                <li>For Tennis Set hdp betting, the player you wager on must cover/beat the set Spread.
+                                    This means that the favored player must win by
+                                    more than the outlined number of sets or the underdog will receive that number of
+                                    sets as a head start. In the above exmaple, If you
+                                    wager on Andreas Seppi +1.5, he would need to win the match by any score or
+                                    alternately lose by 1 set. If you wager on Daniil Medvedec
+                                    -1.5, he would need to win by 2 set .
+                                </li>
+                                <li>If the scheduled number of sets required to win a match is changed from that
+                                    originally scheduled then all bets will be void, except
+                                    for those that have been unconditionally determined.
+                                </li>
+                                <li>All bets will be consider void if the match is not completed.</li>
+                            </ul>
+                        </li>
+                        <li>Over/Under
+                            <ul>
+                                <li>Game Total settle based on the total number of Games played of the match.</li>
+                                <li>All bets will be consider void if the match is not completed.</li>
+                            </ul>
+                        </li>
+                        <li>Money Line
+                            <ul>
+                                <li>Money line markets refer to the winner of the match or specified set.</li>
+                                <li>If a player does not start a tournament or match , disqualified, retires during the
+                                    match, then all bets on that player will be
+                                    void.
+                                </li>
+                                <li>If a match is postponed or suspended then all bets are still considered valid if the
+                                    match is completed.</li>
+                                <li>All bets will still be considered valid regardless of any change of venue or court
+                                    surface (including moving matches from outdoor to
+                                    indoor courts or vice versa).
+                                </li>
+                                <li>All bets will be consider void if the match is not completed.</li>
+                            </ul>
+                        </li>
+                        <li>Game Handicap (Tennis)
+                            <ul>
+                                <li>Game Hdandicap betting are settled based on Games.</li>
+                                <li>For Tennis Game Hdp betting , the player you wager on must cover/beat the game
+                                    spread. This means that the favored player must win by
+                                    more than the outlined number of games or the underdog will receive that number of
+                                    games as a head start. In the above example, if you
+                                    wager on Andreas Seppi +3.5, he would need to win the match by any score or
+                                    alternately lose by 3 games or less. If you wager on
+                                    Daniil Medvedev -3.5, he would need to win by 4 games or more.
+                                </li>
+                                <li>All bets will be consider void if the match is not completed.</li>
+                            </ul>
+                        </li>
+                        <li>Set x Winner (Tennis)
+                            <ul>
+                                <li>Set X Winner refers to the result of the specified set. All bets will be considered
+                                    void if the specified set is not completed.</li>
+                            </ul>
+                        </li>
+                        <li>Set x Total Game O/U (Tennis)
+                            <ul>
+                                <li>Set X Total Game O/U refers to total Game of the specified set. All bets will be
+                                    considered void if the specified set is not
+                                    completed.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <ol id="owSoccerRulesContent" style="display: none;">
+                        <li>FT.1X2:1X2 means betting in any one of three possible winning outcomes for an Event. 1
+                            refers to the team that is named first (usually the
+                            home team); X refers to the game resulting in a draw or tie; 2 refers to the team that is
+                            named second (usually the away team).
+                        </li>
+                        <li>1H 1X2:1st Half 1X2 means betting in any one of three possible winning outcomes of the first
+                            half for an Event. 1 refers to the team that is
+                            named first (usually the home team); X refers to the game resulting in a draw or tie; 2
+                            refers to the team that is named second (usually the
+                            away team).
+                        </li>
+                        <li>Over/Under: Over/Under means betting that is determined by the total number of points
+                            (goals, games etc) in the final result of an Event. If
+                            the total is more than the Over/Under pre-designated line then the winning result is Over;
+                            if the total is less than the Over/Under
+                            pre-designated line then the winning result is Under.
+                        </li>
+                        <li>1H Over/Under: 1st Half Over/Under means betting that is determined by the total number of
+                            points in the result of the first half of an Event.
+                            If the total is more than the Over/Under pre-designated line then the winning result is
+                            Over; if the total is less than the Over/Under
+                            pre-designated line then the winning result is Under.
+                        </li>
+                        <li>
+                            Over/Under Guideline:
+                            <ul style="list-style-type: lower-roman">
+                                <li>Goal line under 2
+                                    <div>
+                                        Bets win if there is either 0 or 1 goal scored in the match. If there are two
+                                        goals exactly then the stake is returned. Bets lose
+                                        if there are three or more goals scored in the match.
+                                    </div>
+                                </li>
+
+                                <li>Goal line over 2
+                                    <div>
+                                        Bets win if there are three or more goals scored in the match. If there are two
+                                        goals exactly the stake is returned. Bets lose if
+                                        there is 0 or 1 goal scored in the match.
+                                    </div>
+                                </li>
+
+                                <li>Goal line under 2.25
+                                    <div>
+                                        Bets win if there is either 0 or 1 goal scored in the match. If there are two
+                                        goals exactly half the stake will win and half will
+                                        be returned. Bets lose if there are three or more goals scored in the match.
+                                    </div>
+                                </li>
+                                <li>Goal line over 2.25
+                                    <div>
+                                        Bets win if there are three or more goals scored in the match. If there are two
+                                        goals exactly half the stake will be returned and
+                                        half will be lost. Bets lose if there is 0 or 1 goal scored in the match.
+                                    </div>
+                                </li>
+                                <li>Goal line under 2.5
+                                    <div>
+                                        Bets win if there are 0, 1 or 2 goals scored in the match. Bets lose if there
+                                        are three or more goals scored in the match.
+                                    </div>
+                                </li>
+                                <li>Goal line over 2.5
+                                    <div>
+                                        Bets win if there are three or more goals scored in the match. Bets lose if
+                                        there are 0, 1 or 2 goals scored in the match.
+                                    </div>
+                                </li>
+                                <li>Goal line under 2.75
+                                    <div>
+                                        Bets win if there are 0, 1 or 2 goals scored in the match. If there are three
+                                        goals exactly half the stake will be returned and
+                                        half will be lost. Bets lose if there are four or more goals scored in the
+                                        match.
+                                    </div>
+                                </li>
+                                <li>Goal line over 2.75
+                                    <div>
+                                        Bets win if there are four or more goals scored in the match. If there are three
+                                        goals exactly half the stake will win and half
+                                        will be returned. Bets lose if there are 0, 1 or 2 goals scored in the match.
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li>Double Chance: The following options are available:
+                            <ul>
+                                <li>1 or X - If the result is either a home or draw then bets on this option are
+                                    winners.</li>
+                                <li>X or 2 - If the result is either a draw or away then bets on this option are
+                                    winners.</li>
+                                <li>1 or 2 - If the result is either a home or away then bets on this option are
+                                    winners.</li>
+                                <li>If a match is played at a neutral venue the team listed first is deemed the home
+                                    team for betting purposes.</li>
+                            </ul>
+                        </li>
+                        <li>Odd/Even: Odd/Even means betting that is determined by whether the total number of points
+                            (goals, games etc) in the final result of an Event
+                            is Odd or Even.
+                        </li>
+                        <li>1H Odd/Even: 1st Half Odd/Even means betting that is determined by whether the total number
+                            of points at the end of the first half of an Event
+                            is Odd or Even. 1st half bets will be void if an Event is abandoned before the end of the
+                            first half. But if an Event is abandoned after the
+                            end of the first half, all 1st half bets will be valid.
+                        </li>
+                        <li>Handicap: Handicap means betting when one competitor or team receives a virtual head start
+                            (effectively leading by that head start before the
+                            Event begins). The winner is the competitor or team with the better score after adding the
+                            given handicap to the result. Remaining Handicap
+                            rules are set out in the Specific Event Betting Rules.
+                        </li>
+                        <li>1H Handicap: 1st Half Handicap means betting on the team with the better score after adding
+                            the given handicap to the result of the first half
+                            of an Event.
+                        </li>
+                        <li>Correct Score (AOS) :
+                            <ul>
+                                <li>Correct Score means betting to predict the final score at the end of full-time.</li>
+                                <li>First Half Correct Score means betting to predict the final score at the end of
+                                    First Half.</li>
+                                <li>Correct Score to win "AOS" means the selected team must win to a score not listed in
+                                    the selection.</li>
+                                <li>Example:
+                                    <ul>
+                                        <li>Result for 5-0UP - 5:1, 6:2 and etc (Lose) / 5:0, 6:1 and etc (Win)</li>
+                                        <li>Result for 0-5UP - 1:5, 2:6 and etc (Lose) / 0:5, 1:6 and etc (Win)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>E-Soccer bets whenever applicable, are governed by the same rules for bets placed on real
+                            sporting events. The Company provides information
+                            (e.g. neutral ground, Red card, timer, statistical information, dates, commencement, etc) as
+                            a service and accepts no liability whatsoever.
+                            The timer and red card notices are given for reference purposes only.
+                        </li>
+                        <li>In case there is a technical issue or malfunction in a match, all placed bets will be voided
+                            and refunded in accordance with our general
+                            betting rules and regulations.
+                        </li>
+                        <li>The Company reserves its right to void any bet when it deems necessary under the
+                            circumstances. The decision of the Company with respect to
+                            any bet is final.
+                        </li>
+                    </ol>
+                </div>
+                <ul class="btn-wrap break">
+                    <li><a onclick="$j('[id^=sportsBookRulesWrap_1]').fadeOut()" class="btn" href="#">OK</a></li>
+                </ul>
+            </div>
+
+            <a id="openStreaming" class="open-tv-wrap" style="display: none;">Live</a>
+
+            <dl class="game-matched" style="display: none;">
+                <dt id="gameMatchedName">Matched
+                </dt>
+                <dd id="gameMatched">USD $--.00</dd>
+            </dl>
+        </div>
+    </div>
+    <div id="overWrap" class="over-wrap" style="height: calc(100% - 26px)">
+        <div class="kv-wrap" style="display:none;">
+            <a>
+                <img src="asstes/images/kv/KV.jpg" alt="">
+            </a>
+        </div>
+
+        <!-- Horse Coming Up Start -->
+        <div class="upcome-wrap" id="upcomingHorseRace" style="display:none;">
+            <dl class="upcome-head" id="next">
+                <dt id="nextHeader">Next Horse Race
+                </dt>
+            </dl>
+
+            <dl class="upcome" id="upcoming">
+                <dt id="upcomeHeader">Coming Up
+                </dt>
+            </dl>
+        </div>
+        <dl id="upcomingRaceTempLate" style="display:none;">
+            <dd>
+                <a href="#"></a>
+                <span></span>
+            </dd>
+        </dl>
+        <!-- Horse Coming Up End -->
+
+        <!-- Markets Closed Wrap -->
+        <div id="marketClosedWrap" class="closed-wrap" style="display: none;">
+            <div class="closed-next">
+                <h2>This race has ended
+                </h2>
+
+            </div>
+        </div>
+
+        <!-- Game Bets Table -->
+        <div id="fullMarketBetsWrap" class="bets-wrap" style="display: none;">
+
+            <span id="selectionCounts" class="refer_only">For reference only</span>
+
+            <table id="fullMarketBoard" class="bets">
+                <tbody>
+                    <tr class="bet-all">
+                        <td></td>
+                        <td id="backPercent" class="refer-bet" colspan="2"></td>
+                        <td><a id="backAll" class="back-all"><img
+                                    src="asstes/images/transparent.gif"><span>Back all</span></a>
+                        </td>
+                        <td><a id="layAll" class="lay-all"><img
+                                    src="asstes/images/transparent.gif"><span>Lay all</span></a>
+                        </td>
+                        <td id="layPercent" class="refer-book" colspan="2"></td>
+                    </tr>
+
+                    <tr id="fullSelectionTemplate" style="display: none;">
+                        <th>
+
+                            <dl id="horseInfo" class="horse-info" style="display: none;">
+                                <dt>
+                                    <a id="marketDepthBtn" href="#"><img class="icon-predict"
+                                            src="asstes/images/transparent.gif"></a>
+                                    <ul id="horseBox" class="horse-box">
+                                        <li id="clothNumberAlpha"></li>
+                                        <li id="stallDraw"></li>
+                                    </ul>
+                                    <div id="uniform" class="uniform"><img src=""></div>
+                                </dt>
+                                <dd>
+                                    <ul id="horseName" class="horse-name">
+                                        <li id="runnerName"></li>
+                                        <li id="jockyName"></li>
+                                    </ul>
+                                    <dl id="horseInfoHover" class="horse_info-hover">
+                                        <dt>Trainer:</dt>
+                                        <dd id="trainerName"></dd>
+                                        <dt>Age/Weight:</dt>
+                                        <dd id="ageWeight"></dd>
+                                        <dt>Form:</dt>
+                                        <dd id="form"></dd>
+                                        <dt>Days since last run:</dt>
+                                        <dd id="daysSinceLastRun"></dd>
+                                        <dt>Jockey claim:</dt>
+                                        <dd id="jockeyClam"></dd>
+                                        <dt>Wearning:</dt>
+                                        <dd id="wearing"></dd>
+                                    </dl>
+                                </dd>
+                            </dl>
+
+                            <p></p>
+                            <span id="withoutBet" class="win" style="display: none;"></span>
+                            <span id="lossWithoutBet" class="win" style="display: none;"></span>
+                            <span id="withBet" class="win" style="display: none;"></span>
+                            <span id="lossWithBet" class="win" style="display: none;"></span>
+                            <span id="zeroProfit" class="win" style="display: none;"></span>
+                            <span id="zeroLiability" class="win" style="display: none;"></span>
+                            <span id="zeroProfitWithBet" class="win" style="display: none;"></span>
+                            <span id="zeroLiabilityWithBet" class="win" style="display: none;"></span>
+                        </th>
+                        <td id="suspend" colspan="6" class="suspend" style="display: none;"><span>Suspend</span></td>
+                        <td id="closed" colspan="6" class="suspend" style="display: none;"><span>Closed</span></td>
+                        <td id="nonRunner" colspan="6" class="suspend" style="display: none;"><span>Non Runner</span>
+                        </td>
+                        <td id="back_3" class="back-3" side="Back"><a style="cursor:pointer;"><span></span></a></td>
+                        <td id="back_2" class="back-2" side="Back"><a style="cursor:pointer;"><span></span></a></td>
+                        <td id="back_1" class="back-1" side="Back"><a style="cursor:pointer;"><span></span></a></td>
+                        <td id="lay_1" class="lay-1" side="Lay"><a style="cursor:pointer;"><span></span></a></td>
+                        <td id="lay_2" class="lay-2" side="Lay"><a style="cursor:pointer;"><span></span></a></td>
+                        <td id="lay_3" class="lay-3" side="Lay"><a style="cursor:pointer;"><span></span></a></td>
+                        <td id="horseGreyOut" colspan="3" class="suspend" style="display: none;"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div id="multiMarketsWrap" style="">
+
+            <h2 id="header">Multi Markets
+            </h2>
+
+            <p id="noMultiMarkets" style="">There are currently no followed multi markets.
+            </p>
+
+            <!-- Game Bets Table -->
+            <div id="multiMarketsTemplate" class="game-wrap" style="display: none;">
+                <h3 class="multi_h3">
+                    <a id="multiMarketPin" class="add-pin" style="cursor: pointer" title="Add to Multi Markets"></a>
+                    <a id="multiMarketRefresh" class="multi_refresh" style="cursor: pointer"></a>
+                    <a id="eventHeader" class="multi_name" style="cursor: pointer">
+                        <span id="marketName" class="multi-event_type"></span>
+
+
+                    </a>
+                    <span id="lowLiquidityTag" class="game-low_liq" style="display: none;">Low Liquidity</span>
+                </h3>
+
+                <div id="multiMarketBetsWrap" class="bets-wrap">
+
+                    <span id="selectionCounts" class="refer_only">For reference only</span>
+
+                    <div id="multiMarketLoading" class="loading-wrap multi-load" style="display:none;">
+                        <ul class="loading">
+                            <li><img src="asstes/images/loading40.gif"></li>
+                            <li>Loading...
+                            </li>
+                        </ul>
+                    </div>
+                    <table id="multiMarketBoard" class="bets">
+
+
+
+
+                        <tbody>
+                            <tr class="bet-all">
+                                <td></td>
+                                <td id="backPercent" class="refer-bet" colspan="2"></td>
+                                <td><a id="backAll" class="back-all"><img
+                                            src="asstes/images/transparent.gif"><span>Back
+                                            all</span></a></td>
+                                <td><a id="layAll" class="lay-all"><img
+                                            src="asstes/images/transparent.gif"><span>Lay
+                                            all</span></a></td>
+                                <td id="layPercent" class="refer-book" colspan="2"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+            <div class="game-wrap" id="bookMakerTableTemplate" style="display: none;">
+
+                <h3 id="bookMakerHead" class="multi_h3">
+                    <a href="#" id="multiMarketPin" class="delete-pin" title="Remove from Multi Markets">Add Pin</a>
+                    <a id="multiMarketRefresh" class="multi_refresh" href="#">Refresh</a>
+                    <a class="multi_name">
+                        <span id="eventName">England vs Sri Lanka</span> <span class="game-bookmaker">BookMaker</span>
+
+                    </a>
+                    <dl class="fancy-info">
+                        <dt><span>Min</span></dt>
+                        <dd id="min">100.00</dd>
+                        <dt><span>Max</span></dt>
+                        <dd id="max">10000.00</dd>
+                        <dt id="rebateName"><span>Rebate</span></dt>
+                        <dd id="rebate"></dd>
+                    </dl>
+                </h3>
+                <div id="bookMakerWrap" class="bets-wrap fancy_bet bookmaker_bet">
+
+
+                    <div id="multiMarketLoading" class="loading-wrap multi-load" style="display:none;">
+                        <ul class="loading">
+                            <li><img src="asstes/images/loading40.gif"></li>
+                            <li>Loading...
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p id="bookMakerNoBet" class="no_bet" style="display:none;"></p>
+
+                    <table id="bookMakerMarketList" class="bets bets-bookmaker">
+                        <colgroup>
+                            <col span="1" width="280">
+                            <col span="1" width="70">
+                            <col span="1" width="70">
+                            <col span="1" width="70">
+                            <col span="1" width="70">
+                            <col span="1" width="70">
+                            <col span="1" width="70">
+                        </colgroup>
+
+                    </table>
+                    <table id="bookMakerTempTable" style="display: none">
+                        <tbody id="bookMakerMarketTemplate">
+                            <tr class="colgroup-adjust">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr class="bet-all">
+                                <td colspan="3"></td>
+                                <!-- <td class="refer-bet"></td> -->
+                                <td>Back</td>
+                                <td>Lay</td>
+                                <td class="refer-book" colspan="2"></td>
+                            </tr>
+                        </tbody>
+
+                        <tbody>
+                            <tr id="bookMakerSelectionTemplate" style="display:none;">
+                                <th class="predict">
+                                    <p id="runnerName">
+                                        <a
+                                            onclick="window.open('market_depth.html','_blank', config='height=600,width=920,location=no');"><img
+                                                class="icon-predict"
+                                                src="asstes/images/transparent.gif"></a>
+                                    </p>
+                                    <span id="before" class="win" style="display: none;"></span>
+                                    <span id="after" class="to-lose" style="display: none;"></span>
+                                </th>
+                                <td class="" colspan="3">
+                                    <dl class="back-gradient">
+                                        <dd id="back_3" style="cursor: pointer">
+                                            <p></p>
+                                        </dd>
+                                        <dd id="back_2" style="cursor: pointer">
+                                            <p></p>
+                                        </dd>
+                                        <dd id="back_1" style="cursor: pointer"><a></a></dd>
+                                    </dl>
+                                </td>
+                                <td class="" colspan="3">
+                                    <dl class="lay-gradient">
+                                        <dd id="lay_1" style="cursor: pointer"><a></a></dd>
+                                        <dd id="lay_2" style="cursor: pointer">
+                                            <p></p>
+                                        </dd>
+                                        <dd id="lay_3" style="cursor: pointer">
+                                            <p></p>
+                                        </dd>
+                                    </dl>
+                                </td>
+                            </tr>
+
+                            <tr id="suspendTemplate" class="fancy-suspend-tr" style="display: none">
+                                <th colspan=""></th>
+                                <td class="fancy-suspend-td" colspan="6">
+                                    <div id="suspendClass" class="fancy-suspend"><span id="info">Suspend</span></div>
+                                </td>
+                            </tr>
+
+                            <tr id="delayTemplate" class="fancy-suspend-tr" style="display: none;">
+                                <th></th>
+                                <td colspan="2"></td>
+                                <td class="fancy-suspend-td" colspan="2">
+                                    <div class="fancy-suspend"><span id="info">Delay Betting</span></div>
+                                </td>
+                                <td colspan="2"></td>
+                            </tr>
+
+                            <tr id="bookMakerBetTemplate" class="fancy-quick-tr" style="display: none;">
+                                <td colspan="7">
+                                    <dl id="classWrap" class="quick_bet-wrap slip-back">
+                                        <dt id="bookMakerBetHeader" class="">
+
+                                            <span id="bookMakerBetAcceptCheck" class="bet-check">
+                                                <input id="bookMakerBetAcceptAnyOdds" type="checkbox">
+                                                <label for="bookMakerBetAcceptAnyOdds">Accept Any Odds</label>
+                                            </span>
+
+                                        </dt>
+                                        <dd class="col-btn"><a id="cancel" class="btn" style="cursor:pointer;">Cancel
+                                            </a></dd>
+                                        <dd id="oddsHeader" class="col-odd">
+                                            <ul class="quick-bet-confirm">
+                                                <li id="odds"></li>
+                                            </ul>
+                                        </dd>
+                                        <dd class="col-stake">
+                                            <input id="inputStake" type="text" value="">
+                                        </dd>
+                                        <dd class="col-send">
+                                            <a id="placeBet" class="btn-send disable" style="cursor:pointer;">Place Bets
+                                            </a>
+                                        </dd>
+                                    </dl>
+                                </td>
+                            </tr>
+
+                            <tr id="bookMakerBetBarTemplate" class="fancy-quick-tr" style="display: none;">
+                                <td colspan="7">
+                                    <dl class="quick_bet-wrap quick_bet-progress">
+                                        <dd id="progressBar" class="progress-bar" style="width: 0%;"></dd>
+                                        <dd class="progress-bar-txt">Placing your bets, Please wait <span
+                                                id="secRemain">0 sec remaining…</span>
+                                        </dd>
+                                    </dl>
+                                </td>
+                            </tr>
+
+                            <tr id="bookMakerBetMessageTemplate" class="fancy-quick-tr" style="display: none;">
+                                <td colspan="7">
+                                    <dl id="classWrap" class="quick_bet-wrap quick_bet-message success">
+                                        <dd id="info">
+                                            <strong id="header">Bet Matched</strong>
+                                            USD$ at odds Profit:
+                                            <a id="close" class="btn-close" style="cursor:pointer;">Close</a>
+                                        </dd>
+                                    </dl>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="game-wrap" id="fancyBetTableTemplate" style="display: none;">
+
+                <h3 id="fancyBetHead" class="multi_h3">
+                    <a href="#" id="multiMarketPin" class="delete-pin" title="Remove from Multi Markets">Add Pin</a>
+                    <a id="multiMarketRefresh" class="multi_refresh" href="#">Refresh</a>
+                    <a class="multi_name">
+                        <span id="eventName">England vs Sri Lanka</span> <span class="game-fancy">Fancy Bet</span>
+
+                    </a>
+                </h3>
+                <div id="fancyBetWrap" class="bets-wrap fancy_bet">
+
+
+                    <div id="multiMarketLoading" class="loading-wrap multi-load" style="display:none;">
+                        <ul class="loading">
+                            <li><img src="asstes/images/loading40.gif"></li>
+                            <li>Loading...
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p id="fancyBetNoBet" class="no_bet" style="display:none;"></p>
+
+                    <table id="fancyBetMarketList" class="bets" style="display: none;">
+                        <colgroup>
+                            <col span="1" width="280">
+                            <col span="1" width="70">
+                            <col span="1" width="70">
+                            <col span="1" width="70">
+                            <col span="1" width="70">
+                            <col span="1" width="70">
+                            <col span="1" width="70">
+                        </colgroup>
+                        <tbody>
+                            <tr class="colgroup-adjust">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr class="bet-all">
+                                <td></td>
+                                <td class="refer-bet" colspan="2"></td>
+                                <td>No</td>
+                                <td>Yes</td>
+                                <td class="refer-book" colspan="2"></td>
+                            </tr>
+
+
+                            <tr id="suspendTemplate" class="fancy-suspend-tr" style="display: none;">
+                                <th></th>
+                                <td colspan="2"></td>
+                                <td class="fancy-suspend-td" colspan="2">
+                                    <div id="suspendClass" class="fancy-suspend"><span id="info">Ball Running</span>
+                                    </div>
+                                </td>
+                                <td colspan="2"></td>
+                            </tr>
+
+                            <tr id="delayTemplate" class="fancy-suspend-tr" style="display: none;">
+                                <th></th>
+                                <td colspan="2"></td>
+                                <td class="fancy-suspend-td" colspan="2">
+                                    <div class="fancy-suspend"><span id="info">Delay Betting</span></div>
+                                </td>
+                                <td colspan="2"></td>
+                            </tr>
+
+
+                            <tr id="fancyBetMarketTemplate" style="display: none;">
+                                <th colspan="3">
+                                    <dl class="fancy-th-layout">
+                                        <dt>
+                                            <p id="marketName"></p>
+                                            <span id="before" class="win" style="display: none;"></span>
+                                            <span id="after" class="to-lose" style="display: none;"></span>
+                                        </dt>
+                                        <dd class="dd-tips">
+                                            <ul class="fancy-tips">
+                                                <li id="remarkFirstRow" style="display: none;"></li>
+                                                <li id="remarkSecondRow" style="display: none;"></li>
+                                            </ul>
+                                            <a id="fancyBetBookBtn" class="btn-book" style="display: none;">Book</a>
+                                        </dd>
+                                    </dl>
+                                </th>
+                                <td id="lay_1" class="lay-1">
+                                    <a id="runsInfo" style="cursor: pointer"><span></span></a>
+                                </td>
+                                <td id="back_1" class="back-1">
+                                    <a id="runsInfo" style="cursor: pointer"><span></span></a>
+                                </td>
+                                <td class="td-fancy_merge" colspan="2">
+                                    <dl class="fancy-info">
+                                        <dt>Min/Max</dt>
+                                        <dd id="minMax"></dd>
+                                    </dl>
+                                    <dl class="fancy-info">
+                                        <dt id="rebateName">Rebate</dt>
+                                        <dd id="rebate"></dd>
+                                    </dl>
+                                </td>
+                            </tr>
+
+
+                            <tr id="fancyBetSingleBetMarketTemplate" style="display: none;">
+                                <th colspan="3">
+                                    <dl class="fancy-th-layout">
+                                        <dt>
+                                            <p id="marketName"></p>
+                                            <span id="before" class="win" style="display: none;"></span>
+                                            <span id="after" class="to-lose" style="display: none;"></span>
+                                        </dt>
+                                        <dd class="dd-tips">
+                                            <ul class="fancy-tips">
+                                                <li id="remarkFirstRow" style="display: none;"></li>
+                                                <li id="remarkSecondRow" style="display: none;"></li>
+                                            </ul>
+                                            <a id="fancyBetBookBtn" class="btn-book" style="display: none;">Book</a>
+                                        </dd>
+                                    </dl>
+                                </th>
+                                <td id="clickToBet" class="back-1 single-bet" colspan="2">
+                                    <a id="oddsInfo" href="#">
+                                        <span>odds</span>
+                                    </a>
+                                </td>
+                                <td class="td-fancy_merge" colspan="2">
+                                    <dl class="fancy-info">
+                                        <dt>Min/Max</dt>
+                                        <dd id="minMax"></dd>
+                                    </dl>
+                                    <dl class="fancy-info">
+                                    </dl>
+                                </td>
+                            </tr>
+
+                            <!-- multi selection for fancybet -->
+                            <tr id="fancyBeThreeSelectionsMarketTemplate" style="display: none;">
+                                <th colspan="3">
+                                    <dl class="fancy-th-layout">
+                                        <dt>
+                                            <p id="marketName"></p>
+                                            <span id="before" class="win" style="display: none;"></span>
+                                            <span id="after" class="to-lose" style="display: none;"></span>
+                                        </dt>
+                                        <dd class="dd-tips">
+                                            <ul class="fancy-tips">
+                                                <li id="remarkFirstRow" style="display: none;"></li>
+                                                <li id="remarkSecondRow" style="display: none;"></li>
+                                            </ul>
+                                            <a id="fancyBetBookBtn" class="btn-book" style="display: none;">Book</a>
+                                        </dd>
+                                    </dl>
+                                </th>
+                                <!--td colspan="2" class="multi_select multi_suspend"-->
+                                <td colspan="2" class="multi_select" id="multi_select">
+                                    <!-- <div class="multi_suspend">
+                    <span>Suspend</span>
+                </div> -->
+                                    <ul>
+                                        <li class="lay-1" id="lay_1">
+                                            <a id="runsInfo" style="cursor: pointer"><span></span></a>
+                                        </li>
+
+                                        <li class="back-1" id="back_1">
+                                            <a id="runsInfo" style="cursor: pointer"><span></span></a>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="lay-1" id="lay_1">
+                                            <a id="runsInfo" style="cursor: pointer"><span></span></a>
+                                        </li>
+
+                                        <li class="back-1" id="back_1">
+                                            <a id="runsInfo" style="cursor: pointer"><span></span></a>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="lay-1" id="lay_1">
+                                            <a id="runsInfo" style="cursor: pointer"><span></span></a>
+                                        </li>
+
+                                        <li class="back-1" id="back_1">
+                                            <a id="runsInfo" style="cursor: pointer"><span></span></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="td-fancy_merge" colspan="2">
+                                    <dl class="fancy-info">
+                                        <dt>Min/Max</dt>
+                                        <dd id="minMax"></dd>
+                                    </dl>
+                                    <dl class="fancy-info">
+                                        <dt id="rebateName">Rebate</dt>
+                                        <dd id="rebate"></dd>
+                                    </dl>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <table id="tempTable" style="display: none;">
+                <tbody>
+
+                    <tr id="fancyBetTemplate" class="fancy-quick-tr" style="display: none;">
+                        <td colspan="7">
+                            <dl id="classWrap" class="quick_bet-wrap slip-back">
+                                <dt id="fancyBetHeader" class="">
+
+                                    <span id="fancyBetAcceptCheck" class="bet-check">
+                                        <input id="fancyBetAcceptAnyOdds" type="checkbox">
+                                        <label for="fancyBetAcceptAnyOdds">Accept Any Odds</label>
+                                    </span>
+
+                                </dt>
+                                <dd class="col-btn"><a id="cancel" class="btn" style="cursor:pointer;">Cancel
+                                    </a></dd>
+                                <dd id="oddsHeader" class="col-odd">
+                                    <ul class="quick-bet-confirm">
+                                        <li id="runs"></li>
+                                        <li id="odds" class="quick-bet-confirm-title"></li>
+                                    </ul>
+                                </dd>
+                                <dd class="col-stake">
+                                    <input id="inputStake" type="text" value="">
+                                </dd>
+                                <dd class="col-send">
+                                    <a id="placeBet" class="btn-send disable" style="cursor:pointer;">Place Bets
+                                    </a>
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+
+
+                    <tr id="fancyBetBarTemplate" class="fancy-quick-tr" style="display: none;">
+                        <td colspan="7">
+                            <dl class="quick_bet-wrap quick_bet-progress">
+                                <dd id="progressBar" class="progress-bar" style="width: 0%;"></dd>
+                                <dd class="progress-bar-txt">Placing your bets, Please wait <span id="secRemain">0 sec
+                                        remainingâ¦</span></dd>
+                            </dl>
+                        </td>
+                    </tr>
+
+
+                    <tr id="fancyBetMessageTemplate" class="fancy-quick-tr" style="display: none;">
+                        <td colspan="7">
+                            <dl id="classWrap" class="quick_bet-wrap quick_bet-message success">
+                                <dd id="info">
+                                    <strong id="header">Bet Matched</strong>
+                                    USD$ at odds Profit:
+                                    <a id="close" class="btn-close" style="cursor:pointer;">Close</a>
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+
+
+                    <!-- lottery Fancy bet quick-->
+                    <tr id="fancyBetLotteryTemplate" class="fancy-quick-tr bet-lottery" style="display: none;">
+                        <td colspan="7">
+                            <!-- Quick Bet Wrap -->
+                            <dl class="quick_bet-wrap slip-back">
+                                <dt></dt>
+                                <dd class="col-btn"><a id="cancel" class="btn" style="cursor:pointer;">Cancel
+                                    </a></dd>
+                                <dd id="lotteryBall" class="lottery-ball">
+                                    <a id="lotteryNo_0">0</a>
+                                    <a id="lotteryNo_1">1</a>
+                                    <a id="lotteryNo_2">2</a>
+                                    <a id="lotteryNo_3">3</a>
+                                    <a id="lotteryNo_4">4</a>
+                                    <a id="lotteryNo_5">5</a>
+                                    <a id="lotteryNo_6">6</a>
+                                    <a id="lotteryNo_7">7</a>
+                                    <a id="lotteryNo_8">8</a>
+                                    <a id="lotteryNo_9">9</a>
+                                </dd>
+                                <dd class="col-stake">
+                                    <input id="inputStake" type="text" value="">
+                                </dd>
+                                <dd class="col-send">
+                                    <a id="placeBet" class="btn-send disable" style="cursor:pointer;">Place Bets
+                                    </a>
+                                </dd>
+                            </dl>
+                            <!-- Quick Bet Wrap End -->
+                        </td>
+                    </tr>
+                    <!-- lottery end -->
+
+                    <!-- khadda Fancy bet quick-->
+                    <tr id="fancyBetKhaddaTemplate" class="fancy-quick-tr bet-khadda">
+                        <td colspan="7">
+                            <!-- Quick Bet Wrap -->
+                            <dl class="quick_bet-wrap slip-back">
+                                <dt></dt>
+                                <dd class="col-btn"><a id="cancel" class="btn" style="cursor:pointer;">Cancel
+                                    </a></dd>
+                                <!-- Runs -->
+                                <dd class="col-stake">
+                                    <input id="inputRuns" type="text" maxlength="3">
+                                </dd>
+                                <dd class="col-odd">
+                                    <ul class="quick-bet-confirm">
+                                        <li id="extendedRuns"></li>
+                                    </ul>
+                                </dd>
+                                <dd class="col-runs">
+                                    Runs
+                                </dd>
+
+                                <dd class="col-stake">
+                                    <input id="inputStake" type="text" value="">
+                                </dd>
+                                <dd class="col-send">
+                                    <a id="placeBet" class="btn-send disable" style="cursor:pointer;">Place Bets
+                                    </a>
+                                </dd>
+                            </dl>
+                            <!-- Quick Bet Wrap End -->
+                        </td>
+                    </tr>
+                    <!-- Khadda end -->
+                </tbody>
+            </table>
+            <div id="sportsBookWrap" style="display: none;">
+
+                <div class="game-wrap" id="sportsBookTableTemplate" style="display: none;">
+
+                    <h3 id="sportsBookHead" class="multi_h3">
+                        <a href="#" id="multiMarketPin" class="delete-pin" title="Remove from Multi Markets">Add Pin</a>
+                        <a id="multiMarketRefresh" class="multi_refresh" href="#">Refresh</a>
+                        <a class="multi_name">
+                            <span id="eventName">England vs Sri Lanka</span>
+                            <span id="sportsBookEIcon_1" class="game-E" style="display: none;"><i></i>Soccer</span>
+                            <span id="sportsBookEIcon_137" class="game-E" style="display: none;"><i></i>e-Soccer</span>
+                            <span id="sportsBookEIcon_4" class="game-E" style="display: none;"><i></i>Cricket</span>
+                            <span id="sportsBookEIcon_2" class="game-E" style="display: none;"><i></i>Tennis</span>
+                            <span id="icon" class="game-sportsbook">Sportsbook</span>
+                            <span id="marketName" class="multi-event_type">Match Odds</span>
+                        </a>
+                    </h3>
+                    <div class="bets-wrap sportsbook_bet">
+
+                        <div id="multiMarketLoading" class="loading-wrap multi-load" style="display:none;">
+                            <ul class="loading">
+                                <li><img src="asstes/images/loading40.gif"></li>
+                                <li>Loading...
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Sportsbook bet head end -->
+                        <p id="sportsBookNoBet" class="no_bet" style="display: none;">has no Sports Book market </p>
+                        <table id="sportsBookMarketTemplate" class="bets" style="display: none;">
+                            <colgroup>
+                                <col span="1" width="280">
+                                <col span="1" width="70">
+                                <col span="1" width="70">
+                                <col span="1" width="70">
+                                <col span="1" width="70">
+                                <col span="1" width="70">
+                                <col span="1" width="70">
+                            </colgroup>
+                            <tbody>
+                                <tr class="colgroup-adjust">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="special_bet">
+                                    <td colspan="7"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <table id="sportsBookTemplateTable" class="bets" style="display: none;">
+                        <tbody>
+                            <tr id="sportsBookSelectionTemplate" style="display: none;">
+                                <th class="" colspan="3">
+                                    <dl class="fancy-th-layout">
+                                        <dt>
+                                            <p id="selectionName"></p>
+                                            <span id="before" class="win" style="display: none;"></span>
+                                            <span id="after" class="to-lose" style="display: none;"></span>
+                                        </dt>
+                                    </dl>
+                                </th>
+                                <td id="back_1" class="back-1 no-liq" colspan="2">
+                                    <a id="info"><span></span></a>
+                                </td>
+                                <td class="refer-book" colspan="2"></td>
+                            </tr>
+
+                            <!-- Sportsbook bet quick-->
+                            <tr id="sportsBookBetTemplate" class="fancy-quick-tr" style="display: none;">
+                                <td colspan="7">
+                                    <!-- Quick Bet Wrap -->
+                                    <dl class="quick_bet-wrap slip-book">
+                                        <dt id="sportsBookBetHeader" class="">
+
+                                            <span id="sportsBookAcceptCheck" class="bet-check">
+                                                <input id="sportsBookAcceptAnyOdds" type="checkbox">
+                                                <label for="sportsBookAcceptAnyOdds">Accept Any Odds</label>
+                                            </span>
+
+                                            <span id="sportsBookMaxStake" class="max-bet"><a
+                                                    id="getSportsBookMaxStakeBtn" href="#">Max</a></span>
+                                        </dt>
+                                        <dd class="col-btn"><a id="cancel" class="btn">Cancel
+                                            </a></dd>
+                                        <dd id="oddsHeader" class="col-odd">
+                                            <ul class="quick-bet-confirm">
+                                                <li id="odds"></li>
+                                                <li class="quick-bet-confirm-title">odds</li>
+                                            </ul>
+                                        </dd>
+                                        <dd class="col-stake">
+                                            <input id="inputStake" type="text">
+                                        </dd>
+                                        <dd class="col-send">
+                                            <a id="placeBet" class="btn-send">Place Bets
+                                            </a>
+                                        </dd>
+                                    </dl>
+                                    <!-- Quick Bet Wrap End -->
+                                </td>
+                            </tr>
+
+                            <!-- Sportsbook bet quick bet mode-->
+                            <tr id="sportsBookBetBarTemplate" class="fancy-quick-tr" style="display: none;">
+                                <td colspan="7">
+                                    <!-- Quick Bet Wrap Progress -->
+                                    <dl class="quick_bet-wrap quick_bet-progress">
+                                        <dd id="progressBar" class="progress-bar" style="width: 0%;"></dd>
+                                        <dd class="progress-bar-txt">Placing your bets, Please wait <span>4 sec
+                                                remaining…</span></dd>
+                                    </dl>
+                                    <!-- Quick Bet Wrap End -->
+                                </td>
+                            </tr>
+
+                            <!-- Sportsbook bet pause status-->
+                            <tr id="sportsBookSuspendTemplate" class="fancy-suspend-tr" style="display: none;">
+                                <th colspan="3"></th>
+                                <td class="fancy-suspend-td" colspan="2">
+                                    <div id="suspendClass" class="fancy-suspend-white"><span>Ball Run</span></div>
+                                </td>
+                                <td colspan="2"></td>
+                            </tr>
+
+                            <!-- Sportsbook bet quick bet mode-->
+                            <tr id="sportsBookBetMessageTemplate" class="fancy-quick-tr" style="display: none;">
+                                <td colspan="7">
+                                    <!-- Quick Bet Wrap Message -->
+                                    <dl id="classWrap" class="quick_bet-wrap quick_bet-message">
+                                        <dd id="info">
+                                            <strong id="header">Bet Matched</strong>
+                                            USD$1,000 at odds 1.27 Profit: $5,800.00
+                                            <a id="close" class="btn-close">Close</a>
+                                        </dd>
+                                    </dl>
+                                    <!-- Quick Bet Wrap End -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="one_click-wrap">
+
+        <div class="overlay" name="oneClickBetDialog" style="display:none;"></div>
+
+
+        <div id="oneClickBetDialog" class="dialog-wrap" name="oneClickBetDialog" style="display:none;">
+            <h4>One Click Bet ON
+            </h4>
+            <div class="dialog-content">
+                <p>Stake selected will be placed immediately once you click on the market odds.
+                    <br><span class="attention">
+                        Attention: Back/Lay at your own risk</span>
+                </p>
+            </div>
+            <ul class="btn-wrap break">
+
+                <li><a id="ok" class="btn-send" style="cursor:pointer;">OK</a></li>
+            </ul>
+            <img class="arrow-dialog" src="asstes/images/transparent.gif">
+        </div>
+
+
+        <div id="oneClickBetStakeBox" class="one_click-setting" name="oneClickBetStakeBox" style="display:none;">
+            <h4>One Click Bet Stake
+            </h4>
+            <ul class="one_click-stake">
+                <li><a class="btn select" name="betStake" index="0" style="cursor:pointer;">10</a></li>
+                <li><a class="btn" name="betStake" index="1" style="cursor:pointer;">30</a></li>
+                <li><a class="btn" name="betStake" index="2" style="cursor:pointer;">50</a></li>
+                <li><a class="btn" name="betStake" index="3" style="cursor:pointer;">100</a></li>
+            </ul>
+            <a id="edit" class="a-edit" style="cursor:pointer;">Edit<img
+                    src="asstes/images/transparent.gif"></a>
+        </div>
+
+
+        <div id="editOneClickBetStakeBox" class="one_click-setting" name="oneClickBetStakeBox" style="display:none;">
+            <h4>Edit One Click Bet Stake
+            </h4>
+            <ul class="one_click-stake">
+                <li><input type="text" name="editBetStake" index="0" value=""></li>
+                <li><input type="text" name="editBetStake" index="1" value=""></li>
+                <li><input type="text" name="editBetStake" index="2" value=""></li>
+                <li><input type="text" name="editBetStake" index="3" value=""></li>
+            </ul>
+            <a id="save" class="btn-send" style="cursor:pointer;">Save
+            </a>
+        </div>
+    </div>
 </div>

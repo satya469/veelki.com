@@ -1,5 +1,5 @@
 <ul class="highlight-list">
-    <li class="inplay-off" *ngFor="let tableColumn of tableRowList">
+    <li *ngFor="let tableColumn of tableRowList" [ngClass]="{'inplay-on':tableColumn.inPlay=='True', 'inplay-off':tableColumn.inPlay=='False'}" >
         <a [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">
             <dl>
                 <dt>
