@@ -43,6 +43,7 @@ export class BalanceComponent implements OnInit {
   ngOnInit(): void {
     this.getOpeningBalance();
     this.getExposureBalance();
+    this.refreshBalance();
 
     this.betService._getBetData.subscribe(res => {
       this.refreshBalance();

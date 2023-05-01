@@ -30,17 +30,45 @@ namespace Veelki.Admin.Controllers
             _userManager = userManager;
         }
 
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int SubMenuRoleId)
         {
             var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
             CommonReturnResponse commonModel = null;
             var model = new RegisterListVM();
+            string AddButtonName = "";
             try
             {
-                commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/GetUsersByParentId?ParentId={1}&RoleId={2}&UserId={3}&userStatus={4}", _configuration["ApiKeyUrl"], user.ParentId, user.RoleId + 1, 0, 0));
+                SubMenuRoleId = SubMenuRoleId == 0 ? (user.RoleId + 1) : SubMenuRoleId;
+                commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/GetUsersByParentId?ParentId={1}&RoleId={2}&UserId={3}&userStatus={4}", _configuration["ApiKeyUrl"], user.ParentId, SubMenuRoleId, 0, 0));
                 model = jsonParser.ParsJson<RegisterListVM>(Convert.ToString(commonModel.Data));
+                if (SubMenuRoleId == 2)
+                {
+                    AddButtonName = "Add Super Admin";
+                }
+                else if (SubMenuRoleId == 3)
+                {
+                    AddButtonName = "Add Admin";
+                }
+                else if (SubMenuRoleId == 4)
+                {
+                    AddButtonName = "Add Sub Admin";
+                }
+                else if (SubMenuRoleId == 5)
+                {
+                    AddButtonName = "Add Super Master";
+                }
+                else if (SubMenuRoleId == 6)
+                {
+                    AddButtonName = "Add Master";
+                }
+                else
+                {
+                    AddButtonName = "Add Player";
+                }
+
                 ViewBag.roleIdBass = 3;
                 ViewBag.HeaderItem = HeaderItem.DownlineList;
+                ViewBag.AddButtonName = AddButtonName;
                 return View(model);
             }
             catch (Exception)

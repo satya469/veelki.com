@@ -5924,15 +5924,15 @@ header .a-setting img {
 }
 
 .btn-send,.login {
-    color: #ffb200;
+    color: #000000;
     width: 100%;
-    background-image: linear-gradient(180deg, #474747 0%, #070707 100%);
+    background-image: linear-gradient(56deg, #ffcc2e 4%, #ffb80c 42%);
     border: 0.2666666667vw solid #222
 }
 
 .btn-send.disable,.disable.login {
-    color: #ffb200;
-    background-image: linear-gradient(180deg, #474747 0%, #070707 100%);
+    color: #000000;
+    background-image: linear-gradient(56deg, #ffcc2e 4%, #ffb80c 42%);
     border-color: #222;
     opacity: .4
 }
@@ -6068,13 +6068,13 @@ header .message-wrap .close {
 }
 
 .login-head,.login-pop .login-head {
-    background-image: url(../../../assets/images/mobile/skyexchange/KV-pic.png);
-    background-color: #ffb80c;
+    background-image: url(../../../assets/images/veelki/bg-login_wrap_mobile.png);
+    background-color: transparent!important;
 }
 
 .login-head h1,.login-pop .login-head h1 {
     top: 60%;
-    background-image: url(../../../assets/images/mobile/skyexchange/logo.png)
+    background-image: url(../../../assets/images/veelki/logo.png)
 }
 
 @media(orientation: landscape) {
@@ -6127,15 +6127,15 @@ header .message-wrap .close {
 }
 
 .policy-link {
-    color: rgba(0,0,0,.5)
+    color: rgba(224,224,224,.5)
 }
 
 .policy-link a {
-    color: rgba(0,0,0,.7)
+    color: rgba(224,224,224,.7)
 }
 
 body, .main-bg {
-    background-image: linear-gradient(56deg, #ffcc2e 4%, #ffb80c 42%)
+    background-image: linear-gradient(180deg, #474747 0%, #070707 100%);
 }
 
 header .top-logo {
@@ -6463,4 +6463,9 @@ img.support-mail {
 
 img.support-ig {
     background-image: url('data:image/svg+xml,<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><path d="M29.172 0C35.142 0 40 4.857 40 10.828v18.345C40 35.143 35.143 40 29.173 40H10.828C4.858 40 0 35.143 0 29.173V10.828C0 4.858 4.857 0 10.828 0zM20 9.063C13.97 9.063 9.063 13.969 9.063 20c0 6.03 4.906 10.937 10.937 10.937 6.03 0 10.937-4.906 10.937-10.937 0-6.03-4.906-10.937-10.937-10.937zm0 2.345c4.738 0 8.592 3.854 8.592 8.592S24.738 28.592 20 28.592 11.408 24.738 11.408 20s3.854-8.592 8.592-8.592zm11.199-6.23a3.235 3.235 0 00-3.232 3.232 3.235 3.235 0 003.232 3.232A3.235 3.235 0 0034.43 8.41a3.236 3.236 0 00-3.232-3.232zm0 2.345a.888.888 0 010 1.774.888.888 0 010-1.774z" fill="rgba(0, 0, 0, 0.7)" fill-rule="nonzero"/></svg>')
+}
+@media (max-width:664px){
+.login-head h1, .login-pop .login-head h1{
+    display: none;
+}
 }

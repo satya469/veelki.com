@@ -127,6 +127,23 @@ export class MatchOddComponent implements OnInit {
         this.oddValue = Number(this.setBetData.oddsRequest);
         this.stackValue = Number(this.setBetData.amountStake);
       }
+      if(this.oddValue > 0 && this.stackValue > 0){
+        this.oddBook = true;
+      }else{
+        this.oddBook = false;
+      }
+      this.BidDataNew = this.BidDataNew.reduce((a, v, i) => {
+        const [key, value] = Object.entries(v);
+        this.BidDataNew[i][key[0]] = 0;
+        if (key[0] == this.selectionId) {
+          v[key[0]] = this.betType == 0 ? parseInt(this.BidData[i][key[0]]) + ((this.oddValue * this.stackValue) - this.stackValue) : parseInt(this.BidData[i][key[0]]) - ((this.oddValue * this.stackValue) - this.stackValue);
+        } else {
+          v[key[0]] = this.betType == 0 ? parseInt(this.BidData[i][key[0]]) - this.stackValue : parseInt(this.BidData[i][key[0]]) + this.stackValue;
+        }
+        v[key[0]] = Math.trunc(100*v[key[0]])/100;
+        a.push(v);
+        return a;
+      }, []);
     })
 
   }

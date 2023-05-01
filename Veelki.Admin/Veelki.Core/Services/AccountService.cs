@@ -435,7 +435,7 @@ namespace Veelki.Core.Services
                 }
 
                 var model = new RegisterListVM();
-                //totalUser = totalUser != null && totalUser.Count() > 0 ? totalUser.Where(x => x.RoleId == RoleId).ToList() : totalUser;
+                totalUser = totalUser != null && totalUser.Count() > 0 ? totalUser.Where(x => x.RoleId == RoleId).ToList() : totalUser;
                 if (UserId > 0)
                 {
                     totalUser = totalUser.Where(x => x.Id == UserId).ToList();

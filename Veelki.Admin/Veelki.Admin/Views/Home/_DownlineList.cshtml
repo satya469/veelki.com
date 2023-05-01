@@ -215,47 +215,41 @@
             int i = 0;
             int userRoleId = 0;
             int userRoleIdBack = 0;
-            string color = "";
-            foreach (var user in Model.Users.Where(x => x.RoleId != ViewBag.LoginUser.RoleId && x.RoleId > ViewBag.LoginUser.RoleId).OrderBy(y => y.RoleId))
+            foreach (var user in Model.Users)
             {
                 var status = user.Status == 1 ? "Active" : user.Status == 2 ? "InActive" : "Blocked";
                 var roleName = "Admin";
                 if (user.RoleId == 2)
                 {
                     roleName = "Super Admin";
-                    color = "#568bc8";
                 }
                 else if (user.RoleId == 3)
                 {
                     roleName = "Admin";
-                    color = "#568bc8";
                 }
                 else if (user.RoleId == 4)
                 {
                     roleName = "Sub Admin";
-                    color = "#bf7e58";
                 }
                 else if (user.RoleId == 5)
                 {
                     roleName = "Super Master";
-                    color = "#bfbd58";
                 }
                 else if (user.RoleId == 6)
                 {
                     roleName = "Master";
-                    color = "#7cbf58";
                 }
                 else if (user.RoleId == 7)
                 {
                     roleName = "User";
-                    color = "#b358bf";
                 }
 
                 <tr id="0" style="display: table-row;" main_userid="@user.FullName">
                     <td hidden>@i</td>
                     <td hidden>@user.Id</td>
+                    <td hidden>@user.UserName</td>
                     <td id="accountCol" style="" class="align-L">
-                        <span class="order" id="number">@(i+1).</span><span class="lv_4" style="background:@color">@roleName</span><span class="account_name">@user.FullName</span>
+                        <span class="order" id="number">@(i+1).</span><span class="lv_4">@roleName</span><span class="account_name">@user.FullName</span>
                     </td>
                     <td id="creditRef0" class="credit-amount-member" style="">
                         <a id="creditRefBtn" class="favor-set"
@@ -282,17 +276,17 @@
                     <td id="statusCol" style="">
                         <ul id="tipsPopup" class="status-popup" style="display: none">
                         </ul>
-                        @if(user.Status == 1)
+                        @if (user.Status == 1)
                         {
-                        <span id="status0" class="status-active" style="display:inline-flex;align-items:center;"><img src="/images/transparent.gif">@status</span>
+                            <span id="status0" class="status-active" style="display:inline-flex;align-items:center;"><img src="/images/transparent.gif">@status</span>
                         }
-                        else if(user.Status == 2)
+                        else if (user.Status == 2)
                         {
-                        <span id="status0" class="status-suspend" style="display:inline-flex;align-items:center;"><img src="/images/transparent.gif">@status</span>
+                            <span id="status0" class="status-suspend" style="display:inline-flex;align-items:center;"><img src="/images/transparent.gif">@status</span>
                         }
                         else
                         {
-                        <span id="status0" class="status-lock" style="display:inline-flex;align-items:center;"><img src="/images/transparent.gif">@status</span>
+                            <span id="status0" class="status-lock" style="display:inline-flex;align-items:center;"><img src="/images/transparent.gif">@status</span>
                         }
                     </td>
                     <td id="actionCol" style="">

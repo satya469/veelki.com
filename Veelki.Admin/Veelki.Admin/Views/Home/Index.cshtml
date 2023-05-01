@@ -23,20 +23,20 @@
                 <p></p>
             </div>
             <h3>
-                Add Player
+                @ViewBag.AddButtonName
             </h3>
             <ul class="half_box add-member-box">
                 <li class="add_account_box">
                     <dl class="border_b">
-                        <dt>
-                            E-mail
-                        </dt>
+                        @*<dt>
+                                E-mail
+                            </dt>*@
                         <dd>
                             <input type="hidden" class="form-control" id="idModel">
                             <input type="hidden" asp-for="RoleId" value="">
-                            <input id="email" type="text" onclick="location.href='#stake'" placeholder="Enter"
-                                   maxlength="50">
-                            <span class="must">＊</span>
+                            @*<input id="email" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                                       maxlength="50">
+                                <span class="must">＊</span>*@
                         </dd>
                         <dt>
                             Username
@@ -1059,9 +1059,12 @@
                     Change Status
                 </h3>
                 <div class="status_id">
-                    <p id="changeAccount"></p>
-                    <p id="changeAccount"></p>
-                    <p class="status-active" id="originalStatus"></p>
+                    <p id="changeAccount">
+                        <span class="order" id="number"></span>
+                        <span class="lv_4">PL</span>
+                        <span class="account_name" id="account_user_name">verma123arun</span>
+                    </p>
+                    <p class="status-active" id="originalStatus" style=" display: inline-flex; align-items: center;"><img src="/images/transparent.gif"><span id="originalStatus123">Active</span></p>
                 </div>
                 <form>
                     <input type="hidden" name="UserId" id="statusUserId" />
@@ -1070,19 +1073,19 @@
                         <ul id="statusBtn" class="status_but">
                             <li>
                                 <a id="activeBtn" class="but_active" href="#active" data-status="active">
-                                    <img class="" src="https://statics3.skyexch.bike/images/transparent.gif">
+                                    <img class="" src="~/assets/images/transparent.gif">
                                     Active
                                 </a>
                             </li>
                             <li>
                                 <a id="suspendBtn" class="but_suspend" href="#suspend" data-status="suspend">
-                                    <img class="" src="https://statics3.skyexch.bike/images/transparent.gif">
+                                    <img class="" src="~/assets/images/transparent.gif">
                                     Suspend
                                 </a>
                             </li>
                             <li>
                                 <a id="lockedBtn" class="but_locked" href="#locked" data-status="locked">
-                                    <img class="" src="https://statics3.skyexch.bike/images/transparent.gif">
+                                    <img class="" src="~/assets/images/transparent.gif">
                                     Locked
                                 </a>
                             </li>
@@ -1122,7 +1125,7 @@
                     <div class="suspend-wrap" id="passLockDiv" style="display: none">
                         <div class="sys-lock status_id">
                             <p class="status-lock">
-                                <img src="https://statics3.skyexch.bike/images/transparent.gif">Passlocked
+                                <img src="~/assets/images/transparent.gif">Passlocked
                             </p>
                         </div>
 
@@ -1139,13 +1142,13 @@
 
                     <div class="sys-suspend status_id" id="systemSuspendMessage" style="display: none">
                         <p class="status-suspend">
-                            <img src="https://statics3.skyexch.bike/images/transparent.gif">System Suspend
+                            <img src="~/assets/images/transparent.gif">System Suspend
                         </p>
                     </div>
 
                     <div class="sys-lock status_id" id="systemLockedMessage" style="display: none">
                         <p class="status-lock">
-                            <img src="https://statics3.skyexch.bike/images/transparent.gif">System Locked
+                            <img src="~/assets/images/transparent.gif">System Locked
                         </p>
                     </div>
                 </form>
@@ -1355,10 +1358,10 @@
             </ul>
         </div>
 
-        <a id="refresh" class="btn_replay"><img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
+        <a id="refresh" class="btn_replay"><img src="~/assets/images/transparent.gif"></a>
 
         <a class="add_member" href="#" onclick="CreateAccountHandler.showDialog()">
-            <img src="">Add Player
+            <img src="">@ViewBag.AddButtonName
         </a>
     </div>
 
@@ -1462,7 +1465,7 @@
                 <tr id="tempBalanceTr" class="expand first expand-balance">
                     <td colspan="2"></td>
                     <td colspan="7">
-                        <img class="expand-arrow" src="https://statics3.skyexch.bike/images/transparent.gif">
+                        <img class="expand-arrow" src="~/assets/images/transparent.gif">
                         <table>
                             <tbody id="tempVendorContent">
                                 <tr>
@@ -1601,33 +1604,60 @@
 
         $(document).ready(function () {
             $(".usersettingstatus").click(function () {
+                debugger;
                 var modal = document.getElementById("changeStatusModal");
                 modal.style.display = "block";
+
+                $("#originalStatus").removeClass("status-active");
+                $("#originalStatus").removeClass("status-suspend");
+                $("#originalStatus").removeClass("status-lock");
+
                 var currentRow = $(this).closest("tr");
                 var userId = currentRow.find("td:eq(1)").text();
-                var rCell1 = currentRow.find("td:eq(14)").text();
+                var rCell1 = currentRow.find("td:eq(15)").text();
+                $("#account_user_name").text(currentRow.find("td:eq(2)").text());
                 if (rCell1 == "Active") {
                     $(".but_active").addClass("disable");
+                    $(".but_suspend").removeClass("disable");
+                    $(".but_locked").removeClass("disable");
+                    $("#originalStatus").addClass("status-active");
+                    $("#originalStatus123").text('Active');
                 }
-                else if (rCell1 == "suspend") {
+                else if (rCell1 == "InActive") {
                     $(".but_suspend").addClass("disable");
+                    $(".but_active").removeClass("disable");
+                    $(".but_locked").removeClass("disable");
+                    $("#originalStatus").addClass("status-suspend");
+                    $("#originalStatus123").text('InActive');
                 }
                 else {
                     $(".but_locked").addClass("disable");
+                    $(".but_active").removeClass("disable");
+                    $(".but_suspend").removeClass("disable");
+                    $("#originalStatus").addClass("status-lock");
+                    $("#originalStatus123").text('Blocked');
                 }
 
                 $("#changeStatusModal input[name='UserId']").val(userId);
                 $("#changeStatusModal input[name='Status']").val(rCell1);
             });
 
+            $("#activeBtn").click(function () {
+                $(".but_active").addClass("open");
+                $(".but_suspend").removeClass("open");
+                $(".but_locked").removeClass("open");
+            });
+
             $("#suspendBtn").click(function () {
                 $(".but_suspend").addClass("open");
+                $(".but_active").removeClass("open");
                 $(".but_locked").removeClass("open");
             });
 
             $("#lockedBtn").click(function () {
                 $(".but_locked").addClass("open");
                 $(".but_suspend").removeClass("open");
+                $(".but_active").removeClass("open");
             });
 
             $(".close_pop").click(function () {

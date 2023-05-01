@@ -30,6 +30,17 @@
                     <dt>
                         <h4>{{matchOddsPrice.runnerName}}</h4>
                         <ul>
+                        <li style="display:flex;" *ngIf="BidData && BidData.length > 0"
+                            [ngClass]="{'to-lose' : BidData[i][matchOddsPrice.selectionId] < 0, 'to-win' : BidData[i][matchOddsPrice.selectionId] > 0 }">
+                            {{BidData[i][matchOddsPrice.selectionId]}}
+                            <span style="margin-left: 3px;"
+                                *ngIf="oddBook == true"
+                                [ngClass]="{'to-win': BidDataNew[i][matchOddsPrice.selectionId] > 0, 'to-lose': BidDataNew[i][matchOddsPrice.selectionId] <= 0 }">
+                                ({{BidDataNew[i][matchOddsPrice.selectionId]}})
+                            </span>
+                        </li>
+                    </ul>
+                        <!-- <ul>
                             <li class="to-lose"
                                 [ngClass]="{'to-lose':setBetData?.type =='lay','to-win':setBetData?.type =='back'}"
                                 *ngIf="setBetData?.sportId && selectionId == matchOddsPrice.selectionId"> {{ stackValue
@@ -41,7 +52,7 @@
                                 *ngIf="setBetData?.sportId && selectionId != matchOddsPrice.selectionId"> {{ stackValue
                                 |
                                 number : '1.2-2'}}</li>
-                        </ul>
+                        </ul> -->
                     </dt>
                     <!-- <dd class="">
                     <p id="info">Suspend</p>
