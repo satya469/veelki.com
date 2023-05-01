@@ -23,20 +23,20 @@
                 <p></p>
             </div>
             <h3>
-                Add Player
+                @ViewBag.AddButtonName
             </h3>
             <ul class="half_box add-member-box">
                 <li class="add_account_box">
                     <dl class="border_b">
-                        <dt>
+                        @*<dt>
                             E-mail
-                        </dt>
+                        </dt>*@
                         <dd>
                             <input type="hidden" class="form-control" id="idModel">
                             <input type="hidden" asp-for="RoleId" value="">
-                            <input id="email" type="text" onclick="location.href='#stake'" placeholder="Enter"
+                            @*<input id="email" type="text" onclick="location.href='#stake'" placeholder="Enter"
                                    maxlength="50">
-                            <span class="must">＊</span>
+                            <span class="must">＊</span>*@
                         </dd>
                         <dt>
                             Username
@@ -1392,7 +1392,7 @@
         <a id="refresh" class="btn_replay"><img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
 
         <a class="add_member" href="#" onclick="CreateAccountHandler.showDialog()">
-            <img src="">Add Player
+            <img src="">@ViewBag.AddButtonName
         </a>
     </div>
 

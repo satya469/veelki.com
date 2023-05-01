@@ -12625,8 +12625,8 @@ th {
 
 .header h1 {
     margin: -8px 15px 0 0;
-    width: 56px;
-    height: 54px
+    width: 100%;
+    height: 100%
 }
 
 .login_to_go .kv:before {
