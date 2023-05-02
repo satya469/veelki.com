@@ -1,8 +1,8 @@
 ﻿using Veelki.Data.Entities;
-using RB444.Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Veelki.Model.ViewModel;
 
 namespace Veelki.Models.Model
 {

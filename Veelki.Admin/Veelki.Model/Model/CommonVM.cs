@@ -1,4 +1,4 @@
-﻿namespace RB444.Model.Model
+﻿namespace Veelki.Model.Model
 {
     public class Pagination
     {

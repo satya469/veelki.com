@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using Veelki.Core.IServices;
 using Veelki.Data.Entities;
-using RB444.Model.Model;
+using Veelki.Model.Model;
 using Veelki.Models.Model;
-using System.Threading.Tasks;
 
 namespace Veelki.Api.Controllers
 {

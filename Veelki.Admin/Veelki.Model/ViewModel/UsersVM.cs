@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RB444.Model.ViewModel
+namespace Veelki.Model.ViewModel
 {
     public class UsersVM
     {

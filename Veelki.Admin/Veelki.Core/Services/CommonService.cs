@@ -2,13 +2,13 @@
 using Veelki.Core.ServiceHelper;
 using Veelki.Data.Entities;
 using Veelki.Data.Repository;
-using RB444.Model.Model;
-using RB444.Model.ViewModel;
 using Veelki.Models.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Veelki.Model.ViewModel;
+using Veelki.Model.Model;
 
 namespace Veelki.Core.Services
 {

@@ -1,9 +1,7 @@
-﻿using Veelki.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using Veelki.Data.Entities;
 
-namespace RB444.Model.Model
+namespace Veelki.Model.Model
 {
     public class UserMyProfile
     {
