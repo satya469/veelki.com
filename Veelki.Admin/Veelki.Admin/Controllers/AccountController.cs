@@ -358,6 +358,8 @@ namespace Veelki.Admin.Controllers
 
             CommonReturnResponse commonModel = null;
             List<ActivityLogVM> activityLogVM = null;
+            double openingBal = 0;
+
             try
             {
                 commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Common/GetActivityLog", _configuration["ApiKeyUrl"]));
@@ -365,6 +367,11 @@ namespace Veelki.Admin.Controllers
                 {
                     activityLogVM = jsonParser.ParsJson<List<ActivityLogVM>>(Convert.ToString(commonModel.Data));
                 }
+
+                commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/GetOpeningBalance?UserId={1}", _configuration["ApiKeyUrl"], user.Id));
+                openingBal = jsonParser.ParsJson<double>(Convert.ToString(commonModel.Data));
+
+                ViewBag.openingBal = openingBal;
             }
             catch (Exception ex)
             {
