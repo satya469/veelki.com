@@ -38,14 +38,37 @@
                 </a>
             </li>
 
-            <li id="path3" class="last_li">
-                <a href="javascript: void(0);">
-                    <span class="lv_3">
-                        MA
-                    </span>
-                    <strong>sskydemo0</strong>
-                </a>
-            </li>
+            @{
+                string role = "";
+                if (ViewBag.LoginUser.RoleId == 2)
+                {
+                    role = "SA";
+                }
+                else if (ViewBag.LoginUser.RoleId == 3)
+                {
+                    role = "AD";
+                }
+                else if (ViewBag.LoginUser.RoleId == 4)
+                {
+                    role = "SUA";
+                }
+                else if (ViewBag.LoginUser.RoleId == 5)
+                {
+                    role = "SUM";
+                }
+                else if (ViewBag.LoginUser.RoleId == 6)
+                {
+                    role = "MA";
+                }
+                <li id="path3" class="last_li">
+                    <a href="javascript: void(0);">
+                        <span class="lv_3">
+                            @role
+                        </span>
+                        <strong>@ViewBag.LoginUser.UserName</strong>
+                    </a>
+                </li>
+            }
 
             <li id="path0" class="" style="display: none;">
                 <a href="javascript: void(0);">

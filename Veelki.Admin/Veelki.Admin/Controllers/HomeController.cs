@@ -36,11 +36,17 @@ namespace Veelki.Admin.Controllers
             CommonReturnResponse commonModel = null;
             var model = new RegisterListVM();
             string AddButtonName = "";
+            double openingBal = 0;
+
             try
             {
                 SubMenuRoleId = SubMenuRoleId == 0 ? (user.RoleId + 1) : SubMenuRoleId;
                 commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/GetUsersByParentId?ParentId={1}&RoleId={2}&UserId={3}&userStatus={4}", _configuration["ApiKeyUrl"], user.ParentId, SubMenuRoleId, 0, 0));
                 model = jsonParser.ParsJson<RegisterListVM>(Convert.ToString(commonModel.Data));
+
+                commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/GetOpeningBalance?UserId={1}", _configuration["ApiKeyUrl"], user.Id));
+                openingBal = jsonParser.ParsJson<double>(Convert.ToString(commonModel.Data));
+
                 if (SubMenuRoleId == 2)
                 {
                     AddButtonName = "Add Super Admin";
@@ -69,6 +75,7 @@ namespace Veelki.Admin.Controllers
                 ViewBag.roleIdBass = 3;
                 ViewBag.HeaderItem = HeaderItem.DownlineList;
                 ViewBag.AddButtonName = AddButtonName;
+                ViewBag.openingBal = openingBal;
                 return View(model);
             }
             catch (Exception)

@@ -24,6 +24,15 @@ D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTm
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\icon-status-active.png
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\icon-status-lock.png
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\icon-status-suspend.png
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\ico_active.png
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\ico_active_gray.png
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\ico_active_open.png
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\ico_lock.png
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\ico_locked_gray.png
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\ico_locked_open.png
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\ico_suspend.png
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\ico_suspend_gray.png
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\ico_suspend_open.png
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\insta-icon.svg
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\KV-pic.png
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\login-icon.svg
@@ -40,6 +49,7 @@ D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTm
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\sky-icon.svg
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\status-hov.png
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\status.png
+D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\transparent.gif
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\images\verifycode.gr
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\js\site.js
 D:\Projects\veelki.com\Veelki.Admin\Veelki.Admin\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\assets\lib\bootstrap\dist\css\bootstrap-grid.css

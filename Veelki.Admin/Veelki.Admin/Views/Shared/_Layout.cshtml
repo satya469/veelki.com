@@ -55,29 +55,33 @@
                     <strong>@ViewBag.LoginUser.FullName</strong>
                 </li>
                 <!-- single balance 加 no-multi -->
-                <li class="main-wallet no-multi">
-                    <!-- 加open打開-->
-                    <a href="#multi-balance_pop" class="a-wallet">
-                        <ul>
-                            <li>
-                                <span>Main</span>
-                                <strong id="mainBalance">PBU 0.00</strong>
-                            </li>
-                        </ul>
-                        <p class="loading-bar" id="menuRefreshLoading" style="display: none;">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </p>
-                    </a>
+                @if (ViewBag.LoginUser.RoleId != 2)
+                {
+                    <li class="main-wallet no-multi">
+                        <!-- 加open打開-->
+                        <a href="#multi-balance_pop" class="a-wallet">
+                            <ul>
+                                <li>
+                                    <span>Main</span>
+                                    <strong id="mainBalance">PBU @ViewBag.openingBal</strong>
+                                </li>
+                            </ul>
+                            <p class="loading-bar" id="menuRefreshLoading" style="display: none;">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </p>
+                        </a>
 
-                    <a id="topRefresh" class="a-refresh" style="cursor: pointer"><img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
-                </li>
+                        <a id="topRefresh" class="a-refresh" style="cursor: pointer"><img src="https://statics3.skyexch.bike/images/transparent.gif"></a>
+                    </li>
+
+                }
             </ul>
         </div>
 
@@ -89,7 +93,7 @@
                     <li>
                         @if (ViewBag.LoginUser.RoleId == 6)
                         {
-                            if (ViewBag.HeaderItem == HeaderItem.DownlineList)
+                            if (ViewBag.HeaderItem == HeaderItem.DownlineList || ViewBag.HeaderItem == HeaderItem.DownlineListDownPage)
                             {
                                 <a id="menu_my_report" class="select" href="@Url.Action("Index", "Home", new { SubMenuRoleId = 6 })">
                                     Downline List
@@ -104,7 +108,7 @@
                         }
                         else
                         {
-                            if (ViewBag.HeaderItem == HeaderItem.DownlineList)
+                            if (ViewBag.HeaderItem == HeaderItem.DownlineList || ViewBag.HeaderItem == HeaderItem.DownlineListDownPage)
                             {
                                 <a id="menu_my_report" class="menu-drop select" href="#">
                                     Downline List

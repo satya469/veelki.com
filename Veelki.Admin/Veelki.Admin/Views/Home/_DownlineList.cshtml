@@ -316,8 +316,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a id="profile0" class="profile"
-                                   href="~/Account/AccountSummary">
+                                <a id="profile0" class="profile" href="@Url.Action("AccountSummary", "Account", new { DownUserId = @user.Id })">
                                     Profile
                                 </a>
                             </li>

@@ -1,8 +1,8 @@
-﻿
+﻿@model RB444.Model.ViewModel.UserProfileVM
 @{
     ViewData["Title"] = "Account-Summary";
     Layout = "~/Views/Shared/_Layout.cshtml";
- 
+
 }
 
 <div style="display: none"><input type="password" autocomplete="new-password"></div>
@@ -1698,23 +1698,73 @@
                 </a>
             </li>
 
-            <li id="path3" class="" style="">
-                <a href="javascript: void(0);">
-                    <span class="lv_3">
-                        MA
-                    </span>
-                    <strong>subhodip</strong>
-                </a>
-            </li>
+            @{
+                string mainRole = "";
+                string subRole = "";
+                if (ViewBag.LoginUser.RoleId == 2)
+                {
+                    mainRole = "SA";
+                }
+                else if (ViewBag.LoginUser.RoleId == 3)
+                {
+                    mainRole = "AD";
+                }
+                else if (ViewBag.LoginUser.RoleId == 4)
+                {
+                    mainRole = "SUA";
+                }
+                else if (ViewBag.LoginUser.RoleId == 5)
+                {
+                    mainRole = "SUM";
+                }
+                else if (ViewBag.LoginUser.RoleId == 6)
+                {
+                    mainRole = "MA";
+                }
 
-            <li id="path0" class="last_li" style="">
-                <a href="javascript: void(0);">
-                    <span class="lv_4">
-                        PL
-                    </span>
-                    <strong>vermaarun1995</strong>
-                </a>
-            </li>
+                if (Model.oUser.RoleId == 2)
+                {
+                    subRole = "SA";
+                }
+                else if (Model.oUser.RoleId == 3)
+                {
+                    subRole = "AD";
+                }
+                else if (Model.oUser.RoleId == 4)
+                {
+                    subRole = "SUA";
+                }
+                else if (Model.oUser.RoleId == 5)
+                {
+                    subRole = "SUM";
+                }
+                else if (Model.oUser.RoleId == 6)
+                {
+                    subRole = "MA";
+                }
+                else
+                {
+                    subRole = "PL";
+                }
+
+                <li id="path3" class="" style="">
+                    <a href="javascript: void(0);">
+                        <span class="lv_3">
+                            @mainRole
+                        </span>
+                        <strong>@ViewBag.LoginUser.UserName</strong>
+                    </a>
+                </li>
+
+                <li id="path0" class="last_li" style="">
+                    <a href="javascript: void(0);">
+                        <span class="lv_4">
+                            @subRole
+                        </span>
+                        <strong>@Model.oUser.UserName</strong>
+                    </a>
+                </li>
+            }
 
             <ul class="account_pop" id="accountPop" style="">
                 <li id="popTmp" style="display: none;">
@@ -1754,8 +1804,7 @@
                     Position
                 </li>
                 <li>
-                    <a id="accountSummary"
-                       href="account-summry.html">
+                    <a id="accountSummary" class="select" href="@Url.Action("AccountSummary", "Account", new { DownUserId = Model.oUser.Id })">
                         Account Summary
                     </a>
                 </li>
@@ -1765,27 +1814,28 @@
                 </li>
 
                 <li>
-                    <a id="bettingHistory"
-                       href="bating-history.html">
+                    <a id="bettingHistory" href="bating-history.html">
                         Betting History
                     </a>
                 </li>
                 <li>
-                    <a id="profitLoss"
-                       href="bating-profile.html">
-                        Betting Profit &amp;
-                        Loss
+                    <a id="profitLoss" href="bating-profile.html">
+                        Betting Profit &amp; Loss
                     </a>
                 </li>
 
 
                 <li>
-                    <a id="transactionHistory" href="tranjaction-histroy.html" class="select">
+                    <a id="transactionHistory" href="tranjaction-histroy.html">
                         Transaction&nbsp;History
                     </a>
                 </li>
 
-                <li><a id="_activityLog" href="active-log.html">Activity Log</a></li>
+                <li>
+                    <a id="_activityLog" href="active-log.html">
+                        Activity Log
+                    </a>
+                </li>
 
 
             </ul>
@@ -1829,7 +1879,7 @@
 
         <ul class="acc-info">
             <li class="user">
-                vermaarun1995
+                @Model.oUser.UserName
             </li>
             <li class="status_all">
                 <strong id="status"></strong>
@@ -1865,7 +1915,7 @@
 
                     <td id="availableToBet">0.00</td>
                     <td id="availableToWithDraw">0.00</td>
-                    <td id="currentExposure">0.00</td>
+                    <td id="currentExposure">@Model.ExposureLimit</td>
                 </tr>
             </tbody>
         </table>
@@ -1883,40 +1933,20 @@
                         First Name
                     </dt>
                     <dd>
-                        <span id="firstName">Arun</span>
-
+                        <span id="firstName">@Model.oUser.FullName</span>
                         <a href="#" class="favor-set" onclick="ChangeUserNameHandler.showDialog()">
                             Edit
                         </a>
-
                     </dd>
-
-                    <dt>
-                        Last Name
-                    </dt>
-                    <dd>
-                        <span id="lastName">Verma</span>
-
-                        <a href="#" class="favor-set" onclick="ChangeUserNameHandler.showDialog()">
-                            Edit
-                        </a>
-
-                    </dd>
-
-
-
-
 
                     <dt>
                         E-mail
                     </dt>
                     <dd>
-                        <span id="email">vermaarun1995@gmail.com</span>
-
+                        <span id="email">@Model.oUser.Email</span>
                         <a href="#" class="favor-set" onclick="ChangeEmailHandler.showDialog()">
                             Edit
                         </a>
-
                     </dd>
 
                     <dt>
@@ -1924,11 +1954,9 @@
                     </dt>
                     <dd>
                         ********************************
-
                         <a href="#" class="favor-set" onclick="ChangePasswordHandler.showDialog()">
                             Edit
                         </a>
-
                     </dd>
 
                     <dt>
@@ -1937,7 +1965,6 @@
                     <dd>
                         IST
                     </dd>
-
                 </dl>
             </div>
 
@@ -1950,12 +1977,10 @@
                         Primary number
                     </dt>
                     <dd>
-                        <span id="contactNumber">9261801855</span>
-
+                        <span id="contactNumber">@Model.oUser.PhoneNumber</span>
                         <a href="#" class="favor-set" onclick="ChangePrimaryNumberHandler.showDialog()">
                             Edit
                         </a>
-
                     </dd>
                 </dl>
             </div>
@@ -1981,7 +2006,7 @@
                         Commission
                     </dt>
                     <dd>
-                        <span id="commission">2.0%</span>
+                        <span id="commission">@Model.oUser.Commision%</span>
 
                         <a href="#exposure" class="favor-set" onclick="ChangeCommissionHandler.showDialog()">
                             Edit

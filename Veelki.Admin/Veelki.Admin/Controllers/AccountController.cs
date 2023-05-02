@@ -117,7 +117,12 @@ namespace Veelki.Admin.Controllers
 
                         return Redirect("/Home/Index");
                     }
+                    else
+                    {
+                        ViewBag.ValidationCode = commonFun.GenerateRandomNo();
+                    }
                 }
+
                 TempData["ErrorMsg"] = "User name and password not matched";
                 return View(model);
             }
@@ -391,25 +396,40 @@ namespace Veelki.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> AccountSummary()
+        public async Task<ActionResult> AccountSummary(int DownUserId)
         {
+            ViewBag.HeaderItem = CommonFun.HeaderItem.DownlineListDownPage;
             var user = Request.Cookies["loginUserDetail"] != null ? JsonConvert.DeserializeObject<Users>(Request.Cookies["loginUserDetail"]) : null; if (user != null) { ViewBag.LoginUser = user; } else { return RedirectToAction("Login", "Account"); }
 
-            //CommonReturnResponse commonModel = null;
-            //List<AccountStatementVM> accountStatementVM = null;
-            //try
-            //{
-            //    commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Common/GetAccountStatementForSuperAdmin?AdminId={1}", _configuration["ApiKeyUrl"], user.Id));
-            //    if (commonModel.IsSuccess && commonModel.Data != null)
-            //    {
-            //        accountStatementVM = jsonParser.ParsJson<List<AccountStatementVM>>(Convert.ToString(commonModel.Data));
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw;
-            //}
-            return View();
+            Users downUsers = null;
+            try
+            {
+                downUsers = new Users();
+                var commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/GetUserDetail?UserId={1}", _configuration["ApiKeyUrl"], DownUserId));
+                if (commonModel.Data != null)
+                {
+                    downUsers = jsonParser.ParsJson<Users>(Convert.ToString(commonModel.Data));
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            var result = new UserProfileVM
+            {
+                AgentRollingCommission = false,
+                Commision = downUsers.Commision,
+                ExposureLimit = downUsers.ExposureLimit,
+                MobileNumber = downUsers.PhoneNumber,
+                Name = downUsers.FullName,
+                RollingCommission = downUsers.RollingCommission,
+                UserId = downUsers.Id,
+                IsAdmin = true,
+                oUser = downUsers
+            };
+
+            return View(result);
         }
 
         [HttpGet]

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Veelki.Data.Entities;
 
 namespace RB444.Model.ViewModel
 {
@@ -15,5 +13,6 @@ namespace RB444.Model.ViewModel
         public string Password { get; set; }
         public bool AgentRollingCommission { get; set; }
         public bool IsAdmin { get; set; }
+        public Users oUser { get; set; }
     }
 }

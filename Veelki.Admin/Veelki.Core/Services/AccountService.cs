@@ -29,6 +29,56 @@ namespace Veelki.Core.Services
             _configuration = configuration;
         }
 
+        //public async Task<CommonReturnResponse> GetOpeningBalanceAsync(int UserId)
+        //{
+        //    double openingBalance = 0;
+        //    double unsettleBetOpening = 0;
+        //    try
+        //    {
+        //        string query = string.Format(@"select top 1 *  from AccountStatement where ToUserId = {0} order by id desc", UserId);
+        //        var balance = (await _baseRepository.QueryAsync<AccountStatement>(query)).Select(x => x.Balance).FirstOrDefault();
+
+        //        query = "select * from Bets where IsSettlement = 2 and UserId = " + UserId;
+        //        var betMarketList = (await _baseRepository.QueryAsync<Bets>(query)).ToList();
+        //        foreach (var item in betMarketList)
+        //        {
+        //            if (item.Type.Equals("back"))
+        //            {
+        //                unsettleBetOpening = unsettleBetOpening - item.AmountStake;
+        //            }
+        //            else
+        //            {
+        //                unsettleBetOpening = unsettleBetOpening - ((item.AmountStake * item.OddsRequest) - item.AmountStake);
+        //            }
+        //        }
+
+        //        openingBalance = balance - Math.Abs(unsettleBetOpening);
+
+        //        query = string.Format(@"select sum(ResultAmount) as ResultAmount from Bets where IsSettlement = 1 and UserId = {0}", UserId);
+        //        var settleBetAmountList = (await _baseRepository.QueryAsync<Bets>(query)).Select(x => x.ResultAmount).FirstOrDefault();
+
+        //        if (settleBetAmountList == null)
+        //        {
+        //            settleBetAmountList = 0;
+        //        }
+
+        //        openingBalance = (double)(openingBalance + settleBetAmountList);
+        //        openingBalance = Math.Truncate(100 * openingBalance) / 100;
+        //        return new CommonReturnResponse
+        //        {
+        //            Data = openingBalance,
+        //            Message = MessageStatus.Success,
+        //            IsSuccess = true,
+        //            Status = ResponseStatusCode.OK
+        //        };
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //_logger.LogException("Exception : AccountService : DeleteUserVisaInfoAsync()", ex);
+        //        return new CommonReturnResponse { Data = null, Message = ex.InnerException != null ? ex.InnerException.Message : ex.Message, IsSuccess = false, Status = ResponseStatusCode.EXCEPTION };
+        //    }
+        //}
+
         public async Task<CommonReturnResponse> GetOpeningBalanceAsync(int UserId)
         {
             double openingBalance = 0;
@@ -38,18 +88,11 @@ namespace Veelki.Core.Services
                 string query = string.Format(@"select top 1 *  from AccountStatement where ToUserId = {0} order by id desc", UserId);
                 var balance = (await _baseRepository.QueryAsync<AccountStatement>(query)).Select(x => x.Balance).FirstOrDefault();
 
-                query = "select * from Bets where IsSettlement = 2 and UserId = " + UserId;
+                query = "select distinct marketid,SportId from Bets where IsSettlement = 2 and UserId = " + UserId;
                 var betMarketList = (await _baseRepository.QueryAsync<Bets>(query)).ToList();
-                foreach (var item in betMarketList)
+                for (int i = 0; i < betMarketList.Count; i++)
                 {
-                    if (item.Type.Equals("back"))
-                    {
-                        unsettleBetOpening = unsettleBetOpening + ((item.AmountStake * item.OddsRequest) - item.AmountStake);
-                    }
-                    else
-                    {
-                        unsettleBetOpening = unsettleBetOpening - ((item.AmountStake * item.OddsRequest) - item.AmountStake);
-                    }
+                    unsettleBetOpening = unsettleBetOpening + await GetBackAndLayOpeningAndExposureAmountAsync(UserId, betMarketList[i].MarketId, betMarketList[i].SportId);
                 }
 
                 openingBalance = balance - Math.Abs(unsettleBetOpening);
@@ -440,7 +483,7 @@ namespace Veelki.Core.Services
                 {
                     totalUser = totalUser.Where(x => x.Id == UserId).ToList();
                 }
-                
+
                 if (userStatus != 0)
                 {
                     totalUser = totalUser.Where(x => x.Status == userStatus).ToList();

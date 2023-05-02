@@ -9511,7 +9511,7 @@ table .expand-open {
             margin: 0 auto;
             background-image: url(../images/ico_active.png);
             background-repeat: no-repeat;
-            height: 33px;
+            /*height: 33px;*/
             width: 33px
         }
 
@@ -9527,7 +9527,7 @@ table .expand-open {
             .status_but .open.but_suspend img {
                 background-image: url(../images/ico_active_open.png);
                 background-repeat: no-repeat;
-                height: 33px;
+                /*height: 33px;*/
                 width: 33px
             }
 
@@ -9536,7 +9536,7 @@ table .expand-open {
         .status_but .disable.but_suspend img {
             background-image: url(../images/ico_active_gray.png);
             background-repeat: no-repeat;
-            height: 33px;
+            /*height: 33px;*/
             width: 33px
         }
 
@@ -9553,7 +9553,7 @@ table .expand-open {
         .status_but .but_suspend img {
             background-image: url(../images/ico_suspend.png);
             background-repeat: no-repeat;
-            height: 33px;
+            /*height: 33px;*/
             width: 33px
         }
 
@@ -9565,14 +9565,14 @@ table .expand-open {
             .status_but .but_suspend.open img {
                 background: url(../images/ico_suspend_open.png) no-repeat;
                 background-repeat: no-repeat;
-                height: 33px;
+                /*height: 33px;*/
                 width: 33px
             }
 
         .status_but .but_suspend.disable img {
             background-image: url(../images/ico_suspend_gray.png);
             background-repeat: no-repeat;
-            height: 33px;
+            /*height: 33px;*/
             width: 33px
         }
 
@@ -9587,7 +9587,7 @@ table .expand-open {
         .status_but .but_locked img {
             background: url(../images/ico_lock.png) no-repeat;
             background-repeat: no-repeat;
-            height: 33px;
+            /*height: 33px;*/
             width: 33px
         }
 
@@ -9599,14 +9599,14 @@ table .expand-open {
             .status_but .but_locked.open img {
                 background: url(../images/ico_locked_open.png) no-repeat;
                 background-repeat: no-repeat;
-                height: 33px;
+                /*height: 33px;*/
                 width: 33px
             }
 
         .status_but .but_locked.disable img {
             background-image: url(../images/ico_locked_gray.png);
             background-repeat: no-repeat;
-            height: 33px;
+            /*height: 33px;*/
             width: 33px
         }
 
@@ -12626,7 +12626,7 @@ th {
 .header h1 {
     margin: -8px 15px 0 0;
     width: 100%;
-    height: 100%;
+    height: 100%
 }
 
 .login_to_go .kv:before {
