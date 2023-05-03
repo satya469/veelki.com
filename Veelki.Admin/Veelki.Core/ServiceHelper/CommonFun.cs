@@ -4,7 +4,7 @@ using Amazon.S3;
 using Amazon.S3.Model;
 using Microsoft.Extensions.Configuration;
 using Veelki.Data.Entities;
-using RB444.Model.Model;
+using Veelki.Model.Model;
 using Veelki.Models.Model;
 using System;
 using System.Collections.Generic;

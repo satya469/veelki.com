@@ -5,7 +5,7 @@ using Veelki.Core.IServices.BetfairApi;
 using Veelki.Core.ServiceHelper;
 using Veelki.Data.Entities;
 using Veelki.Data.Repository;
-using RB444.Model.Model;
+using Veelki.Model.Model;
 using Veelki.Models.Model;
 using System;
 using System.Collections.Generic;

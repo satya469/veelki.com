@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RB444.Model.ViewModel
+namespace Veelki.Model.ViewModel
 {
     public class AccessPermissionModel
     {

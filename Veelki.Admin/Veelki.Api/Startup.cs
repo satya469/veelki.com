@@ -86,7 +86,7 @@ namespace Veelki.Api
             //{
             //    options.AddPolicy("AllowMyOrigin",
             //    builder => builder.WithOrigins(
-            //        "http://api.rb444.in/",
+            //        "http://api.Veelki.in/",
             //        "https://localhost:44390/")
             //        .WithMethods("POST", "GET", "PUT")
             //        .WithHeaders("*")
