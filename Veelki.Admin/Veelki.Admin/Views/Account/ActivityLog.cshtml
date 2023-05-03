@@ -1,4 +1,4 @@
-﻿@model List<RB444.Model.ViewModel.ActivityLogVM>
+﻿@model List<Veelki.Model.ViewModel.ActivityLogVM>
 @{
     ViewData["Title"] = "Activity Log";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -76,14 +76,73 @@
                     </a>
                 </li>
 
-                <li id="path3" class="last_li" style="">
-                    <a href="javascript: void(0);">
-                        <span class="lv_3">
-                            MA
-                        </span>
-                        <strong>subhodip</strong>
-                    </a>
-                </li>
+                @{
+                    string mainRole = "";
+                    string subRole = "";
+                    if (ViewBag.LoginUser.RoleId == 2)
+                    {
+                        mainRole = "SA";
+                    }
+                    else if (ViewBag.LoginUser.RoleId == 3)
+                    {
+                        mainRole = "AD";
+                    }
+                    else if (ViewBag.LoginUser.RoleId == 4)
+                    {
+                        mainRole = "SUA";
+                    }
+                    else if (ViewBag.LoginUser.RoleId == 5)
+                    {
+                        mainRole = "SUM";
+                    }
+                    else if (ViewBag.LoginUser.RoleId == 6)
+                    {
+                        mainRole = "MA";
+                    }
+
+                    //if (Model.oUser.RoleId == 2)
+                    //{
+                    //    subRole = "SA";
+                    //}
+                    //else if (Model.oUser.RoleId == 3)
+                    //{
+                    //    subRole = "AD";
+                    //}
+                    //else if (Model.oUser.RoleId == 4)
+                    //{
+                    //    subRole = "SUA";
+                    //}
+                    //else if (Model.oUser.RoleId == 5)
+                    //{
+                    //    subRole = "SUM";
+                    //}
+                    //else if (Model.oUser.RoleId == 6)
+                    //{
+                    //    subRole = "MA";
+                    //}
+                    //else
+                    //{
+                    //    subRole = "PL";
+                    //}
+
+                    <li id="path3" class="" style="">
+                        <a href="javascript: void(0);">
+                            <span class="lv_3">
+                                @mainRole
+                            </span>
+                            <strong>@ViewBag.LoginUser.UserName</strong>
+                        </a>
+                    </li>
+
+                    @*<li id="path0" class="last_li" style="">
+                        <a href="javascript: void(0);">
+                            <span class="lv_4">
+                                @subRole
+                            </span>
+                            <strong>@Model.oUser.UserName</strong>
+                        </a>
+                    </li>*@
+                }
 
                 <li id="path0" class="" style="display: none;">
                     <a href="javascript: void(0);">

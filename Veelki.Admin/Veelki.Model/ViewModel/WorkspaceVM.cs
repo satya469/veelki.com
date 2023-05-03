@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace RB444.Model.ViewModel
+namespace Veelki.Model.ViewModel
 {
     public class WorkspaceVM
     {

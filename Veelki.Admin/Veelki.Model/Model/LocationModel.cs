@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RB444.Model.Model
+namespace Veelki.Model.Model
 {
     public class LocationModel
     {
