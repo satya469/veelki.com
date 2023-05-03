@@ -145,7 +145,8 @@ export class AsideComponent implements OnInit {
       .subscribe((response: ResponseModel) => {
         if (response.isSuccess == true) {
           this.notification.showSuccess(response.message);
-          this.deleteBet()
+          this.deleteBet();
+          window.location.reload();
           //this.betService._getBetData.next(this.betService.getMarketList());
         } else {
           this.notification.showError(response.message);
