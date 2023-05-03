@@ -1,22 +1,91 @@
 ﻿
 @{
     ViewBag.Title = "SportsSetting";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    <h2>Sports Settings</h2>
-    <table class="sportesTbl table table-striped table-dark">
-        <thead>
-            <tr>
-                <th>S NO.</th>
-                <th>SPORT</th>
-                <th>ACTION</th>
-                <th>HIGHLIGHT</th>
-                <th>SETTING</th>
-            </tr>
-        </thead>
+<div class="container main_wrap">
+    <br />
+    <br />
+    <h1>Sports Settings</h1>
+    <br />
+    <br />
+    <table id="resultTable" class="table01 margin-table" style="display: table;">
         <tbody>
+            <tr>
+                <th id="accountTh" width="5%" class="align-L" style="">
+                    S. No.
+                </th>
+                <th id="creditRefTh" width="10%" style="">
+                    SPORT
+                </th>
+                <th id="initialCreditLimitTh" width="10%" style="">
+                    ACTION
+                </th>
+                <th id="creditLimitTh" width="9%" style="">
+                    HIGHLIGHT
+                </th>
+
+                <th id="todayPLTh" width="9%" style="">
+                    SETTING
+                </th>
+            </tr>
+            <tr id="dataTemplate" style="display: none">
+                <td id="accountCol" style="" class="align-L">
+                    <a id="account" class="ico_account" href="#" style="float: none"></a>
+                </td>
+                <td id="creditRef" class="credit-amount-member" style="">
+                    <a id="creditRefBtn" class="favor-set"
+                       href="javascript:void(0);"></a>
+                </td>
+                <td id="initialCreditLimit" style="display: none"></td>
+                <td id="creditLimit" style="display: none"></td>
+
+                <td id="currentPL" style="display: none"></td>
+                <td id="transferablePL" style="display: none"></td>
+                <td id="balance" style=""></td>
+                <td id="currentExposure" style=""></td>
+                <td id="available" style=""></td>
+                <td id="playerBalance" style="display: none"></td>
+                <td id="exposureLimit" style="display: none"></td>
+
+                <td id="refPL" style=""></td>
+                <td id="statusCol" style="">
+                    <ul id="tipsPopup" class="status-popup" style="display: none">
+                    </ul>
+                    <span id="status"></span>
+                </td>
+                <td id="actionCol" style="">
+                    <ul class="action">
+                        <li>
+                            <a id="banking" class="bank" href="#bank">
+                                Bank
+                            </a>
+                        </li>
+                        <li>
+                            <a id="p_l" class="p_l" href="#">
+                                Betting Profit &amp; Loss
+                            </a>
+                        </li>
+                        <li>
+                            <a id="betting_history" class="betting_history" href="#">
+                                Betting History
+                            </a>
+                        </li>
+                        <li>
+                            <a id="change" class="status" href="#change">
+                                Change Status
+                            </a>
+                        </li>
+                        <li>
+                            <a id="profile" class="profile" href="#">
+                                Profile
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+
             @if (ViewBag.SportsList != null)
             {
                 int i = 1;
@@ -55,69 +124,63 @@
                                 </div>
                             </a>
                         </td>
-                        <td>
+                        <td style="text-align:center;">
                             <button id="btnShowModal_@item.Id" type="button"
-                                    class="btn btn-primary btn-sm showModel">
+                                    class="btn btn-primary btn-sm showModel setting_btn">
                                 Setting
                             </button>
 
-                            <div class="modal fade" tabindex="-1" id="settingModal_@item.Id"
-                                 data-keyboard="false" data-backdrop="static">
-                                <div class="modal-dialog modal-md">
+                            <div id="settingModal_@item.Id" style="display: none;" class="modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Sport Setting</h4>
-                                            <button id="btnHideModal_@item.Id" type="button" class="close hideModel" data-dismiss="modal">
-                                                ×
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <input type="hidden" id="sportName_@item.Id" value="@item.SportName" />
-                                            <input type="hidden" id="sequence_@item.Id" value="@item.Sequence" />
-                                            <div class="form-group">
-                                                <label>Min Odd Limit</label>
-                                                <input class="form-control" type="number"
-                                                       placeholder="Min Odd Limit..." id="text_minOdd_@item.Id" value="@item.MinOddLimit" />
+                                        <div class="pop_box" style="z-index:1;">
+                                            <a class="close_pop hideModel" href="javascript: void(0)" id="btnHideModal_@item.Id" data-dismiss="modal">close_pop</a>
+                                            <h3>
+                                                Sport Setting
+                                            </h3>
+                                            <div class="modal-body">
+                                                <input type="hidden" id="sportName_@item.Id" value="@item.SportName" />
+                                                <input type="hidden" id="sequence_@item.Id" value="@item.Sequence" />
+                                                <div class="form-group">
+                                                    <label>Min Odd Limit</label>
+                                                    <input class="form-control" type="number" placeholder="Min Odd Limit..." id="text_minOdd_@item.Id" value="@item.MinOddLimit" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Max Odd Limit</label>
+                                                    <input class="form-control" placeholder="Max Odd Limit..." type="number" id="text_maxOdd_@item.Id" value="@item.MaxOddLimit" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Max Stack Limit</label>
+                                                    <input class="form-control" type="number" placeholder="Max Stack Limit..." id="text_maxStackLimit_@item.Id" value="@item.MaxStackLimit" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Bet Delay Time</label>
+                                                    <input class="form-control" placeholder="Bet Delay Time" type="number" id="text_betDelayTime_@item.Id" value="@item.BetDelayTime" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Action</label>
+                                                    <span class="switch switch-success">
+                                                        <label>
+                                                            <input type="checkbox" checked="@item.Status" name="select" id="checkBoxStatus_@item.Id" />
+                                                            <span></span>
+                                                        </label>
+                                                    </span>
+                                                    <label>Highlight</label>
+                                                    <span class="switch switch-success">
+                                                        <label>
+                                                            <input type="checkbox" checked="@item.Highlight" name="select" id="checkBoxHighlight_@item.Id" />
+                                                            <span></span>
+                                                        </label>
+                                                    </span>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Max Odd Limit</label>
-                                                <input class="form-control" placeholder="Max Odd Limit..."
-                                                       type="number" id="text_maxOdd_@item.Id" value="@item.MaxOddLimit" />
+                                            <div class="btn_box inline-form">
+                                                <div class="btn_box" style="display: inline-flex;">
+                                                    <button id="submitBtn_@item.Id" type="submit" class="btn-send submitBtn">Submit</button>
+                                                    <button type="button" id="btnHideModal_@item.Id" class="btn-send hideModel">close</button>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Max Stack Limit</label>
-                                                <input class="form-control" type="number"
-                                                       placeholder="Max Stack Limit..." id="text_maxStackLimit_@item.Id" value="@item.MaxStackLimit" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Bet Delay Time</label>
-                                                <input class="form-control" placeholder="Bet Delay Time"
-                                                       type="number" id="text_betDelayTime_@item.Id" value="@item.BetDelayTime" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Action</label>
-                                                <span class="switch switch-success">
-                                                    <label>
-                                                        <input type="checkbox" checked="@item.Status" name="select" id="checkBoxStatus_@item.Id" />
-                                                        <span></span>
-                                                    </label>
-                                                </span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Highlight</label>
-                                                <span class="switch switch-success">
-                                                    <label>
-                                                        <input type="checkbox" checked="@item.Highlight" name="select" id="checkBoxHighlight_@item.Id" />
-                                                        <span></span>
-                                                    </label>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" id="submitBtn_@item.Id" class="btn btn-primary submitBtn">Submit</button>
-                                            <button type="button" id="btnHideModal_@item.Id" class="btn btn-danger hideModel">
-                                                close
-                                            </button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -135,18 +198,18 @@
         $(document).ready(function () {
             $(".showModel").click(function () {
                 var id = $(this).attr("id").split("_")[1];
-                $("#settingModal_" + id).removeClass("fade");
-                $("#settingModal_" + id).modal('show');
+                var modal = document.getElementById("settingModal_" + id);
+                modal.style.display = "block";
             });
 
             $(".hideModel").click(function () {
                 var id = $(this).attr("id").split("_")[1];
-                $("#settingModal_" + id).addClass("fade");
-                $("#settingModal_" + id).modal('hide');
+                var modal = document.getElementById("settingModal_" + id);
+                modal.style.display = "none";
             });
-          
+
             $(".submitBtn").click(function () {
-                const id = $(this).parents().eq(3).attr("id").split("_")[1];
+                const id = $(this).attr("id").split("_")[1];
 
                 const minOddLimit = $("#text_minOdd_" + id).val();
                 const maxOddLimit = $("#text_maxOdd_" + id).val();

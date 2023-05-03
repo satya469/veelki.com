@@ -67,7 +67,8 @@ namespace Veelki.Core.ServiceHelper
             Banking = 6,
             Settings = 7,
             Masters = 8,
-            DownlineListDownPage = 9
+            DownlineListDownPage = 9,
+            ActivityLog = 10
         }
 
         public static string CalculateFileSize(long bytes)

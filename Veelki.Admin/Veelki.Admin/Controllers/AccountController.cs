@@ -372,6 +372,7 @@ namespace Veelki.Admin.Controllers
                 openingBal = jsonParser.ParsJson<double>(Convert.ToString(commonModel.Data));
 
                 ViewBag.openingBal = openingBal;
+                ViewBag.HeaderItem = CommonFun.HeaderItem.ActivityLog;
             }
             catch (Exception ex)
             {

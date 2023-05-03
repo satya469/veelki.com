@@ -125,9 +125,18 @@
                     //    subRole = "PL";
                     //}
 
-                    <li id="path3" class="" style="">
+                    @*<li id="path3" class="" style="">
                         <a href="javascript: void(0);">
                             <span class="lv_3">
+                                @mainRole
+                            </span>
+                            <strong>@ViewBag.LoginUser.UserName</strong>
+                        </a>
+                    </li>*@
+
+                    <li id="path0" class="last_li" style="">
+                        <a href="javascript: void(0);">
+                            <span class="lv_4">
                                 @mainRole
                             </span>
                             <strong>@ViewBag.LoginUser.UserName</strong>
@@ -135,13 +144,13 @@
                     </li>
 
                     @*<li id="path0" class="last_li" style="">
-                        <a href="javascript: void(0);">
-                            <span class="lv_4">
-                                @subRole
-                            </span>
-                            <strong>@Model.oUser.UserName</strong>
-                        </a>
-                    </li>*@
+                <a href="javascript: void(0);">
+                    <span class="lv_4">
+                        @subRole
+                    </span>
+                    <strong>@Model.oUser.UserName</strong>
+                </a>
+            </li>*@
                 }
 
                 <li id="path0" class="" style="display: none;">
@@ -160,15 +169,7 @@
                 </ul>
             </ul>
         </div>
-        <script language="JavaScript" type="text/javascript">
-            PageConfig.userName = "subhodip";
-            PageConfig.memberSite = "1";
-            PageConfig.isMemberModule = false;
-            PageConfig.pathObj = { "currencyName": "PTH", "site": 1, "nodeList": [{ "userType": 3, "userID": "subhodip" }] };
-            (function () {
-                PathHandler.init();
-            })();
-        </script>
+      
 
 
         <!-- Agent Left Column -->
