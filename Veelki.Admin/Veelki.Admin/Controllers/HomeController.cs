@@ -72,7 +72,7 @@ namespace Veelki.Admin.Controllers
                     AddButtonName = "Add Player";
                 }
 
-                ViewBag.roleIdBass = 3;
+                ViewBag.roleIdBass = SubMenuRoleId;
                 ViewBag.HeaderItem = HeaderItem.DownlineList;
                 ViewBag.AddButtonName = AddButtonName;
                 ViewBag.openingBal = openingBal;

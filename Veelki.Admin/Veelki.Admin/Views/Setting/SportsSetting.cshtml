@@ -10,82 +10,28 @@
     <h1>Sports Settings</h1>
     <br />
     <br />
-    <table id="resultTable" class="table01 margin-table" style="display: table;">
-        <tbody>
+    <table id="resultTable" class="table01 margin-table" style="display: table; text-align: center;">
+        <thead>
             <tr>
-                <th id="accountTh" width="5%" class="align-L" style="">
+                <th id="accountTh" width="5%">
                     S. No.
                 </th>
-                <th id="creditRefTh" width="10%" style="">
+                <th id="creditRefTh">
                     SPORT
                 </th>
-                <th id="initialCreditLimitTh" width="10%" style="">
+                <th id="initialCreditLimitTh" width="15%">
                     ACTION
                 </th>
-                <th id="creditLimitTh" width="9%" style="">
+                <th id="creditLimitTh" width="15%">
                     HIGHLIGHT
                 </th>
 
-                <th id="todayPLTh" width="9%" style="">
+                <th id="todayPLTh" width="15%">
                     SETTING
                 </th>
             </tr>
-            <tr id="dataTemplate" style="display: none">
-                <td id="accountCol" style="" class="align-L">
-                    <a id="account" class="ico_account" href="#" style="float: none"></a>
-                </td>
-                <td id="creditRef" class="credit-amount-member" style="">
-                    <a id="creditRefBtn" class="favor-set"
-                       href="javascript:void(0);"></a>
-                </td>
-                <td id="initialCreditLimit" style="display: none"></td>
-                <td id="creditLimit" style="display: none"></td>
-
-                <td id="currentPL" style="display: none"></td>
-                <td id="transferablePL" style="display: none"></td>
-                <td id="balance" style=""></td>
-                <td id="currentExposure" style=""></td>
-                <td id="available" style=""></td>
-                <td id="playerBalance" style="display: none"></td>
-                <td id="exposureLimit" style="display: none"></td>
-
-                <td id="refPL" style=""></td>
-                <td id="statusCol" style="">
-                    <ul id="tipsPopup" class="status-popup" style="display: none">
-                    </ul>
-                    <span id="status"></span>
-                </td>
-                <td id="actionCol" style="">
-                    <ul class="action">
-                        <li>
-                            <a id="banking" class="bank" href="#bank">
-                                Bank
-                            </a>
-                        </li>
-                        <li>
-                            <a id="p_l" class="p_l" href="#">
-                                Betting Profit &amp; Loss
-                            </a>
-                        </li>
-                        <li>
-                            <a id="betting_history" class="betting_history" href="#">
-                                Betting History
-                            </a>
-                        </li>
-                        <li>
-                            <a id="change" class="status" href="#change">
-                                Change Status
-                            </a>
-                        </li>
-                        <li>
-                            <a id="profile" class="profile" href="#">
-                                Profile
-                            </a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-
+        </thead>
+        <tbody>
             @if (ViewBag.SportsList != null)
             {
                 int i = 1;
@@ -124,11 +70,13 @@
                                 </div>
                             </a>
                         </td>
-                        <td style="text-align:center;">
-                            <button id="btnShowModal_@item.Id" type="button"
-                                    class="btn btn-primary btn-sm showModel setting_btn">
-                                Setting
-                            </button>
+                        <td>
+                            <center>
+                                <button id="btnShowModal_@item.Id" type="button"
+                                        class="btn btn-primary btn-sm showModel setting_btn">
+                                    Setting
+                                </button>
+                            </center>
 
                             <div id="settingModal_@item.Id" style="display: none;" class="modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -193,6 +141,7 @@
         </tbody>
     </table>
 </div>
+
 @section PageJs{
     <script type="text/javascript">
         $(document).ready(function () {

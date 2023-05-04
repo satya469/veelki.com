@@ -142,6 +142,10 @@ namespace Veelki.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    if (model.Email == null)
+                    {
+                        model.Email = "";
+                    }
                     var loginUser = await _userManager.FindByNameAsync(contextUser.Identity.Name);
 
                     if (loginUser.AssignCoin < model.AssignCoin && loginUser.RoleId != 1 && loginUser.RoleId != 2)
@@ -157,7 +161,7 @@ namespace Veelki.Admin.Controllers
                         FullName = model.FullName,
                         Email = model.Email,
                         PhoneNumber = model.PhoneNumber,
-                        RoleId = (loginUser.RoleId + 1),
+                        RoleId = model.RoleId,
                         CreatedDate = DateTime.Now,
                         RollingCommission = model.RollingCommission,
                         AssignCoin = model.AssignCoin,

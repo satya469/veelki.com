@@ -5,6 +5,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\Projects\veelki.com\Veelki.Admin\AdminPublish</_PublishTargetUrl>
-    <History>True|2023-05-02T18:28:16.0191309Z;False|2023-05-02T23:57:29.1447213+05:30;False|2023-05-02T23:41:19.9053117+05:30;False|2023-05-02T23:40:00.4902529+05:30;False|2023-05-02T23:39:42.5746870+05:30;True|2023-05-01T23:20:55.4044804+05:30;</History>
+    <History>True|2023-05-04T18:07:02.2000839Z;False|2023-05-04T23:36:22.3188452+05:30;True|2023-05-03T23:30:11.9995935+05:30;False|2023-05-03T23:29:09.4207239+05:30;True|2023-05-02T23:58:16.0191309+05:30;False|2023-05-02T23:57:29.1447213+05:30;False|2023-05-02T23:41:19.9053117+05:30;False|2023-05-02T23:40:00.4902529+05:30;False|2023-05-02T23:39:42.5746870+05:30;True|2023-05-01T23:20:55.4044804+05:30;</History>
   </PropertyGroup>
 </Project>

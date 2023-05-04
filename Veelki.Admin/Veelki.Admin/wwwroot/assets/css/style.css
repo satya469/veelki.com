@@ -386,7 +386,7 @@ label {
 }
 
 select {
-    width: 120px;
+    /*width: 120px;*/
     height: 25px;
     line-height: 25px;
     cursor: pointer;
@@ -1575,7 +1575,7 @@ p {
     background-color: #fff;
     border-collapse: collapse;
     border-bottom: 1px solid #7e97a7;
-    margin-bottom: 15px
+    margin-bottom: 15px;
 }
 
     .table01 caption,

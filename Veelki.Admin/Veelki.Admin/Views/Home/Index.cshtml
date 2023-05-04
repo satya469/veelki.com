@@ -33,10 +33,9 @@
                             </dt>*@
                         <dd>
                             <input type="hidden" class="form-control" id="idModel">
-                            <input type="hidden" asp-for="RoleId" value="">
-                            @*<input id="email" type="text" onclick="location.href='#stake'" placeholder="Enter"
-                                       maxlength="50">
-                                <span class="must">＊</span>*@
+                            <input type="text" asp-for="RoleId" value="0" style="display:none">
+                            <input id="email" type="text" onclick="location.href='#stake'" placeholder="Enter" maxlength="50" style="display:none">
+                                <span class="must" style="display:none">＊</span>
                         </dd>
                         <dt>
                             Username
@@ -1685,25 +1684,27 @@
                 modal.style.display = "none";
             }
 
-            $("#createBtn").click(function () {
-                var form = $("#createModal form");
-                var url = "/Home/CreateUser";
-                var postData = form.serialize();
-                //$(".loader").show();
-                $.post(url, postData, function (data) {
-                    /*$(".loader").hide();*/
-                    if (data.isSuccess) {
-                        toastr.success("User status change successfully!");
-                        var modal = document.getElementById("changeStatusModal");
-                        modal.style.display = "none";
-                        window.location.reload();
-                    }
-                    else {
-                        toastr.error(data.message);
-                        //$("#updateUserStatusModal .validation-summary-valid").html(data).show();
-                    }
-                });
-            });
+            //$("#createBtn").click(function () {
+            //    alert("modal save");
+            //    return;
+            //    var form = $("#createModal form");
+            //    var url = "/Home/CreateUser";
+            //    var postData = form.serialize();
+            //    //$(".loader").show();
+            //    $.post(url, postData, function (data) {
+            //        /*$(".loader").hide();*/
+            //        if (data.isSuccess) {
+            //            toastr.success("User status change successfully!");
+            //            var modal = document.getElementById("changeStatusModal");
+            //            modal.style.display = "none";
+            //            window.location.reload();
+            //        }
+            //        else {
+            //            toastr.error(data.message);
+            //            //$("#updateUserStatusModal .validation-summary-valid").html(data).show();
+            //        }
+            //    });
+            //});
 
             $(".add_member").click(function () {
                 var modal = document.getElementById("createModal");
@@ -1714,6 +1715,8 @@
                 modal.style.display = "none";
             });
             $("#createBtn").click(function () {
+                //alert("click save");
+                //return;
                 saveRequest();
             });
         });
@@ -1734,52 +1737,52 @@
             //$('#ExposureLimitError').text('');
 
 
-            if ($("#email").val() == null || $("#email").val() == '' || $("#email").val().trim() == '') {
-                /* $('#EmailError').text('Please enter Email');*/
-                alert("Please Enter Email");
-                Error = true;
-                return;
-            }
+            //if ($("#email").val() == null || $("#email").val() == '' || $("#email").val().trim() == '') {
+            //    /* $('#EmailError').text('Please enter Email');*/
+            //    alert("Please Enter Email");
+            //    Error = true;
+            //    return;
+            //}
             if ($("#userName").val() == null || $("#userName").val() == '' || $("#userName").val().trim() == '') {
                 /*$('#FullNameError').text('Please enter Full Name');*/
                 alert("Please Enter UserName");
-                Error = true;
+                return true;
                 return;
             }
             if ($("#userPassword").val() == null || $("#userPassword").val() == '' || $("#userPassword").val().trim() == '') {
                /* $('#PasswordRegError').text('Please enter Password');*/
                 alert("Please Enter Password");
-                Error = true;
+                return true;
                 return;
             }
             if ($("#repeatPassword").val() == null || $("#repeatPassword").val() == '' || $("#repeatPassword").val().trim() == '') {
                 /*$('#ConfirmPasswordRegError').text('Please enter Confirm Password');*/
                 alert("Please Enter Confirm Password");
-                Error = true;
+                return true;
                 return;
             }
             if ($("#repeatPassword").val() != $("#userPassword").val() ) {
                 /*$('#ConfirmPasswordRegError').text('Please enter Confirm Password');*/
                 alert("Password and Confirm Password should be Same");
-                Error = true;
+                return true;
                 return;
             }
             if ($("#firstName").val() == null || $("#firstName").val() == '' || $("#firstName").val().trim() == '') {
                 /*$('#FullNameError').text('Please enter Full Name');*/
                 alert("Please Enter FirstName");
-                Error = true;
+                return true;
                 return;
             }
             if ($("#lastName").val() == null || $("#lastName").val() == '' || $("#lastName").val().trim() == '') {
                 /*$('#FullNameError').text('Please enter Full Name');*/
                 alert("Please Enter LastName");
-                Error = true;
+                return true;
                 return;
             }
             if ($("#phone").val() == null || $("#phone").val() == '' || $("#phone").val().trim() == '') {
                 /*$('#PhoneNumberError').text('Please enter PhoneNumber');*/
                 alert("Please Enter Phone Number");
-                Error = true;
+                return true;
                 return;
             }
             //if ($("#City").val() == null || $("#City").val() == '' || $("#City").val().trim() == '') {
@@ -1797,41 +1800,40 @@
             if ($("#commission").val() == null || $("#commission").val() == '' || $("#commission").val().trim() == '') {
                 /*$('#CommisionError').text('Please enter Commision');*/
                 alert("Please Enter Commision");
-                Error = true;
+                return true;
                 return;
             }
             if ($("#exposure").val() == null || $("#exposure").val() == '' || $("#exposure").val().trim() == '') {
                /* $('#ExposureLimitError').text('Please enter Exposure Limit');*/
                 alert("Please Enter Exposer Limit");
-                Error = true;
+                return true;
                 return;
             }
             return Error;
         }
 
-                function saveRequest() {
+        function saveRequest() {
 
             var validation = validationCheck();
-
             if (validation == true) {
                 return false;
             }
 
-                    var FullName = $("#firstName").val() + " " + $("#lastName").val()
+            var FullName = $("#firstName").val() + " " + $("#lastName").val()
 
             const formData = new FormData();
             formData.append("RoleId", '@roleId');
             formData.append("Email", $("#email").val());
-                    formData.append("UserName", $("#userName").val());
-                    formData.append("FullName", FullName);
-                    formData.append("Password", $("#userPassword").val());
-                    formData.append("ConfirmPassword", $("#repeatPassword").val());
-                    formData.append("PhoneNumber", $("#phone").val());
+            formData.append("UserName", $("#userName").val());
+            formData.append("FullName", FullName);
+            formData.append("Password", $("#userPassword").val());
+            formData.append("ConfirmPassword", $("#repeatPassword").val());
+            formData.append("PhoneNumber", $("#phone").val());
             //formData.append("City", $("#City").val());
             //formData.append("State", $("#State").val());
             //formData.append("AssignCoin", $("#AssignCoin").val());
-                    formData.append("Commision", $("#commission").val());
-                    formData.append("ExposureLimit", $("#exposure").val());
+            formData.append("Commision", $("#commission").val());
+            formData.append("ExposureLimit", $("#exposure").val());
              //formData.append("RollingCommission", $("#RollingCommission").prop("checked"));
              //if ($("#RollingCommission").prop("checked")) {
              //    formData.append(`RollingCommisionVm.Fancy`, $("#RollingCommision_Fancy").val());

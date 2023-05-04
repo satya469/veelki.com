@@ -7,6 +7,7 @@
     <title>@ViewData["Title"] - Veelki.Admin</title>
     <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<link href="~/assets/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />*@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="~/assets/css/style.css" rel="stylesheet">
     <script src="~/Scripts/jquery-3.3.1.js"></script>
@@ -220,113 +221,113 @@
 
 
                     @*<li>
-            @if (ViewBag.HeaderItem == HeaderItem.DownlineList)
-            {
-                <a id="menu_downline_list" class="select" href="~/Home/Index">
-                    Downline List
-                </a>
-            }
-            else
-            {
-                <a id="menu_downline_list" class="" href="~/Home/Index">
-                    Downline List
-                </a>
-            }
-            @if (ViewBag.LoginUser.RoleId == 2)
-            {
-                <ul>
-                    <li>
-                        <a href="~/Report/ProfitReportByDownline">
-                            Admin
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/Report/ProfitReportByMarket">
-                            Sub Admin
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/Report/ProfitReportByMarket">
-                            Super Master
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/Report/ProfitReportByMarket">
-                            Master
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/Report/ProfitReportByMarket">
-                            User
-                        </a>
-                    </li>
-                </ul>
-            }
-            else if (ViewBag.LoginUser.RoleId == 3)
-            {
-                <ul>
-                    <li>
-                        <a href="~/Report/ProfitReportByMarket">
-                            Sub Admin
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/Report/ProfitReportByMarket">
-                            Super Master
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/Report/ProfitReportByMarket">
-                            Master
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/Report/ProfitReportByMarket">
-                            User
-                        </a>
-                    </li>
-                </ul>
-            }
-            else if (ViewBag.LoginUser.RoleId == 4)
-            {
-                <ul>
-                    <li>
-                        <a href="~/Report/ProfitReportByMarket">
-                            Super Master
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/Report/ProfitReportByMarket">
-                            Master
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/Report/ProfitReportByMarket">
-                            User
-                        </a>
-                    </li>
-                </ul>
-            }
-            else if (ViewBag.LoginUser.RoleId == 5)
-            {
-                <ul>
-                    <li>
-                        <a href="~/Report/ProfitReportByMarket">
-                            Master
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/Report/ProfitReportByMarket">
-                            User
-                        </a>
-                    </li>
-                </ul>
-            }
-            else if (ViewBag.LoginUser.RoleId == 6)
-            {
+                            @if (ViewBag.HeaderItem == HeaderItem.DownlineList)
+                            {
+                                <a id="menu_downline_list" class="select" href="~/Home/Index">
+                                    Downline List
+                                </a>
+                            }
+                            else
+                            {
+                                <a id="menu_downline_list" class="" href="~/Home/Index">
+                                    Downline List
+                                </a>
+                            }
+                            @if (ViewBag.LoginUser.RoleId == 2)
+                            {
+                                <ul>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByDownline">
+                                            Admin
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByMarket">
+                                            Sub Admin
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByMarket">
+                                            Super Master
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByMarket">
+                                            Master
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByMarket">
+                                            User
+                                        </a>
+                                    </li>
+                                </ul>
+                            }
+                            else if (ViewBag.LoginUser.RoleId == 3)
+                            {
+                                <ul>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByMarket">
+                                            Sub Admin
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByMarket">
+                                            Super Master
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByMarket">
+                                            Master
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByMarket">
+                                            User
+                                        </a>
+                                    </li>
+                                </ul>
+                            }
+                            else if (ViewBag.LoginUser.RoleId == 4)
+                            {
+                                <ul>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByMarket">
+                                            Super Master
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByMarket">
+                                            Master
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByMarket">
+                                            User
+                                        </a>
+                                    </li>
+                                </ul>
+                            }
+                            else if (ViewBag.LoginUser.RoleId == 5)
+                            {
+                                <ul>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByMarket">
+                                            Master
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Report/ProfitReportByMarket">
+                                            User
+                                        </a>
+                                    </li>
+                                </ul>
+                            }
+                            else if (ViewBag.LoginUser.RoleId == 6)
+                            {
 
-            }
-        </li>*@
+                            }
+                        </li>*@
                     <li>
                         @if (ViewBag.HeaderItem == HeaderItem.MyAccount)
                         {
@@ -385,9 +386,19 @@
                     @if (ViewBag.LoginUser.RoleId == 2)
                     {
                         <li>
-                            <a id="menu_settings" class="menu-drop" href="#">
-                                Settings
-                            </a>
+                            @if (ViewBag.HeaderItem == HeaderItem.Settings)
+                            {
+                                <a id="menu_settings" class="menu-drop select" href="#">
+                                    Settings
+                                </a>
+                            }
+                            else
+                            {
+                                <a id="menu_settings" class="menu-drop" href="#">
+                                    Settings
+                                </a>
+                            }
+
                             <ul>
                                 <li>
                                     <a href="~/Setting/SportsSetting">
@@ -395,7 +406,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="~/Report/ProfitReportByMarket">
+                                    <a href="~/Setting/SeriesSetting">
                                         Series Setting
                                     </a>
                                 </li>

@@ -34,6 +34,8 @@ namespace Veelki.Admin.Controllers
 
             CommonReturnResponse commonModel = null;
             List<Sports> sportsDatalist = null;
+            double openingBal = 0;
+
             try
             {
                 commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}exchange/GetSports?type=2", _configuration["ApiKeyUrl"]));
@@ -41,7 +43,13 @@ namespace Veelki.Admin.Controllers
                 {
                     sportsDatalist = jsonParser.ParsJson<List<Sports>>(Convert.ToString(commonModel.Data));
                 }
+
+                commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/GetOpeningBalance?UserId={1}", _configuration["ApiKeyUrl"], user.Id));
+                openingBal = jsonParser.ParsJson<double>(Convert.ToString(commonModel.Data));
+
                 ViewBag.SportsList = sportsDatalist;
+                ViewBag.openingBal = openingBal;
+                ViewBag.HeaderItem = CommonFun.HeaderItem.Settings;
             }
             catch (Exception ex)
             {
@@ -80,6 +88,8 @@ namespace Veelki.Admin.Controllers
             CommonReturnResponse commonModel = null;
             List<Sports> sportsDatalist = null;
             List<Series> serieslist = null;
+            double openingBal = 0;
+
             try
             {
                 commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}exchange/GetSports?type=2", _configuration["ApiKeyUrl"]));
@@ -94,6 +104,12 @@ namespace Veelki.Admin.Controllers
                 {
                     serieslist = jsonParser.ParsJson<List<Series>>(Convert.ToString(commonModel.Data));
                 }
+
+                commonModel = await _requestServices.GetAsync<CommonReturnResponse>(String.Format("{0}Account/GetOpeningBalance?UserId={1}", _configuration["ApiKeyUrl"], user.Id));
+                openingBal = jsonParser.ParsJson<double>(Convert.ToString(commonModel.Data));
+
+                ViewBag.openingBal = openingBal;
+                ViewBag.HeaderItem = CommonFun.HeaderItem.Settings;
             }
             catch (Exception ex)
             {

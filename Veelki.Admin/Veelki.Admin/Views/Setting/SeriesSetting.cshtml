@@ -2,15 +2,19 @@
 @using Veelki.Data.Entities;
 @{
     ViewBag.Title = "Series Setting";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
     var sportsList = ViewBag.SportsList as List<Sports>;
 }
 
-<div class="container">
-    <h2>Series Settings</h2>
+@*<link href="~/assets/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />*@
+
+<div class="container main_wrap">
+    <br />
+    <br />
+    <h1>Series Settings</h1>
     <div class="row p-4 form-group">
-        <div class="col-md-3">
+        <div class="col-md-3 total_all">
             <label class="control-label">Status</label>
             <select class="form-control" id="ddlStatus">
                 <option value="0">Please Select status</option>
@@ -19,7 +23,7 @@
             </select>
 
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 total_all">
             <label class="control-label">Sport Name</label>
             <select class="form-control" id="ddlSportName">
                 <option value="0">Please Select Sport</option>
