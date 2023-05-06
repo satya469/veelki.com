@@ -3,7 +3,7 @@
         <perfect-scrollbar class="scroll-container" [config]="{useBothWheelAxes: true, suppressScrollX: false, suppressScrollY: false}">
         <ul>
             <li *ngFor="let sidebar of sidebarList" [ngClass]="{'select':sidebar.id==activatedId}">
-                <span i class="tag-live"><strong></strong>4</span>
+                <span i class="tag-live" *ngIf="getInplayCount(sidebar.id) > 0"><strong></strong>{{getInplayCount(sidebar.id)}}</span>
                 <a [routerLink]="['/allsport-highlight',sidebar.id]" title="Cricket"><img class="icon-{{sidebar.sportName.toLowerCase()}}"
                         src="assets/images/mobile/transparent.gif">{{sidebar.sportName}}
                 </a>

@@ -1,6 +1,6 @@
 <app-header></app-header>
 <app-news></app-news>
-<app-slider></app-slider>
+<app-slider *ngIf="isSliderVisible"></app-slider>
 <div class="mian-wrap">
     <router-outlet></router-outlet>
 </div>

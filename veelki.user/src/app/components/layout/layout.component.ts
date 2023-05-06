@@ -18,6 +18,7 @@ export class LayoutComponent implements OnInit {
   isSideBarVisible : boolean = false;
   isAsideVisible : boolean = false;
   isFooterVisible : boolean = false;
+  isSliderVisible : boolean = true;
 
   constructor(private service : HttpService, private spinner: NgxSpinnerService, private loaderService : LoaderService, private subjectService : SubjectService, private router : Router) {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((data:any) => {
@@ -25,18 +26,22 @@ export class LayoutComponent implements OnInit {
         this.subjectService.setSideBarVisible(false);
         this.subjectService.setAsideVisible(false);
         this.subjectService.setFooterVisible(true);
+        this.subjectService.setBannerVisible(true);
       }else if(data?.url == '/inplay'){
         this.subjectService.setSideBarVisible(false);
         this.subjectService.setAsideVisible(true);  
-        this.subjectService.setFooterVisible(false);      
+        this.subjectService.setFooterVisible(false);
+        this.subjectService.setBannerVisible(false);    
       }else if(data?.url == '/account/activity-log' || data?.url == '/account/account-statement' || data?.url == '/account/profit-loss' || data?.url == '/account/my-profile' || data?.url == '/account/summary' || data?.url == '/account/current-bets'){
         this.subjectService.setSideBarVisible(false);
         this.subjectService.setAsideVisible(false);  
-        this.subjectService.setFooterVisible(false);      
+        this.subjectService.setFooterVisible(false);    
+        this.subjectService.setBannerVisible(true);  
       }else{
         this.subjectService.setSideBarVisible(true);
         this.subjectService.setAsideVisible(true);
         this.subjectService.setFooterVisible(false);
+        this.subjectService.setBannerVisible(true);
       }
     })
   }
@@ -57,6 +62,7 @@ export class LayoutComponent implements OnInit {
     this.subjectService.sideBarVisible.subscribe((data:boolean) => this.isSideBarVisible = data);
     this.subjectService.asideVisible.subscribe((data:boolean) => this.isAsideVisible = data);
     this.subjectService.footerVisible.subscribe((data:boolean) => this.isFooterVisible = data);
+    this.subjectService.bannerVisible.subscribe((data:boolean) => this.isSliderVisible = data);
     this.loaderService.isLoading.subscribe((res) => {
       if(res==true){
         this.spinner.show();

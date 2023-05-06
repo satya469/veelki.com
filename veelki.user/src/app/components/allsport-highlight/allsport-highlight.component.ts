@@ -5,6 +5,8 @@ import { HttpService } from 'src/app/services/http.service';
 import { PerfectScrollbarConfigInterface,
   PerfectScrollbarComponent, PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 import { SportList } from 'src/app/models/sportList';
+import { Store } from '@ngrx/store';
+import { GET_INPLAY } from 'src/app/store/actions/inplay.action';
 
 @Component({
   selector: 'app-allsport-highlight',
@@ -13,11 +15,12 @@ import { SportList } from 'src/app/models/sportList';
 })
 export class AllsportHighlightComponent implements OnInit {
 
-  constructor(private service : HttpService, private activatedRoute: ActivatedRoute) { }
+  constructor(private service : HttpService, private activatedRoute: ActivatedRoute, private store: Store<{ InplayData: any }>) { }
 
   eventList : any;
   activatedId:number=0;
   public config: PerfectScrollbarConfigInterface = {};
+  sportsEventInPlay : any[] = [];
 
   getAllEventsList:any = (sportId : number) =>{
     this.eventList = null;
@@ -46,6 +49,20 @@ export class AllsportHighlightComponent implements OnInit {
       this.activatedId = paramsId?.id;
       this.getAllEventsList(paramsId?.id);
     });
+    this.store.select(data => data.InplayData).subscribe(res => {
+      if (res != null) {
+        this.sportsEventInPlay = res.sportsEventModelInPlay;
+      } else {
+        this.store.dispatch(GET_INPLAY());
+      }
+    })
+  }
+
+  getInplayCount(sportId:any){
+    if(this.sportsEventInPlay.length > 0){
+      return this.sportsEventInPlay.filter((x:any)=> x.eid == sportId).length
+    }    
+    return 0;
   }
 
   ngOnChanges(): void {  

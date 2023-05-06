@@ -9,6 +9,7 @@ export class SubjectService {
 
   constructor() { }
 
+  bannerVisible : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   sideBarVisible : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   asideVisible : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   footerVisible : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -23,6 +24,10 @@ export class SubjectService {
     this.asideVisible.next(data);
   }
 
+  setBannerVisible(data:boolean){
+    this.bannerVisible.next(data);
+  }
+  
   setFooterVisible(data:boolean){
     this.footerVisible.next(data);
   }
