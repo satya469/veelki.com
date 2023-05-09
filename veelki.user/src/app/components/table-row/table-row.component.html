@@ -31,7 +31,7 @@
             <a class="btn-lay" [routerLink]="['/fullmarket', tableColumn.marketId, tableColumn.gameId, tableColumn.eid]">{{tableColumn.lay12}}</a>
         </dd>
         <dd class="col-info">
-            <a class="add-pin" style="cursor: pointer" title="Add to Multi Markets">Pin</a>
+            <a class="add-pin" style="cursor: pointer" title="Add to Multi Markets" [ngClass]="{'pin-on': tableColumn.isPinnedMatch == true }" (click)="setPinData(tableColumn.marketId, !tableColumn.isPinnedMatch)" *ngIf="multiMarketPin==true">Pin</a>
         </dd>
     </dl>
 </div>

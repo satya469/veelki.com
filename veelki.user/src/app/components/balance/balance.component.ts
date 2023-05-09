@@ -45,6 +45,12 @@ export class BalanceComponent implements OnInit {
     this.getExposureBalance();
     this.refreshBalance();
 
+    this.betService._updateExposure.subscribe((v:Boolean)=>{
+      if(v){
+        this.refreshBalance();
+      }
+    })
+
     this.betService._getBetData.subscribe(res => {
       this.refreshBalance();
     });

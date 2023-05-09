@@ -146,12 +146,14 @@ export class AsideComponent implements OnInit {
         if (response.isSuccess == true) {
           this.notification.showSuccess(response.message);
           this.deleteBet();
-          window.location.reload();
+          this.betService.setExposure(true);
+          //window.location.reload();
           //this.betService._getBetData.next(this.betService.getMarketList());
         } else {
           this.notification.showError(response.message);
         }
         this.modalService.dismissAll();
+        this.betService.setExposure(false);
         this.loaderService.isLoading.next(false);
       });
   }

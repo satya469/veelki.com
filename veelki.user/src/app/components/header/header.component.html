@@ -13,7 +13,7 @@
 <header *ngIf="isLoginUser">
     <ul>
         <li class="li-tv_bet">
-            <a class="a-open_bets ui-link" (click)="getMarketData();isShowBet=true"><img
+            <a class="a-open_bets ui-link" (click)="getBetList();"><img
                     src="assets/images/mobile/transparent.gif">Bets</a>
         </li>
 
@@ -77,13 +77,14 @@
             <a class="close" (click)="isShowBet=false"></a>
         </div>
         <div class="side-content">
-            <div class="slip-sort" style="padding: 10px;">
+            <!-- <div class="slip-sort" style="padding: 10px;">
                 <select class="desktop-bets form-control" [(ngModel)]="selectBetId" (change)="getBetList()">
                     <option value="0">Select Market</option>
                     <option *ngFor="let market of marketList" [ngValue]="market.eventId">{{market.event}}</option>
                 </select>
-            </div>
+            </div> -->
             <h3 *ngIf="betListData.length > 0">Matched</h3>
+            <div *ngIf="betListData.length == 0">No Data Found.</div>
             <div class="slip-list" *ngIf="betListData.length > 0">
                 <ng-container *ngFor="let betData of betListData; let ind = index;">
                     <dl class="bets-head" *ngIf="betData.type=='back'">

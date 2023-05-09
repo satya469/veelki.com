@@ -11,6 +11,8 @@ import { Injectable } from '@angular/core';
 export class BetService {
 
     constructor(private service: HttpService, private session: SessionService, private route: Router) { }
+    
+    _updateExposure = new BehaviorSubject<Boolean>(false);
 
     _getBetData = new BehaviorSubject<Observable<ResponseModel>>(this.getMarketList());
 
@@ -18,6 +20,10 @@ export class BetService {
     getMarketList(): Observable<ResponseModel> {
         let userId = this.session.getLoggedInUser() ? this.session.getLoggedInUser().id : 0;
         return this.service.get(`Common/GetMarketList?UserId=${userId}`);
+    }
+
+    setExposure(value:boolean){
+        this._updateExposure.next(value);
     }
 
 }

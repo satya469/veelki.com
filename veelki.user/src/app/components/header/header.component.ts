@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivationStart, NavigationEnd, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { Observable, mergeMap } from 'rxjs';
+import { Observable, filter, mergeMap } from 'rxjs';
 import { ResponseModel } from 'src/app/models/responseModel';
 import { StackLimit } from 'src/app/models/stackLimit';
 import { AuthService } from 'src/app/services/auth.service';
@@ -140,6 +140,14 @@ export class HeaderComponent implements OnInit {
       }
     });
 
+    this.router.events.pipe(filter(event => event instanceof ActivationStart)).subscribe((data:any) => {
+      if(data && data.snapshot.params && data.snapshot.params.gameId){
+        this.selectBetId = data.snapshot.params.gameId;
+      }else{
+        this.selectBetId = 0;
+      }
+    })
+
   }
 
   setLoginPopup(value:boolean = true){
@@ -185,10 +193,6 @@ export class HeaderComponent implements OnInit {
   betListData: BetData[] = [];
 
   getBetList(): void {
-    if (this.selectBetId == 0) {
-      this.betListData = [];
-      return;
-    }
     let userId = this.sessionService.getLoggedInUser().id;
     this.service.get(`Common/GetOpenBetList?UserId=${userId}&EventId=${this.selectBetId}`)
       .subscribe((response: ResponseModel) => {
@@ -196,6 +200,7 @@ export class HeaderComponent implements OnInit {
           this.betListData.length = 0;
           this.betListData.push(...response.data);
         }
+        this.isShowBet=true;
       });
   }
 
