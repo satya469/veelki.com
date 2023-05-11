@@ -1,7 +1,4 @@
-﻿
-using System.ServiceProcess;
-
-namespace VeelkiSportsEvent
+﻿namespace VeelkiSportsEvent
 {
     partial class ProjectInstaller
     {

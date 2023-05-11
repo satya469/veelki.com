@@ -1,0 +1,11 @@
+D:\Projects\veelki.com\BetSettle\BetSettle\bin\Debug\BetSettle.exe.config
+D:\Projects\veelki.com\BetSettle\BetSettle\bin\Debug\BetSettle.exe
+D:\Projects\veelki.com\BetSettle\BetSettle\bin\Debug\BetSettle.pdb
+D:\Projects\veelki.com\BetSettle\BetSettle\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\veelki.com\BetSettle\BetSettle\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\veelki.com\BetSettle\BetSettle\obj\Debug\BetSettle.ProjectInstaller.resources
+D:\Projects\veelki.com\BetSettle\BetSettle\obj\Debug\BetSettle.csproj.GenerateResource.cache
+D:\Projects\veelki.com\BetSettle\BetSettle\obj\Debug\BetSettle.csproj.CoreCompileInputs.cache
+D:\Projects\veelki.com\BetSettle\BetSettle\obj\Debug\BetSettle.csproj.CopyComplete
+D:\Projects\veelki.com\BetSettle\BetSettle\obj\Debug\BetSettle.exe
+D:\Projects\veelki.com\BetSettle\BetSettle\obj\Debug\BetSettle.pdb

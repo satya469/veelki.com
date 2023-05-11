@@ -381,9 +381,18 @@ namespace Veelki.Core.Services
         public async Task<CommonReturnResponse> GetOpenBetListAsync(int UserId, long EventId)
         {
             List<Bets> openBetList = new List<Bets>();
+            string query = string.Empty;
             try
             {
-                string query = string.Format(@"select * from Bets where UserId = {0} and IsSettlement = 2 and isnull(ResultType,0) = 0 and EventId = {1}", UserId, EventId);
+                if (EventId > 0)
+                {
+                    query = string.Format(@"select * from Bets where UserId = {0} and IsSettlement = 2 and isnull(ResultType,0) = 0 and EventId = {1}", UserId, EventId);
+                }
+                else
+                {
+                    query = string.Format(@"select * from Bets where UserId = {0} and IsSettlement = 2 and isnull(ResultType,0) = 0", UserId);
+                }
+                
                 openBetList = (await _baseRepository.QueryAsync<Bets>(query)).ToList();
                 return new CommonReturnResponse
                 {

@@ -59,16 +59,19 @@ namespace Veelki.Core.Services
                     return new CommonReturnResponse { Data = null, Message = $"Maximum amount for bet is {minAmt}. Please select Amount less than {maxAmt}", IsSuccess = false, Status = ResponseStatusCode.OK };
                 }
 
+                var commonModel = await GetBackAndLayAmountAsync(model.UserId, model.MarketId, model.SportId);
+                string backandlayAmount = Convert.ToString(commonModel.Data);
+
                 var getExposureAmount = await _accountService.GetBetExposureStackAsync(model.UserId);
-                getExposureAmount.Data += Math.Abs((model.AmountStake * model.OddsRequest) - model.AmountStake);
+                //getExposureAmount.Data += Math.Abs((model.AmountStake * model.OddsRequest) - model.AmountStake);
+                var IsProperExposure = CheckExposureForPlaceBet(model, backandlayAmount, getExposureAmount.Data);
+                getExposureAmount.Data = IsProperExposure.Item2;
                 if (userDetail.ExposureLimit < getExposureAmount.Data)
                 {
-                    return new CommonReturnResponse { Data = null, Message = $"Maximum limit for bet is {userDetail.ExposureLimit}. Please place bet less than exposure limit.", IsSuccess = false, Status = ResponseStatusCode.OK };
+                    return new CommonReturnResponse { Data = null, Message = $"Maximum limit for exposure is {userDetail.ExposureLimit}. Now exposure reached {getExposureAmount.Data} greter than limit. Please place bet less than exposure limit.", IsSuccess = false, Status = ResponseStatusCode.OK };
                 }
 
                 var getBalance = await _accountService.GetOpeningBalanceAsync(model.UserId);
-                var commonModel = await GetBackAndLayAmountAsync(model.UserId, model.MarketId, model.SportId);
-                string backandlayAmount = Convert.ToString(commonModel.Data);
                 var IsProperAmt = CheckBalanceForPlaceBet(model, backandlayAmount, getBalance.Data);
                 if (IsProperAmt.Item1 == false)
                 {
@@ -378,75 +381,119 @@ namespace Veelki.Core.Services
             {
                 sql = "select distinct MarketId from Bets where IsSettlement = 2";
                 unsettleBetMarketIdList = (await _baseRepository.QueryAsync<Bets>(sql)).Select(x => x.MarketId).ToList();
-                for (int i = 0; i < unsettleBetMarketIdList.Count; i++)
+                if (unsettleBetMarketIdList.Count > 0)
                 {
-                    marketId = unsettleBetMarketIdList[i];
-                    matchReturnResponseList = await _requestServices.GetAsync<List<MatchReturnResponseNew>>(string.Format("{0}getresultdata/{1}", _configuration["ApiKeyUrl"], marketId));
-                    matchReturnResponse = matchReturnResponseList.FirstOrDefault();
-                    if (matchReturnResponse != null)
+                    for (int i = 0; i < unsettleBetMarketIdList.Count; i++)
                     {
-                        if (matchReturnResponse.status.ToLower() == "closed")
+                        marketId = unsettleBetMarketIdList[i];
+                        matchReturnResponseList = await _requestServices.GetAsync<List<MatchReturnResponseNew>>(string.Format("{0}getdata/{1}", _configuration["ApiKeyUrl"], marketId));
+                        
+                        if (matchReturnResponseList != null)
                         {
-                            logStr = logStr + "Settle match of MarketId = " + marketId + "  and Time of Settle = " + DateTime.Now.ToString() + " ";
-                            commonReturnResponse = await _requestServices.GetAsync<CommonReturnResponse>(string.Format("{0}common/GetBetDataListByMarketId?MarketId={1}", _configuration["MyApiKeyUrl"], marketId));
-                            if (commonReturnResponse.IsSuccess && commonReturnResponse.Data != null)
+                            matchReturnResponse = matchReturnResponseList.FirstOrDefault();
+                            if (matchReturnResponse.status.ToLower() == "closed")
                             {
-                                betList = jsonParser.ParsJson<List<Bets>>(Convert.ToString(commonReturnResponse.Data));
-                                var teamNameResponse = await _requestServices.GetAsync<TeamNameResponse>(string.Format("{0}getmatches/{1}", _configuration["ApiKeyUrl"], betList.FirstOrDefault().SportId));
-                                var runnerNames = teamNameResponse.data.Where(x => x.marketId == marketId).FirstOrDefault();
-
-                                teamSelectionIds = commonFun.GetTeamName(runnerNames);
-
-                                foreach (var runner in matchReturnResponse.runners)
+                                logStr = logStr + "Settle match of MarketId = " + marketId + "  and Time of Settle = " + DateTime.Now.ToString() + " ";
+                                commonReturnResponse = await _requestServices.GetAsync<CommonReturnResponse>(string.Format("{0}common/GetBetDataListByMarketId?MarketId={1}", _configuration["MyApiKeyUrl"], marketId));
+                                if (commonReturnResponse.IsSuccess && commonReturnResponse.Data != null)
                                 {
-                                    bool isDraw = false;
-                                    foreach (var item in betList.Where(x => x.SelectionId == runner.selectionId).ToList())
+                                    betList = jsonParser.ParsJson<List<Bets>>(Convert.ToString(commonReturnResponse.Data));
+                                    if (betList.Count < 0)
                                     {
-                                        var selectionName = teamSelectionIds.Where(x => x.selectionId == runner.selectionId).FirstOrDefault().teamName;
-                                        if (item.Selection.ToLower().Contains("draw") && selectionName.ToLower().Contains("draw"))
+                                        return new CommonReturnResponse
                                         {
-                                            isDraw = true;
-                                        }
+                                            Data = "Response count 0 at betList",
+                                            Message = MessageStatus.NoRecord,
+                                            IsSuccess = true,
+                                            Status = ResponseStatusCode.NOCONTENT
+                                        };
+                                    }
+                                    var teamNameResponse = await _requestServices.GetAsync<TeamNameResponse>(string.Format("{0}getmatches/{1}", _configuration["ApiKeyUrl"], betList.FirstOrDefault().SportId));
+                                    if (teamNameResponse == null)
+                                    {
+                                        return new CommonReturnResponse
+                                        {
+                                            Data = "Response comes null at getteamNameResponse",
+                                            Message = MessageStatus.NoRecord,
+                                            IsSuccess = true,
+                                            Status = ResponseStatusCode.NOCONTENT
+                                        };
+                                    }
+                                    var runnerNames = teamNameResponse.data.Where(x => x.marketId == marketId).FirstOrDefault();
 
-                                        if (isDraw && runner.status.ToLower() == "winner")
-                                        {
+                                    teamSelectionIds = commonFun.GetTeamName(runnerNames);
 
-                                            item.ResultType = 3;
-                                            item.UpdatedDate = DateTime.Now;
-                                            item.ResultAmount = 0;
-                                            await _baseRepository.UpdateAsync(item);
+                                    foreach (var runner in matchReturnResponse.runners)
+                                    {
+                                        bool isDraw = false;
+                                        foreach (var item in betList.Where(x => x.SelectionId == runner.selectionId).ToList())
+                                        {
+                                            var selectionName = teamSelectionIds.Where(x => x.selectionId == runner.selectionId).FirstOrDefault().teamName;
+                                            if (item.Selection.ToLower().Contains("draw") && selectionName.ToLower().Contains("draw"))
+                                            {
+                                                isDraw = true;
+                                            }
 
-                                        }
-                                        else if (runner.status.ToLower() == "winner")
-                                        {
-                                            item.IsSettlement = 1;
-                                            item.ResultType = 1;
-                                            item.UpdatedDate = DateTime.Now;
-                                            item.ResultAmount = (float?)((item.AmountStake * item.OddsRequest) - item.AmountStake);
-                                            await _baseRepository.UpdateAsync(item);
-                                        }
-                                        else if (runner.status.ToLower() == "loser")
-                                        {
-                                            item.IsSettlement = 1;
-                                            item.ResultType = 2;
-                                            item.UpdatedDate = DateTime.Now;
-                                            item.ResultAmount = (float?)-((item.AmountStake * item.OddsRequest) - item.AmountStake);
-                                            await _baseRepository.UpdateAsync(item);
+                                            if (isDraw && runner.status.ToLower() == "winner")
+                                            {
+
+                                                item.ResultType = 3;
+                                                item.UpdatedDate = DateTime.Now;
+                                                item.ResultAmount = 0;
+                                                await _baseRepository.UpdateAsync(item);
+
+                                            }
+                                            else if (runner.status.ToLower() == "winner")
+                                            {
+                                                item.IsSettlement = 1;
+                                                item.ResultType = 1;
+                                                item.UpdatedDate = DateTime.Now;
+                                                item.ResultAmount = (float?)((item.AmountStake * item.OddsRequest) - item.AmountStake);
+                                                await _baseRepository.UpdateAsync(item);
+                                            }
+                                            else if (runner.status.ToLower() == "loser")
+                                            {
+                                                item.IsSettlement = 1;
+                                                item.ResultType = 2;
+                                                item.UpdatedDate = DateTime.Now;
+                                                item.ResultAmount = (float?)-((item.AmountStake * item.OddsRequest) - item.AmountStake);
+                                                await _baseRepository.UpdateAsync(item);
+                                            }
                                         }
                                     }
+                                    _baseRepository.Commit();
                                 }
-                                _baseRepository.Commit();
+                                else
+                                {
+                                    return new CommonReturnResponse
+                                    {
+                                        Data = "Response comes null at GetBetDataListByMarketId",
+                                        Message = MessageStatus.NoRecord,
+                                        IsSuccess = true,
+                                        Status = ResponseStatusCode.NOCONTENT
+                                    };
+                                }
                             }
-                        }
+                            else
+                            {
+                                return new CommonReturnResponse
+                                {
+                                    Data = logStr.Length > 0 ? logStr : $"No Bet Settle {DateTime.Now.ToString()}",
+                                    Message = MessageStatus.Success,
+                                    IsSuccess = true,
+                                    Status = ResponseStatusCode.OK
+                                };
+                            }
+                        }                        
                     }
                 }
 
                 return new CommonReturnResponse
                 {
-                    Data = logStr.Length > 0 ? logStr : $"No Bet Settle {DateTime.Now.ToString()}",
-                    Message = MessageStatus.Success,
+                    Data = logStr + "No unsettle match available",
+                    Message = MessageStatus.NotExist,
                     IsSuccess = true,
-                    Status = ResponseStatusCode.OK
+                    Status = ResponseStatusCode.NOCONTENT
                 };
             }
             catch (Exception ex)
@@ -502,6 +549,9 @@ namespace Veelki.Core.Services
         {
             double betBeforeSaveAmount = (model.AmountStake * model.OddsRequest) - model.AmountStake;
             double teamAmt = 0;
+            float[] arrBack = null;
+            float[] arrLay = null;
+
             backandlayAmount = teamAmountStr.Replace("{\"", "");
             backandlayAmount = backandlayAmount.Replace("}", "");
             backandlayAmount = backandlayAmount.Replace("\"", "");
@@ -509,6 +559,16 @@ namespace Veelki.Core.Services
             backandlayAmount = backandlayAmount.Replace("]", "");
 
             var teamSelArr = backandlayAmount.Split(',');
+
+            if (model.Type == "back")
+            {
+                arrBack = new float[teamSelArr.Length];
+            }
+            else
+            {
+                arrLay = new float[teamSelArr.Length];
+            }
+
             for (int i = 0; i < teamSelArr.Length; i++)
             {
                 var teamSelAmtArr = teamSelArr[i].Split(':');
@@ -516,37 +576,111 @@ namespace Veelki.Core.Services
                 {
                     if (teamSelAmtArr[0] == model.SelectionId.ToString())
                     {
-                        teamAmt = model.AmountStake;
+                        arrBack[i] = Convert.ToSingle(teamSelAmtArr[1]) + (float)betBeforeSaveAmount; ////(float)(betBeforeSaveAmount + );                        
                     }
                     else
                     {
-                        teamAmt = -model.AmountStake;
-                    }
-                    if (teamAmt < 0)
-                    {
-                        if (Math.Abs(teamAmt) > remainingBalance)
-                        {
-                            return new Tuple<bool, double>(false, remainingBalance - Math.Abs(teamAmt));
-                        }
+                        arrBack[i] = Convert.ToSingle(teamSelAmtArr[1]) - model.AmountStake; //-(model.AmountStake + );
                     }
                 }
                 else
                 {
                     if (teamSelAmtArr[0] == model.SelectionId.ToString())
                     {
-                        teamAmt = -betBeforeSaveAmount;
+                        arrLay[i] = -(float)betBeforeSaveAmount + Convert.ToSingle(teamSelAmtArr[1]);
                     }
                     else
                     {
-                        teamAmt = betBeforeSaveAmount;
+                        arrLay[i] = model.AmountStake + Convert.ToSingle(teamSelAmtArr[1]);
                     }
-                    if (teamAmt < 0)
+                }
+            }
+
+            if (arrBack != null)
+            {
+                Array.Sort(arrBack);
+                if (Math.Abs(arrBack[0]) > remainingBalance)
+                {
+                    return new Tuple<bool, double>(false, remainingBalance - Math.Abs(arrBack[0]));
+                }
+            }
+            else
+            {
+                Array.Sort(arrLay);
+                if (Math.Abs(arrLay[0]) > remainingBalance)
+                {
+                    return new Tuple<bool, double>(false, remainingBalance - Math.Abs(arrLay[0]));
+                }
+            }
+
+            return new Tuple<bool, double>(true, 0);
+        }
+
+        private Tuple<bool, double> CheckExposureForPlaceBet(Bets model, string backandlayAmount, double ExposureAmt)
+        {
+            double betBeforeSaveAmount = (model.AmountStake * model.OddsRequest) - model.AmountStake;
+            double teamAmt = 0;
+            float[] arrBack = null;
+            float[] arrLay = null;
+
+            backandlayAmount = teamAmountStr.Replace("{\"", "");
+            backandlayAmount = backandlayAmount.Replace("}", "");
+            backandlayAmount = backandlayAmount.Replace("\"", "");
+            backandlayAmount = backandlayAmount.Replace("[", "");
+            backandlayAmount = backandlayAmount.Replace("]", "");
+
+            var teamSelArr = backandlayAmount.Split(',');
+
+            if (model.Type == "back")
+            {
+                arrBack = new float[teamSelArr.Length];
+            }
+            else
+            {
+                arrLay = new float[teamSelArr.Length];
+            }
+
+            for (int i = 0; i < teamSelArr.Length; i++)
+            {
+                var teamSelAmtArr = teamSelArr[i].Split(':');
+                if (model.Type == "back")
+                {
+                    if (teamSelAmtArr[0] == model.SelectionId.ToString())
                     {
-                        if (Math.Abs(teamAmt) > remainingBalance)
-                        {
-                            return new Tuple<bool, double>(false, remainingBalance - Math.Abs(teamAmt));
-                        }
+                        arrBack[i] = Convert.ToSingle(teamSelAmtArr[1]) + (float)betBeforeSaveAmount; ////(float)(betBeforeSaveAmount + );                        
                     }
+                    else
+                    {
+                        arrBack[i] = Convert.ToSingle(teamSelAmtArr[1]) - model.AmountStake;
+                    }
+                }
+                else
+                {
+                    if (teamSelAmtArr[0] == model.SelectionId.ToString())
+                    {
+                        arrLay[i] = Convert.ToSingle(teamSelAmtArr[1]) - (float)betBeforeSaveAmount;
+                    }
+                    else
+                    {
+                        arrLay[i] = Convert.ToSingle(teamSelAmtArr[1]) + model.AmountStake;
+                    }
+                }
+            }
+
+            if (arrBack != null)
+            {
+                Array.Sort(arrBack);
+                if (Math.Abs(arrBack[0]) > ExposureAmt)
+                {
+                    return new Tuple<bool, double>(false, ExposureAmt + Math.Abs(arrBack[0]));
+                }
+            }
+            else
+            {
+                Array.Sort(arrLay);
+                if (Math.Abs(arrLay[0]) > ExposureAmt)
+                {
+                    return new Tuple<bool, double>(false, ExposureAmt + Math.Abs(arrLay[0]));
                 }
             }
 

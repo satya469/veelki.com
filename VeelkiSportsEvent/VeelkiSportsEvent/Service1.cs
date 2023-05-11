@@ -2,10 +2,7 @@
 using System;
 using System.IO;
 using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.ServiceProcess;
-using System.Threading.Tasks;
 using System.Timers;
 
 namespace VeelkiSportsEvent

@@ -1,5 +1,5 @@
 ﻿
-namespace VeelkiBetSettle
+namespace BetSettle
 {
     partial class ProjectInstaller
     {
@@ -40,9 +40,10 @@ namespace VeelkiBetSettle
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.Description = "Veelki Bet Settle";
+            this.serviceInstaller1.Description = "Used to Settle Bets";
             this.serviceInstaller1.DisplayName = "VeelkiBetSettle";
             this.serviceInstaller1.ServiceName = "VeelkiBetSettle";
+            this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
             // 

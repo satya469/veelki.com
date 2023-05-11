@@ -1,5 +1,5 @@
 ﻿
-namespace VeelkiBetSettle
+namespace BetSettle
 {
     partial class Service1
     {

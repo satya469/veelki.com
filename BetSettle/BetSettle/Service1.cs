@@ -1,11 +1,19 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.ServiceProcess;
+using System.Text;
+using System.Threading.Tasks;
 using System.Timers;
 
-namespace VeelkiBetSettle
+namespace BetSettle
 {
     public partial class Service1 : ServiceBase
     {
@@ -17,11 +25,11 @@ namespace VeelkiBetSettle
 
         protected override void OnStart(string[] args)
         {
-            WriteToFile("Service is started at " + DateTime.Now);
+            WriteToFile("Service is started at OnStart " + DateTime.Now);
             BetSettle();
-            WriteToFile("Insert Sorts Event at " + DateTime.Now);
+            WriteToFile("Service is started at " + DateTime.Now);
             timer.Elapsed += new ElapsedEventHandler(OnElapsedTime);
-            timer.Interval = 10 * 60 * 1000; //number in milisecinds  
+            timer.Interval = 5 * 60 * 1000; //number in milisecinds
             timer.Enabled = true;
         }
 
@@ -34,7 +42,6 @@ namespace VeelkiBetSettle
         {
             WriteToFile("Service is recall at " + DateTime.Now);
             BetSettle();
-            WriteToFile("Insert Sorts Event at " + DateTime.Now);
         }
 
         public void WriteToFile(string Message)
@@ -47,7 +54,7 @@ namespace VeelkiBetSettle
             string filepath = AppDomain.CurrentDomain.BaseDirectory + "\\Logs\\ServiceLog_" + DateTime.Now.Date.ToShortDateString().Replace('/', '_') + ".txt";
             if (!File.Exists(filepath))
             {
-                // Create a file to write to.   
+                // Create a file to write to.
                 using (StreamWriter sw = File.CreateText(filepath))
                 {
                     sw.WriteLine(Message);
@@ -68,6 +75,15 @@ namespace VeelkiBetSettle
             try
             {
                 commonModel = Get<CommonReturnResponse, CommonReturnResponse>("http://api.veelki.com/api/BetApi/BetSettle");
+                if (commonModel.Data == null)
+                {
+                    WriteToFile($"Service call api and api gives null at {DateTime.Now}");
+                }
+                else
+                {
+                    WriteToFile($"{commonModel.Data}");
+                }
+                
             }
             catch (Exception ex)
             {
@@ -77,11 +93,27 @@ namespace VeelkiBetSettle
 
         public TOut Get<TIn, TOut>(string uri)
         {
-            using (var client = new WebClient())
+            string responseBody = "";
+            try
             {
-                var responseBody = client.DownloadString(uri);
-                return JsonConvert.DeserializeObject<TOut>(responseBody);
+                //using (var client = new WebClient())
+                //{
+                //    responseBody = client.DownloadString(uri);
+                //    return JsonConvert.DeserializeObject<TOut>(responseBody);
+                //}
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    var response = httpClient.GetAsync(uri).GetAwaiter().GetResult();
+                    var result = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    return JsonConvert.DeserializeObject<TOut>(result);
+                    // Do stuff...
+                }
             }
+            catch (Exception ex)
+            {
+                WriteToFile($"Service gives error at Get request {DateTime.Now} - {ex.Message}");
+                return JsonConvert.DeserializeObject<TOut>(responseBody);
+            }            
         }
     }
 }

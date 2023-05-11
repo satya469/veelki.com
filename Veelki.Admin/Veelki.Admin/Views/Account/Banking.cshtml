@@ -452,7 +452,7 @@
             var allAmountZero = false;
             var oDepositWithdrawVM = new Array();
             var table = document.getElementById("table_transfer");
-            for (var i = 0; i < table.rows.length - 2; i++) {
+            for (var i = 0; i < table.rows.length - 1; i++) {
                 if (i > 0) {
                     if ($("#amount_" + (i - 1)).val() > 0) {
                         allAmountZero = true;
@@ -495,28 +495,6 @@
                 }
             });
         }
-
-                                                                //$("#depositWithdrawModalLong button[type=submit]").click(function () {
-                                                                //    const isDeposit = $(this).hasClass("deposit-btn");
-                                                                //    $("#IsDeposit").val(isDeposit);
-                                                                //    var form = $("#depositWithdrawModalLong form");
-                                                                //    var url = "/user/DepositWithdrawCoin";
-                                                                //    var postData = form.serialize();
-                                                                //    $(".loader").show();
-
-                                                                //    $.post(url, postData, function (data) {
-                                                                //        $(".loader").hide();
-                                                                //        if (data.isSuccess) {
-                                                                //            toastr.success(data.message);
-                                                                //            $("#depositWithdrawModalLong").modal("hide");
-                                                                //            window.location.reload();
-                                                                //        }
-                                                                //        else {
-                                                                //            toastr.error(data.message);
-                                                                //            //$("#depositWithdrawModalLong .validation-summary-valid").html(data).show();
-                                                                //        }
-                                                                //    });
-                                                                //});
 
     </script>
 }

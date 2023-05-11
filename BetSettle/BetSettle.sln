@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32510.428
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeelkiBetSettle", "VeelkiBetSettle\VeelkiBetSettle.csproj", "{4D602BDB-9FEF-424B-A0BF-8F02FDE0F472}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetSettle", "BetSettle\BetSettle.csproj", "{975B26AB-4E6B-42D6-832C-CB9221A17A62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4D602BDB-9FEF-424B-A0BF-8F02FDE0F472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D602BDB-9FEF-424B-A0BF-8F02FDE0F472}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D602BDB-9FEF-424B-A0BF-8F02FDE0F472}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D602BDB-9FEF-424B-A0BF-8F02FDE0F472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{975B26AB-4E6B-42D6-832C-CB9221A17A62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{975B26AB-4E6B-42D6-832C-CB9221A17A62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{975B26AB-4E6B-42D6-832C-CB9221A17A62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{975B26AB-4E6B-42D6-832C-CB9221A17A62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2DD3E7EB-57B4-4646-8874-6A57487429B3}
+		SolutionGuid = {83485841-8CAB-46F8-A50C-4F6644F60F85}
 	EndGlobalSection
 EndGlobal

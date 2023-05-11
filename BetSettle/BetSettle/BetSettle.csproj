@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4D602BDB-9FEF-424B-A0BF-8F02FDE0F472}</ProjectGuid>
+    <ProjectGuid>{975B26AB-4E6B-42D6-832C-CB9221A17A62}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>VeelkiBetSettle</RootNamespace>
-    <AssemblyName>VeelkiBetSettle</AssemblyName>
+    <RootNamespace>BetSettle</RootNamespace>
+    <AssemblyName>BetSettle</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
